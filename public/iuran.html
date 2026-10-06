@@ -1,0 +1,242 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="utf-8" />
+    <title>Sistem Informasi RW 1 | Administrasi Iuran</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta content="Administrasi & Iuran SiSatu" name="description" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+
+    <link rel="shortcut icon" href="assets/images/favicon.ico">
+    <link href="assets/libs/datatables/dataTables.bootstrap4.min.css" rel="stylesheet" type="text/css" />
+    <link href="assets/libs/datatables/responsive.bootstrap4.min.css" rel="stylesheet" type="text/css" />
+    <link href="assets/css/icons.min.css" rel="stylesheet" type="text/css" />
+    <link href="assets/css/bootstrap.min.css" rel="stylesheet" type="text/css" />
+    <link href="assets/css/app.min.css" rel="stylesheet" type="text/css" />
+</head>
+
+<body>
+<div id="wrapper">
+    <!-- Topbar Start -->
+    <div class="navbar navbar-expand flex-column flex-md-row navbar-custom">
+        <div class="container-fluid">
+            <a href="dashboard.html" class="navbar-brand mr-0 mr-md-2 logo">
+                <span class="logo-lg">
+                    <img src="assets/images/RWIS-PNG.png" alt="Logo" height="40" />
+                </span>
+            </a>
+
+            <ul class="navbar-nav bd-navbar-nav flex-row list-unstyled menu-left mb-0">
+                <li>
+                    <button class="button-menu-mobile open-left disable-btn">
+                        <i data-feather="menu" class="menu-icon"></i>
+                        <i data-feather="x" class="close-icon"></i>
+                    </button>
+                </li>
+            </ul>
+
+            <ul class="navbar-nav flex-row ml-auto d-flex list-unstyled topnav-menu float-right mb-0">
+                <li class="dropdown notification-list">
+                    <a class="nav-link dropdown-toggle nav-user mr-0" data-toggle="dropdown" href="#" role="button" aria-haspopup="false" aria-expanded="false">
+                        <div class="media user-profile">
+                            <img src="assets/images/users/avatar-7.jpg" alt="user-image" class="rounded-circle align-self-center" />
+                            <div class="media-body text-left align-self-center ml-2 d-none d-sm-block">
+                                <h6 class="pro-user-name my-0">Firman</h6>
+                                <span class="pro-user-desc text-muted font-size-12">Ketua RW 01</span>
+                            </div>
+                            <span data-feather="chevron-down" class="ml-2 align-self-center"></span>
+                        </div>
+                    </a>
+                    <div class="dropdown-menu profile-dropdown-items dropdown-menu-right">
+                        <a href="index.html" class="dropdown-item notify-item"><i data-feather="globe" class="icon-dual icon-xs mr-2"></i><span>Lihat Landing Page</span></a>
+                        <div class="dropdown-divider"></div>
+                        <a href="login.html" class="dropdown-item notify-item text-danger"><i data-feather="log-out" class="icon-dual icon-xs mr-2"></i><span>Keluar</span></a>
+                    </div>
+                </li>
+            </ul>
+        </div>
+    </div>
+
+    <!-- Left Sidebar -->
+    <div class="left-side-menu">
+        <div class="media user-profile mt-2 mb-2">
+            <img src="assets/images/users/avatar-7.jpg" class="avatar-sm rounded-circle mr-2" alt="Firman" />
+            <div class="media-body">
+                <h6 class="pro-user-name mt-0 mb-0">Firman</h6>
+                <span class="pro-user-desc">RW/Administrator</span>
+            </div>
+        </div>
+        <div class="sidebar-content">
+            <div id="sidebar-menu" class="slimscroll-menu">
+                <ul class="metismenu" id="menu-bar">
+                    <li>
+                        <a href="dashboard.html">
+                            <i data-feather="home"></i>
+                            <span> Dashboard </span>
+                        </a>
+                    </li>
+                    <li class="mm-active">
+                        <a href="javascript: void(0);" class="active">
+                            <i data-feather="inbox"></i>
+                            <span> Administrasi </span>
+                            <span class="menu-arrow"></span>
+                        </a>
+                        <ul class="nav-second-level mm-show" aria-expanded="true">
+                            <li><a href="iuran.html" class="active font-weight-bold text-primary">Buku Kas & Iuran</a></li>
+                        </ul>
+                    </li>
+                    <li>
+                        <a href="data-warga.html">
+                            <i class='uil uil-books'></i>
+                            <span> Informasi Warga </span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="bansos.html">
+                            <i class='uil uil-globe'></i> 
+                            <span> Bantuan Sosial </span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="index.html#features-tab">
+                            <i class='uil uil-store'></i>
+                            <span> UMKM & Publikasi </span>
+                        </a>
+                    </li>
+                </ul>
+            </div>
+            <div class="clearfix"></div>
+        </div>
+    </div>
+
+    <!-- Content Page -->
+    <div class="content-page">
+        <div class="content">
+            <div class="container-fluid">
+                <div class="row page-title align-items-center">
+                    <div class="col-sm-6 col-xl-6">
+                        <h4 class="mb-1 mt-0">Buku Kas & Administrasi Iuran</h4>
+                        <p class="text-muted mb-0">Manajemen catatan iuran bulanan dan kebersihan warga</p>
+                    </div>
+                    <div class="col-sm-6 col-xl-6 text-sm-right mt-2 mt-sm-0">
+                        <button type="button" class="btn btn-primary" onclick="alert('Demo: Tambah Transaksi Kas');">
+                            <i class="uil uil-plus mr-1"></i> Tambah Transaksi
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Ringkasan Kas -->
+                <div class="row">
+                    <div class="col-md-4">
+                        <div class="card bg-success text-white">
+                            <div class="card-body">
+                                <h6>Total Pemasukan Iuran Bulan Ini</h6>
+                                <h3 class="mb-0 text-white">Rp 14.500.000</h3>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="card bg-danger text-white">
+                            <div class="card-body">
+                                <h6>Total Pengeluaran Kas Lingkungan</h6>
+                                <h3 class="mb-0 text-white">Rp 6.250.000</h3>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="card bg-primary text-white">
+                            <div class="card-body">
+                                <h6>Saldo Kas Tersedia</h6>
+                                <h3 class="mb-0 text-white">Rp 32.850.000</h3>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="card card-outline card-primary card-body">
+                    <h4 class="header-title mt-0 mb-3">Daftar Tagihan & Iuran Warga</h4>
+                    <div class="table-responsive">
+                        <table class="table table-bordered table-striped table-hover" id="table_contribution">
+                            <thead class="thead-light">
+                                <tr>
+                                    <th>ID Tagihan</th>
+                                    <th>Kepala Keluarga (Tertagih)</th>
+                                    <th>RT / No. Rumah</th>
+                                    <th>Jenis Iuran</th>
+                                    <th>Nominal</th>
+                                    <th>Periode</th>
+                                    <th>Status Pembayaran</th>
+                                    <th>Aksi</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>#TRX-2024-001</td>
+                                    <td>Ahmad Fauzi</td>
+                                    <td>RT 01 / Blok A-12</td>
+                                    <td>Iuran Sampah & Keamanan</td>
+                                    <td>Rp 50.000</td>
+                                    <td>Oktober 2024</td>
+                                    <td><span class="badge badge-success px-2 py-1">Lunas</span></td>
+                                    <td><button class="btn btn-xs btn-outline-info" onclick="alert('Demo Bukti Pembayaran Lunas');">Bukti</button></td>
+                                </tr>
+                                <tr>
+                                    <td>#TRX-2024-002</td>
+                                    <td>Budi Santoso</td>
+                                    <td>RT 02 / Blok B-04</td>
+                                    <td>Iuran Sampah & Keamanan</td>
+                                    <td>Rp 50.000</td>
+                                    <td>Oktober 2024</td>
+                                    <td><span class="badge badge-success px-2 py-1">Lunas</span></td>
+                                    <td><button class="btn btn-xs btn-outline-info" onclick="alert('Demo Bukti Pembayaran Lunas');">Bukti</button></td>
+                                </tr>
+                                <tr>
+                                    <td>#TRX-2024-003</td>
+                                    <td>Hendra Wijaya</td>
+                                    <td>RT 01 / Blok A-07</td>
+                                    <td>Iuran Kebersihan</td>
+                                    <td>Rp 30.000</td>
+                                    <td>Oktober 2024</td>
+                                    <td><span class="badge badge-warning px-2 py-1">Menunggu Verifikasi</span></td>
+                                    <td><button class="btn btn-xs btn-outline-primary" onclick="alert('Demo Verifikasi Pembayaran');">Verifikasi</button></td>
+                                </tr>
+                                <tr>
+                                    <td>#TRX-2024-004</td>
+                                    <td>Yusuf Gunawan</td>
+                                    <td>RT 03 / Blok C-15</td>
+                                    <td>Iuran Sampah & Keamanan</td>
+                                    <td>Rp 50.000</td>
+                                    <td>Oktober 2024</td>
+                                    <td><span class="badge badge-danger px-2 py-1">Belum Bayar</span></td>
+                                    <td><button class="btn btn-xs btn-outline-secondary" onclick="alert('Kirim Pengingat WhatsApp');">Ingatkan</button></td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <footer class="footer">
+            <div class="container-fluid">
+                <div class="row">
+                    <div class="col-12 text-center text-muted">
+                        &copy; 2024 .png - SiSatu RW 01 (Portofolio Demo Version)
+                    </div>
+                </div>
+            </div>
+        </footer>
+    </div>
+</div>
+
+<script src="assets/js/vendor.min.js"></script>
+<script src="assets/libs/datatables/jquery.dataTables.min.js"></script>
+<script src="assets/libs/datatables/dataTables.bootstrap4.min.js"></script>
+<script src="assets/js/app.min.js"></script>
+<script>
+    $(document).ready(function() {
+        $('#table_contribution').DataTable();
+    });
+</script>
+</body>
+</html>

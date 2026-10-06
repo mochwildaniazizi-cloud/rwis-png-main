@@ -1,0 +1,318 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="utf-8" />
+    <title>Sistem Informasi RW 1 | Data Warga</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta content="Data Warga SiSatu" name="description" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+
+    <link rel="shortcut icon" href="assets/images/favicon.ico">
+    <link href="assets/libs/datatables/dataTables.bootstrap4.min.css" rel="stylesheet" type="text/css" />
+    <link href="assets/libs/datatables/responsive.bootstrap4.min.css" rel="stylesheet" type="text/css" />
+    <link href="assets/css/icons.min.css" rel="stylesheet" type="text/css" />
+    <link href="assets/css/bootstrap.min.css" rel="stylesheet" type="text/css" />
+    <link href="assets/css/app.min.css" rel="stylesheet" type="text/css" />
+</head>
+
+<body>
+<div id="wrapper">
+    <!-- Topbar Start -->
+    <div class="navbar navbar-expand flex-column flex-md-row navbar-custom">
+        <div class="container-fluid">
+            <!-- LOGO -->
+            <a href="dashboard.html" class="navbar-brand mr-0 mr-md-2 logo">
+                <span class="logo-lg">
+                    <img src="assets/images/RWIS-PNG.png" alt="Logo" height="40" />
+                </span>
+            </a>
+
+            <ul class="navbar-nav bd-navbar-nav flex-row list-unstyled menu-left mb-0">
+                <li>
+                    <button class="button-menu-mobile open-left disable-btn">
+                        <i data-feather="menu" class="menu-icon"></i>
+                        <i data-feather="x" class="close-icon"></i>
+                    </button>
+                </li>
+            </ul>
+
+            <ul class="navbar-nav flex-row ml-auto d-flex list-unstyled topnav-menu float-right mb-0">
+                <li class="dropdown notification-list">
+                    <a class="nav-link dropdown-toggle nav-user mr-0" data-toggle="dropdown" href="#" role="button" aria-haspopup="false" aria-expanded="false">
+                        <div class="media user-profile">
+                            <img src="assets/images/users/avatar-7.jpg" alt="user-image" class="rounded-circle align-self-center" />
+                            <div class="media-body text-left align-self-center ml-2 d-none d-sm-block">
+                                <h6 class="pro-user-name my-0">Firman</h6>
+                                <span class="pro-user-desc text-muted font-size-12">Ketua RW 01</span>
+                            </div>
+                            <span data-feather="chevron-down" class="ml-2 align-self-center"></span>
+                        </div>
+                    </a>
+                    <div class="dropdown-menu profile-dropdown-items dropdown-menu-right">
+                        <a href="index.html" class="dropdown-item notify-item"><i data-feather="globe" class="icon-dual icon-xs mr-2"></i><span>Lihat Landing Page</span></a>
+                        <div class="dropdown-divider"></div>
+                        <a href="login.html" class="dropdown-item notify-item text-danger"><i data-feather="log-out" class="icon-dual icon-xs mr-2"></i><span>Keluar</span></a>
+                    </div>
+                </li>
+            </ul>
+        </div>
+    </div>
+    <!-- end Topbar -->
+
+    <!-- ========== Left Sidebar Start ========== -->
+    <div class="left-side-menu">
+        <div class="media user-profile mt-2 mb-2">
+            <img src="assets/images/users/avatar-7.jpg" class="avatar-sm rounded-circle mr-2" alt="Firman" />
+            <div class="media-body">
+                <h6 class="pro-user-name mt-0 mb-0">Firman</h6>
+                <span class="pro-user-desc">RW/Administrator</span>
+            </div>
+        </div>
+        <div class="sidebar-content">
+            <div id="sidebar-menu" class="slimscroll-menu">
+                <ul class="metismenu" id="menu-bar">
+                    <li>
+                        <a href="dashboard.html">
+                            <i data-feather="home"></i>
+                            <span> Dashboard </span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="javascript: void(0);">
+                            <i data-feather="inbox"></i>
+                            <span> Administrasi </span>
+                            <span class="menu-arrow"></span>
+                        </a>
+                        <ul class="nav-second-level" aria-expanded="false">
+                            <li><a href="iuran.html">Buku Kas</a></li>
+                            <li><a href="iuran.html">Iuran Warga</a></li>
+                            <li><a href="iuran.html">Detail Iuran</a></li>
+                            <li><a href="iuran.html">Status Pembayaran</a></li>
+                        </ul>
+                    </li>
+                    <li class="mm-active">
+                        <a href="data-warga.html" class="active">
+                            <i class='uil uil-books'></i>
+                            <span> Informasi Warga </span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="bansos.html">
+                            <i class='uil uil-globe'></i> 
+                            <span> Bantuan Sosial </span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="index.html#features-tab">
+                            <i class='uil uil-store'></i>
+                            <span> UMKM & Publikasi </span>
+                        </a>
+                    </li>
+                </ul>
+            </div>
+            <div class="clearfix"></div>
+        </div>
+    </div>
+    <!-- Left Sidebar End -->
+
+    <!-- Content Page -->
+    <div class="content-page">
+        <div class="content">
+            <div class="container-fluid">
+                <!-- Breadcrumb -->
+                <div class="row page-title align-items-center">
+                    <div class="col-sm-6 col-xl-6">
+                        <h4 class="mb-1 mt-0">Data Warga RW-01</h4>
+                        <p class="text-muted mb-0">Daftar master identitas kependudukan RW 01</p>
+                    </div>
+                    <div class="col-sm-6 col-xl-6 text-sm-right mt-2 mt-sm-0">
+                        <button type="button" class="btn btn-primary" onclick="alert('Demo: Fitur Tambah Data Warga');">
+                            <i class="uil uil-plus mr-1"></i> Tambah Warga
+                        </button>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="col-12">
+                        <div class="card">
+                            <div class="card-body">
+                                <h4 class="header-title mt-0 mb-3">Tabel Kependudukan RW 01</h4>
+
+                                <div class="table-responsive">
+                                    <table id="basic-datatable" class="table table-bordered table-striped table-hover">
+                                        <thead class="thead-light">
+                                            <tr>
+                                                <th>No</th>
+                                                <th>NIK</th>
+                                                <th>Nama Lengkap</th>
+                                                <th>Tempat Lahir</th>
+                                                <th>Tanggal Lahir</th>
+                                                <th>Jenis Kelamin</th>
+                                                <th>Gol. Darah</th>
+                                                <th>Agama</th>
+                                                <th>Status</th>
+                                                <th>Pekerjaan</th>
+                                                <th>Kewarganegaraan</th>
+                                                <th>Action</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <tr>
+                                                <td>1</td>
+                                                <td>3507123456780001</td>
+                                                <td>Ahmad Fauzi</td>
+                                                <td>Malang</td>
+                                                <td>1985-04-12</td>
+                                                <td>Laki-laki</td>
+                                                <td>O</td>
+                                                <td>Islam</td>
+                                                <td>Kawin</td>
+                                                <td>Wiraswasta</td>
+                                                <td>WNI</td>
+                                                <td>
+                                                    <a href="javascript:void(0);" onclick="alert('Demo Edit Data NIK 3507123456780001');" class="badge badge-primary badge-pill py-2 px-3">Edit</a>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td>2</td>
+                                                <td>3507123456780002</td>
+                                                <td>Siti Nurhaliza</td>
+                                                <td>Surabaya</td>
+                                                <td>1989-08-23</td>
+                                                <td>Perempuan</td>
+                                                <td>A</td>
+                                                <td>Islam</td>
+                                                <td>Kawin</td>
+                                                <td>Ibu Rumah Tangga</td>
+                                                <td>WNI</td>
+                                                <td>
+                                                    <a href="javascript:void(0);" onclick="alert('Demo Edit Data NIK 3507123456780002');" class="badge badge-primary badge-pill py-2 px-3">Edit</a>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td>3</td>
+                                                <td>3507123456780003</td>
+                                                <td>Budi Santoso</td>
+                                                <td>Malang</td>
+                                                <td>1992-11-05</td>
+                                                <td>Laki-laki</td>
+                                                <td>B</td>
+                                                <td>Islam</td>
+                                                <td>Kawin</td>
+                                                <td>Karyawan Swasta</td>
+                                                <td>WNI</td>
+                                                <td>
+                                                    <a href="javascript:void(0);" onclick="alert('Demo Edit Data NIK 3507123456780003');" class="badge badge-primary badge-pill py-2 px-3">Edit</a>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td>4</td>
+                                                <td>3507123456780004</td>
+                                                <td>Dewi Anggraini</td>
+                                                <td>Blitar</td>
+                                                <td>1995-02-18</td>
+                                                <td>Perempuan</td>
+                                                <td>AB</td>
+                                                <td>Islam</td>
+                                                <td>Belum Kawin</td>
+                                                <td>Guru Honorer</td>
+                                                <td>WNI</td>
+                                                <td>
+                                                    <a href="javascript:void(0);" onclick="alert('Demo Edit Data NIK 3507123456780004');" class="badge badge-primary badge-pill py-2 px-3">Edit</a>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td>5</td>
+                                                <td>3507123456780005</td>
+                                                <td>Hendra Wijaya</td>
+                                                <td>Kediri</td>
+                                                <td>1980-06-30</td>
+                                                <td>Laki-laki</td>
+                                                <td>O</td>
+                                                <td>Kristen</td>
+                                                <td>Kawin</td>
+                                                <td>PNS</td>
+                                                <td>WNI</td>
+                                                <td>
+                                                    <a href="javascript:void(0);" onclick="alert('Demo Edit Data NIK 3507123456780005');" class="badge badge-primary badge-pill py-2 px-3">Edit</a>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td>6</td>
+                                                <td>3507123456780006</td>
+                                                <td>Rina Astuti</td>
+                                                <td>Malang</td>
+                                                <td>1998-09-14</td>
+                                                <td>Perempuan</td>
+                                                <td>B</td>
+                                                <td>Islam</td>
+                                                <td>Belum Kawin</td>
+                                                <td>Mahasiswi</td>
+                                                <td>WNI</td>
+                                                <td>
+                                                    <a href="javascript:void(0);" onclick="alert('Demo Edit Data NIK 3507123456780006');" class="badge badge-primary badge-pill py-2 px-3">Edit</a>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td>7</td>
+                                                <td>3507123456780007</td>
+                                                <td>Yusuf Gunawan</td>
+                                                <td>Pasuruan</td>
+                                                <td>1977-12-01</td>
+                                                <td>Laki-laki</td>
+                                                <td>A</td>
+                                                <td>Islam</td>
+                                                <td>Kawin</td>
+                                                <td>Pedagang</td>
+                                                <td>WNI</td>
+                                                <td>
+                                                    <a href="javascript:void(0);" onclick="alert('Demo Edit Data NIK 3507123456780007');" class="badge badge-primary badge-pill py-2 px-3">Edit</a>
+                                                </td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Footer -->
+        <footer class="footer">
+            <div class="container-fluid">
+                <div class="row">
+                    <div class="col-12 text-center text-muted">
+                        &copy; 2024 .png - SiSatu RW 01 (Portofolio Demo Version)
+                    </div>
+                </div>
+            </div>
+        </footer>
+    </div>
+</div>
+
+<!-- Vendor js -->
+<script src="assets/js/vendor.min.js"></script>
+<script src="assets/libs/datatables/jquery.dataTables.min.js"></script>
+<script src="assets/libs/datatables/dataTables.bootstrap4.min.js"></script>
+<script src="assets/libs/datatables/dataTables.responsive.min.js"></script>
+<script src="assets/js/app.min.js"></script>
+
+<script>
+    $(document).ready(function() {
+        $('#basic-datatable').DataTable({
+            language: {
+                paginate: {
+                    previous: "<i class='uil uil-angle-left'>",
+                    next: "<i class='uil uil-angle-right'>"
+                }
+            },
+            drawCallback: function () {
+                $('.dataTables_paginate > .pagination').addClass('pagination-rounded');
+            }
+        });
+    });
+</script>
+</body>
+</html>

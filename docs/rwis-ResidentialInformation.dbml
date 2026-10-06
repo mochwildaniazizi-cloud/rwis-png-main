@@ -1,0 +1,194 @@
+//* Resident Infomation
+TableGroup ResidentialInformation {
+    Resident
+    Family
+    House
+    HouseGroup
+}
+
+Table Resident {
+    id                      int [pk, increment]
+    nik                     int(16)
+    name                    varchar(100)
+    birth_place             varchar(50)
+    birth_date              date
+    gender                  gender
+    religion_id             int
+    citizenship             citizenship
+    education_level_id      int
+    blood_type              blood_type
+    profession_name         varchar(50)
+    goverment_employees     bool
+    income_range_id         int
+    family_id               int
+    fm_status_id            int
+    marital_status_id       int
+    marriage_date           date
+    is_archived             bool [Not Null, Default: false]
+    created_at              timestamp
+    updated_at              timestamp
+}
+
+Table Family {
+    id                      int [pk, increment, Not Null]
+    nkk                     int(16)
+    house_id                int
+    address_street          varchar(50)
+    address_rt              int(3)
+    address_rw              int(3)
+    village_id              int
+    zip_code                int(5)
+    is_archived             bool [Default: false]
+    created_at              timestamp
+    updated_at              timestamp
+}
+
+Table House {
+    id              int [pk, increment]
+    house_group_id  int
+    land_area       int
+    building_are    int
+    domicile_street varchar(50)
+    domicile_rt     int(3)
+    domicile_rw     int(3)
+    zip_code        int(5)
+    is_archived     bool [Default: false]
+    created_at      timestamp
+    updated_at      timestamp
+}
+
+Table HouseGroup {
+    id              int [pk, increment]
+    is_archived     bool [Default: false]
+    created_at      timestamp
+    updated_at      timestamp
+}
+
+Enum gender {
+    Laki_laki
+    Perempuan
+}
+
+Enum blood_type {
+    A
+    B
+    AB
+    O
+}
+
+Enum citizenship {
+    WNI
+    WNA
+}
+
+Ref: Family.id < Resident.family_id
+
+Ref: House.id < Family.house_id
+
+Ref: House.house_group_id > HouseGroup.id 
+
+Ref: Family.village_id > Village.id
+
+//* Resident Information Data
+TableGroup ResidentData {
+    Religion
+    IncomeRange
+    EducationalLevel
+    FamilyMemberStatus
+    MaritalStatus
+}
+
+Table Religion {
+    id              int [pk, increment]
+    religion_name   religion
+    is_archived     bool [Default: false]
+    created_at      timestamp
+    updated_at      timestamp
+}
+
+Table IncomeRange {
+    id          int [pk, increment]
+    lowerbound  int
+    upperbound  int
+    is_archived bool [Default: false]
+    created_at  timestamp
+    updated_at  timestamp
+}
+
+Table EducationalLevel {
+    id                      int [pk, increment]
+    education_level_name    education_level
+    is_archived             bool [Default: false]
+    created_at              timestamp
+    updated_at              timestamp
+}
+
+Table FamilyMemberStatus {
+    id          int [pk, increment]
+    status_name fm_status
+    is_archived bool [Default: false]
+    created_at  timestamp
+    updated_at  timestamp
+}
+
+Table MaritalStatus {
+    id          int [pk, increment]
+    status_name marital_status
+    is_archived bool [Default: false]
+    created_at  timestamp
+    updated_at  timestamp
+}
+
+Enum religion {
+    Islam
+    Protestan
+    Katolik
+    Hindu
+    Budha
+    Khonghucu
+}
+
+Enum education_level {
+    tidak_belum_sekolah
+    belum_tamat_sd_sederajat
+    tamat_sd_sederajat
+    sltp_sederajat
+    slta_sederajat
+    diploma_i_ii
+    akademi_diploma_iii_s_muda
+    diploma_iv_strata_i
+    strata_ii
+    strata_iii
+}
+
+Enum fm_status {
+    Kepala_Keluarga
+    Istri
+    Anak
+}
+
+Enum marital_status {
+    Belum_Kawin
+    Kawin
+    Duda_Janda
+    Cerai
+}
+
+Ref: Resident.income_range_id - IncomeRange.id
+
+Ref: Resident.religion_id - Religion.id
+
+Ref: Resident.education_level_id - EducationalLevel.id
+
+Ref: Resident.fm_status_id - FamilyMemberStatus.id
+
+Ref: Resident.marital_status_id - MaritalStatus.id
+
+// 
+Table Village {
+    id              int(9) [pk]
+    id_district     int(6)
+    village_name    varchar(100)
+    created_at      timestamp
+    updated_at      timestamp
+}

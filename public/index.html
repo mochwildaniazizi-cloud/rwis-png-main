@@ -1,0 +1,280 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="utf-8" />
+    <title>Sistem Informasi RW 1 - Landing Page</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta content="Sistem Informasi RW 01 (SiSatu)" name="description" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+
+    <link rel="shortcut icon" href="assets/images/favicon.ico">
+    <link href="assets/libs/flatpickr/flatpickr.min.css" rel="stylesheet" type="text/css" />
+    <link href="assets/css/icons.min.css" rel="stylesheet" type="text/css" />
+    <link href="assets/css/bootstrap.min.css" rel="stylesheet" type="text/css" />
+    <link href="assets/css/app.min.css" rel="stylesheet" type="text/css" />
+
+    <style>
+        .gradient-box {
+            width: 100%;
+            height: auto;
+            padding: 4%;
+            background: linear-gradient(to bottom, #ffffff, #52b952);
+            color: #024100;
+            margin: 20px auto;
+            border-radius: 0px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+        .gradient-text h1 {
+            color: #024100;
+            font-weight: 700;
+        }
+    </style>
+</head>
+
+<body>
+<div id="wrapper">
+    <!-- Topbar Start -->
+    <div class="navbar navbar-expand flex-column flex-md-row navbar-custom">
+        <div class="container-fluid">
+            <!-- LOGO -->
+            <div>
+                <a href="index.html">
+                    <span class="logo-lg">
+                        <img src="assets/images/RWIS-PNG.png" alt="RWIS Logo" height="40" />
+                    </span>
+                </a>
+            </div>
+            <div>
+                <!-- DASHBOARD -->
+                <div class="btn-group col-cl-3">
+                    <a href="dashboard.html" class="col-xl-3">
+                        <button type="button" class="btn btn-outline-dark width-md">
+                            Dashboard
+                        </button>
+                    </a>
+                </div>
+
+                <!-- ADMINISTRASI -->
+                <div class="btn-group col-cl-3">
+                    <button type="button" class="btn btn-outline-dark dropdown-toggle width-md"
+                        data-toggle="dropdown" aria-haspopup="true"
+                        aria-expanded="false">Administrasi <i class="icon"><span data-feather="chevron-down"></span></i></button>
+                    <div class="dropdown-menu">
+                        <a class="dropdown-item" href="iuran.html">Buku Kas</a>
+                        <a class="dropdown-item" href="iuran.html">Iuran</a>
+                        <a class="dropdown-item" href="iuran.html">Detail Iuran</a>
+                        <a class="dropdown-item" href="iuran.html">Tipe Iuran</a>
+                        <div class="dropdown-divider"></div>
+                        <a class="dropdown-item" href="iuran.html">Pembayaran</a>
+                        <a class="dropdown-item" href="iuran.html">Metode Pembayaran</a>
+                        <a class="dropdown-item" href="iuran.html">Status Pembayaran</a>
+                        <a class="dropdown-item" href="iuran.html">Bukti Pembayaran</a>
+                    </div>
+                </div>
+
+                <!-- INFORMASI WARGA -->
+                <div class="btn-group col-cl-3">
+                    <a href="data-warga.html" class="col-xl-3">
+                        <button type="button" class="btn btn-outline-dark width-md">
+                            Informasi Warga
+                        </button>
+                    </a>
+                </div>
+
+                <!-- BANSOS -->
+                <div class="btn-group col-cl-3">
+                    <a href="bansos.html" class="col-xl-3">
+                        <button type="button" class="btn btn-outline-dark width-md">
+                            Bansos
+                        </button>
+                    </a>
+                </div>
+                
+                <!-- UMKM -->
+                <div class="btn-group col-cl-3">
+                    <a href="#features-tab" class="col-xl-3" onclick="$('a[href=\'#umkm1\']').tab('show');">
+                        <button type="button" class="btn btn-outline-dark width-md">
+                            UMKM
+                        </button>
+                    </a>
+                </div>
+                
+                <!-- MEDIA -->
+                <div class="btn-group col-cl-3">
+                    <a href="#features-tab" class="col-xl-3" onclick="$('a[href=\'#artikel1\']').tab('show');">
+                        <button type="button" class="btn btn-outline-dark width-md">
+                            Artikel
+                        </button>
+                    </a>
+                </div>
+
+                <!-- LOGIN -->
+                <div class="btn-group col-cl-3">
+                    <a href="login.html" class="col-xl-3">
+                        <button type="button" class="btn btn-success width-md">
+                            Masuk
+                        </button>
+                    </a>
+                </div>
+            </div>           
+        </div>
+    </div>
+    <!-- end Topbar -->
+
+    <div class="content">
+        <!-- Kotak dengan background linear gradient -->
+        <div class="gradient-box col-md-12 col-xl-12">
+            <div class="row align-items-center">
+                <div class="col-md-7 col-xl-7">
+                    <div>
+                        <div style="padding-top: 2%">
+                            <button type="button" class="btn btn-outline-secondary" data-toggle="tooltip" data-placement="bottom" title="Versi Website">
+                                Version 1.0 is here
+                            </button>
+                        </div>
+                        
+                        <h1 style="font-size: 4.5rem; font-weight: 800; padding-top: 10px; margin-bottom: 0;">SiSatu</h1>
+                        <h3 class="text-success font-weight-bold">(Sistem Informasi RW 01)</h3>
+                        <p class="lead" style="font-size: 1.1rem; line-height: 1.6;">SiSatu adalah sistem informasi berbasis online yang dirancang khusus untuk memudahkan pengelolaan dan komunikasi di tingkat RW. Dengan fitur-fitur seperti pengumuman, jadwal kegiatan, pelaporan masalah lingkungan, dan forum diskusi, SiSatu membantu memperkuat keterlibatan masyarakat, mempercepat respon terhadap masalah lingkungan, serta meningkatkan koordinasi antara warga dan pengurus RW.</p>
+                        <div class="mt-4">
+                            <a href="dashboard.html" class="btn btn-success btn-lg mr-2"><i data-feather="grid" class="mr-1"></i> Buka Dashboard Demo</a>
+                            <a href="login.html" class="btn btn-outline-dark btn-lg"><i data-feather="log-in" class="mr-1"></i> Masuk Sebagai Admin</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-5 col-xl-5 text-center">
+                    <img src="assets/images/RWIS.png" class="img-fluid rounded shadow-lg" alt="SiSatu RWIS Preview" style="max-height: 380px;">
+                </div>
+            </div>
+        </div>
+
+        <div class="row align-items-center col-md-12 col-xl-12" id="features-tab">
+            <div class="row w-100" style="padding-top: 1%; padding-left: 5%; padding-right: 5%; text-align: center">
+                <div class="col-xl-12">
+                    <div class="card">
+                        <div class="card-body">
+                            <div style="text-align:center"><h1 class="font-weight-bold mb-4">Our Features</h1></div>
+                            <ul class="nav nav-pills navtab-bg nav-justified">
+                                <li class="nav-item">
+                                    <a href="#home1" data-toggle="tab" aria-expanded="true" class="nav-link active">
+                                        <span class="d-block d-sm-none"><i class="uil-home"></i></span>
+                                        <span class="d-none d-sm-block font-weight-bold">Dashboard</span>
+                                    </a>
+                                </li>
+                                <li class="nav-item">
+                                    <a href="#adm1" data-toggle="tab" aria-expanded="false" class="nav-link">
+                                        <span class="d-block d-sm-none"><i class="uil-file-alt"></i></span>
+                                        <span class="d-none d-sm-block font-weight-bold">Administrasi</span>
+                                    </a>
+                                </li>
+                                <li class="nav-item">
+                                    <a href="#info1" data-toggle="tab" aria-expanded="false" class="nav-link">
+                                        <span class="d-block d-sm-none"><i class="uil-users-alt"></i></span>
+                                        <span class="d-none d-sm-block font-weight-bold">Informasi Warga</span>
+                                    </a>
+                                </li>
+                                <li class="nav-item">
+                                    <a href="#bansos1" data-toggle="tab" aria-expanded="false" class="nav-link">
+                                        <span class="d-block d-sm-none"><i class="uil-gift"></i></span>
+                                        <span class="d-none d-sm-block font-weight-bold">Bansos</span>
+                                    </a>
+                                </li>
+                                <li class="nav-item">
+                                    <a href="#umkm1" data-toggle="tab" aria-expanded="false" class="nav-link">
+                                        <span class="d-block d-sm-none"><i class="uil-store"></i></span>
+                                        <span class="d-none d-sm-block font-weight-bold">UMKM</span>
+                                    </a>
+                                </li>
+                                <li class="nav-item">
+                                    <a href="#artikel1" data-toggle="tab" aria-expanded="false" class="nav-link">
+                                        <span class="d-block d-sm-none"><i class="uil-newspaper"></i></span>
+                                        <span class="d-none d-sm-block font-weight-bold">Artikel</span>
+                                    </a>
+                                </li>
+                            </ul>
+                            <div class="tab-content text-muted text-left">
+                                <div class="tab-pane show active" id="home1">
+                                    <div class="text-center my-3">
+                                        <img src="assets/images/dashboard.png" class="img-fluid rounded shadow-sm border" alt="Dashboard SiSatu" style="max-height: 450px;">
+                                    </div>
+                                    <p class="mt-3 text-justify">Dashboard SiSatu menyajikan ringkasan data kependudukan, statistik warga, jumlah rumah, kepala keluarga, jumlah RT, grafik penerima bansos, serta pendataan balita secara visual dan interaktif untuk memudahkan pengambilan keputusan pengurus RW.</p>
+                                    <div class="text-center"><a href="dashboard.html" class="btn btn-outline-success">Lihat Halaman Dashboard &rarr;</a></div>
+                                </div>
+
+                                <div class="tab-pane" id="adm1">
+                                    <div class="text-center my-3">
+                                        <img src="assets/images/Administrasi-kas.png" class="img-fluid rounded shadow-sm border" alt="Administrasi SiSatu" style="max-height: 450px;">
+                                    </div>
+                                    <p class="mt-3 text-justify">Mudahkan urusan administratif dan akses data penting di RW Anda. Mengelola buku kas masuk dan keluar, monitoring iuran warga, bukti pembayaran, hingga status pembayaran iuran secara transparan dan akurat.</p>
+                                    <div class="text-center"><a href="iuran.html" class="btn btn-outline-success">Lihat Halaman Administrasi &rarr;</a></div>
+                                </div>
+
+                                <div class="tab-pane" id="info1">
+                                    <div class="text-center my-3">
+                                        <img src="assets/images/info-warga.png" class="img-fluid rounded shadow-sm border" alt="Informasi Warga" style="max-height: 450px;">
+                                    </div>
+                                    <p class="mt-3 text-justify">Sistem pendataan kependudukan terpadu dengan pencatatan NIK, identitas kepala keluarga, pekerjaan, status perkawinan, serta persebaran per RT untuk mendukung administrasi kependudukan yang rapi.</p>
+                                    <div class="text-center"><a href="data-warga.html" class="btn btn-outline-success">Lihat Data Warga &rarr;</a></div>
+                                </div>
+
+                                <div class="tab-pane" id="bansos1">
+                                    <div class="text-center my-3">
+                                        <img src="assets/images/bansos.png" class="img-fluid rounded shadow-sm border" alt="Bansos" style="max-height: 450px;">
+                                    </div>
+                                    <p class="mt-3 text-justify">Dilengkapi fitur Decision Support System (DSS) untuk membantu penentuan prioritas warga penerima bantuan sosial (Bansos) secara adil, objektif, dan tepat sasaran berdasarkan kriteria terukur.</p>
+                                    <div class="text-center"><a href="bansos.html" class="btn btn-outline-success">Lihat Halaman Bansos &rarr;</a></div>
+                                </div>
+
+                                <div class="tab-pane" id="umkm1">
+                                    <div class="text-center my-3">
+                                        <img src="assets/images/umkm.png" class="img-fluid rounded shadow-sm border" alt="UMKM" style="max-height: 450px;">
+                                    </div>
+                                    <p class="mt-3 text-justify">Mendukung pertumbuhan ekonomi warga lokal dengan katalog digital usaha mikro, kecil, dan menengah (UMKM) milik warga setempat guna memperluas jangkauan promosi.</p>
+                                </div>
+
+                                <div class="tab-pane" id="artikel1">
+                                    <div class="text-center my-3">
+                                        <img src="assets/images/artikel.png" class="img-fluid rounded shadow-sm border" alt="Artikel & Berita" style="max-height: 450px;">
+                                    </div>
+                                    <p class="mt-3 text-justify">Pusat publikasi berita seputar agenda kegiatan gotong royong, info kesehatan posyandu, dan pengumuman resmi pengurus RW yang dapat diakses langsung oleh warga.</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="gradient-box col-md-12 col-xl-12 mt-4">
+            <div class="row align-items-center">
+                <div class="col-md-8 col-xl-8">
+                    <div class="gradient-text">
+                        <h1>Yuk, Gabung di SiSatu!</h1>
+                    </div>
+                    <p class="lead mb-0">Di sini, kita bisa berkomunikasi, berbagi informasi, dan atur kegiatan RW dengan lebih mudah. Ayo, jadi bagian dari perubahan positif untuk lingkungan dan komunitas kita!</p>
+                </div>
+                <div class="col-md-4 col-xl-4 text-center mt-3 mt-md-0">
+                    <a href="login.html" class="btn btn-dark btn-lg shadow">Masuk ke Sistem SiSatu &rarr;</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer Start -->
+    <footer class="footer">
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-12 text-center text-muted">
+                    &copy; 2024 - SiSatu (Sistem Informasi RW 01). Portofolio Demo Version.
+                </div>
+            </div>
+        </div>
+    </footer>
+    <!-- end Footer -->
+</div>    
+
+<!-- Vendor js -->
+<script src="assets/js/vendor.min.js"></script>
+<script src="assets/js/app.min.js"></script>
+</body>
+</html>
