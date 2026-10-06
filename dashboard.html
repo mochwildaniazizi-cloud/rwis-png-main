@@ -1,85 +1,6 @@
 <!DOCTYPE html>
 <html lang="id">
 
-<style>
-    /* Styling Sidebar ala Modern UI */
-    .left-side-menu.custom-sidebar-modern {
-        background-color: #ffffff !important;
-        border-right: 1px solid #f0f2f5;
-        box-shadow: none;
-    }
-
-    .nav-link-modern {
-        display: flex;
-        align-items: center;
-        padding: 10px 16px;
-        color: #5a6a85;
-        font-weight: 500;
-        font-size: 14px;
-        border-radius: 12px;
-        margin-bottom: 4px;
-        transition: all 0.2s ease-in-out;
-        text-decoration: none !important;
-    }
-
-    .nav-link-modern i {
-        margin-right: 12px;
-        width: 18px;
-        height: 18px;
-    }
-
-    .nav-link-modern:hover {
-        background-color: #f4f6f9;
-        color: #5369f8;
-    }
-
-    /* Style Active Item (Pill Membulat ala Gambar) */
-    .nav-link-modern.active,
-    li.mm-active>.nav-link-modern {
-        background-color: #eef2ff !important;
-        color: #5369f8 !important;
-        font-weight: 600;
-    }
-
-    .nav-link-modern.active i,
-    li.mm-active>.nav-link-modern i {
-        color: #5369f8 !important;
-    }
-
-    /* Widget Box di Bawah Sidebar */
-    .sidebar-widget-card {
-        background: linear-gradient(135deg, #f0f3ff 0%, #eef2ff 100%);
-        border: 1px solid #e0e7ff;
-        border-radius: 16px;
-    }
-
-    /* Styling Topbar Modern */
-    .topbar-modern {
-        background-color: #f7f9fc !important;
-        box-shadow: none !important;
-        border-bottom: 1px solid transparent;
-    }
-
-    .input-group-modern {
-        background-color: #ffffff;
-        border-radius: 12px;
-        padding: 2px 8px;
-        border: 1px solid #e2e8f0;
-        width: 380px;
-        box-shadow: 0 2px 6px rgba(0, 0, 0, 0.02);
-    }
-
-    .nav-icon-btn {
-        background-color: #ffffff;
-        border: 1px solid #e2e8f0;
-        width: 38px;
-        height: 38px;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-    }
-</style>
-
 <head>
     <meta charset="utf-8" />
     <title>Sistem Informasi RW 1 | Dashboard</title>
@@ -93,6 +14,190 @@
     <link href="assets/css/icons.min.css" rel="stylesheet" type="text/css" />
     <link href="assets/css/bootstrap.min.css" rel="stylesheet" type="text/css" />
     <link href="assets/css/app.min.css" rel="stylesheet" type="text/css" />
+
+    <style>
+        body {
+            background-color: #f4f6f9;
+            margin: 0;
+            padding: 0;
+            overflow-x: hidden;
+        }
+
+        /* 1. SIDEBAR FULL HEIGHT (KIRI PENUH) */
+        #sidebar-container {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 260px;
+            height: 100vh;
+            z-index: 1040;
+        }
+
+        .left-side-menu.custom-sidebar-modern {
+            width: 260px;
+            height: 100vh;
+            background-color: #ffffff !important;
+            border-right: 1px solid #eef2f6;
+            display: flex;
+            flex-direction: column;
+            overflow-y: auto;
+        }
+
+        /* 2. WRAPPER KANAN (TOPBAR + CONTENT) */
+        .content-page-wrapper {
+            margin-left: 260px;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+        }
+
+        /* 3. TOPBAR MODERN (SEBELAH KANAN SIDEBAR) */
+        #topbar-container {
+            position: fixed;
+            top: 0;
+            left: 260px;
+            right: 0;
+            height: 70px;
+            z-index: 1030;
+            background-color: #ffffff;
+            border-bottom: 1px solid #eef2f6;
+        }
+
+        .topbar-modern {
+            height: 70px;
+            background-color: #ffffff !important;
+        }
+
+        .input-group-modern {
+            background-color: #f8fafc;
+            border-radius: 12px;
+            padding: 2px 8px;
+            border: 1px solid #e2e8f0;
+            width: 360px;
+        }
+
+        .nav-icon-btn {
+            background-color: #f8fafc;
+            border: 1px solid #e2e8f0;
+            width: 38px;
+            height: 38px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+        }
+
+        .noti-dot {
+            position: absolute;
+            top: 8px;
+            right: 8px;
+            width: 7px;
+            height: 7px;
+            border-radius: 50%;
+        }
+
+        /* 4. MAIN CONTENT AREA */
+        .main-content-area {
+            margin-top: 70px;
+            padding: 24px;
+            flex: 1;
+        }
+
+        /* 5. STYLING MENU & DROPDOWN SIDEBAR */
+        .nav-link-modern {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 10px 14px;
+            color: #5a6a85;
+            font-weight: 500;
+            font-size: 14px;
+            border-radius: 12px;
+            margin-bottom: 4px;
+            transition: all 0.2s ease-in-out;
+            text-decoration: none !important;
+            cursor: pointer;
+        }
+
+        .nav-link-modern .menu-item-content {
+            display: flex;
+            align-items: center;
+        }
+
+        .nav-link-modern .feather-icon {
+            margin-right: 12px;
+            width: 18px;
+            height: 18px;
+            color: #5a6a85;
+        }
+
+        .nav-link-modern:hover {
+            background-color: #f4f6f9;
+            color: #5369f8;
+        }
+
+        .nav-link-modern:hover .feather-icon {
+            color: #5369f8;
+        }
+
+        /* Active State Pill */
+        .nav-link-modern.active,
+        .nav-item.active>.nav-link-modern {
+            background-color: #eef2ff !important;
+            color: #5369f8 !important;
+            font-weight: 600;
+        }
+
+        .nav-link-modern.active .feather-icon,
+        .nav-item.active>.nav-link-modern .feather-icon {
+            color: #5369f8 !important;
+        }
+
+        /* Arrow Dropdown Rotation */
+        .menu-arrow-icon {
+            width: 14px;
+            height: 14px;
+            transition: transform 0.2s ease;
+            color: #94a3b8;
+        }
+
+        .nav-item.open>.nav-link-modern .menu-arrow-icon {
+            transform: rotate(90deg);
+            color: #5369f8;
+        }
+
+        /* Submenu Style */
+        .nav-second-level {
+            display: none;
+            list-style: none;
+            padding-left: 32px;
+            margin-top: 2px;
+            margin-bottom: 8px;
+        }
+
+        .nav-second-level li a {
+            display: block;
+            padding: 6px 12px;
+            font-size: 13px;
+            color: #64748b;
+            text-decoration: none !important;
+            border-radius: 8px;
+            transition: all 0.2s;
+        }
+
+        .nav-second-level li a:hover,
+        .nav-second-level li a.active {
+            color: #5369f8;
+            font-weight: 600;
+            background-color: #eef2ff;
+        }
+
+        .sidebar-widget-card {
+            background: linear-gradient(135deg, #f0f3ff 0%, #eef2ff 100%);
+            border: 1px solid #e0e7ff;
+            border-radius: 16px;
+        }
+    </style>
 </head>
 
 <body>

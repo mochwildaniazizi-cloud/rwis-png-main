@@ -1,76 +1,63 @@
-<div class="navbar navbar-expand flex-column flex-md-row navbar-custom topbar-modern px-4 py-2">
-    <div class="container-fluid p-0">
-        <!-- Search Bar Modern (seperti pada gambar referensi) -->
-        <div class="app-search-modern d-none d-md-block">
-            <form>
-                <div class="input-group input-group-modern">
-                    <div class="input-group-prepend">
-                        <span class="input-group-text border-0 bg-transparent text-muted">
-                            <i data-feather="search"></i>
-                        </span>
-                    </div>
-                    <input type="text" class="form-control border-0 bg-transparent"
-                        placeholder="Search or type a command" />
-                    <div class="input-group-append align-items-center pr-2">
-                        <kbd class="bg-light text-muted border px-2 py-1 rounded font-size-11">⌘ K</kbd>
-                    </div>
+<div class="topbar-modern d-flex align-items-center justify-content-between px-4">
+    <!-- Search Bar Modern -->
+    <div class="app-search-modern">
+        <form>
+            <div class="input-group input-group-modern">
+                <div class="input-group-prepend">
+                    <span class="input-group-text border-0 bg-transparent text-muted">
+                        <i data-feather="search" style="width: 16px; height: 16px;"></i>
+                    </span>
                 </div>
-            </form>
+                <input type="text" class="form-control border-0 bg-transparent font-size-13"
+                    placeholder="Cari data warga, RT, iuran..." />
+                <div class="input-group-append align-items-center pr-2">
+                    <kbd class="bg-light text-muted border px-2 py-1 rounded font-size-11">⌘ K</kbd>
+                </div>
+            </div>
+        </form>
+    </div>
+
+    <!-- Right Controls (Notifikasi & Profil Avatar) -->
+    <div class="d-flex align-items-center">
+        <!-- Notifikasi -->
+        <div class="dropdown mr-3">
+            <a class="nav-icon-btn rounded-circle text-muted" data-toggle="dropdown" href="#" role="button">
+                <i data-feather="bell" style="width: 18px; height: 18px;"></i>
+                <span class="noti-dot bg-danger"></span>
+            </a>
+            <div class="dropdown-menu dropdown-menu-right dropdown-lg border-0 shadow-lg rounded-lg">
+                <div class="dropdown-item noti-title border-bottom bg-light">
+                    <h6 class="m-0 font-weight-bold">Notifikasi RW 01</h6>
+                </div>
+                <div class="p-3">
+                    <p class="mb-1 text-dark font-size-13">Iuran RT 02 bulan ini telah lunas</p>
+                    <small class="text-muted">1 jam yang lalu</small>
+                </div>
+            </div>
         </div>
 
-        <!-- Right Menu (Notifikasi & Profil) -->
-        <ul class="navbar-nav flex-row ml-auto d-flex list-unstyled topnav-menu align-items-center mb-0">
-            <!-- Mobile Toggle -->
-            <li class="d-md-none mr-2">
-                <button class="button-menu-mobile open-left border-0 bg-transparent">
-                    <i data-feather="menu" class="menu-icon"></i>
-                </button>
-            </li>
-
-            <!-- Notifikasi -->
-            <li class="dropdown notification-list mr-2" title="Notifikasi">
-                <a class="nav-link dropdown-toggle nav-icon-btn p-2 rounded-circle" data-toggle="dropdown" href="#"
-                    role="button" aria-haspopup="false" aria-expanded="false">
-                    <i data-feather="bell"></i>
-                    <span class="noti-icon-badge bg-danger"></span>
-                </a>
-                <div class="dropdown-menu dropdown-menu-right dropdown-lg border-0 shadow-lg rounded-lg">
-                    <div class="dropdown-item noti-title border-bottom bg-light">
-                        <h6 class="m-0 font-weight-bold">Notifikasi RW 01</h6>
-                    </div>
-                    <div class="p-3">
-                        <p class="mb-1 text-dark font-size-13">Iuran RT 02 bulan ini telah lunas</p>
-                        <small class="text-muted">1 jam yang lalu</small>
-                    </div>
+        <!-- Profil -->
+        <div class="dropdown">
+            <a class="d-flex align-items-center text-decoration-none dropdown-toggle" data-toggle="dropdown" href="#">
+                <img src="assets/images/users/avatar-7.jpg" alt="user-image"
+                    class="avatar-sm rounded-circle border shadow-sm mr-2" />
+                <div class="d-none d-sm-block text-left">
+                    <h6 class="my-0 font-weight-bold text-dark font-size-13">Firman</h6>
+                    <span class="text-muted font-size-11">Ketua RW 01</span>
                 </div>
-            </li>
-
-            <!-- User Profile Avatar -->
-            <li class="dropdown notification-list">
-                <a class="nav-link dropdown-toggle nav-user mr-0 p-1" data-toggle="dropdown" href="#" role="button"
-                    aria-haspopup="false" aria-expanded="false">
-                    <div class="media user-profile align-items-center">
-                        <img src="assets/images/users/avatar-7.jpg" alt="user-image"
-                            class="avatar-sm rounded-circle border shadow-sm mr-2" />
-                        <div class="media-body text-left d-none d-sm-block">
-                            <h6 class="pro-user-name my-0 font-weight-bold text-dark font-size-13">Firman</h6>
-                            <span class="pro-user-desc text-muted font-size-11">Ketua RW 01</span>
-                        </div>
-                        <i data-feather="chevron-down" class="ml-1 text-muted icon-xs"></i>
-                    </div>
+                <i data-feather="chevron-down" class="ml-2 text-muted" style="width: 14px; height: 14px;"></i>
+            </a>
+            <div class="dropdown-menu dropdown-menu-right border-0 shadow-lg rounded-lg">
+                <a href="index.html" class="dropdown-item notify-item">
+                    <i data-feather="globe" class="icon-dual icon-xs mr-2"></i>
+                    <span>Lihat Landing Page</span>
                 </a>
-                <div class="dropdown-menu profile-dropdown-items dropdown-menu-right border-0 shadow-lg rounded-lg">
-                    <a href="index.html" class="dropdown-item notify-item">
-                        <i data-feather="globe" class="icon-dual icon-xs mr-2"></i>
-                        <span>Lihat Landing Page</span>
-                    </a>
-                    <div class="dropdown-divider"></div>
-                    <a href="login.html" class="dropdown-item notify-item text-danger">
-                        <i data-feather="log-out" class="icon-dual icon-xs mr-2"></i>
-                        <span>Keluar</span>
-                    </a>
-                </div>
-            </li>
-        </ul>
+                <div class="dropdown-divider"></div>
+                <a href="login.html" class="dropdown-item notify-item text-danger">
+                    <i data-feather="log-out" class="icon-dual icon-xs mr-2"></i>
+                    <span>Keluar</span>
+                </a>
+            </div>
+        </div>
     </div>
 </div>
