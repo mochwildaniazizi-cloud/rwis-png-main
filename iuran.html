@@ -2,9 +2,9 @@
 <html lang="id">
 <head>
     <meta charset="utf-8" />
-    <title>Sistem Informasi RW 1 | Administrasi Iuran</title>
+    <title>Sistem Informasi RW 1 | Administrasi</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta content="Administrasi & Iuran SiSatu" name="description" />
+    <meta content="Administrasi RW 01" name="description" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
 
     <link rel="shortcut icon" href="assets/images/favicon.ico">
@@ -13,6 +13,12 @@
     <link href="assets/css/icons.min.css" rel="stylesheet" type="text/css" />
     <link href="assets/css/bootstrap.min.css" rel="stylesheet" type="text/css" />
     <link href="assets/css/app.min.css" rel="stylesheet" type="text/css" />
+    <style>
+        .nav-second-level li a.active-sub {
+            color: #5369f8 !important;
+            font-weight: 600;
+        }
+    </style>
 </head>
 
 <body>
@@ -42,7 +48,7 @@
                             <img src="assets/images/users/avatar-7.jpg" alt="user-image" class="rounded-circle align-self-center" />
                             <div class="media-body text-left align-self-center ml-2 d-none d-sm-block">
                                 <h6 class="pro-user-name my-0">Firman</h6>
-                                <span class="pro-user-desc text-muted font-size-12">Ketua RW 01</span>
+                                <span class="pro-user-desc text-muted font-size-12">RW/Administrator</span>
                             </div>
                             <span data-feather="chevron-down" class="ml-2 align-self-center"></span>
                         </div>
@@ -76,13 +82,20 @@
                         </a>
                     </li>
                     <li class="mm-active">
-                        <a href="javascript: void(0);" class="active">
+                        <a href="javascript: void(0);" aria-expanded="true" class="active">
                             <i data-feather="inbox"></i>
                             <span> Administrasi </span>
                             <span class="menu-arrow"></span>
                         </a>
                         <ul class="nav-second-level mm-show" aria-expanded="true">
-                            <li><a href="iuran.html" class="active font-weight-bold text-primary">Buku Kas & Iuran</a></li>
+                            <li><a href="iuran.html?tab=buku-kas" id="sub-buku-kas" class="active-sub">Buku Kas</a></li>
+                            <li><a href="iuran.html?tab=iuran" id="sub-iuran">Iuran</a></li>
+                            <li><a href="iuran.html?tab=detail-iuran" id="sub-detail-iuran">Detail Iuran</a></li>
+                            <li><a href="iuran.html?tab=tipe-iuran" id="sub-tipe-iuran">Tipe Iuran</a></li>
+                            <li><a href="iuran.html?tab=pembayaran" id="sub-pembayaran">Pembayaran</a></li>
+                            <li><a href="iuran.html?tab=metode-pembayaran" id="sub-metode-pembayaran">Metode Pembayaran</a></li>
+                            <li><a href="iuran.html?tab=status-pembayaran" id="sub-status-pembayaran">Status Pembayaran</a></li>
+                            <li><a href="iuran.html?tab=bukti-pembayaran" id="sub-bukti-pembayaran">Bukti Pembayaran</a></li>
                         </ul>
                     </li>
                     <li>
@@ -100,7 +113,13 @@
                     <li>
                         <a href="index.html#features-tab">
                             <i class='uil uil-store'></i>
-                            <span> UMKM & Publikasi </span>
+                            <span> UMKM </span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="index.html#features-tab">
+                            <i data-feather="grid"></i>
+                            <span> Publikasi </span>
                         </a>
                     </li>
                 </ul>
@@ -113,110 +132,370 @@
     <div class="content-page">
         <div class="content">
             <div class="container-fluid">
+                <!-- Page Title -->
                 <div class="row page-title align-items-center">
                     <div class="col-sm-6 col-xl-6">
-                        <h4 class="mb-1 mt-0">Buku Kas & Administrasi Iuran</h4>
-                        <p class="text-muted mb-0">Manajemen catatan iuran bulanan dan kebersihan warga</p>
+                        <h4 class="mb-1 mt-0" id="page-heading">Daftar Buku Kas</h4>
                     </div>
                     <div class="col-sm-6 col-xl-6 text-sm-right mt-2 mt-sm-0">
-                        <button type="button" class="btn btn-primary" onclick="alert('Demo: Tambah Transaksi Kas');">
-                            <i class="uil uil-plus mr-1"></i> Tambah Transaksi
-                        </button>
+                        <ol class="breadcrumb m-0 float-right">
+                            <li class="breadcrumb-item"><a href="javascript: void(0);">Administrasi</a></li>
+                            <li class="breadcrumb-item active" id="breadcrumb-sub">Daftar Buku Kas</li>
+                        </ol>
                     </div>
                 </div>
 
-                <!-- Ringkasan Kas -->
-                <div class="row">
-                    <div class="col-md-4">
-                        <div class="card bg-success text-white">
-                            <div class="card-body">
-                                <h6>Total Pemasukan Iuran Bulan Ini</h6>
-                                <h3 class="mb-0 text-white">Rp 14.500.000</h3>
-                            </div>
+                <!-- 1. TAB BUKU KAS -->
+                <div id="view-buku-kas" class="adm-section">
+                    <div class="card card-outline card-primary card-body">
+                        <div class="d-flex justify-content-between align-items-center mb-3">
+                            <h4 class="card-title font-weight-bold mb-0">Daftar Buku Kas</h4>
+                            <button class="btn btn-sm btn-primary" onclick="alert('Demo: Tambah Buku Kas');">Tambah</button>
                         </div>
-                    </div>
-                    <div class="col-md-4">
-                        <div class="card bg-danger text-white">
-                            <div class="card-body">
-                                <h6>Total Pengeluaran Kas Lingkungan</h6>
-                                <h3 class="mb-0 text-white">Rp 6.250.000</h3>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-md-4">
-                        <div class="card bg-primary text-white">
-                            <div class="card-body">
-                                <h6>Saldo Kas Tersedia</h6>
-                                <h3 class="mb-0 text-white">Rp 32.850.000</h3>
-                            </div>
+                        <div class="table-responsive">
+                            <table class="table table-bordered table-striped table-hover table-sm datatable-item">
+                                <thead class="thead-light">
+                                    <tr>
+                                        <th>ID</th>
+                                        <th>Tertagih</th>
+                                        <th>Buku Kas</th>
+                                        <th>Jenis Golongan Tertagih</th>
+                                        <th>Aksi</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td>1</td>
+                                        <td>Ahmad Fauzi (RT 01)</td>
+                                        <td>Buku Kas Kebersihan & Keamanan</td>
+                                        <td>Warga Tetap</td>
+                                        <td><button class="btn btn-xs btn-primary" onclick="alert('Detail Kas');">Detail</button></td>
+                                    </tr>
+                                    <tr>
+                                        <td>2</td>
+                                        <td>Siti Nurhaliza (RT 02)</td>
+                                        <td>Buku Kas Sosial Lingkungan</td>
+                                        <td>Warga Tetap</td>
+                                        <td><button class="btn btn-xs btn-primary" onclick="alert('Detail Kas');">Detail</button></td>
+                                    </tr>
+                                    <tr>
+                                        <td>3</td>
+                                        <td>Budi Santoso (RT 01)</td>
+                                        <td>Buku Kas Pembangunan Sarana</td>
+                                        <td>Warga Kontrak</td>
+                                        <td><button class="btn btn-xs btn-primary" onclick="alert('Detail Kas');">Detail</button></td>
+                                    </tr>
+                                </tbody>
+                            </table>
                         </div>
                     </div>
                 </div>
 
-                <div class="card card-outline card-primary card-body">
-                    <h4 class="header-title mt-0 mb-3">Daftar Tagihan & Iuran Warga</h4>
-                    <div class="table-responsive">
-                        <table class="table table-bordered table-striped table-hover" id="table_contribution">
-                            <thead class="thead-light">
-                                <tr>
-                                    <th>ID Tagihan</th>
-                                    <th>Kepala Keluarga (Tertagih)</th>
-                                    <th>RT / No. Rumah</th>
-                                    <th>Jenis Iuran</th>
-                                    <th>Nominal</th>
-                                    <th>Periode</th>
-                                    <th>Status Pembayaran</th>
-                                    <th>Aksi</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                <tr>
-                                    <td>#TRX-2024-001</td>
-                                    <td>Ahmad Fauzi</td>
-                                    <td>RT 01 / Blok A-12</td>
-                                    <td>Iuran Sampah & Keamanan</td>
-                                    <td>Rp 50.000</td>
-                                    <td>Oktober 2024</td>
-                                    <td><span class="badge badge-success px-2 py-1">Lunas</span></td>
-                                    <td><button class="btn btn-xs btn-outline-info" onclick="alert('Demo Bukti Pembayaran Lunas');">Bukti</button></td>
-                                </tr>
-                                <tr>
-                                    <td>#TRX-2024-002</td>
-                                    <td>Budi Santoso</td>
-                                    <td>RT 02 / Blok B-04</td>
-                                    <td>Iuran Sampah & Keamanan</td>
-                                    <td>Rp 50.000</td>
-                                    <td>Oktober 2024</td>
-                                    <td><span class="badge badge-success px-2 py-1">Lunas</span></td>
-                                    <td><button class="btn btn-xs btn-outline-info" onclick="alert('Demo Bukti Pembayaran Lunas');">Bukti</button></td>
-                                </tr>
-                                <tr>
-                                    <td>#TRX-2024-003</td>
-                                    <td>Hendra Wijaya</td>
-                                    <td>RT 01 / Blok A-07</td>
-                                    <td>Iuran Kebersihan</td>
-                                    <td>Rp 30.000</td>
-                                    <td>Oktober 2024</td>
-                                    <td><span class="badge badge-warning px-2 py-1">Menunggu Verifikasi</span></td>
-                                    <td><button class="btn btn-xs btn-outline-primary" onclick="alert('Demo Verifikasi Pembayaran');">Verifikasi</button></td>
-                                </tr>
-                                <tr>
-                                    <td>#TRX-2024-004</td>
-                                    <td>Yusuf Gunawan</td>
-                                    <td>RT 03 / Blok C-15</td>
-                                    <td>Iuran Sampah & Keamanan</td>
-                                    <td>Rp 50.000</td>
-                                    <td>Oktober 2024</td>
-                                    <td><span class="badge badge-danger px-2 py-1">Belum Bayar</span></td>
-                                    <td><button class="btn btn-xs btn-outline-secondary" onclick="alert('Kirim Pengingat WhatsApp');">Ingatkan</button></td>
-                                </tr>
-                            </tbody>
-                        </table>
+                <!-- 2. TAB IURAN -->
+                <div id="view-iuran" class="adm-section" style="display:none;">
+                    <div class="card card-outline card-primary card-body">
+                        <div class="d-flex justify-content-between align-items-center mb-3">
+                            <h4 class="card-title font-weight-bold mb-0">Daftar Tagihan Iuran</h4>
+                            <button class="btn btn-sm btn-primary" onclick="alert('Demo: Tambah Iuran');">Tambah</button>
+                        </div>
+                        <div class="table-responsive">
+                            <table class="table table-bordered table-striped table-hover table-sm datatable-item">
+                                <thead class="thead-light">
+                                    <tr>
+                                        <th>ID Iuran</th>
+                                        <th>Nama Iuran</th>
+                                        <th>Nominal Wajib</th>
+                                        <th>Periode</th>
+                                        <th>Target KK</th>
+                                        <th>Aksi</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td>IUR-01</td>
+                                        <td>Iuran Sampah & Kebersihan</td>
+                                        <td>Rp 30.000</td>
+                                        <td>Bulanan</td>
+                                        <td>Semua KK</td>
+                                        <td><button class="btn btn-xs btn-primary">Edit</button></td>
+                                    </tr>
+                                    <tr>
+                                        <td>IUR-02</td>
+                                        <td>Iuran Keamanan Lingkungan</td>
+                                        <td>Rp 20.000</td>
+                                        <td>Bulanan</td>
+                                        <td>Semua KK</td>
+                                        <td><button class="btn btn-xs btn-primary">Edit</button></td>
+                                    </tr>
+                                    <tr>
+                                        <td>IUR-03</td>
+                                        <td>Dana Sosial & Kematian</td>
+                                        <td>Rp 10.000</td>
+                                        <td>Bulanan</td>
+                                        <td>Warga Tetap</td>
+                                        <td><button class="btn btn-xs btn-primary">Edit</button></td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
                     </div>
                 </div>
+
+                <!-- 3. TAB DETAIL IURAN -->
+                <div id="view-detail-iuran" class="adm-section" style="display:none;">
+                    <div class="card card-outline card-primary card-body">
+                        <div class="d-flex justify-content-between align-items-center mb-3">
+                            <h4 class="card-title font-weight-bold mb-0">Detail Rincian Iuran Warga</h4>
+                            <button class="btn btn-sm btn-primary">Tambah</button>
+                        </div>
+                        <div class="table-responsive">
+                            <table class="table table-bordered table-striped table-hover table-sm datatable-item">
+                                <thead class="thead-light">
+                                    <tr>
+                                        <th>No</th>
+                                        <th>Nama Warga</th>
+                                        <th>RT</th>
+                                        <th>Iuran Sampah</th>
+                                        <th>Iuran Keamanan</th>
+                                        <th>Iuran Sosial</th>
+                                        <th>Total Tertagih</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td>1</td>
+                                        <td>Ahmad Fauzi</td>
+                                        <td>RT 01</td>
+                                        <td>Rp 30.000</td>
+                                        <td>Rp 20.000</td>
+                                        <td>Rp 10.000</td>
+                                        <td><strong>Rp 60.000</strong></td>
+                                    </tr>
+                                    <tr>
+                                        <td>2</td>
+                                        <td>Siti Nurhaliza</td>
+                                        <td>RT 02</td>
+                                        <td>Rp 30.000</td>
+                                        <td>Rp 20.000</td>
+                                        <td>Rp 10.000</td>
+                                        <td><strong>Rp 60.000</strong></td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 4. TAB TIPE IURAN -->
+                <div id="view-tipe-iuran" class="adm-section" style="display:none;">
+                    <div class="card card-outline card-primary card-body">
+                        <div class="d-flex justify-content-between align-items-center mb-3">
+                            <h4 class="card-title font-weight-bold mb-0">Tipe Iuran</h4>
+                            <button class="btn btn-sm btn-primary">Tambah</button>
+                        </div>
+                        <div class="table-responsive">
+                            <table class="table table-bordered table-striped table-hover table-sm datatable-item">
+                                <thead class="thead-light">
+                                    <tr>
+                                        <th>Kode</th>
+                                        <th>Tipe Iuran</th>
+                                        <th>Sifat</th>
+                                        <th>Keterangan</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td>TP-01</td>
+                                        <td>Iuran Rutin Wajib</td>
+                                        <td>Wajib</td>
+                                        <td>Dipungut setiap tanggal 1-10</td>
+                                    </tr>
+                                    <tr>
+                                        <td>TP-02</td>
+                                        <td>Iuran Sukarela</td>
+                                        <td>Opsional</td>
+                                        <td>Sumbangan renovasi mushola / fasilitas</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 5. TAB PEMBAYARAN -->
+                <div id="view-pembayaran" class="adm-section" style="display:none;">
+                    <div class="card card-outline card-primary card-body">
+                        <div class="d-flex justify-content-between align-items-center mb-3">
+                            <h4 class="card-title font-weight-bold mb-0">Daftar Pembayaran</h4>
+                            <button class="btn btn-sm btn-primary">Input Pembayaran</button>
+                        </div>
+                        <div class="table-responsive">
+                            <table class="table table-bordered table-striped table-hover table-sm datatable-item">
+                                <thead class="thead-light">
+                                    <tr>
+                                        <th>No. Kwitansi</th>
+                                        <th>Pembayar</th>
+                                        <th>Tanggal Bayar</th>
+                                        <th>Nominal</th>
+                                        <th>Metode</th>
+                                        <th>Status</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td>#KW-2024-001</td>
+                                        <td>Ahmad Fauzi</td>
+                                        <td>02 Okt 2024</td>
+                                        <td>Rp 60.000</td>
+                                        <td>Transfer BCA</td>
+                                        <td><span class="badge badge-success">Terverifikasi</span></td>
+                                    </tr>
+                                    <tr>
+                                        <td>#KW-2024-002</td>
+                                        <td>Budi Santoso</td>
+                                        <td>03 Okt 2024</td>
+                                        <td>Rp 60.000</td>
+                                        <td>Tunai ke Ketua RT</td>
+                                        <td><span class="badge badge-success">Terverifikasi</span></td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 6. TAB METODE PEMBAYARAN -->
+                <div id="view-metode-pembayaran" class="adm-section" style="display:none;">
+                    <div class="card card-outline card-primary card-body">
+                        <div class="d-flex justify-content-between align-items-center mb-3">
+                            <h4 class="card-title font-weight-bold mb-0">Metode Pembayaran Tersedia</h4>
+                            <button class="btn btn-sm btn-primary">Tambah Metode</button>
+                        </div>
+                        <div class="table-responsive">
+                            <table class="table table-bordered table-striped table-hover table-sm datatable-item">
+                                <thead class="thead-light">
+                                    <tr>
+                                        <th>Metode</th>
+                                        <th>Atas Nama / Rekening</th>
+                                        <th>Status</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td>Bank BCA (Transfer)</td>
+                                        <td>1234567890 a.n Kas RW 01</td>
+                                        <td><span class="badge badge-success">Aktif</span></td>
+                                    </tr>
+                                    <tr>
+                                        <td>QRIS RW 01</td>
+                                        <td>SiSatu QRIS Kas</td>
+                                        <td><span class="badge badge-success">Aktif</span></td>
+                                    </tr>
+                                    <tr>
+                                        <td>Tunai</td>
+                                        <td>Bendahara RT / RW</td>
+                                        <td><span class="badge badge-success">Aktif</span></td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 7. TAB STATUS PEMBAYARAN -->
+                <div id="view-status-pembayaran" class="adm-section" style="display:none;">
+                    <div class="card card-outline card-primary card-body">
+                        <div class="d-flex justify-content-between align-items-center mb-3">
+                            <h4 class="card-title font-weight-bold mb-0">Status Pembayaran Warga</h4>
+                        </div>
+                        <div class="table-responsive">
+                            <table class="table table-bordered table-striped table-hover table-sm datatable-item">
+                                <thead class="thead-light">
+                                    <tr>
+                                        <th>No. Rumah</th>
+                                        <th>Nama KK</th>
+                                        <th>RT</th>
+                                        <th>Jan-Sep 2024</th>
+                                        <th>Okt 2024</th>
+                                        <th>Keterangan</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td>Blok A-12</td>
+                                        <td>Ahmad Fauzi</td>
+                                        <td>RT 01</td>
+                                        <td><span class="badge badge-success">Lunas</span></td>
+                                        <td><span class="badge badge-success">Lunas</span></td>
+                                        <td>Tertib</td>
+                                    </tr>
+                                    <tr>
+                                        <td>Blok A-07</td>
+                                        <td>Hendra Wijaya</td>
+                                        <td>RT 01</td>
+                                        <td><span class="badge badge-success">Lunas</span></td>
+                                        <td><span class="badge badge-warning">Verifikasi</span></td>
+                                        <td>Menunggu konfirmasi transfer</td>
+                                    </tr>
+                                    <tr>
+                                        <td>Blok C-15</td>
+                                        <td>Yusuf Gunawan</td>
+                                        <td>RT 03</td>
+                                        <td><span class="badge badge-success">Lunas</span></td>
+                                        <td><span class="badge badge-danger">Belum Bayar</span></td>
+                                        <td>Jatuh tempo 10 Okt</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 8. TAB BUKTI PEMBAYARAN -->
+                <div id="view-bukti-pembayaran" class="adm-section" style="display:none;">
+                    <div class="card card-outline card-primary card-body">
+                        <div class="d-flex justify-content-between align-items-center mb-3">
+                            <h4 class="card-title font-weight-bold mb-0">Bukti Pembayaran Masuk</h4>
+                        </div>
+                        <div class="table-responsive">
+                            <table class="table table-bordered table-striped table-hover table-sm datatable-item">
+                                <thead class="thead-light">
+                                    <tr>
+                                        <th>ID</th>
+                                        <th>Nama Pengirim</th>
+                                        <th>Nominal Transfer</th>
+                                        <th>Waktu Unggah</th>
+                                        <th>Bukti Transfer</th>
+                                        <th>Aksi</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td>#BK-101</td>
+                                        <td>Ahmad Fauzi</td>
+                                        <td>Rp 60.000</td>
+                                        <td>02 Okt 2024 09:15</td>
+                                        <td><a href="javascript:alert('Demo Preview Gambar Struk Transfer');" class="text-primary font-weight-bold"><i class="uil uil-image mr-1"></i>Lihat Struk</a></td>
+                                        <td><span class="badge badge-success">Telah Diverifikasi</span></td>
+                                    </tr>
+                                    <tr>
+                                        <td>#BK-102</td>
+                                        <td>Hendra Wijaya</td>
+                                        <td>Rp 60.000</td>
+                                        <td>06 Okt 2024 14:20</td>
+                                        <td><a href="javascript:alert('Demo Preview Gambar Struk Transfer');" class="text-primary font-weight-bold"><i class="uil uil-image mr-1"></i>Lihat Struk</a></td>
+                                        <td><button class="btn btn-xs btn-success" onclick="alert('Bukti Berhasil Diverifikasi!');">Konfirmasi</button></td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+
             </div>
         </div>
 
+        <!-- Footer -->
         <footer class="footer">
             <div class="container-fluid">
                 <div class="row">
@@ -229,13 +508,66 @@
     </div>
 </div>
 
+<!-- Vendor js -->
 <script src="assets/js/vendor.min.js"></script>
 <script src="assets/libs/datatables/jquery.dataTables.min.js"></script>
 <script src="assets/libs/datatables/dataTables.bootstrap4.min.js"></script>
+<script src="assets/libs/datatables/dataTables.responsive.min.js"></script>
 <script src="assets/js/app.min.js"></script>
+
 <script>
     $(document).ready(function() {
-        $('#table_contribution').DataTable();
+        // Init datatables
+        $('.datatable-item').DataTable({
+            language: {
+                paginate: {
+                    previous: "<i class='uil uil-angle-left'>",
+                    next: "<i class='uil uil-angle-right'>"
+                }
+            }
+        });
+
+        // Mapping sub bagian administrasi
+        var titles = {
+            'buku-kas': 'Daftar Buku Kas',
+            'iuran': 'Daftar Iuran',
+            'detail-iuran': 'Detail Iuran',
+            'tipe-iuran': 'Tipe Iuran',
+            'pembayaran': 'Pembayaran',
+            'metode-pembayaran': 'Metode Pembayaran',
+            'status-pembayaran': 'Status Pembayaran',
+            'bukti-pembayaran': 'Bukti Pembayaran'
+        };
+
+        function switchTab(tabKey) {
+            if (!titles[tabKey]) tabKey = 'buku-kas';
+
+            // Hide all sections
+            $('.adm-section').hide();
+            $('#view-' + tabKey).show();
+
+            // Set active class on sidebar sub-items
+            $('.nav-second-level li a').removeClass('active-sub');
+            $('#sub-' + tabKey).addClass('active-sub');
+
+            // Update page title & breadcrumb
+            $('#page-heading').text(titles[tabKey]);
+            $('#breadcrumb-sub').text(titles[tabKey]);
+        }
+
+        // Baca parameter URL ?tab=...
+        var urlParams = new URLSearchParams(window.location.search);
+        var activeTab = urlParams.get('tab') || 'buku-kas';
+        switchTab(activeTab);
+
+        // Handle klik tanpa reload jika di halaman yang sama
+        $('.nav-second-level li a').on('click', function(e) {
+            var href = $(this).attr('href');
+            if (href.indexOf('tab=') !== -1) {
+                var tab = href.split('tab=')[1];
+                switchTab(tab);
+            }
+        });
     });
 </script>
 </body>
