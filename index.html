@@ -514,6 +514,83 @@
             display: flex;
             align-items: center;
             justify-content: space-between;
+            margin-bottom: 24px;
+        }
+
+        /* Modern Contact Me Card */
+        .contact-card-section {
+            background: #ffffff;
+            border-radius: 28px;
+            padding: 44px 40px;
+            box-shadow: 0 8px 30px rgba(0, 0, 0, 0.05);
+            margin-bottom: 24px;
+            position: relative;
+            overflow: hidden;
+            border: 1px solid #eef3f0;
+        }
+
+        .contact-card-section::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 8px;
+            height: 100%;
+            background: linear-gradient(to bottom, #1b7a3e, #28a745);
+        }
+
+        .contact-info-badge {
+            display: inline-flex;
+            align-items: center;
+            background: #eef8f1;
+            color: var(--primary-green);
+            font-weight: 700;
+            font-size: 13px;
+            padding: 6px 16px;
+            border-radius: 20px;
+            margin-bottom: 16px;
+        }
+
+        .contact-links-grid {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 12px;
+            margin-top: 24px;
+        }
+
+        .btn-contact-item {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            background: #f8fafc;
+            border: 1px solid #e2e8f0;
+            color: #1e293b !important;
+            padding: 12px 22px;
+            border-radius: 16px;
+            font-weight: 600;
+            font-size: 14px;
+            text-decoration: none;
+            transition: all 0.2s;
+        }
+
+        .btn-contact-item:hover {
+            background: #ffffff;
+            border-color: var(--primary-green);
+            color: var(--primary-green) !important;
+            transform: translateY(-2px);
+            box-shadow: 0 6px 16px rgba(27, 122, 62, 0.12);
+        }
+
+        .btn-contact-primary {
+            background: var(--primary-green);
+            border-color: var(--primary-green);
+            color: #ffffff !important;
+        }
+
+        .btn-contact-primary:hover {
+            background: var(--primary-green-dark);
+            border-color: var(--primary-green-dark);
+            color: #ffffff !important;
         }
 
         @media (max-width: 991px) {
@@ -832,9 +909,55 @@
             </div>
         </div>
 
+        <!-- 6. CONTACT ME / HIRE ME CARD FOR PORTFOLIO -->
+        <section class="contact-card-section" id="contact-me">
+            <div class="row align-items-center">
+                <div class="col-lg-8">
+                    <div class="contact-info-badge">
+                        <i class="uil uil-envelope-alt mr-2"></i> TERTARIK DENGAN SISTEM INI?
+                    </div>
+                    <h2 class="font-weight-bold mb-2" style="color: #111418; font-size: 2rem; letter-spacing: -0.5px;">
+                        Ingin Membangun Sistem Seperti Ini untuk Lingkungan / Bisnis Anda?
+                    </h2>
+                    <p class="text-muted mb-0" style="font-size: 1.05rem; line-height: 1.6;">
+                        Saya terbuka untuk kolaborasi pembuatan sistem informasi, aplikasi manajemen komunitas/RW,
+                        website custom, maupun proyek freelance lainnya. Jangan ragu untuk berdiskusi atau konsultasi
+                        kebutuhan sistem Anda!
+                    </p>
+
+                    <!-- Contact Buttons Group -->
+                    <div class="contact-links-grid">
+                        <a href="mailto:mochwildaniazizi@gmail.com" class="btn-contact-item btn-contact-primary">
+                            <i class="uil uil-fast-mail font-size-18"></i> mochwildaniazizi@gmail.com
+                        </a>
+                        <a href="https://wa.me/62851846428630" target="_blank" class="btn-contact-item">
+                            <i class="uil uil-whatsapp font-size-18 text-success"></i> Hubungi WhatsApp
+                        </a>
+                        <a href="https://github.com/mochwildaniazizi-cloud" target="_blank" class="btn-contact-item">
+                            <i class="uil uil-github font-size-18"></i> GitHub Profile
+                        </a>
+                    </div>
+                </div>
+
+                <div class="col-lg-4 text-center mt-4 mt-lg-0">
+                    <div class="p-3" style="background: #f7faf8; border-radius: 20px; border: 1px dashed #cde3d3;">
+                        <img src="assets/images/users/avatar-7.jpg" alt="Developer Avatar"
+                            class="rounded-circle shadow-sm mb-3"
+                            style="width: 76px; height: 76px; border: 3px solid #ffffff;">
+                        <h5 class="font-weight-bold mb-1" style="color: #111418;">Moch Wildani Azizi</h5>
+                        <p class="text-muted font-size-13 mb-3">Fullstack & Frontend Developer</p>
+                        <span class="badge badge-success px-3 py-2 rounded-pill font-weight-bold"
+                            style="background-color: #28a745; font-size: 12px;">
+                            ● Available for Projects
+                        </span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
         <!-- Footer -->
         <footer class="text-center text-muted py-4 mt-2 font-size-13">
-            &copy; 2024 .png - SiSatu (Sistem Informasi RW 01). Portofolio Demo Version.
+            &copy; 2024 .png - SiSatu (Sistem Informasi RW 01). Demo Version.
         </footer>
     </div>
 
