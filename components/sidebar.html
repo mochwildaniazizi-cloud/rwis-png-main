@@ -1,27 +1,33 @@
-<div class="left-side-menu">
-    <div class="media user-profile mt-2 mb-2">
-        <img src="assets/images/users/avatar-7.jpg" class="avatar-sm rounded-circle mr-2" alt="Firman" />
-        <div class="media-body">
-            <h6 class="pro-user-name mt-0 mb-0">Firman</h6>
-            <span class="pro-user-desc">RW/Administrator</span>
-        </div>
+<div class="left-side-menu custom-sidebar-modern">
+    <!-- Brand Logo -->
+    <div class="sidebar-brand px-4 py-3">
+        <a href="dashboard.html" class="logo">
+            <span class="logo-lg font-weight-bold text-dark font-size-20">
+                <img src="assets/images/RWIS-PNG.png" alt="Logo" height="38" class="mr-2" />
+            </span>
+        </a>
     </div>
-    <div class="sidebar-content">
-        <div id="sidebar-menu" class="slimscroll-menu">
-            <ul class="metismenu" id="menu-bar">
-                <li>
-                    <a href="dashboard.html">
-                        <i data-feather="home"></i>
-                        <span> Dashboard </span>
+
+    <div class="sidebar-content px-3">
+        <div id="sidebar-menu">
+            <!-- Label Menu -->
+            <div class="sidebar-heading text-muted font-size-11 font-weight-bold text-uppercase px-3 mt-2 mb-2">
+                Menu Utama
+            </div>
+
+            <ul class="metismenu list-unstyled" id="menu-bar">
+                <li class="nav-item">
+                    <a href="dashboard.html" class="nav-link-modern">
+                        <i data-feather="grid" class="icon-dual"></i>
+                        <span>Dashboard</span>
                     </a>
                 </li>
-                <li>
-                    <a href="javascript: void(0);">
-                        <i data-feather="inbox"></i>
-                        <span> Administrasi </span>
-                        <span class="menu-arrow"></span>
+                <li class="nav-item">
+                    <a href="javascript: void(0);" class="nav-link-modern has-arrow">
+                        <i data-feather="inbox" class="icon-dual"></i>
+                        <span>Administrasi</span>
                     </a>
-                    <ul class="nav-second-level" aria-expanded="false">
+                    <ul class="nav-second-level list-unstyled pl-4" aria-expanded="false">
                         <li><a href="iuran.html?tab=buku-kas">Buku Kas</a></li>
                         <li><a href="iuran.html?tab=iuran">Iuran</a></li>
                         <li><a href="iuran.html?tab=detail-iuran">Detail Iuran</a></li>
@@ -32,28 +38,61 @@
                         <li><a href="iuran.html?tab=bukti-pembayaran">Bukti Pembayaran</a></li>
                     </ul>
                 </li>
+                <li class="nav-item">
+                    <a href="data-warga.html" class="nav-link-modern">
+                        <i data-feather="users" class="icon-dual"></i>
+                        <span>Informasi Warga</span>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a href="bansos.html" class="nav-link-modern">
+                        <i data-feather="heart" class="icon-dual"></i>
+                        <span>Bantuan Sosial</span>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a href="umkm.html" class="nav-link-modern">
+                        <i data-feather="shopping-bag" class="icon-dual"></i>
+                        <span>UMKM Warga</span>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a href="artikel.html" class="nav-link-modern">
+                        <i data-feather="file-text" class="icon-dual"></i>
+                        <span>Publikasi & Berita</span>
+                    </a>
+                </li>
+            </ul>
+
+            <!-- Promo/Info Widget Box (seperti pada gambar referensi) -->
+            <div class="sidebar-widget-card p-3 my-4 rounded-xl text-center">
+                <div class="widget-icon mb-2">
+                    <span class="badge badge-soft-primary p-2 rounded-circle">
+                        <i data-feather="shield" class="text-primary"></i>
+                    </span>
+                </div>
+                <h6 class="font-weight-bold mb-1 text-dark">Layanan RW 01</h6>
+                <p class="font-size-12 text-muted mb-3">Butuh bantuan darurat atau pengaduan lingkungan?</p>
+                <a href="index.html" class="btn btn-primary btn-sm btn-rounded btn-block shadow-sm">
+                    <i data-feather="phone-call" class="icon-xs mr-1"></i> Kontak Posko
+                </a>
+            </div>
+
+            <!-- Footer Menu -->
+            <div class="sidebar-heading text-muted font-size-11 font-weight-bold text-uppercase px-3 mb-2">
+                Pengaturan
+            </div>
+            <ul class="list-unstyled mb-4">
                 <li>
-                    <a href="data-warga.html">
-                        <i class='uil uil-books'></i>
-                        <span> Informasi Warga </span>
+                    <a href="index.html" class="nav-link-modern">
+                        <i data-feather="globe" class="icon-dual"></i>
+                        <span>Landing Page</span>
                     </a>
                 </li>
                 <li>
-                    <a href="bansos.html">
-                        <i class='uil uil-globe'></i>
-                        <span> Bantuan Sosial </span>
-                    </a>
-                </li>
-                <li>
-                    <a href="umkm.html">
-                        <i class='uil uil-store'></i>
-                        <span> UMKM </span>
-                    </a>
-                </li>
-                <li>
-                    <a href="artikel.html">
-                        <i data-feather="grid"></i>
-                        <span> Publikasi </span>
+                    <a href="login.html" class="nav-link-modern text-danger">
+                        <i data-feather="log-out" class="text-danger"></i>
+                        <span>Keluar</span>
                     </a>
                 </li>
             </ul>

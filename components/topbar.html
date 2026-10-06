@@ -1,63 +1,65 @@
-<div class="navbar navbar-expand flex-column flex-md-row navbar-custom">
-    <div class="container-fluid">
-        <a href="dashboard.html" class="navbar-brand mr-0 mr-md-2 logo">
-            <span class="logo-lg">
-                <img src="assets/images/RWIS-PNG.png" alt="Logo" height="40" />
-            </span>
-        </a>
+<div class="navbar navbar-expand flex-column flex-md-row navbar-custom topbar-modern px-4 py-2">
+    <div class="container-fluid p-0">
+        <!-- Search Bar Modern (seperti pada gambar referensi) -->
+        <div class="app-search-modern d-none d-md-block">
+            <form>
+                <div class="input-group input-group-modern">
+                    <div class="input-group-prepend">
+                        <span class="input-group-text border-0 bg-transparent text-muted">
+                            <i data-feather="search"></i>
+                        </span>
+                    </div>
+                    <input type="text" class="form-control border-0 bg-transparent"
+                        placeholder="Search or type a command" />
+                    <div class="input-group-append align-items-center pr-2">
+                        <kbd class="bg-light text-muted border px-2 py-1 rounded font-size-11">⌘ K</kbd>
+                    </div>
+                </div>
+            </form>
+        </div>
 
-        <ul class="navbar-nav bd-navbar-nav flex-row list-unstyled menu-left mb-0">
-            <li>
-                <button class="button-menu-mobile open-left disable-btn">
+        <!-- Right Menu (Notifikasi & Profil) -->
+        <ul class="navbar-nav flex-row ml-auto d-flex list-unstyled topnav-menu align-items-center mb-0">
+            <!-- Mobile Toggle -->
+            <li class="d-md-none mr-2">
+                <button class="button-menu-mobile open-left border-0 bg-transparent">
                     <i data-feather="menu" class="menu-icon"></i>
-                    <i data-feather="x" class="close-icon"></i>
                 </button>
             </li>
-        </ul>
 
-        <ul class="navbar-nav flex-row ml-auto d-flex list-unstyled topnav-menu float-right mb-0">
-            <li class="d-none d-sm-block">
-                <div class="app-search">
-                    <form>
-                        <div class="input-group">
-                            <input type="text" class="form-control" placeholder="Cari data...">
-                            <span data-feather="search"></span>
-                        </div>
-                    </form>
-                </div>
-            </li>
-
-            <li class="dropdown notification-list" title="Notifikasi">
-                <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="false"
-                    aria-expanded="false">
+            <!-- Notifikasi -->
+            <li class="dropdown notification-list mr-2" title="Notifikasi">
+                <a class="nav-link dropdown-toggle nav-icon-btn p-2 rounded-circle" data-toggle="dropdown" href="#"
+                    role="button" aria-haspopup="false" aria-expanded="false">
                     <i data-feather="bell"></i>
-                    <span class="noti-icon-badge"></span>
+                    <span class="noti-icon-badge bg-danger"></span>
                 </a>
-                <div class="dropdown-menu dropdown-menu-right dropdown-lg">
-                    <div class="dropdown-item noti-title border-bottom">
-                        <h5 class="m-0 font-size-16">Notifikasi RW 01</h5>
+                <div class="dropdown-menu dropdown-menu-right dropdown-lg border-0 shadow-lg rounded-lg">
+                    <div class="dropdown-item noti-title border-bottom bg-light">
+                        <h6 class="m-0 font-weight-bold">Notifikasi RW 01</h6>
                     </div>
                     <div class="p-3">
-                        <p class="mb-1 text-dark">Iuran RT 02 bulan ini telah lunas</p>
+                        <p class="mb-1 text-dark font-size-13">Iuran RT 02 bulan ini telah lunas</p>
                         <small class="text-muted">1 jam yang lalu</small>
                     </div>
                 </div>
             </li>
 
+            <!-- User Profile Avatar -->
             <li class="dropdown notification-list">
-                <a class="nav-link dropdown-toggle nav-user mr-0" data-toggle="dropdown" href="#" role="button"
+                <a class="nav-link dropdown-toggle nav-user mr-0 p-1" data-toggle="dropdown" href="#" role="button"
                     aria-haspopup="false" aria-expanded="false">
-                    <div class="media user-profile">
+                    <div class="media user-profile align-items-center">
                         <img src="assets/images/users/avatar-7.jpg" alt="user-image"
-                            class="rounded-circle align-self-center" />
-                        <div class="media-body text-left align-self-center ml-2 d-none d-sm-block">
-                            <h6 class="pro-user-name my-0">Firman</h6>
-                            <span class="pro-user-desc text-muted font-size-12">Ketua RW 01</span>
+                            class="avatar-sm rounded-circle border shadow-sm mr-2" />
+                        <div class="media-body text-left d-none d-sm-block">
+                            <h6 class="pro-user-name my-0 font-weight-bold text-dark font-size-13">Firman</h6>
+                            <span class="pro-user-desc text-muted font-size-11">Ketua RW 01</span>
                         </div>
-                        <span data-feather="chevron-down" class="ml-2 align-self-center"></span>
+                        <i data-feather="chevron-down" class="ml-1 text-muted icon-xs"></i>
                     </div>
                 </a>
-                <div class="dropdown-menu profile-dropdown-items dropdown-menu-right">
+                <div class="dropdown-menu profile-dropdown-items dropdown-menu-right border-0 shadow-lg rounded-lg">
                     <a href="index.html" class="dropdown-item notify-item">
                         <i data-feather="globe" class="icon-dual icon-xs mr-2"></i>
                         <span>Lihat Landing Page</span>

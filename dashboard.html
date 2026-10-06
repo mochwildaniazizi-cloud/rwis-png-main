@@ -1,6 +1,85 @@
 <!DOCTYPE html>
 <html lang="id">
 
+<style>
+    /* Styling Sidebar ala Modern UI */
+    .left-side-menu.custom-sidebar-modern {
+        background-color: #ffffff !important;
+        border-right: 1px solid #f0f2f5;
+        box-shadow: none;
+    }
+
+    .nav-link-modern {
+        display: flex;
+        align-items: center;
+        padding: 10px 16px;
+        color: #5a6a85;
+        font-weight: 500;
+        font-size: 14px;
+        border-radius: 12px;
+        margin-bottom: 4px;
+        transition: all 0.2s ease-in-out;
+        text-decoration: none !important;
+    }
+
+    .nav-link-modern i {
+        margin-right: 12px;
+        width: 18px;
+        height: 18px;
+    }
+
+    .nav-link-modern:hover {
+        background-color: #f4f6f9;
+        color: #5369f8;
+    }
+
+    /* Style Active Item (Pill Membulat ala Gambar) */
+    .nav-link-modern.active,
+    li.mm-active>.nav-link-modern {
+        background-color: #eef2ff !important;
+        color: #5369f8 !important;
+        font-weight: 600;
+    }
+
+    .nav-link-modern.active i,
+    li.mm-active>.nav-link-modern i {
+        color: #5369f8 !important;
+    }
+
+    /* Widget Box di Bawah Sidebar */
+    .sidebar-widget-card {
+        background: linear-gradient(135deg, #f0f3ff 0%, #eef2ff 100%);
+        border: 1px solid #e0e7ff;
+        border-radius: 16px;
+    }
+
+    /* Styling Topbar Modern */
+    .topbar-modern {
+        background-color: #f7f9fc !important;
+        box-shadow: none !important;
+        border-bottom: 1px solid transparent;
+    }
+
+    .input-group-modern {
+        background-color: #ffffff;
+        border-radius: 12px;
+        padding: 2px 8px;
+        border: 1px solid #e2e8f0;
+        width: 380px;
+        box-shadow: 0 2px 6px rgba(0, 0, 0, 0.02);
+    }
+
+    .nav-icon-btn {
+        background-color: #ffffff;
+        border: 1px solid #e2e8f0;
+        width: 38px;
+        height: 38px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+</style>
+
 <head>
     <meta charset="utf-8" />
     <title>Sistem Informasi RW 1 | Dashboard</title>
