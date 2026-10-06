@@ -2,276 +2,793 @@
 <html lang="id">
 <head>
     <meta charset="utf-8" />
-    <title>Sistem Informasi RW 1 - Landing Page</title>
+    <title>SiSatu - Sistem Informasi RW 01</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta content="Sistem Informasi RW 01 (SiSatu)" name="description" />
+    <meta content="Sistem Informasi RW 01 (SiSatu) Modern Community Platform" name="description" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
 
     <link rel="shortcut icon" href="assets/images/favicon.ico">
-    <link href="assets/libs/flatpickr/flatpickr.min.css" rel="stylesheet" type="text/css" />
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
     <link href="assets/css/icons.min.css" rel="stylesheet" type="text/css" />
     <link href="assets/css/bootstrap.min.css" rel="stylesheet" type="text/css" />
-    <link href="assets/css/app.min.css" rel="stylesheet" type="text/css" />
 
     <style>
-        .gradient-box {
-            width: 100%;
-            height: auto;
-            padding: 4%;
-            background: linear-gradient(to bottom, #ffffff, #52b952);
-            color: #024100;
-            margin: 20px auto;
-            border-radius: 0px;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        :root {
+            --primary-green: #1b7a3e;
+            --primary-green-dark: #12582b;
+            --primary-green-light: #28a745;
+            --lime-accent: #cbf574;
+            --dark-card: #18191b;
+            --bg-light: #f7f9f8;
         }
-        .gradient-text h1 {
-            color: #024100;
+
+        body {
+            font-family: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, sans-serif;
+            background-color: var(--bg-light);
+            color: #2b303a;
+            overflow-x: hidden;
+        }
+
+        /* Container Canvas */
+        .landing-wrapper {
+            max-width: 1280px;
+            margin: 0 auto;
+            padding: 15px 20px 40px;
+        }
+
+        /* Modern Floating Header */
+        .modern-nav {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 12px 24px;
+            background: #ffffff;
+            border-radius: 40px;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.04);
+            margin-bottom: 24px;
+        }
+
+        .nav-brand {
+            display: flex;
+            align-items: center;
+            text-decoration: none;
+        }
+
+        .nav-links {
+            display: flex;
+            align-items: center;
+            list-style: none;
+            margin: 0;
+            padding: 0;
+            gap: 28px;
+        }
+
+        .nav-links a {
+            color: #4a5568;
+            font-weight: 600;
+            font-size: 14px;
+            text-decoration: none;
+            transition: color 0.2s;
+        }
+
+        .nav-links a:hover, .nav-links a.active {
+            color: var(--primary-green);
+        }
+
+        .nav-auth-btns {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .btn-nav-login {
+            background: #111418;
+            color: #ffffff !important;
+            font-weight: 600;
+            font-size: 13px;
+            padding: 8px 22px;
+            border-radius: 30px;
+            text-decoration: none;
+            transition: all 0.2s;
+        }
+        .btn-nav-login:hover {
+            background: #2a313a;
+            color: #fff;
+            transform: translateY(-1px);
+        }
+
+        .btn-nav-register {
+            background: #ffffff;
+            color: #111418 !important;
+            font-weight: 600;
+            font-size: 13px;
+            padding: 8px 20px;
+            border-radius: 30px;
+            border: 1px solid #e2e8f0;
+            text-decoration: none;
+            transition: all 0.2s;
+        }
+        .btn-nav-register:hover {
+            background: #f8fafc;
+            border-color: #cbd5e1;
+        }
+
+        /* HERO CARD BANNER */
+        .hero-banner-card {
+            background: linear-gradient(135deg, #1b7a3e 0%, #166534 50%, #0e4422 100%);
+            border-radius: 28px;
+            padding: 48px 48px 40px;
+            position: relative;
+            overflow: hidden;
+            color: #ffffff;
+            box-shadow: 0 20px 40px rgba(27, 122, 62, 0.22);
+            margin-bottom: 24px;
+        }
+
+        .hero-tag-badge {
+            display: inline-flex;
+            align-items: center;
+            background: rgba(255, 255, 255, 0.15);
+            backdrop-filter: blur(10px);
+            padding: 6px 16px;
+            border-radius: 20px;
+            font-size: 13px;
+            font-weight: 600;
+            letter-spacing: 0.5px;
+            margin-bottom: 20px;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+        }
+
+        .hero-heading {
+            font-size: 3.6rem;
+            font-weight: 800;
+            line-height: 1.08;
+            letter-spacing: -1.5px;
+            margin-bottom: 24px;
+            text-transform: uppercase;
+        }
+
+        .hero-heading span.gradient-text-hero {
+            color: #ffffff;
+            display: block;
+        }
+
+        /* Avatar Social Overlap Badge */
+        .avatar-overlap-group {
+            display: inline-flex;
+            align-items: center;
+            background: rgba(255, 255, 255, 0.15);
+            padding: 4px 14px 4px 6px;
+            border-radius: 30px;
+            margin-right: 12px;
+            vertical-align: middle;
+        }
+        .avatar-overlap-group img {
+            width: 32px;
+            height: 32px;
+            border-radius: 50%;
+            border: 2px solid #ffffff;
+            margin-left: -6px;
+        }
+        .avatar-overlap-group img:first-child {
+            margin-left: 0;
+        }
+        .avatar-overlap-group .badge-plus {
+            width: 28px;
+            height: 28px;
+            border-radius: 50%;
+            background: #ffffff;
+            color: var(--primary-green);
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
             font-weight: 700;
+            font-size: 12px;
+            margin-left: 4px;
+        }
+
+        .hero-action-row {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            margin-top: 36px;
+        }
+
+        .btn-hero-primary {
+            background: #ffffff;
+            color: #12582b !important;
+            font-weight: 700;
+            font-size: 15px;
+            padding: 12px 28px;
+            border-radius: 30px;
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            box-shadow: 0 4px 14px rgba(0, 0, 0, 0.1);
+            transition: all 0.2s;
+        }
+        .btn-hero-primary:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+            background: #f8fafc;
+        }
+
+        .btn-hero-circle {
+            width: 44px;
+            height: 44px;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.2);
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            color: #ffffff;
+            text-decoration: none;
+            transition: background 0.2s;
+        }
+        .btn-hero-circle:hover {
+            background: rgba(255, 255, 255, 0.35);
+            color: #fff;
+        }
+
+        /* Hero Image & Floating Pills */
+        .hero-image-container {
+            position: relative;
+            text-align: center;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .hero-main-img {
+            max-width: 100%;
+            max-height: 400px;
+            border-radius: 20px;
+            filter: drop-shadow(0 20px 30px rgba(0, 0, 0, 0.25));
+            object-fit: cover;
+        }
+
+        .floating-pill {
+            position: absolute;
+            background: #ffffff;
+            color: #111418;
+            font-weight: 700;
+            font-size: 13px;
+            padding: 8px 18px;
+            border-radius: 30px;
+            box-shadow: 0 8px 24px rgba(0, 0, 0, 0.15);
+            display: flex;
+            align-items: center;
+            gap: 6px;
+        }
+        .pill-pos-1 {
+            top: 25%;
+            left: -5%;
+        }
+        .pill-pos-2 {
+            bottom: 15%;
+            right: 0%;
+        }
+
+        /* 3 BENTO CARDS ROW (PERSIS LAYOUT BAWAH DI GAMBAR) */
+        .bento-row {
+            display: grid;
+            grid-template-columns: 1fr 1fr 1.35fr;
+            gap: 20px;
+            margin-bottom: 40px;
+        }
+
+        /* Card 1: Dark Bento */
+        .bento-card-dark {
+            background: var(--dark-card);
+            border-radius: 24px;
+            padding: 32px 28px;
+            color: #ffffff;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            min-height: 290px;
+        }
+        .bento-card-dark .sub-caption {
+            font-size: 12px;
+            color: #8e95a5;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            font-weight: 600;
+        }
+        .bento-card-dark .card-desc {
+            font-size: 1.15rem;
+            font-weight: 600;
+            line-height: 1.45;
+            color: #f1f5f9;
+            margin-top: 10px;
+        }
+        .bento-stats-pair {
+            display: flex;
+            gap: 30px;
+            border-top: 1px solid #2d3139;
+            padding-top: 18px;
+            margin-top: 18px;
+        }
+        .bento-stat-item .stat-num {
+            font-size: 2.2rem;
+            font-weight: 800;
+            line-height: 1;
+            color: #ffffff;
+        }
+        .bento-stat-item .stat-label {
+            font-size: 11px;
+            color: #94a3b8;
+            margin-top: 4px;
+        }
+
+        /* Card 2: White Bento with Center Graphic */
+        .bento-card-white {
+            background: #ffffff;
+            border-radius: 24px;
+            padding: 24px;
+            position: relative;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.04);
+            min-height: 290px;
+        }
+        .play-icon-badge {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background: #111418;
+            color: #ffffff;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 14px;
+        }
+        .bento-white-preview {
+            text-align: center;
+            margin: auto 0;
+            padding: 10px 0;
+        }
+        .bento-white-preview img {
+            max-height: 135px;
+            border-radius: 12px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+        }
+        .bento-card-white .desc-text {
+            font-size: 13px;
+            color: #475569;
+            font-weight: 600;
+            line-height: 1.4;
+            margin: 0;
+        }
+
+        /* Card 3: Lime/Light Green Modern Bento */
+        .bento-card-lime {
+            background: #d4f77c;
+            border-radius: 24px;
+            padding: 32px 30px;
+            color: #0f3818;
+            position: relative;
+            overflow: hidden;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            min-height: 290px;
+        }
+        .bento-card-lime .lime-title {
+            font-size: 1.6rem;
+            font-weight: 800;
+            line-height: 1.25;
+            max-width: 65%;
+            letter-spacing: -0.5px;
+        }
+        .bento-card-lime .lime-img-art {
+            position: absolute;
+            right: 15px;
+            bottom: 10px;
+            max-height: 200px;
+            pointer-events: none;
+            filter: drop-shadow(0 10px 15px rgba(0,0,0,0.1));
+        }
+        .lime-action-icons {
+            display: flex;
+            gap: 8px;
+            z-index: 2;
+        }
+        .lime-icon-btn {
+            width: 42px;
+            height: 42px;
+            border-radius: 12px;
+            background: #111418;
+            color: #ffffff;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-decoration: none;
+            transition: transform 0.2s;
+        }
+        .lime-icon-btn:hover {
+            transform: scale(1.06);
+            color: #fff;
+        }
+
+        /* OUR FEATURES SECTION (DISESUAIKAN STYLE HIJAU & PUTIH) */
+        .features-section-card {
+            background: #ffffff;
+            border-radius: 28px;
+            padding: 40px;
+            box-shadow: 0 4px 25px rgba(0, 0, 0, 0.04);
+            margin-bottom: 30px;
+        }
+
+        .features-title-header h2 {
+            font-size: 2.4rem;
+            font-weight: 800;
+            color: var(--primary-green-dark);
+            text-align: center;
+            letter-spacing: -0.5px;
+            margin-bottom: 25px;
+        }
+
+        .features-nav-pills {
+            background: #f1f5f3;
+            padding: 6px;
+            border-radius: 40px;
+            display: flex;
+            gap: 6px;
+        }
+        .features-nav-pills .nav-link {
+            border-radius: 30px;
+            color: #4b5563;
+            font-weight: 700;
+            font-size: 14px;
+            padding: 10px 22px;
+            border: none;
+            transition: all 0.2s;
+            text-align: center;
+        }
+        .features-nav-pills .nav-link.active {
+            background: var(--primary-green) !important;
+            color: #ffffff !important;
+            box-shadow: 0 4px 12px rgba(27, 122, 62, 0.25);
+        }
+
+        .features-content-box {
+            padding: 30px 10px 10px;
+        }
+        .feature-preview-img {
+            border-radius: 16px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+            border: 1px solid #eef2f0;
+            max-height: 420px;
+        }
+
+        /* Bottom Join CTA */
+        .bottom-cta-banner {
+            background: linear-gradient(135deg, #1b7a3e 0%, #28a745 100%);
+            border-radius: 24px;
+            padding: 36px 44px;
+            color: #ffffff;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        @media (max-width: 991px) {
+            .bento-row {
+                grid-template-columns: 1fr;
+            }
+            .hero-heading {
+                font-size: 2.6rem;
+            }
+            .floating-pill {
+                display: none;
+            }
+            .nav-links {
+                display: none;
+            }
+            .bottom-cta-banner {
+                flex-direction: column;
+                text-align: center;
+                gap: 20px;
+            }
         }
     </style>
 </head>
 
 <body>
-<div id="wrapper">
-    <!-- Topbar Start -->
-    <div class="navbar navbar-expand flex-column flex-md-row navbar-custom">
-        <div class="container-fluid">
-            <!-- LOGO -->
+<div class="landing-wrapper">
+    <!-- 1. MODERN FLOATING HEADER (PERSIS SUSUNAN GAMBAR) -->
+    <header class="modern-nav">
+        <!-- Logo Brand -->
+        <a href="index.html" class="nav-brand">
+            <img src="assets/images/RWIS-PNG.png" alt="SiSatu Logo" height="38" />
+        </a>
+
+        <!-- Center Nav Items -->
+        <ul class="nav-links">
+            <li><a href="index.html" class="active">Home</a></li>
+            <li><a href="#features-tab">Features</a></li>
+            <li><a href="dashboard.html">Dashboard</a></li>
+            <li><a href="iuran.html">Administrasi</a></li>
+            <li><a href="data-warga.html">Informasi Warga</a></li>
+            <li><a href="bansos.html">Bansos</a></li>
+            <li><a href="umkm.html">UMKM</a></li>
+            <li><a href="artikel.html">Publikasi</a></li>
+        </ul>
+
+        <!-- Right Action Auth (Login & Register) -->
+        <div class="nav-auth-btns">
+            <a href="login.html" class="btn-nav-login">Login</a>
+            <a href="dashboard.html" class="btn-nav-register">Dashboard Demo</a>
+        </div>
+    </header>
+
+    <!-- 2. HERO BANNER CARD (LAYOUT PERSIS COGNIX, STYLE HIJAU & PUTIH SISATU) -->
+    <section class="hero-banner-card">
+        <div class="row align-items-center">
+            <!-- Sisi Kiri Hero -->
+            <div class="col-lg-7">
+                <div class="hero-tag-badge">
+                    <span class="mr-2">●</span> SISTEM INFORMASI RW 01 (SISATU)
+                </div>
+
+                <h1 class="hero-heading">
+                    <span class="gradient-text-hero">PELAYANAN</span>
+                    <div class="d-flex align-items-center flex-wrap my-1">
+                        <span class="avatar-overlap-group">
+                            <img src="assets/images/users/avatar-7.jpg" alt="User">
+                            <img src="assets/images/users/avatar-2.jpg" alt="User" onerror="this.src='assets/images/users/avatar-7.jpg'">
+                            <span class="badge-plus">+</span>
+                        </span>
+                        <span>TRANSPARANSI</span>
+                    </div>
+                    <span>KOMUNITAS RW</span>
+                </h1>
+
+                <p style="font-size: 1.1rem; line-height: 1.6; color: #e2f4e9; max-width: 90%;">
+                    Platform digital terpadu untuk kemudahan administrasi kependudukan, transparansi kas iuran warga, dan percepatan penyaluran bantuan sosial di tingkat RW.
+                </p>
+
+                <!-- Action Button Row -->
+                <div class="hero-action-row">
+                    <a href="dashboard.html" class="btn-hero-primary">
+                        Jelajahi Sistem <i class="uil uil-arrow-right font-size-18"></i>
+                    </a>
+                    <a href="#features-tab" class="btn-hero-circle" title="Lihat Fitur">
+                        <i class="uil uil-play font-size-16"></i>
+                    </a>
+                    <a href="data-warga.html" class="btn-hero-circle" title="Data Kependudukan">
+                        <i class="uil uil-users-alt font-size-16"></i>
+                    </a>
+                </div>
+            </div>
+
+            <!-- Sisi Kanan Hero dengan Gambar Preview & Floating Badge -->
+            <div class="col-lg-5 mt-4 mt-lg-0">
+                <div class="hero-image-container">
+                    <img src="assets/images/RWIS.png" alt="SiSatu Device Preview" class="hero-main-img shadow-lg">
+
+                    <!-- Floating Pill Badges persis di gambar referensi -->
+                    <div class="floating-pill pill-pos-1">
+                        <i class="uil uil-check-circle text-success font-size-16"></i> RW Digital 1.0
+                    </div>
+                    <div class="floating-pill pill-pos-2">
+                        <i class="uil uil-shield-check text-primary font-size-16"></i> Transparansi Kas
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 3. BENTO 3 CARDS ROW (PERSIS STRUKTUR BAWAH DI GAMBAR) -->
+    <section class="bento-row">
+        <!-- Bento 1: Dark Stats Card -->
+        <div class="bento-card-dark">
             <div>
-                <a href="index.html">
-                    <span class="logo-lg">
-                        <img src="assets/images/RWIS-PNG.png" alt="RWIS Logo" height="40" />
-                    </span>
+                <span class="sub-caption">Kependudukan, Terukur.</span>
+                <p class="card-desc">Sistem pengelolaan data kependudukan dan monitoring warga secara akurat & real-time.</p>
+            </div>
+            <div class="bento-stats-pair">
+                <div class="bento-stat-item">
+                    <div class="stat-num">2.000</div>
+                    <div class="stat-label">Warga Terdata</div>
+                </div>
+                <div class="bento-stat-item">
+                    <div class="stat-num">10 RT</div>
+                    <div class="stat-label">Terhubung Online</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Bento 2: White Feature Center Graphic -->
+        <div class="bento-card-white">
+            <div class="d-flex justify-content-between align-items-center">
+                <div class="play-icon-badge">
+                    <i class="uil uil-chart-growth"></i>
+                </div>
+                <span class="badge badge-light px-2 py-1 font-weight-bold text-dark">DSS Bansos</span>
+            </div>
+            <div class="bento-white-preview">
+                <img src="assets/images/bansos.png" alt="DSS Preview" class="img-fluid">
+            </div>
+            <p class="desc-text">Penentuan prioritas penerima bantuan sosial terukur dengan metode DSS MOORA.</p>
+        </div>
+
+        <!-- Bento 3: Lime/Light Green Card dengan Aksi Ikon -->
+        <div class="bento-card-lime">
+            <div>
+                <div class="lime-title">Transparansi kas, iuran, dan kegiatan warga.</div>
+            </div>
+            <div class="lime-action-icons">
+                <a href="iuran.html" class="lime-icon-btn" title="Buku Kas & Iuran">
+                    <i class="uil uil-bill font-size-18"></i>
+                </a>
+                <a href="artikel.html" class="lime-icon-btn" title="Publikasi & Agenda">
+                    <i class="uil uil-newspaper font-size-18"></i>
                 </a>
             </div>
-            <div>
-                <!-- DASHBOARD -->
-                <div class="btn-group col-cl-3">
-                    <a href="dashboard.html" class="col-xl-3">
-                        <button type="button" class="btn btn-outline-dark width-md">
-                            Dashboard
-                        </button>
-                    </a>
-                </div>
-
-                <!-- ADMINISTRASI -->
-                <div class="btn-group col-cl-3">
-                    <button type="button" class="btn btn-outline-dark dropdown-toggle width-md"
-                        data-toggle="dropdown" aria-haspopup="true"
-                        aria-expanded="false">Administrasi <i class="icon"><span data-feather="chevron-down"></span></i></button>
-                    <div class="dropdown-menu">
-                        <a class="dropdown-item" href="iuran.html?tab=buku-kas">Buku Kas</a>
-                        <a class="dropdown-item" href="iuran.html?tab=iuran">Iuran</a>
-                        <a class="dropdown-item" href="iuran.html?tab=detail-iuran">Detail Iuran</a>
-                        <a class="dropdown-item" href="iuran.html?tab=tipe-iuran">Tipe Iuran</a>
-                        <div class="dropdown-divider"></div>
-                        <a class="dropdown-item" href="iuran.html?tab=pembayaran">Pembayaran</a>
-                        <a class="dropdown-item" href="iuran.html?tab=metode-pembayaran">Metode Pembayaran</a>
-                        <a class="dropdown-item" href="iuran.html?tab=status-pembayaran">Status Pembayaran</a>
-                        <a class="dropdown-item" href="iuran.html?tab=bukti-pembayaran">Bukti Pembayaran</a>
-                    </div>
-                </div>
-
-                <!-- INFORMASI WARGA -->
-                <div class="btn-group col-cl-3">
-                    <a href="data-warga.html" class="col-xl-3">
-                        <button type="button" class="btn btn-outline-dark width-md">
-                            Informasi Warga
-                        </button>
-                    </a>
-                </div>
-
-                <!-- BANSOS -->
-                <div class="btn-group col-cl-3">
-                    <a href="bansos.html" class="col-xl-3">
-                        <button type="button" class="btn btn-outline-dark width-md">
-                            Bansos
-                        </button>
-                    </a>
-                </div>
-                
-                <!-- UMKM -->
-                <div class="btn-group col-cl-3">
-                    <a href="#features-tab" class="col-xl-3" onclick="$('a[href=\'#umkm1\']').tab('show');">
-                        <button type="button" class="btn btn-outline-dark width-md">
-                            UMKM
-                        </button>
-                    </a>
-                </div>
-                
-                <!-- MEDIA -->
-                <div class="btn-group col-cl-3">
-                    <a href="#features-tab" class="col-xl-3" onclick="$('a[href=\'#artikel1\']').tab('show');">
-                        <button type="button" class="btn btn-outline-dark width-md">
-                            Artikel
-                        </button>
-                    </a>
-                </div>
-
-                <!-- LOGIN -->
-                <div class="btn-group col-cl-3">
-                    <a href="login.html" class="col-xl-3">
-                        <button type="button" class="btn btn-success width-md">
-                            Masuk
-                        </button>
-                    </a>
-                </div>
-            </div>           
+            <!-- Seni ilustrasi bersih warga di sudut kanan bawah -->
+            <img src="assets/images/RWIS-PNG.png" alt="Aksen Logo" class="lime-img-art" style="opacity: 0.25; transform: rotate(-10deg);">
         </div>
-    </div>
-    <!-- end Topbar -->
+    </section>
 
-    <div class="content">
-        <!-- Kotak dengan background linear gradient -->
-        <div class="gradient-box col-md-12 col-xl-12">
-            <div class="row align-items-center">
-                <div class="col-md-7 col-xl-7">
-                    <div>
-                        <div style="padding-top: 2%">
-                            <button type="button" class="btn btn-outline-secondary" data-toggle="tooltip" data-placement="bottom" title="Versi Website">
-                                Version 1.0 is here
-                            </button>
-                        </div>
-                        
-                        <h1 style="font-size: 4.5rem; font-weight: 800; padding-top: 10px; margin-bottom: 0;">SiSatu</h1>
-                        <h3 class="text-success font-weight-bold">(Sistem Informasi RW 01)</h3>
-                        <p class="lead" style="font-size: 1.1rem; line-height: 1.6;">SiSatu adalah sistem informasi berbasis online yang dirancang khusus untuk memudahkan pengelolaan dan komunikasi di tingkat RW. Dengan fitur-fitur seperti pengumuman, jadwal kegiatan, pelaporan masalah lingkungan, dan forum diskusi, SiSatu membantu memperkuat keterlibatan masyarakat, mempercepat respon terhadap masalah lingkungan, serta meningkatkan koordinasi antara warga dan pengurus RW.</p>
-                        <div class="mt-4">
-                            <a href="dashboard.html" class="btn btn-success btn-lg mr-2"><i data-feather="grid" class="mr-1"></i> Buka Dashboard Demo</a>
-                            <a href="login.html" class="btn btn-outline-dark btn-lg"><i data-feather="log-in" class="mr-1"></i> Masuk Sebagai Admin</a>
-                        </div>
-                    </div>
+    <!-- 4. OUR FEATURES SECTION (TETAP LENGKAP SEPERTI SEBELUMNYA, DENGAN STYLE HIJAU-PUTIH MODERN) -->
+    <section class="features-section-card" id="features-tab">
+        <div class="features-title-header">
+            <h2>Our Features</h2>
+            <p class="text-center text-muted mb-4" style="max-width: 650px; margin: 0 auto;">
+                Eksplorasi modul sistem informasi SiSatu yang dirancang untuk menjawab kebutuhan warga dan pengurus RW secara menyeluruh.
+            </p>
+        </div>
+
+        <ul class="nav nav-pills features-nav-pills justify-content-center mb-4">
+            <li class="nav-item">
+                <a href="#home1" data-toggle="tab" class="nav-link active">Dashboard</a>
+            </li>
+            <li class="nav-item">
+                <a href="#adm1" data-toggle="tab" class="nav-link">Administrasi</a>
+            </li>
+            <li class="nav-item">
+                <a href="#info1" data-toggle="tab" class="nav-link">Informasi Warga</a>
+            </li>
+            <li class="nav-item">
+                <a href="#bansos1" data-toggle="tab" class="nav-link">Bansos</a>
+            </li>
+            <li class="nav-item">
+                <a href="#umkm1" data-toggle="tab" class="nav-link">UMKM</a>
+            </li>
+            <li class="nav-item">
+                <a href="#artikel1" data-toggle="tab" class="nav-link">Artikel</a>
+            </li>
+        </ul>
+
+        <div class="tab-content features-content-box">
+            <!-- TAB 1: DASHBOARD -->
+            <div class="tab-pane show active" id="home1">
+                <div class="text-center my-3">
+                    <img src="assets/images/dashboard.png" class="img-fluid feature-preview-img" alt="Dashboard SiSatu">
                 </div>
-                <div class="col-md-5 col-xl-5 text-center">
-                    <img src="assets/images/RWIS.png" class="img-fluid rounded shadow-lg" alt="SiSatu RWIS Preview" style="max-height: 380px;">
+                <div class="row justify-content-center mt-4">
+                    <div class="col-lg-9 text-center">
+                        <p class="text-muted" style="line-height: 1.7;">
+                            Dashboard SiSatu menyajikan ringkasan data kependudukan, statistik warga, jumlah rumah, kepala keluarga, jumlah RT, grafik penerima bansos, serta pendataan balita secara visual dan interaktif untuk memudahkan pengambilan keputusan pengurus RW.
+                        </p>
+                        <a href="dashboard.html" class="btn btn-outline-success font-weight-bold px-4 py-2 rounded-pill mt-2">
+                            Buka Halaman Dashboard &rarr;
+                        </a>
+                    </div>
                 </div>
             </div>
-        </div>
 
-        <div class="row align-items-center col-md-12 col-xl-12" id="features-tab">
-            <div class="row w-100" style="padding-top: 1%; padding-left: 5%; padding-right: 5%; text-align: center">
-                <div class="col-xl-12">
-                    <div class="card">
-                        <div class="card-body">
-                            <div style="text-align:center"><h1 class="font-weight-bold mb-4">Our Features</h1></div>
-                            <ul class="nav nav-pills navtab-bg nav-justified">
-                                <li class="nav-item">
-                                    <a href="#home1" data-toggle="tab" aria-expanded="true" class="nav-link active">
-                                        <span class="d-block d-sm-none"><i class="uil-home"></i></span>
-                                        <span class="d-none d-sm-block font-weight-bold">Dashboard</span>
-                                    </a>
-                                </li>
-                                <li class="nav-item">
-                                    <a href="#adm1" data-toggle="tab" aria-expanded="false" class="nav-link">
-                                        <span class="d-block d-sm-none"><i class="uil-file-alt"></i></span>
-                                        <span class="d-none d-sm-block font-weight-bold">Administrasi</span>
-                                    </a>
-                                </li>
-                                <li class="nav-item">
-                                    <a href="#info1" data-toggle="tab" aria-expanded="false" class="nav-link">
-                                        <span class="d-block d-sm-none"><i class="uil-users-alt"></i></span>
-                                        <span class="d-none d-sm-block font-weight-bold">Informasi Warga</span>
-                                    </a>
-                                </li>
-                                <li class="nav-item">
-                                    <a href="#bansos1" data-toggle="tab" aria-expanded="false" class="nav-link">
-                                        <span class="d-block d-sm-none"><i class="uil-gift"></i></span>
-                                        <span class="d-none d-sm-block font-weight-bold">Bansos</span>
-                                    </a>
-                                </li>
-                                <li class="nav-item">
-                                    <a href="#umkm1" data-toggle="tab" aria-expanded="false" class="nav-link">
-                                        <span class="d-block d-sm-none"><i class="uil-store"></i></span>
-                                        <span class="d-none d-sm-block font-weight-bold">UMKM</span>
-                                    </a>
-                                </li>
-                                <li class="nav-item">
-                                    <a href="#artikel1" data-toggle="tab" aria-expanded="false" class="nav-link">
-                                        <span class="d-block d-sm-none"><i class="uil-newspaper"></i></span>
-                                        <span class="d-none d-sm-block font-weight-bold">Artikel</span>
-                                    </a>
-                                </li>
-                            </ul>
-                            <div class="tab-content text-muted text-left">
-                                <div class="tab-pane show active" id="home1">
-                                    <div class="text-center my-3">
-                                        <img src="assets/images/dashboard.png" class="img-fluid rounded shadow-sm border" alt="Dashboard SiSatu" style="max-height: 450px;">
-                                    </div>
-                                    <p class="mt-3 text-justify">Dashboard SiSatu menyajikan ringkasan data kependudukan, statistik warga, jumlah rumah, kepala keluarga, jumlah RT, grafik penerima bansos, serta pendataan balita secara visual dan interaktif untuk memudahkan pengambilan keputusan pengurus RW.</p>
-                                    <div class="text-center"><a href="dashboard.html" class="btn btn-outline-success">Lihat Halaman Dashboard &rarr;</a></div>
-                                </div>
+            <!-- TAB 2: ADMINISTRASI -->
+            <div class="tab-pane" id="adm1">
+                <div class="text-center my-3">
+                    <img src="assets/images/Administrasi-kas.png" class="img-fluid feature-preview-img" alt="Administrasi Kas">
+                </div>
+                <div class="row justify-content-center mt-4">
+                    <div class="col-lg-9 text-center">
+                        <p class="text-muted" style="line-height: 1.7;">
+                            Mudahkan urusan administratif dan akses data penting di RW Anda. Mengelola buku kas masuk dan keluar, monitoring iuran warga, bukti pembayaran, hingga status pembayaran iuran secara transparan dan akurat.
+                        </p>
+                        <a href="iuran.html" class="btn btn-outline-success font-weight-bold px-4 py-2 rounded-pill mt-2">
+                            Buka Halaman Administrasi &rarr;
+                        </a>
+                    </div>
+                </div>
+            </div>
 
-                                <div class="tab-pane" id="adm1">
-                                    <div class="text-center my-3">
-                                        <img src="assets/images/Administrasi-kas.png" class="img-fluid rounded shadow-sm border" alt="Administrasi SiSatu" style="max-height: 450px;">
-                                    </div>
-                                    <p class="mt-3 text-justify">Mudahkan urusan administratif dan akses data penting di RW Anda. Mengelola buku kas masuk dan keluar, monitoring iuran warga, bukti pembayaran, hingga status pembayaran iuran secara transparan dan akurat.</p>
-                                    <div class="text-center"><a href="iuran.html" class="btn btn-outline-success">Lihat Halaman Administrasi &rarr;</a></div>
-                                </div>
+            <!-- TAB 3: INFORMASI WARGA -->
+            <div class="tab-pane" id="info1">
+                <div class="text-center my-3">
+                    <img src="assets/images/info-warga.png" class="img-fluid feature-preview-img" alt="Informasi Warga">
+                </div>
+                <div class="row justify-content-center mt-4">
+                    <div class="col-lg-9 text-center">
+                        <p class="text-muted" style="line-height: 1.7;">
+                            Sistem pendataan kependudukan terpadu dengan pencatatan NIK, identitas kepala keluarga, pekerjaan, status perkawinan, serta persebaran per RT untuk mendukung administrasi kependudukan yang rapi.
+                        </p>
+                        <a href="data-warga.html" class="btn btn-outline-success font-weight-bold px-4 py-2 rounded-pill mt-2">
+                            Buka Data Kependudukan &rarr;
+                        </a>
+                    </div>
+                </div>
+            </div>
 
-                                <div class="tab-pane" id="info1">
-                                    <div class="text-center my-3">
-                                        <img src="assets/images/info-warga.png" class="img-fluid rounded shadow-sm border" alt="Informasi Warga" style="max-height: 450px;">
-                                    </div>
-                                    <p class="mt-3 text-justify">Sistem pendataan kependudukan terpadu dengan pencatatan NIK, identitas kepala keluarga, pekerjaan, status perkawinan, serta persebaran per RT untuk mendukung administrasi kependudukan yang rapi.</p>
-                                    <div class="text-center"><a href="data-warga.html" class="btn btn-outline-success">Lihat Data Warga &rarr;</a></div>
-                                </div>
+            <!-- TAB 4: BANSOS -->
+            <div class="tab-pane" id="bansos1">
+                <div class="text-center my-3">
+                    <img src="assets/images/bansos.png" class="img-fluid feature-preview-img" alt="Bansos DSS">
+                </div>
+                <div class="row justify-content-center mt-4">
+                    <div class="col-lg-9 text-center">
+                        <p class="text-muted" style="line-height: 1.7;">
+                            Dilengkapi fitur Decision Support System (DSS) untuk membantu penentuan prioritas warga penerima bantuan sosial (Bansos) secara adil, objektif, dan tepat sasaran berdasarkan kriteria terukur.
+                        </p>
+                        <a href="bansos.html" class="btn btn-outline-success font-weight-bold px-4 py-2 rounded-pill mt-2">
+                            Buka Halaman Bansos &rarr;
+                        </a>
+                    </div>
+                </div>
+            </div>
 
-                                <div class="tab-pane" id="bansos1">
-                                    <div class="text-center my-3">
-                                        <img src="assets/images/bansos.png" class="img-fluid rounded shadow-sm border" alt="Bansos" style="max-height: 450px;">
-                                    </div>
-                                    <p class="mt-3 text-justify">Dilengkapi fitur Decision Support System (DSS) untuk membantu penentuan prioritas warga penerima bantuan sosial (Bansos) secara adil, objektif, dan tepat sasaran berdasarkan kriteria terukur.</p>
-                                    <div class="text-center"><a href="bansos.html" class="btn btn-outline-success">Lihat Halaman Bansos &rarr;</a></div>
-                                </div>
+            <!-- TAB 5: UMKM -->
+            <div class="tab-pane" id="umkm1">
+                <div class="text-center my-3">
+                    <img src="assets/images/umkm.png" class="img-fluid feature-preview-img" alt="UMKM">
+                </div>
+                <div class="row justify-content-center mt-4">
+                    <div class="col-lg-9 text-center">
+                        <p class="text-muted" style="line-height: 1.7;">
+                            Mendukung pertumbuhan ekonomi warga lokal dengan katalog digital usaha mikro, kecil, dan menengah (UMKM) milik warga setempat guna memperluas jangkauan promosi.
+                        </p>
+                        <a href="umkm.html" class="btn btn-outline-success font-weight-bold px-4 py-2 rounded-pill mt-2">
+                            Buka Halaman UMKM &rarr;
+                        </a>
+                    </div>
+                </div>
+            </div>
 
-                                <div class="tab-pane" id="umkm1">
-                                    <div class="text-center my-3">
-                                        <img src="assets/images/umkm.png" class="img-fluid rounded shadow-sm border" alt="UMKM" style="max-height: 450px;">
-                                    </div>
-                                    <p class="mt-3 text-justify">Mendukung pertumbuhan ekonomi warga lokal dengan katalog digital usaha mikro, kecil, dan menengah (UMKM) milik warga setempat guna memperluas jangkauan promosi.</p>
-                                </div>
-
-                                <div class="tab-pane" id="artikel1">
-                                    <div class="text-center my-3">
-                                        <img src="assets/images/artikel.png" class="img-fluid rounded shadow-sm border" alt="Artikel & Berita" style="max-height: 450px;">
-                                    </div>
-                                    <p class="mt-3 text-justify">Pusat publikasi berita seputar agenda kegiatan gotong royong, info kesehatan posyandu, dan pengumuman resmi pengurus RW yang dapat diakses langsung oleh warga.</p>
-                                </div>
-                            </div>
-                        </div>
+            <!-- TAB 6: ARTIKEL -->
+            <div class="tab-pane" id="artikel1">
+                <div class="text-center my-3">
+                    <img src="assets/images/artikel.png" class="img-fluid feature-preview-img" alt="Publikasi Artikel">
+                </div>
+                <div class="row justify-content-center mt-4">
+                    <div class="col-lg-9 text-center">
+                        <p class="text-muted" style="line-height: 1.7;">
+                            Pusat publikasi berita seputar agenda kegiatan gotong royong, info kesehatan posyandu, dan pengumuman resmi pengurus RW yang dapat diakses langsung oleh warga.
+                        </p>
+                        <a href="artikel.html" class="btn btn-outline-success font-weight-bold px-4 py-2 rounded-pill mt-2">
+                            Buka Halaman Publikasi &rarr;
+                        </a>
                     </div>
                 </div>
             </div>
         </div>
+    </section>
 
-        <div class="gradient-box col-md-12 col-xl-12 mt-4">
-            <div class="row align-items-center">
-                <div class="col-md-8 col-xl-8">
-                    <div class="gradient-text">
-                        <h1>Yuk, Gabung di SiSatu!</h1>
-                    </div>
-                    <p class="lead mb-0">Di sini, kita bisa berkomunikasi, berbagi informasi, dan atur kegiatan RW dengan lebih mudah. Ayo, jadi bagian dari perubahan positif untuk lingkungan dan komunitas kita!</p>
-                </div>
-                <div class="col-md-4 col-xl-4 text-center mt-3 mt-md-0">
-                    <a href="login.html" class="btn btn-dark btn-lg shadow">Masuk ke Sistem SiSatu &rarr;</a>
-                </div>
-            </div>
+    <!-- 5. BOTTOM CALL TO ACTION -->
+    <div class="bottom-cta-banner">
+        <div>
+            <h3 class="font-weight-bold mb-1 text-white">Yuk, Gabung di SiSatu!</h3>
+            <p class="mb-0" style="color: #e2f4e9;">
+                Komunikasi, transparansi iuran, dan kegiatan RW jadi lebih mudah dan teratur. Ayo jadi bagian dari perubahan positif!
+            </p>
+        </div>
+        <div>
+            <a href="login.html" class="btn btn-light text-success font-weight-bold px-4 py-2 rounded-pill shadow-sm">
+                Masuk ke Sistem &rarr;
+            </a>
         </div>
     </div>
 
-    <!-- Footer Start -->
-    <footer class="footer">
-        <div class="container-fluid">
-            <div class="row">
-                <div class="col-12 text-center text-muted">
-                    &copy; 2024 - SiSatu (Sistem Informasi RW 01). Portofolio Demo Version.
-                </div>
-            </div>
-        </div>
+    <!-- Footer -->
+    <footer class="text-center text-muted py-4 mt-2 font-size-13">
+        &copy; 2024 .png - SiSatu (Sistem Informasi RW 01). Portofolio Demo Version.
     </footer>
-    <!-- end Footer -->
-</div>    
+</div>
 
 <!-- Vendor js -->
 <script src="assets/js/vendor.min.js"></script>
