@@ -258,7 +258,7 @@
             position: absolute;
             right: -200px;
             /* Bisa digeser bebas menjorok keluar */
-            bottom: -200px;
+            bottom: -150px;
             /* Bisa digeser bebas ke bawah */
             z-index: 2;
             max-width: none;
@@ -618,6 +618,205 @@
                 gap: 20px;
             }
         }
+
+        /* =============================================
+           SCROLL REVEAL ANIMATIONS
+        ============================================= */
+        .reveal {
+            opacity: 0;
+            transform: translateY(32px);
+            transition: opacity 0.65s cubic-bezier(0.22, 1, 0.36, 1),
+                        transform 0.65s cubic-bezier(0.22, 1, 0.36, 1);
+        }
+        .reveal.reveal-left {
+            transform: translateX(-32px);
+        }
+        .reveal.reveal-right {
+            transform: translateX(32px);
+        }
+        .reveal.reveal-scale {
+            transform: scale(0.94);
+        }
+        .reveal.visible {
+            opacity: 1;
+            transform: none;
+        }
+        .reveal-delay-1 { transition-delay: 0.1s; }
+        .reveal-delay-2 { transition-delay: 0.2s; }
+        .reveal-delay-3 { transition-delay: 0.3s; }
+        .reveal-delay-4 { transition-delay: 0.4s; }
+
+        /* =============================================
+           ENHANCED HOVER ANIMATIONS
+        ============================================= */
+
+        /* Nav links - underline slide-in */
+        .nav-links a {
+            position: relative;
+        }
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            bottom: -3px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: var(--primary-green);
+            border-radius: 2px;
+            transition: width 0.28s cubic-bezier(0.22, 1, 0.36, 1);
+        }
+        .nav-links a:hover::after,
+        .nav-links a.active::after {
+            width: 100%;
+        }
+
+        /* Nav auth buttons - enhanced */
+        .btn-nav-login {
+            transition: all 0.25s cubic-bezier(0.22, 1, 0.36, 1) !important;
+        }
+        .btn-nav-login:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(0,0,0,0.18);
+        }
+        .btn-nav-register {
+            transition: all 0.25s cubic-bezier(0.22, 1, 0.36, 1) !important;
+        }
+        .btn-nav-register:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 14px rgba(0,0,0,0.08);
+        }
+
+        /* Hero tag badge pulse */
+        .hero-tag-badge {
+            animation: subtle-pulse 3s ease-in-out infinite;
+        }
+        @keyframes subtle-pulse {
+            0%, 100% { box-shadow: 0 0 0 0 rgba(255,255,255,0.15); }
+            50% { box-shadow: 0 0 0 6px rgba(255,255,255,0); }
+        }
+
+        /* Hero heading text reveal */
+        .hero-heading span {
+            display: block;
+            overflow: hidden;
+        }
+
+        /* Hero primary button - ripple-like */
+        .btn-hero-primary {
+            transition: all 0.25s cubic-bezier(0.22, 1, 0.36, 1) !important;
+        }
+        .btn-hero-primary:hover {
+            transform: translateY(-3px) scale(1.02);
+            box-shadow: 0 10px 28px rgba(0,0,0,0.18) !important;
+        }
+        .btn-hero-primary:active {
+            transform: translateY(0) scale(0.98);
+        }
+
+        /* Bento cards - lift on hover */
+        .bento-card-dark,
+        .bento-card-white,
+        .bento-card-lime {
+            transition: transform 0.3s cubic-bezier(0.22, 1, 0.36, 1),
+                        box-shadow 0.3s cubic-bezier(0.22, 1, 0.36, 1);
+        }
+        .bento-card-dark:hover {
+            transform: translateY(-6px);
+            box-shadow: 0 20px 40px rgba(0,0,0,0.22);
+        }
+        .bento-card-white:hover {
+            transform: translateY(-6px);
+            box-shadow: 0 20px 40px rgba(0,0,0,0.1) !important;
+        }
+        .bento-card-lime:hover {
+            transform: translateY(-6px);
+            box-shadow: 0 20px 40px rgba(0,0,0,0.12);
+        }
+
+        /* Stat numbers count-up shimmer */
+        .stat-num {
+            background: linear-gradient(90deg, #fff 0%, #cbf574 50%, #fff 100%);
+            background-size: 200% auto;
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            animation: shimmer 3s linear infinite;
+        }
+        @keyframes shimmer {
+            0% { background-position: 200% center; }
+            100% { background-position: -200% center; }
+        }
+
+        /* Lime icon buttons - bounce */
+        .lime-icon-btn {
+            transition: transform 0.25s cubic-bezier(0.34, 1.56, 0.64, 1),
+                        background 0.2s !important;
+        }
+        .lime-icon-btn:hover {
+            transform: scale(1.18) rotate(-5deg);
+            background: #1b7a3e !important;
+        }
+
+        /* Features nav pills - smooth switch */
+        .features-nav-pills .nav-link {
+            transition: all 0.28s cubic-bezier(0.22, 1, 0.36, 1) !important;
+        }
+        .features-nav-pills .nav-link:hover:not(.active) {
+            background: rgba(27, 122, 62, 0.1);
+            color: var(--primary-green);
+            transform: translateY(-1px);
+        }
+
+        /* Feature preview image - zoom in on tab switch */
+        .feature-preview-img {
+            transition: transform 0.4s cubic-bezier(0.22, 1, 0.36, 1),
+                        box-shadow 0.4s ease !important;
+        }
+        .feature-preview-img:hover {
+            transform: scale(1.02);
+            box-shadow: 0 16px 40px rgba(0,0,0,0.13) !important;
+        }
+
+        /* CTA banner button */
+        .bottom-cta-banner .btn {
+            transition: all 0.25s cubic-bezier(0.22, 1, 0.36, 1);
+        }
+        .bottom-cta-banner .btn:hover {
+            transform: translateY(-3px) scale(1.04);
+            box-shadow: 0 8px 22px rgba(0,0,0,0.18);
+        }
+        .bottom-cta-banner .btn:active {
+            transform: scale(0.97);
+        }
+
+        /* Contact item buttons */
+        .btn-contact-item {
+            transition: all 0.25s cubic-bezier(0.22, 1, 0.36, 1) !important;
+        }
+
+        /* Avatar card in contact - float */
+        .contact-avatar-card {
+            animation: float-gentle 4s ease-in-out infinite;
+        }
+        @keyframes float-gentle {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-6px); }
+        }
+
+        /* Smooth scroll indicator for nav */
+        .nav-links a.active {
+            color: var(--primary-green);
+        }
+
+        /* Modern nav - glassmorphism on scroll */
+        .modern-nav.scrolled {
+            background: rgba(255, 255, 255, 0.92);
+            backdrop-filter: blur(12px);
+            box-shadow: 0 8px 30px rgba(0, 0, 0, 0.08);
+        }
+        .modern-nav {
+            transition: all 0.35s ease;
+        }
     </style>
 </head>
 
@@ -684,7 +883,7 @@
         <!-- 3. BENTO 3 CARDS ROW (PERSIS STRUKTUR BAWAH DI GAMBAR) -->
         <section class="bento-row">
             <!-- Bento 1: Dark Stats Card -->
-            <div class="bento-card-dark">
+            <div class="bento-card-dark reveal reveal-left">
                 <div>
                     <span class="sub-caption">Kependudukan, Terukur.</span>
                     <p class="card-desc">Sistem pengelolaan data kependudukan dan monitoring warga secara akurat &
@@ -703,7 +902,7 @@
             </div>
 
             <!-- Bento 2: White Feature Center Graphic -->
-            <div class="bento-card-white">
+            <div class="bento-card-white reveal reveal-delay-2">
                 <div class="d-flex justify-content-between align-items-center">
                     <div class="play-icon-badge">
                         <i class="uil uil-chart-growth"></i>
@@ -717,7 +916,7 @@
             </div>
 
             <!-- Bento 3: Lime/Light Green Card dengan Aksi Ikon -->
-            <div class="bento-card-lime">
+            <div class="bento-card-lime reveal reveal-right reveal-delay-3">
                 <div>
                     <div class="lime-title">Transparansi kas, iuran, dan kegiatan warga.</div>
                 </div>
@@ -736,7 +935,7 @@
         </section>
 
         <!-- 4. OUR FEATURES SECTION (TETAP LENGKAP SEPERTI SEBELUMNYA, DENGAN STYLE HIJAU-PUTIH MODERN) -->
-        <section class="features-section-card" id="features-tab">
+        <section class="features-section-card reveal reveal-scale" id="features-tab">
             <div class="features-title-header">
                 <h2>Our Features</h2>
                 <p class="text-center text-muted mb-4" style="max-width: 650px; margin: 0 auto;">
@@ -892,7 +1091,7 @@
         </section>
 
         <!-- 5. BOTTOM CALL TO ACTION -->
-        <div class="bottom-cta-banner">
+        <div class="bottom-cta-banner reveal">
             <div>
                 <h3 class="font-weight-bold mb-1 text-white">Yuk, Gabung di SiSatu!</h3>
                 <p class="mb-0" style="color: #e2f4e9;">
@@ -908,7 +1107,7 @@
         </div>
 
         <!-- 6. CONTACT ME / HIRE ME CARD FOR PORTFOLIO -->
-        <section class="contact-card-section" id="contact-me">
+        <section class="contact-card-section reveal" id="contact-me">
             <div class="row align-items-center">
                 <div class="col-lg-8">
                     <div class="contact-info-badge">
@@ -938,7 +1137,7 @@
                 </div>
 
                 <div class="col-lg-4 text-center mt-4 mt-lg-0">
-                    <div class="p-3" style="background: #f7faf8; border-radius: 20px; border: 1px dashed #cde3d3;">
+                    <div class="p-3 contact-avatar-card" style="background: #f7faf8; border-radius: 20px; border: 1px dashed #cde3d3;">
                         <img src="assets/images/users/avatar-7.jpg" alt="Developer Avatar"
                             class="rounded-circle shadow-sm mb-3"
                             style="width: 76px; height: 76px; border: 3px solid #ffffff;">
@@ -962,6 +1161,93 @@
     <!-- Vendor js -->
     <script src="assets/js/vendor.min.js"></script>
     <script src="assets/js/app.min.js"></script>
+
+    <script>
+        // =============================================
+        // 1. SMOOTH SCROLL untuk nav links anchor
+        // =============================================
+        document.querySelectorAll('a[href^="#"]').forEach(function(anchor) {
+            anchor.addEventListener('click', function(e) {
+                var targetId = this.getAttribute('href');
+                var target = document.querySelector(targetId);
+                if (target) {
+                    e.preventDefault();
+                    var navHeight = document.querySelector('.modern-nav').offsetHeight || 0;
+                    var targetTop = target.getBoundingClientRect().top + window.pageYOffset - navHeight - 16;
+                    window.scrollTo({
+                        top: targetTop,
+                        behavior: 'smooth'
+                    });
+                    // Update active link
+                    document.querySelectorAll('.nav-links a').forEach(function(l) {
+                        l.classList.remove('active');
+                    });
+                    this.classList.add('active');
+                }
+            });
+        });
+
+        // =============================================
+        // 2. SCROLL REVEAL via IntersectionObserver
+        // =============================================
+        var revealEls = document.querySelectorAll('.reveal');
+        if ('IntersectionObserver' in window) {
+            var observer = new IntersectionObserver(function(entries) {
+                entries.forEach(function(entry) {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('visible');
+                        observer.unobserve(entry.target);
+                    }
+                });
+            }, { threshold: 0.12 });
+            revealEls.forEach(function(el) { observer.observe(el); });
+        } else {
+            // Fallback for older browsers
+            revealEls.forEach(function(el) { el.classList.add('visible'); });
+        }
+
+        // =============================================
+        // 3. NAVBAR: glassmorphism on scroll
+        // =============================================
+        var modernNav = document.querySelector('.modern-nav');
+        window.addEventListener('scroll', function() {
+            if (window.scrollY > 40) {
+                modernNav.classList.add('scrolled');
+            } else {
+                modernNav.classList.remove('scrolled');
+            }
+        }, { passive: true });
+
+        // =============================================
+        // 4. ACTIVE NAV LINK berdasarkan scroll position
+        // =============================================
+        var sections = [
+            { id: 'features-tab', link: 'a[href="#features-tab"]' },
+            { id: 'contact-me',   link: 'a[href="#contact-me"]' }
+        ];
+        window.addEventListener('scroll', function() {
+            var scrollPos = window.scrollY + 120;
+            var anyActive = false;
+            sections.forEach(function(s) {
+                var el = document.getElementById(s.id);
+                var linkEl = document.querySelector('.nav-links ' + s.link);
+                if (el && linkEl) {
+                    var top = el.offsetTop;
+                    var bottom = top + el.offsetHeight;
+                    if (scrollPos >= top && scrollPos < bottom) {
+                        document.querySelectorAll('.nav-links a').forEach(function(l) { l.classList.remove('active'); });
+                        linkEl.classList.add('active');
+                        anyActive = true;
+                    }
+                }
+            });
+            if (!anyActive && window.scrollY < 200) {
+                document.querySelectorAll('.nav-links a').forEach(function(l) { l.classList.remove('active'); });
+                var homeLink = document.querySelector('.nav-links a[href="index.html"]');
+                if (homeLink) homeLink.classList.add('active');
+            }
+        }, { passive: true });
+    </script>
 </body>
 
 </html>
