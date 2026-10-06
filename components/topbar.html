@@ -1,0 +1,74 @@
+<div class="navbar navbar-expand flex-column flex-md-row navbar-custom">
+    <div class="container-fluid">
+        <a href="dashboard.html" class="navbar-brand mr-0 mr-md-2 logo">
+            <span class="logo-lg">
+                <img src="assets/images/RWIS-PNG.png" alt="Logo" height="40" />
+            </span>
+        </a>
+
+        <ul class="navbar-nav bd-navbar-nav flex-row list-unstyled menu-left mb-0">
+            <li>
+                <button class="button-menu-mobile open-left disable-btn">
+                    <i data-feather="menu" class="menu-icon"></i>
+                    <i data-feather="x" class="close-icon"></i>
+                </button>
+            </li>
+        </ul>
+
+        <ul class="navbar-nav flex-row ml-auto d-flex list-unstyled topnav-menu float-right mb-0">
+            <li class="d-none d-sm-block">
+                <div class="app-search">
+                    <form>
+                        <div class="input-group">
+                            <input type="text" class="form-control" placeholder="Cari data...">
+                            <span data-feather="search"></span>
+                        </div>
+                    </form>
+                </div>
+            </li>
+
+            <li class="dropdown notification-list" title="Notifikasi">
+                <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="false"
+                    aria-expanded="false">
+                    <i data-feather="bell"></i>
+                    <span class="noti-icon-badge"></span>
+                </a>
+                <div class="dropdown-menu dropdown-menu-right dropdown-lg">
+                    <div class="dropdown-item noti-title border-bottom">
+                        <h5 class="m-0 font-size-16">Notifikasi RW 01</h5>
+                    </div>
+                    <div class="p-3">
+                        <p class="mb-1 text-dark">Iuran RT 02 bulan ini telah lunas</p>
+                        <small class="text-muted">1 jam yang lalu</small>
+                    </div>
+                </div>
+            </li>
+
+            <li class="dropdown notification-list">
+                <a class="nav-link dropdown-toggle nav-user mr-0" data-toggle="dropdown" href="#" role="button"
+                    aria-haspopup="false" aria-expanded="false">
+                    <div class="media user-profile">
+                        <img src="assets/images/users/avatar-7.jpg" alt="user-image"
+                            class="rounded-circle align-self-center" />
+                        <div class="media-body text-left align-self-center ml-2 d-none d-sm-block">
+                            <h6 class="pro-user-name my-0">Firman</h6>
+                            <span class="pro-user-desc text-muted font-size-12">Ketua RW 01</span>
+                        </div>
+                        <span data-feather="chevron-down" class="ml-2 align-self-center"></span>
+                    </div>
+                </a>
+                <div class="dropdown-menu profile-dropdown-items dropdown-menu-right">
+                    <a href="index.html" class="dropdown-item notify-item">
+                        <i data-feather="globe" class="icon-dual icon-xs mr-2"></i>
+                        <span>Lihat Landing Page</span>
+                    </a>
+                    <div class="dropdown-divider"></div>
+                    <a href="login.html" class="dropdown-item notify-item text-danger">
+                        <i data-feather="log-out" class="icon-dual icon-xs mr-2"></i>
+                        <span>Keluar</span>
+                    </a>
+                </div>
+            </li>
+        </ul>
+    </div>
+</div>
