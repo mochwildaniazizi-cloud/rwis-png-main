@@ -1,63 +1,218 @@
-<div class="topbar-modern d-flex align-items-center justify-content-between px-4">
-    <!-- Search Bar Modern -->
-    <div class="app-search-modern">
-        <form>
-            <div class="input-group input-group-modern">
-                <div class="input-group-prepend">
-                    <span class="input-group-text border-0 bg-transparent text-muted">
-                        <i data-feather="search" style="width: 16px; height: 16px;"></i>
-                    </span>
-                </div>
-                <input type="text" class="form-control border-0 bg-transparent font-size-13"
-                    placeholder="Cari data warga, RT, iuran..." />
-                <div class="input-group-append align-items-center pr-2">
-                    <kbd class="bg-light text-muted border px-2 py-1 rounded font-size-11">⌘ K</kbd>
-                </div>
-            </div>
-        </form>
-    </div>
+<!-- STYLE KHUSUS FLOATING TOPBAR GLASSMORPHISM -->
+<style>
+    .dash-topbar-wrapper {
+        position: fixed;
+        top: 16px;
+        left: 50%;
+        transform: translateX(-50%);
+        z-index: 1000;
+        width: 100%;
+        max-width: 1320px;
+        padding: 0 24px;
+    }
 
-    <!-- Right Controls (Notifikasi & Profil Avatar) -->
-    <div class="d-flex align-items-center">
-        <!-- Notifikasi -->
-        <div class="dropdown mr-3">
-            <a class="nav-icon-btn rounded-circle text-muted" data-toggle="dropdown" href="#" role="button">
-                <i data-feather="bell" style="width: 18px; height: 18px;"></i>
-                <span class="noti-dot bg-danger"></span>
+    .dash-topbar {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 16px;
+        background: rgba(255, 255, 255, 0.75);
+        backdrop-filter: blur(20px) saturate(180%);
+        -webkit-backdrop-filter: blur(20px) saturate(180%);
+        border: 1px solid rgba(255, 255, 255, 0.8);
+        border-radius: 20px;
+        padding: 8px 20px;
+        box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.07),
+            inset 0 0 0 1px rgba(255, 255, 255, 0.5);
+    }
+
+    .dash-brand-wrap {
+        display: flex;
+        align-items: center;
+        gap: 12px;
+        text-decoration: none !important;
+    }
+
+    .brand-logo-icon {
+        width: 38px;
+        height: 38px;
+        border-radius: 10px;
+        background: linear-gradient(135deg, #1b7a3e 0%, #28a745 100%);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        color: #ffffff;
+        font-size: 18px;
+        font-weight: 800;
+        padding: 6px;
+        overflow: hidden;
+    }
+
+    .brand-logo-img {
+        max-width: 100%;
+        max-height: 100%;
+        width: auto;
+        height: auto;
+        object-fit: contain;
+    }
+
+    .brand-text h4 {
+        font-size: 1.05rem;
+        margin: 0;
+        font-weight: 800;
+        color: #111418;
+    }
+
+    .brand-text p {
+        font-size: 11.5px;
+        color: #64748b;
+        margin: 0;
+    }
+
+    .center-pill-nav {
+        background: #111418;
+        border-radius: 30px;
+        padding: 4px 6px;
+        display: inline-flex;
+        align-items: center;
+        gap: 2px;
+    }
+
+    .center-pill-nav a {
+        color: #94a3b8;
+        font-size: 13.5px;
+        font-weight: 700;
+        text-decoration: none;
+        padding: 7px 15px;
+        border-radius: 20px;
+        transition: all 0.2s ease;
+    }
+
+    .center-pill-nav a:hover {
+        color: #ffffff;
+    }
+
+    .center-pill-nav a.active {
+        background: linear-gradient(135deg, #1b7a3e 0%, #28a745 100%) !important;
+        color: #ffffff !important;
+        box-shadow: 0 4px 14px rgba(40, 167, 69, 0.4);
+    }
+
+    .topbar-utilities {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+    }
+
+    .util-icon-btn {
+        width: 38px;
+        height: 38px;
+        border-radius: 10px;
+        background: #ffffff;
+        border: 1px solid #e2e8e4;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        color: #475569;
+        font-size: 18px;
+        text-decoration: none !important;
+        transition: all 0.2s;
+    }
+
+    .util-icon-btn:hover {
+        background: #f0f8f3;
+        color: #1b7a3e;
+    }
+
+    .profile-avatar-btn {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        background: #ffffff;
+        border: 1px solid #e2e8e4;
+        border-radius: 24px;
+        padding: 3px 12px 3px 3px;
+        cursor: pointer;
+        text-decoration: none !important;
+    }
+
+    .user-topbar-avatar {
+        width: 32px;
+        height: 32px;
+        border-radius: 50%;
+        object-fit: cover;
+    }
+
+    .user-info-name {
+        font-size: 13px;
+        font-weight: 700;
+        color: #111418;
+    }
+
+    .user-info-role {
+        font-size: 11px;
+        color: #64748b;
+    }
+
+    @media (max-width: 768px) {
+        .dash-topbar-wrapper {
+            padding: 0 12px;
+            top: 10px;
+        }
+
+        .dash-topbar {
+            padding: 10px 14px;
+            flex-wrap: wrap;
+        }
+
+        .center-pill-nav {
+            order: 3;
+            width: 100%;
+            overflow-x: auto;
+            justify-content: flex-start;
+            margin-top: 4px;
+        }
+    }
+</style>
+
+<!-- COMPONENT HTML -->
+<div class="dash-topbar-wrapper">
+    <header class="dash-topbar">
+        <a href="dashboard.html" class="dash-brand-wrap">
+            <div class="brand-logo-icon">
+                <img src="../assets/images/logo.png" alt="Logo SiSatu" class="brand-logo-img">
+            </div>
+            <div class="brand-text">
+                <h4>SiSatu</h4>
+                <p>Sistem Informasi RW 01</p>
+            </div>
+        </a>
+
+        <nav class="center-pill-nav">
+            <a href="dashboard.html" id="nav-dashboard">Dashboard</a>
+            <a href="keuangan.html" id="nav-keuangan">Keuangan</a>
+            <a href="data-warga.html" id="nav-warga">Warga</a>
+            <a href="bansos.html" id="nav-bansos">Bansos</a>
+            <a href="umkm.html" id="nav-umkm">UMKM</a>
+            <a href="berita/index.html" id="nav-berita">Berita</a>
+        </nav>
+
+        <div class="topbar-utilities">
+            <a href="#" class="util-icon-btn" title="Notifikasi Keuangan">
+                <i class="uil uil-bell"></i>
             </a>
-            <div class="dropdown-menu dropdown-menu-right dropdown-lg border-0 shadow-lg rounded-lg">
-                <div class="dropdown-item noti-title border-bottom bg-light">
-                    <h6 class="m-0 font-weight-bold">Notifikasi RW 01</h6>
-                </div>
-                <div class="p-3">
-                    <p class="mb-1 text-dark font-size-13">Iuran RT 02 bulan ini telah lunas</p>
-                    <small class="text-muted">1 jam yang lalu</small>
+            <a href="#" class="util-icon-btn" title="Pengaturan Sistem">
+                <i class="uil uil-cog"></i>
+            </a>
+
+            <div class="profile-avatar-btn">
+                <img src="../assets/images/users/wildan.png" alt="Mochamad Wildani Azizi" class="user-topbar-avatar"
+                    onerror="this.src='../assets/images/users/wildan-pas-foto.png'">
+                <div class="d-none d-md-block text-left">
+                    <div class="user-info-name">Mochamad Wildani Azizi</div>
+                    <div class="user-info-role">Ketua RW 01</div>
                 </div>
             </div>
         </div>
-
-        <!-- Profil -->
-        <div class="dropdown">
-            <a class="d-flex align-items-center text-decoration-none dropdown-toggle" data-toggle="dropdown" href="#">
-                <img src="assets/images/users/avatar-7.jpg" alt="user-image"
-                    class="avatar-sm rounded-circle border shadow-sm mr-2" />
-                <div class="d-none d-sm-block text-left">
-                    <h6 class="my-0 font-weight-bold text-dark font-size-13">Firman</h6>
-                    <span class="text-muted font-size-11">Ketua RW 01</span>
-                </div>
-                <i data-feather="chevron-down" class="ml-2 text-muted" style="width: 14px; height: 14px;"></i>
-            </a>
-            <div class="dropdown-menu dropdown-menu-right border-0 shadow-lg rounded-lg">
-                <a href="index.html" class="dropdown-item notify-item">
-                    <i data-feather="globe" class="icon-dual icon-xs mr-2"></i>
-                    <span>Lihat Landing Page</span>
-                </a>
-                <div class="dropdown-divider"></div>
-                <a href="login.html" class="dropdown-item notify-item text-danger">
-                    <i data-feather="log-out" class="icon-dual icon-xs mr-2"></i>
-                    <span>Keluar</span>
-                </a>
-            </div>
-        </div>
-    </div>
+    </header>
 </div>

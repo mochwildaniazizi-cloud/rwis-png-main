@@ -1,0 +1,1244 @@
+<!DOCTYPE html>
+<html lang="id">
+
+<head>
+    <meta charset="utf-8" />
+    <title>SiSatu - Berita & Informasi RW 01</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta content="Pusat Informasi Resmi, Berita, Pengumuman, dan Kegiatan Warga RW 01" name="description" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+
+    <link rel="shortcut icon" href="assets/images/favicon.ico">
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap"
+        rel="stylesheet">
+    <link href="assets/css/icons.min.css" rel="stylesheet" type="text/css" />
+    <link href="assets/css/bootstrap.min.css" rel="stylesheet" type="text/css" />
+
+    <style>
+        :root {
+            --primary-green: #1b7a3e;
+            --primary-green-dark: #12582b;
+            --primary-green-light: #28a745;
+            --soft-green: #f0f8f3;
+            --border-green: #cde3d3;
+            --bg-shell: #f5f7f5;
+            --text-dark: #111418;
+            --text-muted: #64748b;
+        }
+
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, sans-serif;
+            background-color: var(--bg-shell);
+            color: var(--text-dark);
+            margin: 0;
+            padding: 0;
+            min-height: 100vh;
+            font-size: 16px;
+            line-height: 1.5;
+        }
+
+        h1 {
+            font-size: 1.75rem;
+            font-weight: 800;
+            margin: 0;
+            line-height: 1.2;
+            color: var(--text-dark);
+        }
+
+        h2 {
+            font-size: 1.5rem;
+            font-weight: 800;
+            margin: 0;
+        }
+
+        h3 {
+            font-size: 1.2rem;
+            font-weight: 700;
+            margin: 0;
+        }
+
+        h4 {
+            font-size: 1.1rem;
+            font-weight: 700;
+            margin: 0;
+        }
+
+        .text-secondary-desc {
+            font-size: 14px;
+            color: var(--text-muted);
+        }
+
+        .text-caption {
+            font-size: 13px;
+            color: var(--text-muted);
+        }
+
+        .dashboard-canvas {
+            width: 100%;
+            max-width: 1320px;
+            margin: 0 auto;
+            padding: 28px 24px 56px;
+        }
+
+        .dash-topbar-wrapper {
+            position: sticky;
+            top: 16px;
+            z-index: 1000;
+            width: 100%;
+            max-width: 1320px;
+            margin: 16px auto 0;
+            padding: 0 24px;
+        }
+
+        .dash-topbar {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 16px;
+            background: rgba(255, 255, 255, 0.96);
+            backdrop-filter: blur(16px);
+            border: 1px solid #e2e8e4;
+            border-radius: 20px;
+            padding: 8px 20px;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.04);
+        }
+
+        .dash-brand-wrap {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            text-decoration: none !important;
+        }
+
+        .brand-logo-icon {
+            width: 38px;
+            height: 38px;
+            border-radius: 10px;
+            background: linear-gradient(135deg, #1b7a3e 0%, #28a745 100%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #ffffff;
+            font-size: 18px;
+            font-weight: 800;
+        }
+
+        .brand-text h4 {
+            font-size: 1.05rem;
+        }
+
+        .brand-text p {
+            font-size: 11.5px;
+            color: var(--text-muted);
+            margin: 0;
+        }
+
+        .brand-counter-pill {
+            background: #f1f4f2;
+            color: #1b7a3e;
+            font-weight: 700;
+            font-size: 12.5px;
+            padding: 3px 10px;
+            border-radius: 16px;
+            border: 1px solid #d9e6dc;
+        }
+
+        .center-pill-nav {
+            background: #111418;
+            border-radius: 30px;
+            padding: 4px 6px;
+            display: inline-flex;
+            align-items: center;
+            gap: 2px;
+        }
+
+        .center-pill-nav a {
+            color: #94a3b8;
+            font-size: 13.5px;
+            font-weight: 700;
+            text-decoration: none;
+            padding: 7px 15px;
+            border-radius: 20px;
+            transition: all 0.2s ease;
+        }
+
+        .center-pill-nav a:hover {
+            color: #ffffff;
+        }
+
+        .center-pill-nav a.active {
+            background: var(--primary-green) !important;
+            color: #ffffff !important;
+        }
+
+        .topbar-utilities {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .util-icon-btn {
+            width: 38px;
+            height: 38px;
+            border-radius: 10px;
+            background: #ffffff;
+            border: 1px solid #e2e8e4;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #475569;
+            font-size: 18px;
+            text-decoration: none !important;
+            transition: all 0.2s;
+        }
+
+        .util-icon-btn:hover {
+            background: var(--soft-green);
+            color: var(--primary-green);
+        }
+
+        .profile-avatar-btn {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            background: #ffffff;
+            border: 1px solid #e2e8e4;
+            border-radius: 24px;
+            padding: 3px 12px 3px 3px;
+            cursor: pointer;
+            text-decoration: none !important;
+        }
+
+        .user-topbar-avatar {
+            width: 32px;
+            height: 32px;
+            border-radius: 50%;
+            object-fit: cover;
+        }
+
+        .user-info-name {
+            font-size: 13px;
+            font-weight: 700;
+            color: #111418;
+        }
+
+        .user-info-role {
+            font-size: 11px;
+            color: var(--text-muted);
+        }
+
+        .dash-heading-row {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            margin-bottom: 32px;
+            flex-wrap: wrap;
+            gap: 16px;
+        }
+
+        .btn-large-action {
+            background: var(--primary-green);
+            color: #ffffff !important;
+            font-weight: 700;
+            font-size: 14.5px;
+            padding: 10px 20px;
+            border-radius: 12px;
+            border: none;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            cursor: pointer;
+            box-shadow: 0 4px 12px rgba(27, 122, 62, 0.18);
+            transition: all 0.2s ease;
+            text-decoration: none !important;
+            white-space: nowrap;
+        }
+
+        .btn-large-action:hover {
+            background: var(--primary-green-dark);
+            transform: translateY(-1px);
+        }
+
+        .btn-secondary-action {
+            background: #ffffff;
+            color: #111418 !important;
+            border: 1px solid #cbd5e1;
+            font-weight: 700;
+            font-size: 14px;
+            padding: 10px 18px;
+            border-radius: 12px;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            cursor: pointer;
+            text-decoration: none !important;
+            transition: all 0.2s;
+            white-space: nowrap;
+        }
+
+        .btn-secondary-action:hover {
+            background: #f8fafc;
+            border-color: var(--primary-green);
+            color: var(--primary-green) !important;
+        }
+
+        .btn-danger-action {
+            background: #fef2f2;
+            color: #dc2626 !important;
+            border: 1px solid #fca5a5;
+            font-weight: 700;
+            font-size: 13px;
+            padding: 5px 12px;
+            border-radius: 10px;
+            display: inline-flex;
+            align-items: center;
+            gap: 4px;
+            cursor: pointer;
+            transition: all 0.2s;
+            text-decoration: none !important;
+        }
+
+        .btn-danger-action:hover {
+            background: #dc2626;
+            color: #ffffff !important;
+        }
+
+        .summary-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 18px;
+            margin-bottom: 36px;
+        }
+
+        .summary-card {
+            background: #ffffff;
+            border: 1px solid #e2e8e4;
+            border-radius: 18px;
+            padding: 20px 22px;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.015);
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+        }
+
+        .summary-card-title {
+            font-size: 12.5px;
+            font-weight: 700;
+            color: var(--text-muted);
+            margin-bottom: 6px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            letter-spacing: 0.3px;
+        }
+
+        .summary-card-value {
+            font-size: 1.6rem;
+            font-weight: 800;
+            color: #111418;
+            margin-bottom: 4px;
+            line-height: 1.25;
+        }
+
+        .text-green {
+            color: #1b7a3e;
+        }
+
+        .text-blue {
+            color: #0284c7;
+        }
+
+        .text-purple {
+            color: #7c3aed;
+        }
+
+        .text-orange {
+            color: #d97706;
+        }
+
+        .berita-tabs-container {
+            background: #ffffff;
+            border-radius: 16px;
+            padding: 6px;
+            border: 1px solid #e2e8e4;
+            margin-bottom: 18px;
+            display: flex;
+            gap: 6px;
+            overflow-x: auto;
+        }
+
+        .berita-tab-btn {
+            flex: 1;
+            padding: 10px 16px;
+            border-radius: 12px;
+            border: none;
+            background: transparent;
+            font-size: 14px;
+            font-weight: 700;
+            color: var(--text-muted);
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+            white-space: nowrap;
+            transition: all 0.2s ease;
+        }
+
+        .berita-tab-btn:hover {
+            background: var(--soft-green);
+            color: var(--primary-green);
+        }
+
+        .berita-tab-btn.active {
+            background: var(--primary-green);
+            color: #ffffff !important;
+            box-shadow: 0 4px 12px rgba(27, 122, 62, 0.16);
+        }
+
+        .content-card-box {
+            background: #ffffff;
+            border: 1px solid #e2e8e4;
+            border-radius: 20px;
+            padding: 24px 28px;
+            box-shadow: 0 2px 12px rgba(0, 0, 0, 0.02);
+            margin-bottom: 32px;
+        }
+
+        .content-card-header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            margin-bottom: 16px;
+            flex-wrap: wrap;
+            gap: 14px;
+        }
+
+        .content-card-title {
+            font-size: 1.2rem;
+            font-weight: 700;
+            color: #111418;
+            margin: 0;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .form-control,
+        .form-control-lg-custom,
+        select,
+        input,
+        textarea {
+            font-size: 16px !important;
+            padding: 10px 16px;
+            border-radius: 12px;
+            border: 1px solid #cbd5e1;
+            outline: none;
+            font-family: inherit;
+            font-weight: 500;
+            transition: all 0.2s;
+            box-sizing: border-box;
+        }
+
+        .form-control-lg-custom.has-icon {
+            padding-left: 42px;
+        }
+
+        .form-control-lg-custom:focus,
+        .form-control:focus {
+            border-color: var(--primary-green);
+            box-shadow: 0 0 0 3px rgba(27, 122, 62, 0.12);
+        }
+
+        .news-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 20px;
+        }
+
+        .news-card {
+            border: 1px solid #e2e8e4;
+            border-radius: 18px;
+            overflow: hidden;
+            background: #ffffff;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            transition: all 0.2s ease;
+        }
+
+        .news-card:hover {
+            border-color: var(--primary-green);
+            transform: translateY(-2px);
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.04);
+        }
+
+        .news-thumb {
+            width: 100%;
+            height: 180px;
+            object-fit: cover;
+            background-color: #f1f5f2;
+        }
+
+        .news-body {
+            padding: 18px 20px;
+        }
+
+        .news-meta {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            margin-bottom: 8px;
+        }
+
+        .news-title {
+            font-size: 1.1rem;
+            font-weight: 800;
+            color: #111418;
+            margin: 0 0 6px;
+            line-height: 1.35;
+        }
+
+        .news-excerpt {
+            font-size: 13.5px;
+            color: var(--text-muted);
+            line-height: 1.5;
+            margin-bottom: 14px;
+        }
+
+        .news-footer-actions {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding-top: 12px;
+            border-top: 1px solid #f0f4f1;
+        }
+
+        .table-accessible {
+            width: 100%;
+            border-collapse: separate;
+            border-spacing: 0 8px;
+        }
+
+        .table-accessible thead th {
+            background: #f1f5f2;
+            color: #334155;
+            font-size: 13px;
+            font-weight: 800;
+            padding: 12px 16px;
+            border: none;
+            text-align: left;
+        }
+
+        .table-accessible thead th:first-child {
+            border-radius: 10px 0 0 10px;
+        }
+
+        .table-accessible thead th:last-child {
+            border-radius: 0 10px 10px 0;
+        }
+
+        .table-accessible tbody tr {
+            background: #ffffff;
+            box-shadow: 0 1px 4px rgba(0, 0, 0, 0.015);
+            border: 1px solid #e2e8e4;
+            border-radius: 12px;
+            transition: all 0.2s;
+        }
+
+        .table-accessible tbody tr:hover {
+            background: #fbfdfc;
+            border-color: var(--border-green);
+        }
+
+        .table-accessible td {
+            padding: 14px 18px;
+            font-size: 14.5px;
+            font-weight: 600;
+            color: #111418;
+            vertical-align: middle;
+            border-top: 1px solid #f0f4f1;
+            border-bottom: 1px solid #f0f4f1;
+        }
+
+        .table-accessible td:first-child {
+            border-left: 1px solid #f0f4f1;
+            border-radius: 12px 0 0 12px;
+        }
+
+        .table-accessible td:last-child {
+            border-right: 1px solid #f0f4f1;
+            border-radius: 0 10px 10px 0;
+        }
+
+        .status-pill {
+            padding: 4px 12px;
+            border-radius: 20px;
+            font-size: 12px;
+            font-weight: 700;
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+        }
+
+        .status-pill-success {
+            background: #dcfce7;
+            color: #15803d;
+        }
+
+        .status-pill-info {
+            background: #e0f2fe;
+            color: #0369a1;
+        }
+
+        .status-pill-warning {
+            background: #fef3c7;
+            color: #b45309;
+        }
+
+        .search-filter-box {
+            display: flex;
+            gap: 12px;
+            align-items: center;
+            flex-wrap: wrap;
+        }
+
+        .search-input-wrapper {
+            position: relative;
+            display: flex;
+            align-items: center;
+        }
+
+        .search-input-wrapper i {
+            position: absolute;
+            left: 14px;
+            font-size: 18px;
+            color: var(--text-muted);
+        }
+
+        .empty-state-box {
+            text-align: center;
+            padding: 36px 16px;
+            display: none;
+        }
+
+        .empty-state-icon {
+            font-size: 44px;
+            color: #94a3b8;
+            margin-bottom: 6px;
+        }
+
+        @media (max-width: 1024px) {
+            .summary-grid {
+                grid-template-columns: repeat(2, 1fr);
+                gap: 14px;
+            }
+
+            .news-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .dashboard-canvas {
+                padding: 20px 16px 36px;
+            }
+
+            .dash-topbar-wrapper {
+                padding: 0 16px;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .summary-grid {
+                grid-template-columns: 1fr;
+                gap: 12px;
+            }
+
+            .dashboard-canvas {
+                padding: 16px 12px 32px;
+            }
+
+            .dash-topbar-wrapper {
+                padding: 0 12px;
+                top: 10px;
+            }
+
+            .dash-topbar {
+                flex-wrap: wrap;
+                padding: 10px 14px;
+            }
+
+            .center-pill-nav {
+                order: 3;
+                width: 100%;
+                overflow-x: auto;
+                justify-content: flex-start;
+                margin-top: 4px;
+            }
+
+            .dash-heading-row {
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 12px;
+                margin-bottom: 24px;
+            }
+
+            .dash-heading-row .d-flex {
+                width: 100%;
+                flex-direction: column;
+            }
+
+            .btn-large-action,
+            .btn-secondary-action {
+                width: 100%;
+                justify-content: center;
+            }
+
+            .berita-tabs-container {
+                flex-direction: column;
+                gap: 4px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- TOP NAVIGATION BAR -->
+    <div class="dash-topbar-wrapper">
+        <header class="dash-topbar">
+            <a href="dashboard.html" class="dash-brand-wrap">
+                <div class="brand-logo-icon"><i class="uil uil-layer-group"></i></div>
+                <div class="brand-text">
+                    <h4>SiSatu</h4>
+                    <p>Sistem Informasi RW 01</p>
+                </div>
+            </a>
+
+            <nav class="center-pill-nav">
+                <a href="dashboard.html">Dashboard</a>
+                <a href="keuangan.html">Keuangan</a>
+                <a href="data-warga.html">Warga</a>
+                <a href="bansos.html">Bansos</a>
+                <a href="umkm.html">UMKM</a>
+                <a href="berita.html" class="active">Berita</a>
+            </nav>
+
+            <div class="topbar-utilities">
+                <a href="#" class="util-icon-btn" title="Notifikasi Informasi"><i class="uil uil-bell"></i></a>
+                <a href="#" class="util-icon-btn" title="Pengaturan Sistem"><i class="uil uil-cog"></i></a>
+
+                <div class="profile-avatar-btn">
+                    <img src="assets/images/users/wildan-pas-foto.png" alt="Mochamad Wildani Azizi"
+                        class="user-topbar-avatar">
+                    <div class="d-none d-md-block text-left">
+                        <div class="user-info-name">Mochamad Wildani Azizi</div>
+                        <div class="user-info-role">Ketua RW 01</div>
+                    </div>
+                </div>
+            </div>
+        </header>
+    </div>
+
+    <!-- MAIN CONTENT CANVAS -->
+    <div class="dashboard-canvas">
+
+        <!-- HEADER SECTION -->
+        <div class="dash-heading-row">
+            <div class="heading-text">
+                <h1>Berita & Informasi RW 01</h1>
+                <p class="text-secondary-desc mt-1">Pusat kabar resmi, pengumuman iuran dan keamanan, jadwal posyandu,
+                    serta agenda kegiatan warga RW 01.</p>
+            </div>
+
+            <div class="d-flex gap-2">
+                <button class="btn-secondary-action" style="margin-right: 12px;"
+                    onclick="showCustomAlert('Informasi', 'Fitur Kelola Kategori Berita & Pengumuman akan segera dibuka.', 'info');">
+                    <i class="uil uil-list-ui-alt font-size-18"></i> Kelola Kategori
+                </button>
+                <a href="berita/tambah.html" class="btn-large-action">
+                    <i class="uil uil-plus-circle font-size-18"></i> Buat Berita Baru
+                </a>
+            </div>
+        </div>
+
+        <!-- BENTO SUMMARY CARDS MODULE -->
+        <div class="summary-grid">
+            <div class="summary-card">
+                <div class="summary-card-title">
+                    <span>TOTAL BERITA TERBIT</span>
+                    <i class="uil uil-newspaper font-size-20 text-green"></i>
+                </div>
+                <div class="summary-card-value text-green" id="statTotalBerita">0</div>
+                <div class="text-caption text-green"><i class="uil uil-check-circle"></i> Publikasi Resmi RW 01</div>
+            </div>
+
+            <div class="summary-card">
+                <div class="summary-card-title">
+                    <span>PENGUMUMAN PENTING</span>
+                    <i class="uil uil-megaphone font-size-20 text-blue"></i>
+                </div>
+                <div class="summary-card-value text-blue" id="statPengumuman">0</div>
+                <div class="text-caption">Iuran, Keamanan & Sampah</div>
+            </div>
+
+            <div class="summary-card">
+                <div class="summary-card-title">
+                    <span>AGENDA KEGIATAN WARGA</span>
+                    <i class="uil uil-calendar-alt font-size-20 text-purple"></i>
+                </div>
+                <div class="summary-card-value text-purple" id="statKegiatan">0</div>
+                <div class="text-caption text-purple"><i class="uil uil-check-circle"></i> Gotong Royong & Event</div>
+            </div>
+
+            <div class="summary-card">
+                <div class="summary-card-title">
+                    <span>TOTAL DIBACA WARGA</span>
+                    <i class="uil uil-eye font-size-20 text-orange"></i>
+                </div>
+                <div class="summary-card-value text-orange">1.420x</div>
+                <div class="text-caption text-orange">Akses Warga via Website</div>
+            </div>
+        </div>
+
+        <!-- NAVIGATION TABS MODULE -->
+        <div class="berita-tabs-container">
+            <button class="berita-tab-btn active" data-tab="katalog-berita">
+                <i class="uil uil-newspaper"></i> 1. Semua Berita & Pengumuman
+            </button>
+            <button class="berita-tab-btn" data-tab="agenda-warga">
+                <i class="uil uil-calendar-alt"></i> 2. Agenda Kegiatan Warga
+            </button>
+            <button class="berita-tab-btn" data-tab="kategori-berita">
+                <i class="uil uil-folder"></i> 3. Kategori Publikasi
+            </button>
+            <button class="berita-tab-btn" data-tab="draf-berita">
+                <i class="uil uil-edit"></i> <span id="statDrafCount">4. Draf & Penulisan (0)</span>
+            </button>
+        </div>
+
+        <!-- ACTIVE PANEL: SEMUA BERITA & PENGUMUMAN -->
+        <div id="tab-katalog-berita" class="berita-section">
+            <div class="content-card-box" style="margin-bottom: 0;">
+                <div class="content-card-header">
+                    <h3 class="content-card-title">
+                        <i class="uil uil-newspaper text-green"></i> Daftar Publikasi Berita RW 01
+                    </h3>
+
+                    <div class="search-filter-box">
+                        <div class="search-input-wrapper">
+                            <i class="uil uil-search"></i>
+                            <input type="text" id="searchBeritaInput" class="form-control-lg-custom has-icon"
+                                placeholder="Cari Judul / Pengumuman...">
+                        </div>
+                        <select class="form-control-lg-custom" id="filterKategoriBerita">
+                            <option value="">Semua Kategori</option>
+                            <option value="Kegiatan Warga">Kegiatan Warga</option>
+                            <option value="Kesehatan">Kesehatan & Posyandu</option>
+                            <option value="Pengumuman Resmi">Pengumuman Resmi</option>
+                            <option value="Rapat RT & RW">Rapat RT & RW</option>
+                        </select>
+                    </div>
+                </div>
+
+                <div class="news-grid" id="newsGridContainer"></div>
+
+                <div class="empty-state-box" id="emptyStateBerita">
+                    <i class="uil uil-search-minus empty-state-icon"></i>
+                    <div class="text-secondary-desc font-weight-bold">Artikel berita tidak ditemukan. Coba kata kunci
+                        lain.</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- ACTIVE PANEL: AGENDA KEGIATAN WARGA -->
+        <div id="tab-agenda-warga" class="berita-section" style="display: none;">
+            <div class="content-card-box" style="margin-bottom: 0;">
+                <div class="content-card-header">
+                    <h3 class="content-card-title">
+                        <i class="uil uil-calendar-alt text-green"></i> Jadwal & Agenda Kegiatan Mendatang
+                    </h3>
+                    <button class="btn-large-action"
+                        onclick="showCustomAlert('Informasi', 'Formulir Tambah Agenda Kegiatan segera dibuka.', 'info');">
+                        <i class="uil uil-plus-circle"></i> Tambah Agenda Baru
+                    </button>
+                </div>
+
+                <div class="table-responsive">
+                    <table class="table-accessible">
+                        <thead>
+                            <tr>
+                                <th>TANGGAL & WAKTU</th>
+                                <th>NAMA KEGIATAN</th>
+                                <th>LOKASI KEGIATAN</th>
+                                <th>PENANGGUNG JAWAB</th>
+                                <th>STATUS AGENDA</th>
+                                <th>AKSI</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td><strong>20 Okt 2026</strong>
+                                    <div class="text-caption">08:00 - 11:00 WIB</div>
+                                </td>
+                                <td><strong>Posyandu Balita & Lansia</strong></td>
+                                <td>Balai RW 01</td>
+                                <td>Kader Posyandu</td>
+                                <td><span class="status-pill status-pill-success"><i class="uil uil-check-circle"></i>
+                                        Terjadwal</span></td>
+                                <td>
+                                    <button class="btn-secondary-action" style="padding: 5px 12px; font-size: 13px;"
+                                        onclick="showCustomAlert('Detail Agenda', 'Posyandu Balita dan Lansia bertempat di Balai RW 01.', 'info');">
+                                        <i class="uil uil-eye"></i> Detail
+                                    </button>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+
+        <!-- ACTIVE PANEL: KATEGORI PUBLIKASI -->
+        <div id="tab-kategori-berita" class="berita-section" style="display: none;">
+            <div class="content-card-box" style="margin-bottom: 0;">
+                <div class="content-card-header">
+                    <h3 class="content-card-title"><i class="uil uil-folder text-green"></i> Kategori Informasi & Berita
+                        RW 01</h3>
+                    <button class="btn-secondary-action"
+                        onclick="showCustomAlert('Informasi', 'Fitur tambah kategori baru.', 'info');">
+                        <i class="uil uil-plus"></i> Tambah Kategori
+                    </button>
+                </div>
+
+                <div class="row">
+                    <div class="col-md-3 mb-3">
+                        <div class="kategori-card">
+                            <div>
+                                <i class="uil uil-users-alt font-size-36 text-green mb-2"></i>
+                                <h5>Kegiatan Warga</h5>
+                                <p class="text-caption mb-3">Kerja bakti, senam bersama, gotong royong.</p>
+                            </div>
+                            <div class="font-weight-bold" style="font-size: 1.3rem;">10 Artikel</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- ACTIVE PANEL: DRAF & PENULISAN BERITA -->
+        <div id="tab-draf-berita" class="berita-section" style="display: none;">
+            <div class="content-card-box" style="margin-bottom: 0;">
+                <div class="content-card-header">
+                    <h3 class="content-card-title"><i class="uil uil-edit text-green"></i> Draf Berita Belum Diterbitkan
+                    </h3>
+                    <a href="berita/tambah.html" class="btn-secondary-action"
+                        style="font-size: 13px; padding: 6px 14px;">
+                        <i class="uil uil-plus"></i> Tulis Draf Baru
+                    </a>
+                </div>
+
+                <div class="table-responsive">
+                    <table class="table-accessible">
+                        <thead>
+                            <tr>
+                                <th>TANGGAL DIBUAT</th>
+                                <th>JUDUL DRAF BERITA</th>
+                                <th>KATEGORI</th>
+                                <th>PENULIS</th>
+                                <th>STATUS</th>
+                                <th>AKSI</th>
+                            </tr>
+                        </thead>
+                        <tbody id="drafTableBody"></tbody>
+                    </table>
+                </div>
+
+                <div class="empty-state-box" id="emptyStateDraf">
+                    <i class="uil uil-folder-open empty-state-icon"></i>
+                    <div class="text-secondary-desc font-weight-bold">Tidak ada draf berita tersimpan.</div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+    <!-- GLOBAL CUSTOM ALERT MODAL -->
+    <div class="modal fade" id="globalAlertModal" tabindex="-1" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered" style="max-width: 400px;">
+            <div class="modal-content"
+                style="border-radius: 20px; border: none; padding: 10px; box-shadow: 0 12px 32px rgba(0,0,0,0.15);">
+                <div class="modal-body text-center p-4">
+                    <div id="alertIconWrapper" class="mb-3"
+                        style="width: 64px; height: 64px; border-radius: 50%; display: flex; align-items: center; justify-content: center; margin: 0 auto; font-size: 32px;">
+                        <i id="alertIcon" class="uil uil-check"></i>
+                    </div>
+                    <h4 id="alertTitle" class="font-weight-bold mb-2" style="color: #111418; font-size: 1.2rem;">
+                        Berhasil!</h4>
+                    <p id="alertMessage" class="text-secondary-desc mb-4" style="font-size: 14px; line-height: 1.5;">
+                        Pesan pemberitahuan akan tampil di sini.</p>
+                    <button type="button" class="btn-large-action w-100 justify-content-center" data-dismiss="modal"
+                        id="alertConfirmBtn" style="border-radius: 12px; padding: 10px;">
+                        Mengerti
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- GLOBAL CUSTOM CONFIRMATION MODAL -->
+    <div class="modal fade" id="globalConfirmModal" tabindex="-1" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered" style="max-width: 400px;">
+            <div class="modal-content"
+                style="border-radius: 20px; border: none; padding: 10px; box-shadow: 0 12px 32px rgba(0,0,0,0.15);">
+                <div class="modal-body text-center p-4">
+                    <div class="mb-3"
+                        style="width: 64px; height: 64px; border-radius: 50%; background: #fef2f2; color: #dc2626; display: flex; align-items: center; justify-content: center; margin: 0 auto; font-size: 32px;">
+                        <i class="uil uil-exclamation-triangle"></i>
+                    </div>
+                    <h4 id="confirmTitle" class="font-weight-bold mb-2" style="color: #111418; font-size: 1.2rem;">
+                        Konfirmasi Aksi</h4>
+                    <p id="confirmMessage" class="text-secondary-desc mb-4" style="font-size: 14px; line-height: 1.5;">
+                        Apakah Anda yakin ingin melanjutkan tindakan ini?</p>
+                    <div class="d-flex gap-2">
+                        <button type="button" class="btn-secondary-action w-50 justify-content-center"
+                            data-dismiss="modal" style="border-radius: 12px;">Batal</button>
+                        <button type="button" class="btn-large-action w-50 justify-content-center" id="confirmActionBtn"
+                            style="background: #dc2626; border-radius: 12px; box-shadow: none;">Ya, Hapus</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- SCRIPTS HANDLER -->
+    <script src="assets/js/vendor.min.js"></script>
+    <script src="assets/js/bootstrap.bundle.min.js"></script>
+    <script>
+        // DATA STATE: BERITA UTAMA
+        let beritaData = [
+            {
+                id: 1,
+                judul: "Kerja Bakti Bersih Lingkungan & Saluran Air RW 01",
+                kategori: "Kegiatan Warga",
+                tanggal: "15 Okt 2026",
+                penulis: "Pengurus RW 01",
+                gambar: "assets/images/kerjabakti.jpeg",
+                isi: "Kegiatan gotong royong membersihkan lingkungan, gorong-gorong, dan persiapan musim hujan."
+            },
+            {
+                id: 2,
+                judul: "Jadwal Penimbangan & Imunisasi Posyandu Balita",
+                kategori: "Kesehatan",
+                tanggal: "20 Okt 2026",
+                penulis: "Kader Posyandu",
+                gambar: "assets/images/Kerjabakti2.jpeg",
+                isi: "Posyandu Balita RW 01 kembali hadir di Balai RW bagi ibu dan balita."
+            }
+        ];
+
+        // DATA STATE: DRAF BERITA (DENGAN CRUD)
+        let drafData = [
+            {
+                id: 101,
+                tanggal: "01 Nov 2026",
+                judul: "Laporan Hasil Pelaksanaan Lomba Kebersihan RT",
+                kategori: "Kegiatan Warga",
+                penulis: "Sekretaris RW",
+                status: "Belum Terbit"
+            },
+            {
+                id: 102,
+                tanggal: "28 Okt 2026",
+                judul: "Himbauan Kewaspadaan Curanmor di Malam Hari",
+                kategori: "Pengumuman Resmi",
+                penulis: "Seksi Keamanan",
+                status: "Belum Terbit"
+            }
+        ];
+
+        // GLOBAL CUSTOM MODAL FUNCTIONS
+        function showCustomAlert(title, message, type = 'success') {
+            $('#alertTitle').text(title);
+            $('#alertMessage').text(message);
+
+            const iconWrapper = $('#alertIconWrapper');
+            const icon = $('#alertIcon');
+            const btn = $('#alertConfirmBtn');
+
+            if (type === 'success') {
+                iconWrapper.css({ 'background': '#dcfce7', 'color': '#15803d' });
+                icon.attr('class', 'uil uil-check-circle');
+                btn.css('background', 'var(--primary-green)');
+            } else if (type === 'danger') {
+                iconWrapper.css({ 'background': '#fef2f2', 'color': '#dc2626' });
+                icon.attr('class', 'uil uil-times-circle');
+                btn.css('background', '#dc2626');
+            } else {
+                iconWrapper.css({ 'background': '#e0f2fe', 'color': '#0369a1' });
+                icon.attr('class', 'uil uil-info-circle');
+                btn.css('background', '#0284c7');
+            }
+
+            $('#globalAlertModal').modal('show');
+        }
+
+        function showCustomConfirm(title, message, onConfirmCallback) {
+            $('#confirmTitle').text(title);
+            $('#confirmMessage').text(message);
+
+            $('#confirmActionBtn').off('click').on('click', function () {
+                $('#globalConfirmModal').modal('hide');
+                if (typeof onConfirmCallback === 'function') {
+                    onConfirmCallback();
+                }
+            });
+
+            $('#globalConfirmModal').modal('show');
+        }
+
+        // RENDER BERITA UTAMA
+        function renderBerita() {
+            const container = $('#newsGridContainer');
+            const searchValue = $('#searchBeritaInput').val().toLowerCase();
+            const categoryValue = $('#filterKategoriBerita').val();
+
+            container.empty();
+            let count = 0;
+
+            beritaData.forEach(item => {
+                const matchesSearch = item.judul.toLowerCase().includes(searchValue) || item.isi.toLowerCase().includes(searchValue);
+                const matchesCategory = categoryValue === "" || item.kategori === categoryValue;
+
+                if (matchesSearch && matchesCategory) {
+                    count++;
+                    const cardHtml = `
+                        <div class="news-card">
+                            <img src="${item.gambar || 'assets/images/kerjabakti.jpeg'}" alt="${item.judul}" class="news-thumb" onerror="this.src='assets/images/kerjabakti.jpeg'">
+                            <div class="news-body">
+                                <div class="news-meta">
+                                    <span class="status-pill status-pill-success"><i class="uil uil-tag"></i> ${item.kategori}</span>
+                                    <span class="text-caption font-weight-bold">${item.tanggal}</span>
+                                </div>
+                                <h4 class="news-title">${item.judul}</h4>
+                                <p class="news-excerpt">${item.isi}</p>
+                                <div class="news-footer-actions">
+                                    <span class="text-caption font-weight-bold"><i class="uil uil-user"></i> ${item.penulis}</span>
+                                    <div class="d-flex gap-1">
+                                        <a href="berita/edit.html?id=${item.id}" class="btn-secondary-action" style="padding: 5px 12px; font-size: 13px;">
+                                            <i class="uil uil-edit"></i> Edit
+                                        </a>
+                                        <button class="btn-danger-action" onclick="deleteBerita(${item.id})">
+                                            <i class="uil uil-trash-alt"></i> Hapus
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    `;
+                    container.append(cardHtml);
+                }
+            });
+
+            if (count === 0) {
+                $('#emptyStateBerita').show();
+                container.hide();
+            } else {
+                $('#emptyStateBerita').hide();
+                container.show();
+            }
+
+            updateSummaryStats();
+        }
+
+        // RENDER DRAF TABEL (CRUD)
+        function renderDraf() {
+            const tbody = $('#drafTableBody');
+            tbody.empty();
+
+            if (drafData.length === 0) {
+                $('#emptyStateDraf').show();
+                tbody.parent().hide();
+                $('#statDrafCount').text('4. Draf & Penulisan (0)');
+                return;
+            }
+
+            $('#emptyStateDraf').hide();
+            tbody.parent().show();
+            $('#statDrafCount').text(`4. Draf & Penulisan (${drafData.length})`);
+
+            drafData.forEach(draf => {
+                const rowHtml = `
+                    <tr>
+                        <td>${draf.tanggal}</td>
+                        <td><strong>${draf.judul}</strong></td>
+                        <td>${draf.kategori}</td>
+                        <td>${draf.penulis}</td>
+                        <td><span class="status-pill status-pill-warning"><i class="uil uil-clock"></i> ${draf.status}</span></td>
+                        <td>
+                            <div class="d-flex gap-1">
+                                <a href="berita/edit.html?id=${draf.id}" class="btn-secondary-action" style="padding: 5px 12px; font-size: 13px;">
+                                    <i class="uil uil-edit"></i> Edit
+                                </a>
+                                <button class="btn-danger-action" onclick="deleteDraf(${draf.id})">
+                                    <i class="uil uil-trash-alt"></i> Hapus
+                                </button>
+                            </div>
+                        </td>
+                    </tr>
+                `;
+                tbody.append(rowHtml);
+            });
+        }
+
+        // STATS CALCULATOR
+        function updateSummaryStats() {
+            $('#statTotalBerita').html(`${beritaData.length} <span style="font-size: 1rem; font-weight: 600;">Artikel</span>`);
+            $('#statPengumuman').html(`${beritaData.filter(b => b.kategori === "Pengumuman Resmi").length} <span style="font-size: 1rem; font-weight: 600;">Aktif</span>`);
+            $('#statKegiatan').html(`${beritaData.filter(b => b.kategori === "Kegiatan Warga").length} <span style="font-size: 1rem; font-weight: 600;">Jadwal</span>`);
+        }
+
+        // DELETE BERITA UTAMA WITH CUSTOM CONFIRM
+        function deleteBerita(id) {
+            showCustomConfirm('Hapus Berita', 'Apakah Anda yakin ingin menghapus artikel berita ini dari sistem?', function () {
+                beritaData = beritaData.filter(b => b.id !== id);
+                renderBerita();
+                showCustomAlert('Terhapus', 'Data berita berhasil dihapus.', 'danger');
+            });
+        }
+
+        // DELETE DRAF WITH CUSTOM CONFIRM
+        function deleteDraf(id) {
+            showCustomConfirm('Hapus Draf', 'Apakah Anda yakin ingin menghapus draf berita ini?', function () {
+                drafData = drafData.filter(d => d.id !== id);
+                renderDraf();
+                showCustomAlert('Terhapus', 'Draf berita berhasil dihapus.', 'danger');
+            });
+        }
+
+        // INITIALIZE ON DOCUMENT READY
+        $(document).ready(function () {
+            renderBerita();
+            renderDraf();
+
+            $('.berita-tab-btn').on('click', function () {
+                var targetTab = $(this).data('tab');
+                $('.berita-tab-btn').removeClass('active'); $(this).addClass('active');
+                $('.berita-section').hide(); $('#tab-' + targetTab).fadeIn(150);
+            });
+
+            $('#searchBeritaInput').on('keyup', function () {
+                renderBerita();
+            });
+
+            $('#filterKategoriBerita').on('change', function () {
+                renderBerita();
+            });
+        });
+    </script>
+</body>
+
+</html>

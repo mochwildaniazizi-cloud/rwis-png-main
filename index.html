@@ -19,9 +19,44 @@
             --primary-green: #1b7a3e;
             --primary-green-dark: #12582b;
             --primary-green-light: #28a745;
-            --lime-accent: #cbf574;
+            --soft-green: #eef8f1;
+            --border-green: #cde3d3;
             --dark-card: #18191b;
             --bg-light: #f7f9f8;
+        }
+
+        /* =============================================
+           GLOBAL BUTTON STYLING (HIJAU & PUTIH SISTEM)
+           Mencegah warna biru & hijau neon
+        ============================================= */
+        .btn-primary {
+            background-color: var(--primary-green) !important;
+            border-color: var(--primary-green) !important;
+            color: #ffffff !important;
+        }
+
+        .btn-primary:hover,
+        .btn-primary:focus,
+        .btn-primary:active {
+            background-color: var(--primary-green-dark) !important;
+            border-color: var(--primary-green-dark) !important;
+            color: #ffffff !important;
+            box-shadow: 0 6px 18px rgba(27, 122, 62, 0.25) !important;
+        }
+
+        .btn-outline-success {
+            color: var(--primary-green) !important;
+            border-color: var(--primary-green) !important;
+            background-color: #ffffff !important;
+        }
+
+        .btn-outline-success:hover,
+        .btn-outline-success:focus,
+        .btn-outline-success:active {
+            background-color: var(--primary-green) !important;
+            border-color: var(--primary-green) !important;
+            color: #ffffff !important;
+            box-shadow: 0 6px 18px rgba(27, 122, 62, 0.22) !important;
         }
 
         body {
@@ -88,37 +123,44 @@
         }
 
         .btn-nav-login {
-            background: #111418;
+            background: var(--primary-green);
             color: #ffffff !important;
             font-weight: 600;
             font-size: 13px;
-            padding: 8px 22px;
+            padding: 9px 24px;
             border-radius: 30px;
+            border: 1.5px solid var(--primary-green);
             text-decoration: none;
-            transition: all 0.2s;
+            transition: all 0.25s ease;
+            box-shadow: 0 4px 12px rgba(27, 122, 62, 0.2);
         }
 
         .btn-nav-login:hover {
-            background: #2a313a;
-            color: #fff;
-            transform: translateY(-1px);
+            background: var(--primary-green-dark);
+            border-color: var(--primary-green-dark);
+            color: #ffffff !important;
+            transform: translateY(-2px);
+            box-shadow: 0 6px 16px rgba(27, 122, 62, 0.3);
         }
 
         .btn-nav-register {
             background: #ffffff;
-            color: #111418 !important;
+            color: var(--primary-green) !important;
             font-weight: 600;
             font-size: 13px;
-            padding: 8px 20px;
+            padding: 9px 22px;
             border-radius: 30px;
-            border: 1px solid #e2e8f0;
+            border: 1.5px solid var(--primary-green);
             text-decoration: none;
-            transition: all 0.2s;
+            transition: all 0.25s ease;
         }
 
         .btn-nav-register:hover {
-            background: #f8fafc;
-            border-color: #cbd5e1;
+            background: var(--soft-green);
+            border-color: var(--primary-green-dark);
+            color: var(--primary-green-dark) !important;
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(27, 122, 62, 0.12);
         }
 
         /* HERO CARD BANNER */
@@ -399,9 +441,10 @@
             margin: 0;
         }
 
-        /* Card 3: Lime/Light Green Modern Bento */
+        /* Card 3: Light Green Modern Bento (Bukan Neon) */
         .bento-card-lime {
-            background: #d4f77c;
+            background: linear-gradient(135deg, #f0fdf4 0%, #e1f7e7 100%);
+            border: 1px solid var(--border-green);
             border-radius: 24px;
             padding: 32px 30px;
             color: #0f3818;
@@ -419,6 +462,7 @@
             line-height: 1.25;
             max-width: 65%;
             letter-spacing: -0.5px;
+            color: var(--primary-green-dark);
         }
 
         .bento-card-lime .lime-img-art {
@@ -427,31 +471,86 @@
             bottom: 10px;
             max-height: 200px;
             pointer-events: none;
-            filter: drop-shadow(0 10px 15px rgba(0, 0, 0, 0.1));
+            filter: drop-shadow(0 10px 15px rgba(0, 0, 0, 0.08));
         }
 
         .lime-action-icons {
             display: flex;
-            gap: 8px;
+            gap: 10px;
             z-index: 2;
         }
 
         .lime-icon-btn {
-            width: 42px;
-            height: 42px;
-            border-radius: 12px;
-            background: #111418;
-            color: #ffffff;
+            width: 44px;
+            height: 44px;
+            border-radius: 14px;
+            background: #ffffff;
+            color: var(--primary-green) !important;
+            border: 1.5px solid var(--border-green);
             display: flex;
             align-items: center;
             justify-content: center;
             text-decoration: none;
-            transition: transform 0.2s;
+            box-shadow: 0 4px 12px rgba(27, 122, 62, 0.08);
+            transition: all 0.25s ease;
         }
 
         .lime-icon-btn:hover {
-            transform: scale(1.06);
-            color: #fff;
+            transform: translateY(-2px) scale(1.05);
+            background: var(--primary-green) !important;
+            border-color: var(--primary-green) !important;
+            color: #ffffff !important;
+            box-shadow: 0 8px 18px rgba(27, 122, 62, 0.25);
+        }
+
+        /* Button CTA Putih pada Banner Hijau */
+        .btn-cta-white {
+            background: #ffffff !important;
+            color: var(--primary-green-dark) !important;
+            border: 2px solid #ffffff !important;
+            font-weight: 700;
+            font-size: 14px;
+            padding: 11px 28px;
+            border-radius: 30px;
+            transition: all 0.25s ease;
+            box-shadow: 0 6px 18px rgba(0, 0, 0, 0.12);
+            text-decoration: none !important;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .btn-cta-white:hover {
+            background: #f0fdf4 !important;
+            color: var(--primary-green) !important;
+            border-color: #f0fdf4 !important;
+            transform: translateY(-2px);
+            box-shadow: 0 10px 24px rgba(0, 0, 0, 0.18);
+        }
+
+        /* Button CTA di dalam tab modul features */
+        .btn-feature-cta {
+            background: #ffffff;
+            color: var(--primary-green) !important;
+            border: 1.5px solid var(--primary-green);
+            font-weight: 700;
+            font-size: 14px;
+            padding: 10px 26px;
+            border-radius: 30px;
+            transition: all 0.25s ease;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            text-decoration: none !important;
+            box-shadow: 0 2px 8px rgba(27, 122, 62, 0.08);
+        }
+
+        .btn-feature-cta:hover {
+            background: var(--primary-green);
+            border-color: var(--primary-green);
+            color: #ffffff !important;
+            transform: translateY(-2px);
+            box-shadow: 0 6px 18px rgba(27, 122, 62, 0.25);
         }
 
         /* OUR FEATURES SECTION (DISESUAIKAN STYLE HIJAU & PUTIH) */
@@ -472,12 +571,25 @@
             margin-bottom: 25px;
         }
 
+        .features-nav-wrapper {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            width: 100%;
+            margin-bottom: 24px;
+        }
+
         .features-nav-pills {
             background: #f1f5f3;
             padding: 6px;
             border-radius: 40px;
-            display: flex;
+            display: inline-flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            align-items: center;
             gap: 6px;
+            max-width: 100%;
+            margin: 0 auto;
         }
 
         .features-nav-pills .nav-link {
@@ -487,14 +599,45 @@
             font-size: 14px;
             padding: 10px 22px;
             border: none;
-            transition: all 0.2s;
+            transition: all 0.25s ease;
             text-align: center;
+            cursor: pointer;
+            user-select: none;
+        }
+
+        .features-nav-pills .nav-link:hover:not(.active) {
+            color: var(--primary-green);
+            background: rgba(27, 122, 62, 0.08);
         }
 
         .features-nav-pills .nav-link.active {
             background: var(--primary-green) !important;
             color: #ffffff !important;
             box-shadow: 0 4px 12px rgba(27, 122, 62, 0.25);
+        }
+
+        @media (max-width: 767px) {
+            .features-nav-pills {
+                border-radius: 24px;
+                padding: 6px;
+                overflow-x: auto;
+                flex-wrap: nowrap;
+                justify-content: flex-start;
+                width: 100%;
+                -webkit-overflow-scrolling: touch;
+                scrollbar-width: none;
+            }
+
+            .features-nav-pills::-webkit-scrollbar {
+                display: none;
+            }
+
+            .features-nav-pills .nav-link {
+                white-space: nowrap;
+                padding: 8px 16px;
+                font-size: 13px;
+                flex-shrink: 0;
+            }
         }
 
         .features-content-box {
@@ -629,25 +772,41 @@
             opacity: 0;
             transform: translateY(32px);
             transition: opacity 0.65s cubic-bezier(0.22, 1, 0.36, 1),
-                        transform 0.65s cubic-bezier(0.22, 1, 0.36, 1);
+                transform 0.65s cubic-bezier(0.22, 1, 0.36, 1);
         }
+
         .reveal.reveal-left {
             transform: translateX(-32px);
         }
+
         .reveal.reveal-right {
             transform: translateX(32px);
         }
+
         .reveal.reveal-scale {
             transform: scale(0.94);
         }
+
         .reveal.visible {
             opacity: 1;
             transform: none;
         }
-        .reveal-delay-1 { transition-delay: 0.1s; }
-        .reveal-delay-2 { transition-delay: 0.2s; }
-        .reveal-delay-3 { transition-delay: 0.3s; }
-        .reveal-delay-4 { transition-delay: 0.4s; }
+
+        .reveal-delay-1 {
+            transition-delay: 0.1s;
+        }
+
+        .reveal-delay-2 {
+            transition-delay: 0.2s;
+        }
+
+        .reveal-delay-3 {
+            transition-delay: 0.3s;
+        }
+
+        .reveal-delay-4 {
+            transition-delay: 0.4s;
+        }
 
         /* =============================================
            ENHANCED HOVER ANIMATIONS
@@ -657,6 +816,7 @@
         .nav-links a {
             position: relative;
         }
+
         .nav-links a::after {
             content: '';
             position: absolute;
@@ -668,6 +828,7 @@
             border-radius: 2px;
             transition: width 0.28s cubic-bezier(0.22, 1, 0.36, 1);
         }
+
         .nav-links a:hover::after,
         .nav-links a.active::after {
             width: 100%;
@@ -677,25 +838,36 @@
         .btn-nav-login {
             transition: all 0.25s cubic-bezier(0.22, 1, 0.36, 1) !important;
         }
+
         .btn-nav-login:hover {
             transform: translateY(-2px);
-            box-shadow: 0 6px 20px rgba(0,0,0,0.18);
+            box-shadow: 0 6px 20px rgba(0, 0, 0, 0.18);
         }
+
         .btn-nav-register {
             transition: all 0.25s cubic-bezier(0.22, 1, 0.36, 1) !important;
         }
+
         .btn-nav-register:hover {
             transform: translateY(-2px);
-            box-shadow: 0 4px 14px rgba(0,0,0,0.08);
+            box-shadow: 0 4px 14px rgba(0, 0, 0, 0.08);
         }
 
         /* Hero tag badge pulse */
         .hero-tag-badge {
             animation: subtle-pulse 3s ease-in-out infinite;
         }
+
         @keyframes subtle-pulse {
-            0%, 100% { box-shadow: 0 0 0 0 rgba(255,255,255,0.15); }
-            50% { box-shadow: 0 0 0 6px rgba(255,255,255,0); }
+
+            0%,
+            100% {
+                box-shadow: 0 0 0 0 rgba(255, 255, 255, 0.15);
+            }
+
+            50% {
+                box-shadow: 0 0 0 6px rgba(255, 255, 255, 0);
+            }
         }
 
         /* Hero heading text reveal */
@@ -708,10 +880,12 @@
         .btn-hero-primary {
             transition: all 0.25s cubic-bezier(0.22, 1, 0.36, 1) !important;
         }
+
         .btn-hero-primary:hover {
             transform: translateY(-3px) scale(1.02);
-            box-shadow: 0 10px 28px rgba(0,0,0,0.18) !important;
+            box-shadow: 0 10px 28px rgba(0, 0, 0, 0.18) !important;
         }
+
         .btn-hero-primary:active {
             transform: translateY(0) scale(0.98);
         }
@@ -721,40 +895,50 @@
         .bento-card-white,
         .bento-card-lime {
             transition: transform 0.3s cubic-bezier(0.22, 1, 0.36, 1),
-                        box-shadow 0.3s cubic-bezier(0.22, 1, 0.36, 1);
+                box-shadow 0.3s cubic-bezier(0.22, 1, 0.36, 1);
         }
+
         .bento-card-dark:hover {
             transform: translateY(-6px);
-            box-shadow: 0 20px 40px rgba(0,0,0,0.22);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.22);
         }
+
         .bento-card-white:hover {
             transform: translateY(-6px);
-            box-shadow: 0 20px 40px rgba(0,0,0,0.1) !important;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1) !important;
         }
+
         .bento-card-lime:hover {
             transform: translateY(-6px);
-            box-shadow: 0 20px 40px rgba(0,0,0,0.12);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.12);
         }
 
         /* Stat numbers count-up shimmer */
         .stat-num {
-            background: linear-gradient(90deg, #fff 0%, #cbf574 50%, #fff 100%);
+            background: linear-gradient(90deg, #fff 0%, #68d391 50%, #fff 100%);
             background-size: 200% auto;
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
             background-clip: text;
             animation: shimmer 3s linear infinite;
         }
+
         @keyframes shimmer {
-            0% { background-position: 200% center; }
-            100% { background-position: -200% center; }
+            0% {
+                background-position: 200% center;
+            }
+
+            100% {
+                background-position: -200% center;
+            }
         }
 
         /* Lime icon buttons - bounce */
         .lime-icon-btn {
             transition: transform 0.25s cubic-bezier(0.34, 1.56, 0.64, 1),
-                        background 0.2s !important;
+                background 0.2s !important;
         }
+
         .lime-icon-btn:hover {
             transform: scale(1.18) rotate(-5deg);
             background: #1b7a3e !important;
@@ -764,6 +948,7 @@
         .features-nav-pills .nav-link {
             transition: all 0.28s cubic-bezier(0.22, 1, 0.36, 1) !important;
         }
+
         .features-nav-pills .nav-link:hover:not(.active) {
             background: rgba(27, 122, 62, 0.1);
             color: var(--primary-green);
@@ -773,21 +958,24 @@
         /* Feature preview image - zoom in on tab switch */
         .feature-preview-img {
             transition: transform 0.4s cubic-bezier(0.22, 1, 0.36, 1),
-                        box-shadow 0.4s ease !important;
+                box-shadow 0.4s ease !important;
         }
+
         .feature-preview-img:hover {
             transform: scale(1.02);
-            box-shadow: 0 16px 40px rgba(0,0,0,0.13) !important;
+            box-shadow: 0 16px 40px rgba(0, 0, 0, 0.13) !important;
         }
 
         /* CTA banner button */
         .bottom-cta-banner .btn {
             transition: all 0.25s cubic-bezier(0.22, 1, 0.36, 1);
         }
+
         .bottom-cta-banner .btn:hover {
             transform: translateY(-3px) scale(1.04);
-            box-shadow: 0 8px 22px rgba(0,0,0,0.18);
+            box-shadow: 0 8px 22px rgba(0, 0, 0, 0.18);
         }
+
         .bottom-cta-banner .btn:active {
             transform: scale(0.97);
         }
@@ -801,9 +989,17 @@
         .contact-avatar-card {
             animation: float-gentle 4s ease-in-out infinite;
         }
+
         @keyframes float-gentle {
-            0%, 100% { transform: translateY(0); }
-            50% { transform: translateY(-6px); }
+
+            0%,
+            100% {
+                transform: translateY(0);
+            }
+
+            50% {
+                transform: translateY(-6px);
+            }
         }
 
         /* Smooth scroll indicator for nav */
@@ -817,6 +1013,7 @@
             backdrop-filter: blur(12px);
             box-shadow: 0 8px 30px rgba(0, 0, 0, 0.08);
         }
+
         .modern-nav {
             transition: all 0.35s ease;
         }
@@ -829,7 +1026,7 @@
         <header class="modern-nav">
             <!-- Logo Brand -->
             <a href="index.html" class="nav-brand">
-                <img src="assets/images/RWIS-PNG.png" alt="SiSatu Logo" height="38" />
+                <img src="assets/images/logo.png" alt="SiSatu Logo" height="38" />
             </a>
 
             <!-- Center Nav Items -->
@@ -852,7 +1049,7 @@
                 <!-- Sisi Kiri Hero -->
                 <div class="col-lg-7">
                     <div class="hero-tag-badge">
-                        <span class="mr-2">●</span> SISTEM INFORMASI RW 01 (SISATU)
+                        SISTEM INFORMASI RW 01 (SISATU)
                     </div>
 
                     <h1 class="hero-heading">
@@ -947,30 +1144,32 @@
                 </p>
             </div>
 
-            <ul class="nav nav-pills features-nav-pills justify-content-center mb-4">
-                <li class="nav-item">
-                    <a href="#home1" data-toggle="tab" class="nav-link active">Dashboard</a>
-                </li>
-                <li class="nav-item">
-                    <a href="#adm1" data-toggle="tab" class="nav-link">Administrasi</a>
-                </li>
-                <li class="nav-item">
-                    <a href="#info1" data-toggle="tab" class="nav-link">Informasi Warga</a>
-                </li>
-                <li class="nav-item">
-                    <a href="#bansos1" data-toggle="tab" class="nav-link">Bansos</a>
-                </li>
-                <li class="nav-item">
-                    <a href="#umkm1" data-toggle="tab" class="nav-link">UMKM</a>
-                </li>
-                <li class="nav-item">
-                    <a href="#artikel1" data-toggle="tab" class="nav-link">Artikel</a>
-                </li>
-            </ul>
+            <div class="features-nav-wrapper">
+                <ul class="nav nav-pills features-nav-pills justify-content-center">
+                    <li class="nav-item">
+                        <a href="#home1" data-toggle="tab" class="nav-link active">Dashboard</a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="#adm1" data-toggle="tab" class="nav-link">Administrasi</a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="#info1" data-toggle="tab" class="nav-link">Informasi Warga</a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="#bansos1" data-toggle="tab" class="nav-link">Bansos</a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="#umkm1" data-toggle="tab" class="nav-link">UMKM</a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="#artikel1" data-toggle="tab" class="nav-link">Artikel</a>
+                    </li>
+                </ul>
+            </div>
 
             <div class="tab-content features-content-box">
                 <!-- TAB 1: DASHBOARD -->
-                <div class="tab-pane show active" id="home1">
+                <div class="tab-pane fade show active" id="home1">
                     <div class="text-center my-3">
                         <img src="assets/images/dashboard.png" class="img-fluid feature-preview-img"
                             alt="Dashboard SiSatu">
@@ -983,7 +1182,7 @@
                                 dan interaktif untuk memudahkan pengambilan keputusan pengurus RW.
                             </p>
                             <a href="dashboard.html"
-                                class="btn btn-light text-primary font-weight-bold px-4 py-2 rounded-pill mt-2">
+                                class="btn btn-feature-cta font-weight-bold px-4 py-2 rounded-pill mt-2">
                                 Buka Halaman Dashboard &rarr;
                             </a>
                         </div>
@@ -991,7 +1190,7 @@
                 </div>
 
                 <!-- TAB 2: ADMINISTRASI -->
-                <div class="tab-pane" id="adm1">
+                <div class="tab-pane fade" id="adm1">
                     <div class="text-center my-3">
                         <img src="assets/images/Administrasi-kas.png" class="img-fluid feature-preview-img"
                             alt="Administrasi Kas">
@@ -1004,7 +1203,7 @@
                                 iuran secara transparan dan akurat.
                             </p>
                             <a href="iuran.html"
-                                class="btn btn-outline-success font-weight-bold px-4 py-2 rounded-pill mt-2">
+                                class="btn btn-feature-cta font-weight-bold px-4 py-2 rounded-pill mt-2">
                                 Buka Halaman Administrasi &rarr;
                             </a>
                         </div>
@@ -1012,7 +1211,7 @@
                 </div>
 
                 <!-- TAB 3: INFORMASI WARGA -->
-                <div class="tab-pane" id="info1">
+                <div class="tab-pane fade" id="info1">
                     <div class="text-center my-3">
                         <img src="assets/images/info-warga.png" class="img-fluid feature-preview-img"
                             alt="Informasi Warga">
@@ -1025,7 +1224,7 @@
                                 kependudukan yang rapi.
                             </p>
                             <a href="data-warga.html"
-                                class="btn btn-outline-success font-weight-bold px-4 py-2 rounded-pill mt-2">
+                                class="btn btn-feature-cta font-weight-bold px-4 py-2 rounded-pill mt-2">
                                 Buka Data Kependudukan &rarr;
                             </a>
                         </div>
@@ -1033,7 +1232,7 @@
                 </div>
 
                 <!-- TAB 4: BANSOS -->
-                <div class="tab-pane" id="bansos1">
+                <div class="tab-pane fade" id="bansos1">
                     <div class="text-center my-3">
                         <img src="assets/images/bansos.png" class="img-fluid feature-preview-img" alt="Bansos DSS">
                     </div>
@@ -1045,7 +1244,7 @@
                                 kriteria terukur.
                             </p>
                             <a href="bansos.html"
-                                class="btn btn-outline-success font-weight-bold px-4 py-2 rounded-pill mt-2">
+                                class="btn btn-feature-cta font-weight-bold px-4 py-2 rounded-pill mt-2">
                                 Buka Halaman Bansos &rarr;
                             </a>
                         </div>
@@ -1053,7 +1252,7 @@
                 </div>
 
                 <!-- TAB 5: UMKM -->
-                <div class="tab-pane" id="umkm1">
+                <div class="tab-pane fade" id="umkm1">
                     <div class="text-center my-3">
                         <img src="assets/images/umkm.png" class="img-fluid feature-preview-img" alt="UMKM">
                     </div>
@@ -1064,7 +1263,7 @@
                                 menengah (UMKM) milik warga setempat guna memperluas jangkauan promosi.
                             </p>
                             <a href="umkm.html"
-                                class="btn btn-outline-success font-weight-bold px-4 py-2 rounded-pill mt-2">
+                                class="btn btn-feature-cta font-weight-bold px-4 py-2 rounded-pill mt-2">
                                 Buka Halaman UMKM &rarr;
                             </a>
                         </div>
@@ -1072,7 +1271,7 @@
                 </div>
 
                 <!-- TAB 6: ARTIKEL -->
-                <div class="tab-pane" id="artikel1">
+                <div class="tab-pane fade" id="artikel1">
                     <div class="text-center my-3">
                         <img src="assets/images/artikel.png" class="img-fluid feature-preview-img"
                             alt="Publikasi Artikel">
@@ -1084,7 +1283,7 @@
                                 dan pengumuman resmi pengurus RW yang dapat diakses langsung oleh warga.
                             </p>
                             <a href="artikel.html"
-                                class="btn btn-outline-success font-weight-bold px-4 py-2 rounded-pill mt-2">
+                                class="btn btn-feature-cta font-weight-bold px-4 py-2 rounded-pill mt-2">
                                 Buka Halaman Publikasi &rarr;
                             </a>
                         </div>
@@ -1103,7 +1302,7 @@
                 </p>
             </div>
             <div>
-                <a href="login.html" class="btn btn-primary font-weight-bold px-4 py-2 rounded-pill shadow-sm">
+                <a href="login.html" class="btn btn-cta-white font-weight-bold px-4 py-2 rounded-pill shadow-sm">
                     Masuk ke Sistem &rarr;
                 </a>
             </div>
@@ -1140,15 +1339,16 @@
                 </div>
 
                 <div class="col-lg-4 text-center mt-4 mt-lg-0">
-                    <div class="p-3 contact-avatar-card" style="background: #f7faf8; border-radius: 20px; border: 1px dashed #cde3d3;">
-                        <img src="assets/images/users/avatar-7.jpg" alt="Developer Avatar"
+                    <div class="p-3 contact-avatar-card"
+                        style="background: #f7faf8; border-radius: 20px; border: 1px dashed #cde3d3;">
+                        <img src="assets/images/users/wildan-pas-foto.png" alt="Developer Avatar"
                             class="rounded-circle shadow-sm mb-3"
-                            style="width: 76px; height: 76px; border: 3px solid #ffffff;">
+                            style="width: 76px; height: 76px; border: 3px solid #ffffff; object-fit: cover; object-position: top;">
                         <h5 class="font-weight-bold mb-1" style="color: #111418;">Moch Wildani Azizi</h5>
                         <p class="text-muted font-size-13 mb-3">Fullstack & Frontend Developer</p>
                         <span class="badge badge-success px-3 py-2 rounded-pill font-weight-bold"
                             style="background-color: #28a745; font-size: 12px;">
-                            ● Available for Projects
+                            Available for Projects
                         </span>
                     </div>
                 </div>
@@ -1167,10 +1367,10 @@
 
     <script>
         // =============================================
-        // 1. SMOOTH SCROLL untuk nav links anchor
+        // 1. SMOOTH SCROLL untuk navbar anchor (.nav-links saja)
         // =============================================
-        document.querySelectorAll('a[href^="#"]').forEach(function(anchor) {
-            anchor.addEventListener('click', function(e) {
+        document.querySelectorAll('.nav-links a[href^="#"]').forEach(function (anchor) {
+            anchor.addEventListener('click', function (e) {
                 var targetId = this.getAttribute('href');
                 var target = document.querySelector(targetId);
                 if (target) {
@@ -1181,8 +1381,8 @@
                         top: targetTop,
                         behavior: 'smooth'
                     });
-                    // Update active link
-                    document.querySelectorAll('.nav-links a').forEach(function(l) {
+                    // Update active navbar link
+                    document.querySelectorAll('.nav-links a').forEach(function (l) {
                         l.classList.remove('active');
                     });
                     this.classList.add('active');
@@ -1191,29 +1391,60 @@
         });
 
         // =============================================
+        // 1b. TAB SWITCHING: Our Features
+        // =============================================
+        var featureTabLinks = document.querySelectorAll('.features-nav-pills .nav-link');
+        var featurePanes = document.querySelectorAll('.features-content-box .tab-pane');
+
+        featureTabLinks.forEach(function (tabLink) {
+            tabLink.addEventListener('click', function (e) {
+                e.preventDefault();
+                e.stopPropagation();
+
+                var targetId = this.getAttribute('href');
+                var targetPane = document.querySelector(targetId);
+                if (!targetPane) return;
+
+                // 1. Reset active class dari semua tombol tab features
+                featureTabLinks.forEach(function (link) {
+                    link.classList.remove('active');
+                });
+                // 2. Beri class active HANYA ke tab yang diklik
+                this.classList.add('active');
+
+                // 3. Sembunyikan semua tab content
+                featurePanes.forEach(function (pane) {
+                    pane.classList.remove('show', 'active');
+                });
+                // 4. Munculkan tab content gambar yang sesuai
+                targetPane.classList.add('show', 'active');
+            });
+        });
+
+        // =============================================
         // 2. SCROLL REVEAL via IntersectionObserver
         // =============================================
         var revealEls = document.querySelectorAll('.reveal');
         if ('IntersectionObserver' in window) {
-            var observer = new IntersectionObserver(function(entries) {
-                entries.forEach(function(entry) {
+            var observer = new IntersectionObserver(function (entries) {
+                entries.forEach(function (entry) {
                     if (entry.isIntersecting) {
                         entry.target.classList.add('visible');
                         observer.unobserve(entry.target);
                     }
                 });
             }, { threshold: 0.12 });
-            revealEls.forEach(function(el) { observer.observe(el); });
+            revealEls.forEach(function (el) { observer.observe(el); });
         } else {
             // Fallback for older browsers
-            revealEls.forEach(function(el) { el.classList.add('visible'); });
+            revealEls.forEach(function (el) { el.classList.add('visible'); });
         }
 
         // =============================================
         // 3. NAVBAR: glassmorphism on scroll
         // =============================================
         var modernNav = document.querySelector('.modern-nav');
-        window.addEventListener('scroll', function() {
+        window.addEventListener('scroll', function () {
             if (window.scrollY > 40) {
                 modernNav.classList.add('scrolled');
             } else {
@@ -1226,26 +1457,26 @@
         // =============================================
         var sections = [
             { id: 'features-tab', link: 'a[href="#features-tab"]' },
-            { id: 'contact-me',   link: 'a[href="#contact-me"]' }
+            { id: 'contact-me', link: 'a[href="#contact-me"]' }
         ];
-        window.addEventListener('scroll', function() {
+        window.addEventListener('scroll', function () {
             var scrollPos = window.scrollY + 120;
             var anyActive = false;
-            sections.forEach(function(s) {
+            sections.forEach(function (s) {
                 var el = document.getElementById(s.id);
                 var linkEl = document.querySelector('.nav-links ' + s.link);
                 if (el && linkEl) {
                     var top = el.offsetTop;
                     var bottom = top + el.offsetHeight;
                     if (scrollPos >= top && scrollPos < bottom) {
-                        document.querySelectorAll('.nav-links a').forEach(function(l) { l.classList.remove('active'); });
+                        document.querySelectorAll('.nav-links a').forEach(function (l) { l.classList.remove('active'); });
                         linkEl.classList.add('active');
                         anyActive = true;
                     }
                 }
             });
             if (!anyActive && window.scrollY < 200) {
-                document.querySelectorAll('.nav-links a').forEach(function(l) { l.classList.remove('active'); });
+                document.querySelectorAll('.nav-links a').forEach(function (l) { l.classList.remove('active'); });
                 var homeLink = document.querySelector('.nav-links a[href="index.html"]');
                 if (homeLink) homeLink.classList.add('active');
             }

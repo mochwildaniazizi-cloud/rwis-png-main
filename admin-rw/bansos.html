@@ -1,0 +1,1301 @@
+<!DOCTYPE html>
+<html lang="id">
+
+<head>
+    <meta charset="utf-8" />
+    <title>SiSatu - Bantuan Sosial & SPK RW 01</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta content="Sistem Pendukung Keputusan dan Penyaluran Bantuan Sosial RW 01" name="description" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+
+    <link rel="shortcut icon" href="assets/images/favicon.ico">
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap"
+        rel="stylesheet">
+    <link href="assets/css/icons.min.css" rel="stylesheet" type="text/css" />
+    <link href="assets/css/bootstrap.min.css" rel="stylesheet" type="text/css" />
+
+    <style>
+        :root {
+            --primary-green: #1b7a3e;
+            --primary-green-dark: #12582b;
+            --primary-green-light: #28a745;
+            --soft-green: #f0f8f3;
+            --border-green: #cde3d3;
+            --bg-shell: #f5f7f5;
+            --text-dark: #111418;
+            --text-muted: #64748b;
+        }
+
+        * {
+            box-sizing: border-box;
+        }
+
+        /* TYPOGRAPHY STANDARDS */
+        body {
+            font-family: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, sans-serif;
+            background-color: var(--bg-shell);
+            color: var(--text-dark);
+            margin: 0;
+            padding: 0;
+            min-height: 100vh;
+            font-size: 16px;
+            /* Primary Body Text */
+            line-height: 1.5;
+        }
+
+        h1 {
+            font-size: 1.75rem;
+            font-weight: 800;
+            margin: 0;
+            line-height: 1.2;
+            color: var(--text-dark);
+        }
+
+        h2 {
+            font-size: 1.5rem;
+            font-weight: 800;
+            margin: 0;
+        }
+
+        h3 {
+            font-size: 1.2rem;
+            font-weight: 700;
+            margin: 0;
+        }
+
+        h4 {
+            font-size: 1.1rem;
+            font-weight: 700;
+            margin: 0;
+        }
+
+        .text-secondary-desc {
+            font-size: 14px;
+            color: var(--text-muted);
+        }
+
+        .text-caption {
+            font-size: 13px;
+            color: var(--text-muted);
+        }
+
+        /* LAYOUT & DYNAMIC VERTICAL RHYTHM */
+        .dashboard-canvas {
+            width: 100%;
+            max-width: 1320px;
+            margin: 0 auto;
+            padding: 28px 24px 56px;
+        }
+
+        .dash-topbar-wrapper {
+            position: sticky;
+            top: 16px;
+            z-index: 1000;
+            width: 100%;
+            max-width: 1320px;
+            margin: 16px auto 0;
+            padding: 0 24px;
+        }
+
+        .dash-topbar {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 16px;
+            background: rgba(255, 255, 255, 0.96);
+            backdrop-filter: blur(16px);
+            border: 1px solid #e2e8e4;
+            border-radius: 20px;
+            padding: 8px 20px;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.04);
+        }
+
+        .dash-brand-wrap {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            text-decoration: none !important;
+        }
+
+        .brand-logo-icon {
+            width: 38px;
+            height: 38px;
+            border-radius: 10px;
+            background: linear-gradient(135deg, #1b7a3e 0%, #28a745 100%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #ffffff;
+            font-size: 18px;
+            font-weight: 800;
+        }
+
+        .brand-text h4 {
+            font-size: 1.05rem;
+        }
+
+        .brand-text p {
+            font-size: 11.5px;
+            color: var(--text-muted);
+            margin: 0;
+        }
+
+        .brand-counter-pill {
+            background: #f1f4f2;
+            color: #1b7a3e;
+            font-weight: 700;
+            font-size: 12.5px;
+            padding: 3px 10px;
+            border-radius: 16px;
+            border: 1px solid #d9e6dc;
+        }
+
+        /* Center Navigation Pill */
+        .center-pill-nav {
+            background: #111418;
+            border-radius: 30px;
+            padding: 4px 6px;
+            display: inline-flex;
+            align-items: center;
+            gap: 2px;
+        }
+
+        .center-pill-nav a {
+            color: #94a3b8;
+            font-size: 13.5px;
+            font-weight: 700;
+            text-decoration: none;
+            padding: 7px 15px;
+            border-radius: 20px;
+            transition: all 0.2s ease;
+        }
+
+        .center-pill-nav a:hover {
+            color: #ffffff;
+        }
+
+        .center-pill-nav a.active {
+            background: var(--primary-green) !important;
+            color: #ffffff !important;
+        }
+
+        .topbar-utilities {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .util-icon-btn {
+            width: 38px;
+            height: 38px;
+            border-radius: 10px;
+            background: #ffffff;
+            border: 1px solid #e2e8e4;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #475569;
+            font-size: 18px;
+            text-decoration: none !important;
+            transition: all 0.2s;
+        }
+
+        .util-icon-btn:hover {
+            background: var(--soft-green);
+            color: var(--primary-green);
+        }
+
+        .profile-avatar-btn {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            background: #ffffff;
+            border: 1px solid #e2e8e4;
+            border-radius: 24px;
+            padding: 3px 12px 3px 3px;
+            cursor: pointer;
+            text-decoration: none !important;
+        }
+
+        .user-topbar-avatar {
+            width: 32px;
+            height: 32px;
+            border-radius: 50%;
+            object-fit: cover;
+        }
+
+        .user-info-name {
+            font-size: 13px;
+            font-weight: 700;
+            color: #111418;
+        }
+
+        .user-info-role {
+            font-size: 11px;
+            color: var(--text-muted);
+        }
+
+        /* HEADER SECTION SPACING */
+        .dash-heading-row {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            margin-bottom: 32px;
+            flex-wrap: wrap;
+            gap: 16px;
+        }
+
+        /* BUTTONS & CONTROLS */
+        .btn-large-action {
+            background: var(--primary-green);
+            color: #ffffff !important;
+            font-weight: 700;
+            font-size: 14.5px;
+            padding: 10px 20px;
+            border-radius: 12px;
+            border: none;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            cursor: pointer;
+            box-shadow: 0 4px 12px rgba(27, 122, 62, 0.18);
+            transition: all 0.2s ease;
+            text-decoration: none !important;
+            white-space: nowrap;
+        }
+
+        .btn-large-action:hover {
+            background: var(--primary-green-dark);
+            transform: translateY(-1px);
+        }
+
+        .btn-secondary-action {
+            background: #ffffff;
+            color: #111418 !important;
+            border: 1px solid #cbd5e1;
+            font-weight: 700;
+            font-size: 14px;
+            padding: 10px 18px;
+            border-radius: 12px;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            cursor: pointer;
+            text-decoration: none !important;
+            transition: all 0.2s;
+            white-space: nowrap;
+        }
+
+        .btn-secondary-action:hover {
+            background: #f8fafc;
+            border-color: var(--primary-green);
+            color: var(--primary-green) !important;
+        }
+
+        .btn-large-action:active,
+        .btn-secondary-action:active,
+        .bansos-tab-btn:active {
+            transform: scale(0.98) !important;
+        }
+
+        /* BENTO SUMMARY CARDS MODULE */
+        .summary-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 18px;
+            margin-bottom: 36px;
+        }
+
+        .summary-card {
+            background: #ffffff;
+            border: 1px solid #e2e8e4;
+            border-radius: 18px;
+            padding: 20px 22px;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.015);
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+        }
+
+        .summary-card-title {
+            font-size: 12.5px;
+            font-weight: 700;
+            color: var(--text-muted);
+            margin-bottom: 6px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            letter-spacing: 0.3px;
+        }
+
+        .summary-card-value {
+            font-size: 1.6rem;
+            font-weight: 800;
+            color: #111418;
+            margin-bottom: 4px;
+            line-height: 1.25;
+        }
+
+        .text-green {
+            color: #1b7a3e;
+        }
+
+        .text-blue {
+            color: #0284c7;
+        }
+
+        .text-purple {
+            color: #7c3aed;
+        }
+
+        .text-orange {
+            color: #d97706;
+        }
+
+        /* NAVIGATION TABS MODULE */
+        .bansos-tabs-container {
+            background: #ffffff;
+            border-radius: 16px;
+            padding: 6px;
+            border: 1px solid #e2e8e4;
+            margin-bottom: 18px;
+            display: flex;
+            gap: 6px;
+            overflow-x: auto;
+        }
+
+        .bansos-tab-btn {
+            flex: 1;
+            padding: 10px 16px;
+            border-radius: 12px;
+            border: none;
+            background: transparent;
+            font-size: 14px;
+            font-weight: 700;
+            color: var(--text-muted);
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+            white-space: nowrap;
+            transition: all 0.2s ease;
+        }
+
+        .bansos-tab-btn:hover {
+            background: var(--soft-green);
+            color: var(--primary-green);
+        }
+
+        .bansos-tab-btn.active {
+            background: var(--primary-green);
+            color: #ffffff !important;
+            box-shadow: 0 4px 12px rgba(27, 122, 62, 0.16);
+        }
+
+        /* MAIN SECTION CONTENT CARD */
+        .content-card-box {
+            background: #ffffff;
+            border: 1px solid #e2e8e4;
+            border-radius: 20px;
+            padding: 24px 28px;
+            box-shadow: 0 2px 12px rgba(0, 0, 0, 0.02);
+            margin-bottom: 32px;
+        }
+
+        .content-card-header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            margin-bottom: 16px;
+            flex-wrap: wrap;
+            gap: 14px;
+        }
+
+        .content-card-title {
+            font-size: 1.2rem;
+            font-weight: 700;
+            color: #111418;
+            margin: 0;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        /* FORM CONTROLS (≥ 16px FOR ACCESSIBILITY & iOS NO AUTO-ZOOM) */
+        .form-control,
+        .form-control-lg-custom,
+        select,
+        input,
+        textarea {
+            font-size: 16px !important;
+            padding: 10px 16px;
+            border-radius: 12px;
+            border: 1px solid #cbd5e1;
+            outline: none;
+            font-family: inherit;
+            font-weight: 500;
+            transition: all 0.2s;
+            box-sizing: border-box;
+        }
+
+        .form-control-lg-custom.has-icon {
+            padding-left: 42px;
+        }
+
+        .form-control-lg-custom:focus,
+        .form-control:focus {
+            border-color: var(--primary-green);
+            box-shadow: 0 0 0 3px rgba(27, 122, 62, 0.12);
+        }
+
+        /* ACCESSIBLE TABLES */
+        .table-accessible {
+            width: 100%;
+            border-collapse: separate;
+            border-spacing: 0 8px;
+        }
+
+        .table-accessible thead th {
+            background: #f1f5f2;
+            color: #334155;
+            font-size: 13px;
+            font-weight: 800;
+            padding: 12px 16px;
+            border: none;
+            text-align: left;
+        }
+
+        .table-accessible thead th:first-child {
+            border-radius: 10px 0 0 10px;
+        }
+
+        .table-accessible thead th:last-child {
+            border-radius: 0 10px 10px 0;
+        }
+
+        .table-accessible tbody tr {
+            background: #ffffff;
+            box-shadow: 0 1px 4px rgba(0, 0, 0, 0.015);
+            border: 1px solid #e2e8e4;
+            border-radius: 12px;
+            transition: all 0.2s;
+        }
+
+        .table-accessible tbody tr:hover {
+            background: #fbfdfc;
+            border-color: var(--border-green);
+        }
+
+        .table-accessible td {
+            padding: 14px 18px;
+            font-size: 14.5px;
+            font-weight: 600;
+            color: #111418;
+            vertical-align: middle;
+            border-top: 1px solid #f0f4f1;
+            border-bottom: 1px solid #f0f4f1;
+        }
+
+        .table-accessible td:first-child {
+            border-left: 1px solid #f0f4f1;
+            border-radius: 12px 0 0 12px;
+        }
+
+        .table-accessible td:last-child {
+            border-right: 1px solid #f0f4f1;
+            border-radius: 0 10px 10px 0;
+        }
+
+        /* BADGES & STATUS PILLS */
+        .rank-badge {
+            background: #111418;
+            color: #ffffff;
+            font-weight: 800;
+            padding: 5px 12px;
+            border-radius: 20px;
+            font-size: 12.5px;
+            display: inline-flex;
+            align-items: center;
+            gap: 4px;
+        }
+
+        .rank-badge-top {
+            background: linear-gradient(135deg, #1b7a3e 0%, #28a745 100%);
+            color: #ffffff;
+            box-shadow: 0 4px 10px rgba(27, 122, 62, 0.2);
+        }
+
+        .status-pill {
+            padding: 4px 12px;
+            border-radius: 20px;
+            font-size: 12px;
+            font-weight: 700;
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+        }
+
+        .status-pill-success {
+            background: #dcfce7;
+            color: #15803d;
+        }
+
+        .status-pill-info {
+            background: #e0f2fe;
+            color: #0369a1;
+        }
+
+        .status-pill-warning {
+            background: #fef3c7;
+            color: #b45309;
+        }
+
+        .status-pill-purple {
+            background: #f3e8ff;
+            color: #6b21a8;
+        }
+
+        /* SEARCH FILTER BOX & ICON WRAPPER */
+        .search-filter-box {
+            display: flex;
+            gap: 12px;
+            align-items: center;
+            flex-wrap: wrap;
+        }
+
+        .search-input-wrapper {
+            position: relative;
+            display: flex;
+            align-items: center;
+        }
+
+        .search-input-wrapper i {
+            position: absolute;
+            left: 14px;
+            font-size: 18px;
+            color: var(--text-muted);
+        }
+
+        /* CRITERIA BOX */
+        .criteria-box {
+            background: #fafdfb;
+            border: 1px solid #e2e8e4;
+            border-radius: 16px;
+            padding: 18px;
+            margin-bottom: 16px;
+        }
+
+        .criteria-box h5 {
+            font-size: 1.05rem;
+            font-weight: 800;
+            color: var(--primary-green);
+            margin: 0 0 6px;
+        }
+
+        /* EMPTY STATE BOX */
+        .empty-state-box {
+            text-align: center;
+            padding: 36px 16px;
+            display: none;
+        }
+
+        .empty-state-icon {
+            font-size: 44px;
+            color: #94a3b8;
+            margin-bottom: 6px;
+        }
+
+        /* MODAL OVERFLOW & CUT-OFF FIXES */
+        .modal-dialog {
+            max-width: 500px;
+            margin: 1.75rem auto;
+        }
+
+        .modal-content {
+            border-radius: 20px;
+            border: none;
+            padding: 6px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.12);
+        }
+
+        .modal-header {
+            padding: 16px 20px 8px;
+            border-bottom: none;
+            display: flex;
+            align-items: flex-start;
+            justify-content: space-between;
+        }
+
+        .modal-title {
+            font-size: 1.1rem;
+            font-weight: 800;
+            color: #111418;
+            line-height: 1.3;
+            word-break: break-word;
+            white-space: normal;
+        }
+
+        .modal-body {
+            padding: 8px 20px 20px;
+        }
+
+        .modal-body label {
+            font-size: 13.5px;
+            font-weight: 700;
+            color: #334155;
+            margin-bottom: 5px;
+            display: block;
+        }
+
+        /* RESPONSIVE BREAKPOINTS (PC, TABLET, MOBILE) */
+        @media (max-width: 1024px) {
+            .summary-grid {
+                grid-template-columns: repeat(2, 1fr);
+                gap: 14px;
+            }
+
+            .dashboard-canvas {
+                padding: 20px 16px 36px;
+            }
+
+            .dash-topbar-wrapper {
+                padding: 0 16px;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .summary-grid {
+                grid-template-columns: 1fr;
+                gap: 12px;
+            }
+
+            .dashboard-canvas {
+                padding: 16px 12px 32px;
+            }
+
+            .dash-topbar-wrapper {
+                padding: 0 12px;
+                top: 10px;
+            }
+
+            .dash-topbar {
+                flex-wrap: wrap;
+                padding: 10px 14px;
+            }
+
+            .center-pill-nav {
+                order: 3;
+                width: 100%;
+                overflow-x: auto;
+                justify-content: flex-start;
+                margin-top: 4px;
+            }
+
+            .dash-heading-row {
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 12px;
+                margin-bottom: 24px;
+            }
+
+            .dash-heading-row .d-flex {
+                width: 100%;
+                flex-direction: column;
+            }
+
+            .btn-large-action,
+            .btn-secondary-action {
+                width: 100%;
+                justify-content: center;
+            }
+
+            .bansos-tabs-container {
+                flex-direction: column;
+                gap: 4px;
+            }
+
+            .content-card-box {
+                padding: 18px 14px;
+                border-radius: 16px;
+                margin-bottom: 32px;
+            }
+
+            .search-filter-box,
+            .search-input-wrapper {
+                width: 100%;
+            }
+
+            .search-filter-box .form-control-lg-custom {
+                width: 100%;
+            }
+
+            /* Mobile Stacked Responsive Table */
+            .table-accessible,
+            .table-accessible thead,
+            .table-accessible tbody,
+            .table-accessible th,
+            .table-accessible td,
+            .table-accessible tr {
+                display: block;
+            }
+
+            .table-accessible thead {
+                display: none;
+            }
+
+            .table-accessible tbody tr {
+                margin-bottom: 12px;
+                padding: 12px;
+                border-radius: 14px;
+            }
+
+            .table-accessible td {
+                padding: 6px 0;
+                border: none !important;
+                display: flex;
+                justify-content: space-between;
+                align-items: center;
+                font-size: 13.5px;
+            }
+
+            .table-accessible td:first-child,
+            .table-accessible td:last-child {
+                border-radius: 0;
+            }
+
+            .modal-dialog {
+                margin: 12px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- TOP NAVIGATION BAR -->
+    <div class="dash-topbar-wrapper">
+        <header class="dash-topbar">
+            <a href="dashboard.html" class="dash-brand-wrap">
+                <div class="brand-logo-icon">
+                    <i class="uil uil-layer-group"></i>
+                </div>
+                <div class="brand-text">
+                    <h4>SiSatu</h4>
+                    <p>Sistem Informasi RW 01</p>
+                </div>
+            </a>
+
+            <nav class="center-pill-nav">
+                <a href="dashboard.html">Dashboard</a>
+                <a href="keuangan.html">Keuangan</a>
+                <a href="data-warga.html">Warga</a>
+                <a href="bansos.html" class="active">Bansos</a>
+                <a href="umkm.html">UMKM</a>
+                <a href="berita.html">Berita</a>
+            </nav>
+
+            <div class="topbar-utilities">
+                <a href="#" class="util-icon-btn" title="Notifikasi Bansos">
+                    <i class="uil uil-bell"></i>
+                </a>
+                <a href="#" class="util-icon-btn" title="Pengaturan Sistem">
+                    <i class="uil uil-cog"></i>
+                </a>
+
+                <div class="profile-avatar-btn">
+                    <img src="assets/images/users/wildan-pas-foto.png" alt="Mochamad Wildani Azizi"
+                        class="user-topbar-avatar">
+                    <div class="d-none d-md-block text-left">
+                        <div class="user-info-name">Mochamad Wildani Azizi</div>
+                        <div class="user-info-role">Ketua RW 01</div>
+                    </div>
+                </div>
+            </div>
+        </header>
+    </div>
+
+    <!-- MAIN CONTENT CANVAS -->
+    <div class="dashboard-canvas">
+
+        <!-- HEADER SECTION -->
+        <div class="dash-heading-row">
+            <div class="heading-text">
+                <h1>Bantuan Sosial & SPK RW 01</h1>
+                <p class="text-secondary-desc mt-1">Sistem Pemeringkatan Kelayakan Penerima Bansos (MOORA) dan
+                    pemantauan penyaluran bantuan warga secara terbuka.</p>
+            </div>
+
+            <div class="d-flex gap-2">
+                <button class="btn-secondary-action" style="margin-right: 12px;"
+                    onclick="alert('Menghitung ulang perangkingan SPK MOORA...');">
+                    <i class="uil uil-sync font-size-18 text-green"></i> Hitung Ulang SPK
+                </button>
+                <button class="btn-large-action" data-toggle="modal" data-target="#modalAjukanBansos">
+                    <i class="uil uil-plus-circle font-size-18"></i> Ajukan Penerima Baru
+                </button>
+            </div>
+        </div>
+
+        <!-- BENTO SUMMARY CARDS MODULE -->
+        <div class="summary-grid">
+            <div class="summary-card">
+                <div class="summary-card-title">
+                    <span>PENERIMA BANSOS AKTIF</span>
+                    <i class="uil uil-heart-rate font-size-20 text-green"></i>
+                </div>
+                <div class="summary-card-value text-green">48 <span style="font-size: 1rem; font-weight: 600;">KK</span>
+                </div>
+                <div class="text-caption text-green">
+                    <i class="uil uil-check-circle"></i> Terdaftar di DTKS Kemsos
+                </div>
+            </div>
+
+            <div class="summary-card">
+                <div class="summary-card-title">
+                    <span>PRIORITAS UTAMA (SPK)</span>
+                    <i class="uil uil-star font-size-20 text-blue"></i>
+                </div>
+                <div class="summary-card-value text-blue">12 <span style="font-size: 1rem; font-weight: 600;">KK</span>
+                </div>
+                <div class="text-caption">
+                    Skor SPK > 0.8000
+                </div>
+            </div>
+
+            <div class="summary-card">
+                <div class="summary-card-title">
+                    <span>PENYALURAN BULAN INI</span>
+                    <i class="uil uil-box font-size-20 text-purple"></i>
+                </div>
+                <div class="summary-card-value text-purple">85%</div>
+                <div class="text-caption text-purple">
+                    <i class="uil uil-check-circle"></i> 41 Paket Beras Disalurkan
+                </div>
+            </div>
+
+            <div class="summary-card">
+                <div class="summary-card-title">
+                    <span>USULAN BARU WARGA</span>
+                    <i class="uil uil-user-exclamation font-size-20 text-orange"></i>
+                </div>
+                <div class="summary-card-value text-orange">6 <span style="font-size: 1rem; font-weight: 600;">KK</span>
+                </div>
+                <div class="text-caption text-orange">
+                    Menunggu Verifikasi RT
+                </div>
+            </div>
+        </div>
+
+        <!-- NAVIGATION TABS MODULE -->
+        <div class="bansos-tabs-container">
+            <button class="bansos-tab-btn active" data-tab="perangkingan">
+                <i class="uil uil-award"></i> 1. Hasil Pemeringkatan SPK
+            </button>
+            <button class="bansos-tab-btn" data-tab="penyaluran">
+                <i class="uil uil-truck"></i> 2. Status Penyaluran Bansos
+            </button>
+            <button class="bansos-tab-btn" data-tab="kriteria">
+                <i class="uil uil-sliders-v"></i> 3. Kriteria & Bobot SPK
+            </button>
+            <button class="bansos-tab-btn" data-tab="pengajuan">
+                <i class="uil uil-file-plus-alt"></i> 4. Usulan Warga Baru (6)
+            </button>
+        </div>
+
+        <!-- ACTIVE PANEL: HASIL PEMERINGKATAN SPK (MOORA) -->
+        <div id="tab-perangkingan" class="bansos-section">
+            <div class="content-card-box" style="margin-bottom: 0;">
+                <div class="content-card-header">
+                    <h3 class="content-card-title">
+                        <i class="uil uil-list-ol-alt text-green"></i> Peringkat Kelayakan Penerima Bantuan
+                    </h3>
+
+                    <div class="search-filter-box">
+                        <div class="search-input-wrapper">
+                            <i class="uil uil-search"></i>
+                            <input type="text" id="searchBansosInput" class="form-control-lg-custom has-icon"
+                                placeholder="Cari Nama / No. KK / RT...">
+                        </div>
+                        <select class="form-control-lg-custom" id="filterRtBansos">
+                            <option value="">Semua Wilayah RT</option>
+                            <option value="RT 01">RT 01</option>
+                            <option value="RT 02">RT 02</option>
+                            <option value="RT 03">RT 03</option>
+                            <option value="RT 04">RT 04</option>
+                            <option value="RT 05">RT 05</option>
+                        </select>
+                        <select class="form-control-lg-custom" id="filterRekomendasiSelect">
+                            <option value="">Semua Rekomendasi</option>
+                            <option value="Prioritas Utama">Prioritas Utama</option>
+                            <option value="Direkomendasikan">Direkomendasikan</option>
+                            <option value="Cadangan">Cadangan</option>
+                        </select>
+                    </div>
+                </div>
+
+                <div class="table-responsive">
+                    <table class="table-accessible" id="tableBansos">
+                        <thead>
+                            <tr>
+                                <th>RANK</th>
+                                <th>KEPALA KELUARGA</th>
+                                <th>WILAYAH RT</th>
+                                <th>PENGHASILAN (C1)</th>
+                                <th>TANGGUNGAN (C2)</th>
+                                <th>KONDISI RUMAH (C3)</th>
+                                <th>SKOR SPK (YI)</th>
+                                <th>REKOMENDASI</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td><span class="rank-badge rank-badge-top">#1</span></td>
+                                <td>
+                                    <strong>Slamet Riyadi</strong>
+                                    <div class="text-caption">No. KK: 3507010203000001</div>
+                                </td>
+                                <td><strong>RT 02 / RW 01</strong></td>
+                                <td>&lt; Rp 1.000.000</td>
+                                <td>5 Anak / Jiwa</td>
+                                <td>Sewa / Kayu</td>
+                                <td><strong style="font-size: 1.1rem; color: #1b7a3e;">0.8924</strong></td>
+                                <td><span class="status-pill status-pill-success"><i class="uil uil-star"></i> Prioritas
+                                        Utama</span></td>
+                            </tr>
+                            <tr>
+                                <td><span class="rank-badge rank-badge-top">#2</span></td>
+                                <td>
+                                    <strong>Supardi</strong>
+                                    <div class="text-caption">No. KK: 3507010203000002</div>
+                                </td>
+                                <td><strong>RT 01 / RW 01</strong></td>
+                                <td>&lt; Rp 1.000.000</td>
+                                <td>4 Anak / Jiwa</td>
+                                <td>Sewa / Kayu</td>
+                                <td><strong style="font-size: 1.1rem; color: #1b7a3e;">0.8415</strong></td>
+                                <td><span class="status-pill status-pill-success"><i class="uil uil-star"></i> Prioritas
+                                        Utama</span></td>
+                            </tr>
+                            <tr>
+                                <td><span class="rank-badge">#3</span></td>
+                                <td>
+                                    <strong>Joko Susilo</strong>
+                                    <div class="text-caption">No. KK: 3507010203000003</div>
+                                </td>
+                                <td><strong>RT 03 / RW 01</strong></td>
+                                <td>Rp 1jt - Rp 1.5jt</td>
+                                <td>4 Anak / Jiwa</td>
+                                <td>Semi Permanen</td>
+                                <td><strong style="font-size: 1.1rem; color: #0284c7;">0.7831</strong></td>
+                                <td><span class="status-pill status-pill-info"><i class="uil uil-check-circle"></i>
+                                        Direkomendasikan</span></td>
+                            </tr>
+                            <tr>
+                                <td><span class="rank-badge">#4</span></td>
+                                <td>
+                                    <strong>Wawan Hermawan</strong>
+                                    <div class="text-caption">No. KK: 3507010203000004</div>
+                                </td>
+                                <td><strong>RT 05 / RW 01</strong></td>
+                                <td>Rp 1jt - Rp 1.5jt</td>
+                                <td>3 Anak / Jiwa</td>
+                                <td>Semi Permanen</td>
+                                <td><strong style="font-size: 1.1rem; color: #0284c7;">0.7250</strong></td>
+                                <td><span class="status-pill status-pill-info"><i class="uil uil-check-circle"></i>
+                                        Direkomendasikan</span></td>
+                            </tr>
+                            <tr>
+                                <td><span class="rank-badge">#5</span></td>
+                                <td>
+                                    <strong>Bambang Irawan</strong>
+                                    <div class="text-caption">No. KK: 3507010203000005</div>
+                                </td>
+                                <td><strong>RT 04 / RW 01</strong></td>
+                                <td>Rp 1.5jt - Rp 2jt</td>
+                                <td>3 Anak / Jiwa</td>
+                                <td>Permanen Sederhana</td>
+                                <td><strong style="font-size: 1.1rem; color: #d97706;">0.6318</strong></td>
+                                <td><span class="status-pill status-pill-warning"><i class="uil uil-clock"></i>
+                                        Cadangan</span></td>
+                            </tr>
+                        </tbody>
+                    </table>
+
+                    <div class="empty-state-box" id="emptyStateBansos">
+                        <i class="uil uil-search-minus empty-state-icon"></i>
+                        <div class="text-secondary-desc font-weight-bold">Data penerima bansos tidak ditemukan. Coba
+                            kata kunci lain.</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- ACTIVE PANEL: STATUS PENYALURAN BANSOS -->
+        <div id="tab-penyaluran" class="bansos-section" style="display: none;">
+            <div class="content-card-box" style="margin-bottom: 0;">
+                <div class="content-card-header">
+                    <h3 class="content-card-title">
+                        <i class="uil uil-box text-green"></i> Realisasi Penyaluran Bantuan Sosial Bulan Ini
+                    </h3>
+                    <button class="btn-secondary-action" onclick="window.print();">
+                        <i class="uil uil-print"></i> Cetak Laporan
+                    </button>
+                </div>
+
+                <div class="table-responsive">
+                    <table class="table-accessible">
+                        <thead>
+                            <tr>
+                                <th>NAMA WARGA</th>
+                                <th>WILAYAH RT</th>
+                                <th>PROGRAM BANSOS</th>
+                                <th>BENTUK BANTUAN</th>
+                                <th>STATUS PENGAMBILAN</th>
+                                <th>AKSI</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td><strong>Slamet Riyadi</strong></td>
+                                <td>RT 02 / RW 01</td>
+                                <td>Beras Sembako RW</td>
+                                <td>Beras 10 Kg + Minyak 2L</td>
+                                <td><span class="status-pill status-pill-success"><i class="uil uil-check"></i> Sudah
+                                        Diterima</span></td>
+                                <td><button class="btn-secondary-action" style="padding: 5px 12px; font-size: 13px;"
+                                        onclick="alert('Bukti Penerimaan Bansos Slamet Riyadi');"><i
+                                            class="uil uil-file-check"></i> Bukti Terima</button></td>
+                            </tr>
+                            <tr>
+                                <td><strong>Supardi</strong></td>
+                                <td>RT 01 / RW 01</td>
+                                <td>BLT Kelurahan</td>
+                                <td>Tunai Rp 300.000</td>
+                                <td><span class="status-pill status-pill-warning"><i class="uil uil-clock"></i> Siap
+                                        Diambil di Pos RW</span></td>
+                                <td><button class="btn-large-action" style="padding: 5px 12px; font-size: 13px;"
+                                        onclick="alert('Konfirmasi Penyerahan Bantuan ke Supardi');"><i
+                                            class="uil uil-check-circle"></i> Serahkan Bantuan</button></td>
+                            </tr>
+                            <tr>
+                                <td><strong>Joko Susilo</strong></td>
+                                <td>RT 03 / RW 01</td>
+                                <td>PKH Kementerian Sosial</td>
+                                <td>Transfer Tunai Rekening</td>
+                                <td><span class="status-pill status-pill-success"><i class="uil uil-check"></i> Sudah
+                                        Diterima</span></td>
+                                <td><button class="btn-secondary-action" style="padding: 5px 12px; font-size: 13px;"
+                                        onclick="alert('Bukti Penerimaan Bansos Joko Susilo');"><i
+                                            class="uil uil-file-check"></i> Bukti Terima</button></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+
+        <!-- ACTIVE PANEL: KRITERIA & BOBOT SPK (MOORA) -->
+        <div id="tab-kriteria" class="bansos-section" style="display: none;">
+            <div class="content-card-box" style="margin-bottom: 0;">
+                <div class="content-card-header">
+                    <h3 class="content-card-title">
+                        <i class="uil uil-sliders-v text-green"></i> Kriteria Penilaian SPK Bantuan Sosial
+                    </h3>
+                    <button class="btn-secondary-action" onclick="alert('Form Pengaturan Bobot Kriteria');">
+                        <i class="uil uil-cog"></i> Ubah Bobot
+                    </button>
+                </div>
+
+                <div class="row">
+                    <div class="col-md-6 mb-3">
+                        <div class="criteria-box">
+                            <h5>C1 - Penghasilan Bulanan (Cost)</h5>
+                            <p class="text-caption mb-2">Semakin kecil penghasilan, semakin tinggi nilai kelayakan
+                                menerima bantuan sosial.</p>
+                            <span class="status-pill status-pill-purple">Bobot Kriteria: 35%</span>
+                        </div>
+                    </div>
+                    <div class="col-md-6 mb-3">
+                        <div class="criteria-box">
+                            <h5>C2 - Jumlah Tanggungan Keluarga (Benefit)</h5>
+                            <p class="text-caption mb-2">Semakin banyak jumlah anggota keluarga yang ditanggung, semakin
+                                tinggi prioritas penerima.</p>
+                            <span class="status-pill status-pill-purple">Bobot Kriteria: 25%</span>
+                        </div>
+                    </div>
+                    <div class="col-md-6 mb-3">
+                        <div class="criteria-box">
+                            <h5>C3 - Kondisi Tempat Tinggal (Cost)</h5>
+                            <p class="text-caption mb-2">Menilai status kepemilikan rumah, bahan lantai, dan dinding
+                                rumah tempat tinggal warga.</p>
+                            <span class="status-pill status-pill-purple">Bobot Kriteria: 20%</span>
+                        </div>
+                    </div>
+                    <div class="col-md-6 mb-3">
+                        <div class="criteria-box">
+                            <h5>C4 - Status Pekerjaan & Daya Listrik (Cost)</h5>
+                            <p class="text-caption mb-2">Pekerjaan tidak tetap / buruh harian dan kepemilikan daya
+                                listrik (450VA / 900VA).</p>
+                            <span class="status-pill status-pill-purple">Bobot Kriteria: 20%</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- ACTIVE PANEL: USULAN WARGA BARU -->
+        <div id="tab-pengajuan" class="bansos-section" style="display: none;">
+            <div class="content-card-box" style="margin-bottom: 0;">
+                <div class="content-card-header">
+                    <h3 class="content-card-title">
+                        <i class="uil uil-user-plus text-green"></i> Daftar Usulan Bansos Baru dari RT
+                    </h3>
+                </div>
+
+                <div class="table-responsive">
+                    <table class="table-accessible">
+                        <thead>
+                            <tr>
+                                <th>TANGGAL USULAN</th>
+                                <th>NAMA WARGA</th>
+                                <th>WILAYAH RT</th>
+                                <th>ALASAN USULAN</th>
+                                <th>STATUS VERIFIKASI</th>
+                                <th>AKSI</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>02 Nov 2026</td>
+                                <td><strong>Rahmat Hidayat</strong></td>
+                                <td>RT 04 / RW 01</td>
+                                <td>Kena PHK & Memiliki 3 Anak Balita</td>
+                                <td><span class="status-pill status-pill-warning"><i class="uil uil-clock"></i> Belum
+                                        Diverifikasi RW</span></td>
+                                <td>
+                                    <button class="btn-large-action" style="padding: 5px 12px; font-size: 13px;"
+                                        onclick="alert('Verifikasi Lapangan Usulan Rahmat Hidayat');">
+                                        <i class="uil uil-search"></i> Verifikasi Lapangan
+                                    </button>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>30 Okt 2026</td>
+                                <td><strong>Mbah Maryam</strong></td>
+                                <td>RT 01 / RW 01</td>
+                                <td>Lansia Sebatang Kara Tanpa Penghasilan</td>
+                                <td><span class="status-pill status-pill-success"><i class="uil uil-check"></i>
+                                        Diverifikasi RT & RW</span></td>
+                                <td>
+                                    <button class="btn-secondary-action" style="padding: 5px 12px; font-size: 13px;"
+                                        onclick="alert('Detail Rekomendasi Mbah Maryam');">
+                                        <i class="uil uil-eye"></i> Detail
+                                    </button>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+    <!-- MODAL 1: AJUKAN PENERIMA BANSOS BARU -->
+    <div class="modal fade" id="modalAjukanBansos" tabindex="-1" role="dialog" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h4 class="modal-title d-flex align-items-center">
+                        <i class="uil uil-plus-circle text-green mr-2" style="font-size: 20px;"></i> Ajukan Calon
+                        Penerima Bansos Baru
+                    </h4>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <form id="formPengajuanBansos">
+                        <div class="form-group mb-3">
+                            <label>Nama Kepala Keluarga</label>
+                            <input type="text" class="form-control w-100" placeholder="Tuliskan nama lengkap...">
+                        </div>
+                        <div class="form-group mb-3">
+                            <label>Wilayah RT Tempat Tinggal</label>
+                            <select class="form-control w-100">
+                                <option>RT 01</option>
+                                <option>RT 02</option>
+                                <option>RT 03</option>
+                                <option>RT 04</option>
+                                <option>RT 05</option>
+                            </select>
+                        </div>
+                        <div class="form-group mb-3">
+                            <label>Estimasi Penghasilan Bulanan</label>
+                            <select class="form-control w-100">
+                                <option>&lt; Rp 1.000.000</option>
+                                <option>Rp 1.000.000 - Rp 1.500.000</option>
+                                <option>Rp 1.500.000 - Rp 2.000.000</option>
+                            </select>
+                        </div>
+                        <div class="form-group mb-4">
+                            <label>Alasan / Kondisi Kelayakan</label>
+                            <textarea class="form-control w-100" rows="3"
+                                placeholder="Tuliskan pertimbangan atau alasan pengajuan..."></textarea>
+                        </div>
+                        <button type="button" class="btn-large-action w-100 justify-content-center"
+                            onclick="alert('Usulan Penerima Bansos Berhasil Dikirim!'); $('#modalAjukanBansos').modal('hide');">
+                            Kirim Usulan Bansos
+                        </button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- SCRIPTS HANDLER -->
+    <script src="assets/js/vendor.min.js"></script>
+    <script>
+        $(document).ready(function () {
+            // Tab Switcher
+            $('.bansos-tab-btn').on('click', function () {
+                var targetTab = $(this).data('tab');
+                $('.bansos-tab-btn').removeClass('active');
+                $(this).addClass('active');
+                $('.bansos-section').hide();
+                $('#tab-' + targetTab).fadeIn(150);
+            });
+
+            // Live Search Filter Bansos & Empty State
+            $('#searchBansosInput').on('keyup', function () {
+                var value = $(this).val().toLowerCase();
+                var visibleRows = 0;
+
+                $('#tableBansos tbody tr').filter(function () {
+                    var match = $(this).text().toLowerCase().indexOf(value) > -1;
+                    $(this).toggle(match);
+                    if (match) visibleRows++;
+                });
+
+                if (visibleRows === 0) {
+                    $('#emptyStateBansos').show();
+                    $('#tableBansos').hide();
+                } else {
+                    $('#emptyStateBansos').hide();
+                    $('#tableBansos').show();
+                }
+            });
+
+            // Filter RT Dropdown
+            $('#filterRtBansos').on('change', function () {
+                var value = $(this).val().toLowerCase();
+                $('#tableBansos tbody tr').filter(function () {
+                    $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1);
+                });
+            });
+        });
+    </script>
+</body>
+
+</html>

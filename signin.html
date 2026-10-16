@@ -1,0 +1,849 @@
+<!doctype html>
+<html lang="id">
+
+<head>
+    <meta charset="utf-8" />
+    <title>SiSatu - Masuk Ke Sistem Informasi RW 01</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta content="SiSatu RWIS Login" name="description" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+
+    <!-- Dynamic Favicon dengan Canvas Gradien -->
+    <link rel="icon" type="image/png" id="dynamicFavicon" href="assets/images/logo.svg">
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap"
+        rel="stylesheet">
+
+    <!-- CDN STYLESHEET (MENGGANTIKAN FILE LOKAL YANG TERHAPUS) -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://unicons.iconscout.com/release/v4.0.8/css/line.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+
+    <style>
+        :root {
+            --primary-green: #1b7a3e;
+            --primary-green-dark: #12582b;
+            --primary-green-light: #28a745;
+            --soft-green: #f0f8f3;
+            --border-green: #cde3d3;
+            --bg-shell: #f5f7f5;
+            --text-dark: #111418;
+            --text-muted: #64748b;
+        }
+
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, sans-serif;
+            background-color: var(--bg-shell);
+            color: var(--text-dark);
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0;
+            padding: 24px 16px;
+            overflow-x: hidden;
+        }
+
+        /* CARD WRAPPER UTAMA */
+        .auth-card {
+            background: #ffffff;
+            border: 1px solid #e2e8e4;
+            border-radius: 24px;
+            box-shadow: 0 16px 48px rgba(0, 0, 0, 0.05);
+            overflow: hidden;
+            width: 100%;
+            max-width: 920px;
+            display: flex !important;
+            flex-direction: row !important;
+            animation: cardEntrance 0.5s ease-out forwards;
+        }
+
+        @keyframes cardEntrance {
+            from {
+                transform: translateY(16px);
+                opacity: 0;
+            }
+
+            to {
+                transform: translateY(0);
+                opacity: 1;
+            }
+        }
+
+        /* SISI BRANDING KIRI (40%) */
+        .auth-brand-side {
+            flex: 0 0 40% !important;
+            max-width: 40% !important;
+            background: linear-gradient(135deg, var(--primary-green) 0%, var(--primary-green-light) 100%);
+            padding: 40px 32px;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            color: #ffffff;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .brand-logo-icon-large {
+            width: 48px;
+            height: 48px;
+            border-radius: 12px;
+            background: rgba(255, 255, 255, 0.2);
+            backdrop-filter: blur(8px);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 6px;
+            margin-bottom: 24px;
+        }
+
+        .brand-logo-icon-large img {
+            max-width: 100%;
+            max-height: 100%;
+            object-fit: contain;
+        }
+
+        /* SISI FORMULIR KANAN (60%) */
+        .auth-form-side {
+            flex: 0 0 60% !important;
+            max-width: 60% !important;
+            padding: 40px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+
+        /* ROLE SELECTOR TABS */
+        .role-selector-group {
+            display: flex;
+            gap: 6px;
+            background: #f1f5f2;
+            padding: 4px;
+            border-radius: 12px;
+            margin-top: 12px;
+            margin-bottom: 16px;
+        }
+
+        .role-btn {
+            flex: 1;
+            padding: 9px 12px;
+            border-radius: 10px;
+            border: none;
+            background: transparent;
+            font-size: 13px;
+            font-weight: 700;
+            color: var(--text-muted);
+            cursor: pointer;
+            transition: all 0.2s ease;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 6px;
+            outline: none !important;
+        }
+
+        .role-btn:hover {
+            color: var(--primary-green);
+        }
+
+        .role-btn.active {
+            background: #ffffff !important;
+            color: var(--primary-green) !important;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+        }
+
+        /* INPUT FIELDS & TOGGLE MATA PASSWORD */
+        .form-group-custom {
+            margin-bottom: 16px;
+        }
+
+        .form-label-custom {
+            font-size: 13px;
+            font-weight: 700;
+            color: var(--text-dark);
+            margin-bottom: 6px;
+            display: block;
+        }
+
+        .input-wrapper {
+            position: relative;
+            display: flex;
+            align-items: center;
+        }
+
+        .form-control-custom {
+            font-size: 14.5px !important;
+            padding: 11px 45px 11px 16px;
+            border-radius: 12px;
+            border: 1px solid #cbd5e1;
+            outline: none;
+            width: 100%;
+            transition: all 0.2s;
+            font-family: inherit;
+        }
+
+        .form-control-custom:focus {
+            border-color: var(--primary-green);
+            box-shadow: 0 0 0 3px rgba(27, 122, 62, 0.12);
+        }
+
+        .toggle-password-btn {
+            position: absolute;
+            right: 10px;
+            top: 50%;
+            transform: translateY(-50%);
+            background: transparent;
+            border: none;
+            color: var(--primary-green) !important;
+            cursor: pointer;
+            font-size: 20px;
+            padding: 4px 8px;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 8px;
+            transition: all 0.2s;
+            z-index: 5;
+        }
+
+        .toggle-password-btn:hover {
+            background: var(--soft-green);
+        }
+
+        .forgot-pass-link {
+            display: inline-block;
+            margin-top: 6px;
+            font-size: 12.5px;
+            font-weight: 700;
+            color: var(--primary-green);
+            text-decoration: none !important;
+            transition: color 0.2s;
+        }
+
+        .forgot-pass-link:hover {
+            color: var(--primary-green-dark);
+        }
+
+        /* BUTTON SUBMIT & DEMO ALERT */
+        .btn-signin-primary {
+            background: var(--primary-green);
+            color: #ffffff !important;
+            font-weight: 700;
+            font-size: 15px;
+            padding: 12px 24px;
+            border-radius: 12px;
+            border: none;
+            width: 100%;
+            cursor: pointer;
+            box-shadow: 0 4px 14px rgba(27, 122, 62, 0.22);
+            transition: all 0.2s ease;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+            margin-top: 20px;
+        }
+
+        .btn-signin-primary:hover {
+            background: var(--primary-green-dark);
+            transform: translateY(-1px);
+        }
+
+        .demo-alert-box {
+            background: var(--soft-green);
+            border: 1px solid var(--border-green);
+            border-radius: 12px;
+            padding: 10px 14px;
+            color: var(--primary-green-dark);
+            font-size: 13px;
+            margin-bottom: 18px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .auth-footer-text {
+            margin-top: 24px;
+            padding-top: 18px;
+            border-top: 1px solid #e2e8e4;
+            text-align: center !important;
+            width: 100%;
+        }
+
+        .auth-footer-text .no-account-title {
+            color: #111418;
+            font-weight: 800;
+            font-size: 13.5px;
+            margin-bottom: 6px;
+            display: block;
+        }
+
+        .wa-contact-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            color: var(--primary-green);
+            font-weight: 700;
+            font-size: 13px;
+            background: var(--soft-green);
+            padding: 8px 18px;
+            border-radius: 20px;
+            border: 1px solid var(--border-green);
+            cursor: pointer;
+            transition: all 0.2s ease;
+        }
+
+        .wa-contact-btn:hover {
+            background: var(--primary-green);
+            color: #ffffff;
+            border-color: var(--primary-green);
+        }
+
+        /* CUSTOM POPUP OVERLAY MODAL */
+        .wa-modal-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100vw;
+            height: 100vh;
+            background: rgba(17, 20, 24, 0.65);
+            backdrop-filter: blur(5px);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            z-index: 9999;
+            opacity: 0;
+            visibility: hidden;
+            transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+            padding: 16px;
+        }
+
+        .wa-modal-overlay.active {
+            opacity: 1;
+            visibility: visible;
+        }
+
+        /* CARD POPUP - GRADASI HIJAU KE PUTIH & LEBAR (560px) */
+        .wa-modal-card {
+            border-radius: 24px;
+            border: 1px solid #dce8e0;
+            background: linear-gradient(180deg, #eaf4ed 0%, #ffffff 130px, #ffffff 100%);
+            box-shadow: 0 24px 60px rgba(0, 0, 0, 0.22);
+            padding: 28px;
+            width: 100%;
+            max-width: 560px;
+            transform: scale(0.94);
+            transition: transform 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+
+        .wa-modal-overlay.active .wa-modal-card {
+            transform: scale(1);
+        }
+
+        .wa-modal-header {
+            display: flex;
+            align-items: flex-start;
+            justify-content: space-between;
+            padding-bottom: 10px;
+            border-bottom: 1px solid #e2ece5;
+            margin-bottom: 14px;
+        }
+
+        .wa-modal-header h4 {
+            font-size: 1.2rem;
+            font-weight: 800;
+            color: #111418;
+            margin-bottom: 2px;
+            line-height: 1.2;
+        }
+
+        .wa-modal-header p {
+            font-size: 12.5px;
+            color: var(--text-muted);
+            margin-bottom: 0;
+        }
+
+        .wa-close-btn {
+            background: #ffffff;
+            border: 1px solid #d8e4dc;
+            border-radius: 50%;
+            width: 36px;
+            height: 36px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            color: #475569;
+            font-size: 18px;
+            transition: all 0.2s ease;
+            outline: none !important;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04);
+            flex-shrink: 0;
+        }
+
+        .wa-close-btn:hover {
+            background: #fee2e2;
+            color: #dc2626;
+            border-color: #fca5a5;
+            transform: rotate(90deg);
+        }
+
+        .wa-section-badge {
+            font-size: 11px;
+            font-weight: 800;
+            letter-spacing: 0.5px;
+            color: var(--primary-green);
+            background: rgba(27, 122, 62, 0.1);
+            padding: 4px 10px;
+            border-radius: 8px;
+            display: inline-block;
+            margin-bottom: 8px;
+        }
+
+        .wa-card-item {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 14px;
+            padding: 12px 16px;
+            background: #ffffff;
+            border: 1px solid #e2e8e4;
+            border-radius: 16px;
+            margin-bottom: 10px;
+            transition: all 0.2s ease;
+            box-shadow: 0 2px 6px rgba(0, 0, 0, 0.02);
+        }
+
+        .wa-card-item:hover {
+            background: var(--soft-green);
+            border-color: var(--border-green);
+            transform: translateY(-1px);
+        }
+
+        .wa-user-left {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .wa-avatar-img {
+            width: 42px;
+            height: 42px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 2px solid #ffffff;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+            background: #e2e8e4;
+            flex-shrink: 0;
+        }
+
+        .wa-user-name {
+            font-size: 13.5px;
+            font-weight: 700;
+            color: #111418;
+            line-height: 1.25;
+        }
+
+        .wa-user-role {
+            font-size: 11.5px;
+            color: var(--text-muted);
+            margin-top: 2px;
+        }
+
+        /* TOMBOL CHAT WA DENGAN IKON SVG PERSISTEN */
+        .wa-btn-direct {
+            background: #25d366;
+            color: #ffffff !important;
+            font-size: 12.5px;
+            font-weight: 700;
+            padding: 8px 15px;
+            border-radius: 12px;
+            text-decoration: none !important;
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            box-shadow: 0 3px 10px rgba(37, 211, 102, 0.22);
+            transition: all 0.2s ease;
+            white-space: nowrap;
+        }
+
+        .wa-btn-direct svg {
+            width: 16px;
+            height: 16px;
+            fill: #ffffff;
+        }
+
+        .wa-btn-direct:hover {
+            background: #128c7e;
+            transform: translateY(-1px);
+            box-shadow: 0 5px 14px rgba(37, 211, 102, 0.32);
+        }
+
+        @media (max-width: 768px) {
+            .auth-card {
+                flex-direction: column !important;
+            }
+
+            .auth-brand-side {
+                display: none !important;
+            }
+
+            .auth-form-side {
+                flex: 0 0 100% !important;
+                max-width: 100% !important;
+                padding: 28px 20px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="auth-card">
+        <!-- SISI BRANDING VISUAL (KIRI) -->
+        <div class="auth-brand-side">
+            <div>
+                <div class="brand-logo-icon-large">
+                    <img src="assets/images/logo.png" alt="Logo SiSatu"
+                        onerror="this.src='https://ui-avatars.com/api/?name=S&background=fff&color=1b7a3e';">
+                </div>
+                <h3 class="font-weight-bold text-white mb-2">SiSatu RW 01</h3>
+                <p class="text-white-50 font-size-14" style="line-height: 1.6;">
+                    Sistem Informasi Pengelolaan Keuangan Kas, Pendataan Warga, dan Transparansi Lingkungan RW 01.
+                </p>
+            </div>
+            <div class="font-size-13 text-white-50">
+                &copy; 2026 SiSatu RW 01. Hak Cipta Dilindungi.
+            </div>
+        </div>
+
+        <!-- SISI FORMULIR LOG IN (KANAN) -->
+        <div class="auth-form-side">
+            <h2 class="font-weight-bold text-dark mb-1">Selamat Datang!</h2>
+            <p class="text-muted font-size-14 mb-0">Pilih peran akun untuk melakukan simulasi masuk ke dalam sistem.</p>
+
+            <!-- MULTI-ROLE QUICK SELECTOR TABS -->
+            <div class="role-selector-group">
+                <button type="button" class="role-btn active" id="tab-rw" data-role="rw" data-user="admin@sisatu.rw01"
+                    data-target="admin-rw/dashboard.html">
+                    <i class="fa-solid fa-building"></i> Admin RW
+                </button>
+                <button type="button" class="role-btn" id="tab-rt" data-role="rt" data-user="rt01@sisatu.rw01"
+                    data-target="admin-rt/dashboard-rt.html">
+                    <i class="fa-solid fa-house"></i> Admin RT
+                </button>
+                <button type="button" class="role-btn" id="tab-warga" data-role="warga" data-user="warga@sisatu.rw01"
+                    data-target="warga/portal-warga.html">
+                    <i class="fa-solid fa-user"></i> Warga
+                </button>
+            </div>
+
+            <!-- DEMO ALERT -->
+            <div class="demo-alert-box">
+                <i class="fa-solid fa-circle-info text-green" style="font-size: 18px;"></i>
+                <div>
+                    <strong>Mode Portofolio Demo:</strong><br>
+                    Akun yang dipilih: <span id="selectedRoleLabel" class="font-weight-bold text-green">Admin RW</span>
+                </div>
+            </div>
+
+            <form id="loginForm">
+                <div class="form-group-custom">
+                    <label class="form-label-custom">Username / Email</label>
+                    <input type="text" class="form-control-custom" id="username" value="admin@sisatu.rw01"
+                        placeholder="Masukkan username atau email" required>
+                </div>
+
+                <div class="form-group-custom">
+                    <label class="form-label-custom mb-1">Password</label>
+                    <div class="input-wrapper">
+                        <input type="password" class="form-control-custom" id="password" value="demo12345"
+                            placeholder="Masukkan password" required>
+                        <button type="button" class="toggle-password-btn" id="btnTogglePassword"
+                            title="Tampilkan/Sembunyikan Password">
+                            <i class="fa-solid fa-eye" id="toggleIcon"></i>
+                        </button>
+                    </div>
+                    <a href="javascript:void(0);"
+                        onclick="alert('Silakan hubungi Sekretaris RW / Admin RT untuk reset password.');"
+                        class="forgot-pass-link">Lupa password?</a>
+                </div>
+
+                <div class="d-flex align-items-center justify-content-between mt-3">
+                    <div class="custom-control custom-checkbox">
+                        <input type="checkbox" class="custom-control-input" id="checkbox-signin" checked>
+                        <label class="custom-control-label font-size-13 text-muted" for="checkbox-signin">Ingat sesi
+                            saya</label>
+                    </div>
+                </div>
+
+                <button class="btn-signin-primary" type="submit" id="btnSubmit">
+                    <i class="fa-solid fa-right-to-bracket" id="btnIcon"></i> <span id="btnText">Masuk ke Sistem</span>
+                </button>
+            </form>
+
+            <div class="auth-footer-text">
+                <span class="no-account-title">Belum memiliki akun?</span>
+                <button type="button" class="wa-contact-btn mt-1" id="btnOpenWaModal">
+                    <i class="fa-brands fa-whatsapp text-success" style="font-size: 18px;"></i> Hubungi Pengurus RT /
+                    Admin RW
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- CUSTOM POPUP OVERLAY MODAL -->
+    <div class="wa-modal-overlay" id="waModalOverlay">
+        <div class="wa-modal-card">
+
+            <div class="wa-modal-header">
+                <div>
+                    <h4>Kontak Pengurus RW 01</h4>
+                    <p>Silakan pilih pengurus yang ingin Anda hubungi:</p>
+                </div>
+                <button type="button" class="wa-close-btn" id="btnCloseWaModal" title="Tutup">
+                    <i class="fa-solid fa-xmark"></i>
+                </button>
+            </div>
+
+            <div class="wa-modal-body">
+                <div class="wa-section-badge">PENGURUS UTAMA RW</div>
+
+                <div class="wa-card-item">
+                    <div class="wa-user-left">
+                        <img src="assets/images/users/wildan-pas-foto.png" alt="Mochamad Wildani Azizi"
+                            class="wa-avatar-img"
+                            onerror="this.onerror=null; this.src='https://ui-avatars.com/api/?name=Wildani+Azizi&background=1b7a3e&color=fff';">
+                        <div>
+                            <div class="wa-user-name">Mochamad Wildani Azizi</div>
+                            <div class="wa-user-role">Ketua RW 01</div>
+                        </div>
+                    </div>
+                    <a href="https://wa.me/6281234567890?text=Halo%20Pak%20Ketua%20RW,%20saya%20warga%20RW%2001%20ingin%20membuat%20akun%20SiSatu."
+                        target="_blank" class="wa-btn-direct">
+                        <svg viewBox="0 0 24 24">
+                            <path
+                                d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946.003-6.556 5.338-11.891 11.893-11.891 3.181.001 6.167 1.24 8.413 3.488 2.245 2.248 3.481 5.236 3.48 8.414-.003 6.557-5.338 11.892-11.893 11.892-1.99-.001-3.951-.5-5.688-1.448l-6.305 1.654zm6.597-3.807c1.676.995 3.276 1.591 5.392 1.592 5.448 0 9.886-4.434 9.889-9.885.002-5.462-4.415-9.89-9.881-9.892-5.452 0-9.887 4.434-9.889 9.884-.001 2.225.651 3.891 1.746 5.634l-.999 3.648 3.742-.981zm11.387-5.464c-.074-.124-.272-.198-.57-.347-.297-.149-1.758-.868-2.031-.967-.272-.099-.47-.149-.669.149-.198.297-.768.967-.941 1.165-.173.198-.347.223-.644.074-.297-.149-1.255-.462-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.297-.347.446-.521.151-.172.2-.296.3-.495.099-.198.05-.372-.025-.521-.075-.148-.669-1.611-.916-2.206-.242-.579-.487-.501-.669-.51l-.57-.01c-.198 0-.52.074-.792.372s-1.04 1.016-1.04 2.479 1.065 2.876 1.213 3.074c.149.198 2.095 3.2 5.076 4.487.709.306 1.263.489 1.694.626.712.226 1.36.194 1.872.118.571-.085 1.758-.719 2.006-1.413.248-.695.248-1.29.173-1.414z" />
+                        </svg> Chat WA
+                    </a>
+                </div>
+
+                <div class="wa-card-item mb-4">
+                    <div class="wa-user-left">
+                        <img src="assets/images/users/ibu-endang.jpg" alt="Ibu Endang" class="wa-avatar-img"
+                            onerror="this.onerror=null; this.src='https://ui-avatars.com/api/?name=Endang+Sekretariat&background=28a745&color=fff';">
+                        <div>
+                            <div class="wa-user-name">Ibu Endang (Sekretariat)</div>
+                            <div class="wa-user-role">Admin & Bendahara RW</div>
+                        </div>
+                    </div>
+                    <a href="https://wa.me/6281234567891?text=Halo%20Bu%20Endang,%20saya%20warga%20RW%2001%20ingin%20konfirmasi%20akun%20SiSatu."
+                        target="_blank" class="wa-btn-direct">
+                        <svg viewBox="0 0 24 24">
+                            <path
+                                d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946.003-6.556 5.338-11.891 11.893-11.891 3.181.001 6.167 1.24 8.413 3.488 2.245 2.248 3.481 5.236 3.48 8.414-.003 6.557-5.338 11.892-11.893 11.892-1.99-.001-3.951-.5-5.688-1.448l-6.305 1.654zm6.597-3.807c1.676.995 3.276 1.591 5.392 1.592 5.448 0 9.886-4.434 9.889-9.885.002-5.462-4.415-9.89-9.881-9.892-5.452 0-9.887 4.434-9.889 9.884-.001 2.225.651 3.891 1.746 5.634l-.999 3.648 3.742-.981zm11.387-5.464c-.074-.124-.272-.198-.57-.347-.297-.149-1.758-.868-2.031-.967-.272-.099-.47-.149-.669.149-.198.297-.768.967-.941 1.165-.173.198-.347.223-.644.074-.297-.149-1.255-.462-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.297-.347.446-.521.151-.172.2-.296.3-.495.099-.198.05-.372-.025-.521-.075-.148-.669-1.611-.916-2.206-.242-.579-.487-.501-.669-.51l-.57-.01c-.198 0-.52.074-.792.372s-1.04 1.016-1.04 2.479 1.065 2.876 1.213 3.074c.149.198 2.095 3.2 5.076 4.487.709.306 1.263.489 1.694.626.712.226 1.36.194 1.872.118.571-.085 1.758-.719 2.006-1.413.248-.695.248-1.29.173-1.414z" />
+                        </svg> Chat WA
+                    </a>
+                </div>
+
+                <div class="wa-section-badge">KETUA RT WILAYAH</div>
+
+                <div class="wa-card-item">
+                    <div class="wa-user-left">
+                        <img src="assets/images/users/pak-bambang.jpg" alt="Pak Bambang" class="wa-avatar-img"
+                            onerror="this.onerror=null; this.src='https://ui-avatars.com/api/?name=Pak+Bambang&background=1b7a3e&color=fff';">
+                        <div>
+                            <div class="wa-user-name">Pak Bambang</div>
+                            <div class="wa-user-role">Ketua RT 01 / RW 01</div>
+                        </div>
+                    </div>
+                    <a href="https://wa.me/6281234567892?text=Halo%20Pak%20Bambang%20(RT%2001),%20saya%20warga%20RT%2001%20ingin%20membuat%20akun%20SiSatu."
+                        target="_blank" class="wa-btn-direct">
+                        <svg viewBox="0 0 24 24">
+                            <path
+                                d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946.003-6.556 5.338-11.891 11.893-11.891 3.181.001 6.167 1.24 8.413 3.488 2.245 2.248 3.481 5.236 3.48 8.414-.003 6.557-5.338 11.892-11.893 11.892-1.99-.001-3.951-.5-5.688-1.448l-6.305 1.654zm6.597-3.807c1.676.995 3.276 1.591 5.392 1.592 5.448 0 9.886-4.434 9.889-9.885.002-5.462-4.415-9.89-9.881-9.892-5.452 0-9.887 4.434-9.889 9.884-.001 2.225.651 3.891 1.746 5.634l-.999 3.648 3.742-.981zm11.387-5.464c-.074-.124-.272-.198-.57-.347-.297-.149-1.758-.868-2.031-.967-.272-.099-.47-.149-.669.149-.198.297-.768.967-.941 1.165-.173.198-.347.223-.644.074-.297-.149-1.255-.462-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.297-.347.446-.521.151-.172.2-.296.3-.495.099-.198.05-.372-.025-.521-.075-.148-.669-1.611-.916-2.206-.242-.579-.487-.501-.669-.51l-.57-.01c-.198 0-.52.074-.792.372s-1.04 1.016-1.04 2.479 1.065 2.876 1.213 3.074c.149.198 2.095 3.2 5.076 4.487.709.306 1.263.489 1.694.626.712.226 1.36.194 1.872.118.571-.085 1.758-.719 2.006-1.413.248-.695.248-1.29.173-1.414z" />
+                        </svg> Chat WA
+                    </a>
+                </div>
+
+                <div class="wa-card-item">
+                    <div class="wa-user-left">
+                        <img src="assets/images/users/pak-hendra.jpg" alt="Pak Hendra" class="wa-avatar-img"
+                            onerror="this.onerror=null; this.src='https://ui-avatars.com/api/?name=Pak+Hendra&background=1b7a3e&color=fff';">
+                        <div>
+                            <div class="wa-user-name">Pak Hendra</div>
+                            <div class="wa-user-role">Ketua RT 02 / RW 01</div>
+                        </div>
+                    </div>
+                    <a href="https://wa.me/6281234567893?text=Halo%20Pak%20Hendra%20(RT%2002),%20saya%20warga%20RT%2002%20ingin%20membuat%20akun%20SiSatu."
+                        target="_blank" class="wa-btn-direct">
+                        <svg viewBox="0 0 24 24">
+                            <path
+                                d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946.003-6.556 5.338-11.891 11.893-11.891 3.181.001 6.167 1.24 8.413 3.488 2.245 2.248 3.481 5.236 3.48 8.414-.003 6.557-5.338 11.892-11.893 11.892-1.99-.001-3.951-.5-5.688-1.448l-6.305 1.654zm6.597-3.807c1.676.995 3.276 1.591 5.392 1.592 5.448 0 9.886-4.434 9.889-9.885.002-5.462-4.415-9.89-9.881-9.892-5.452 0-9.887 4.434-9.889 9.884-.001 2.225.651 3.891 1.746 5.634l-.999 3.648 3.742-.981zm11.387-5.464c-.074-.124-.272-.198-.57-.347-.297-.149-1.758-.868-2.031-.967-.272-.099-.47-.149-.669.149-.198.297-.768.967-.941 1.165-.173.198-.347.223-.644.074-.297-.149-1.255-.462-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.297-.347.446-.521.151-.172.2-.296.3-.495.099-.198.05-.372-.025-.521-.075-.148-.669-1.611-.916-2.206-.242-.579-.487-.501-.669-.51l-.57-.01c-.198 0-.52.074-.792.372s-1.04 1.016-1.04 2.479 1.065 2.876 1.213 3.074c.149.198 2.095 3.2 5.076 4.487.709.306 1.263.489 1.694.626.712.226 1.36.194 1.872.118.571-.085 1.758-.719 2.006-1.413.248-.695.248-1.29.173-1.414z" />
+                        </svg> Chat WA
+                    </a>
+                </div>
+
+                <div class="wa-card-item mb-0">
+                    <div class="wa-user-left">
+                        <img src="assets/images/users/pak-slamet.jpg" alt="Pak Slamet" class="wa-avatar-img"
+                            onerror="this.onerror=null; this.src='https://ui-avatars.com/api/?name=Pak+Slamet&background=1b7a3e&color=fff';">
+                        <div>
+                            <div class="wa-user-name">Pak Slamet</div>
+                            <div class="wa-user-role">Ketua RT 03 / RW 01</div>
+                        </div>
+                    </div>
+                    <a href="https://wa.me/6281234567894?text=Halo%20Pak%20Slamet%20(RT%2003),%20saya%20warga%20RT%2003%20ingin%20membuat%20akun%20SiSatu."
+                        target="_blank" class="wa-btn-direct">
+                        <svg viewBox="0 0 24 24">
+                            <path
+                                d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946.003-6.556 5.338-11.891 11.893-11.891 3.181.001 6.167 1.24 8.413 3.488 2.245 2.248 3.481 5.236 3.48 8.414-.003 6.557-5.338 11.892-11.893 11.892-1.99-.001-3.951-.5-5.688-1.448l-6.305 1.654zm6.597-3.807c1.676.995 3.276 1.591 5.392 1.592 5.448 0 9.886-4.434 9.889-9.885.002-5.462-4.415-9.89-9.881-9.892-5.452 0-9.887 4.434-9.889 9.884-.001 2.225.651 3.891 1.746 5.634l-.999 3.648 3.742-.981zm11.387-5.464c-.074-.124-.272-.198-.57-.347-.297-.149-1.758-.868-2.031-.967-.272-.099-.47-.149-.669.149-.198.297-.768.967-.941 1.165-.173.198-.347.223-.644.074-.297-.149-1.255-.462-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.297-.347.446-.521.151-.172.2-.296.3-.495.099-.198.05-.372-.025-.521-.075-.148-.669-1.611-.916-2.206-.242-.579-.487-.501-.669-.51l-.57-.01c-.198 0-.52.074-.792.372s-1.04 1.016-1.04 2.479 1.065 2.876 1.213 3.074c.149.198 2.095 3.2 5.076 4.487.709.306 1.263.489 1.694.626.712.226 1.36.194 1.872.118.571-.085 1.758-.719 2.006-1.413.248-.695.248-1.29.173-1.414z" />
+                        </svg> Chat WA
+                    </a>
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+    <!-- SCRIPTS -->
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            let redirectTarget = 'admin-rw/dashboard.html';
+
+            // 1. VANILLA JS ROLE SELECTOR TABS HANDLER
+            const roleButtons = document.querySelectorAll('.role-btn');
+            const usernameInput = document.getElementById('username');
+            const selectedRoleLabel = document.getElementById('selectedRoleLabel');
+
+            roleButtons.forEach(button => {
+                button.addEventListener('click', function () {
+                    roleButtons.forEach(btn => btn.classList.remove('active'));
+                    this.classList.add('active');
+
+                    const user = this.getAttribute('data-user');
+                    const role = this.getAttribute('data-role');
+                    redirectTarget = this.getAttribute('data-target');
+
+                    usernameInput.value = user;
+
+                    if (role === 'rw') {
+                        selectedRoleLabel.textContent = 'Admin RW';
+                    } else if (role === 'rt') {
+                        selectedRoleLabel.textContent = 'Admin RT (Wilayah RT 01)';
+                    } else {
+                        selectedRoleLabel.textContent = 'Portal Warga (Kepala Keluarga)';
+                    }
+                });
+            });
+
+            // 2. TOGGLE PASSWORD VISIBILITY (SHOW/HIDE)
+            const togglePasswordBtn = document.getElementById('btnTogglePassword');
+            const passwordInput = document.getElementById('password');
+            const toggleIcon = document.getElementById('toggleIcon');
+
+            if (togglePasswordBtn && passwordInput && toggleIcon) {
+                togglePasswordBtn.addEventListener('click', function (e) {
+                    e.preventDefault();
+                    if (passwordInput.type === 'password') {
+                        passwordInput.type = 'text';
+                        toggleIcon.classList.remove('fa-eye');
+                        toggleIcon.classList.add('fa-eye-slash');
+                    } else {
+                        passwordInput.type = 'password';
+                        toggleIcon.classList.remove('fa-eye-slash');
+                        toggleIcon.classList.add('fa-eye');
+                    }
+                });
+            }
+
+            // 3. WHATSAPP POPUP MODAL HANDLER
+            const btnOpenWa = document.getElementById('btnOpenWaModal');
+            const btnCloseWa = document.getElementById('btnCloseWaModal');
+            const waModalOverlay = document.getElementById('waModalOverlay');
+
+            if (btnOpenWa && btnCloseWa && waModalOverlay) {
+                btnOpenWa.addEventListener('click', function () {
+                    waModalOverlay.classList.add('active');
+                });
+
+                btnCloseWa.addEventListener('click', function () {
+                    waModalOverlay.classList.remove('active');
+                });
+
+                waModalOverlay.addEventListener('click', function (e) {
+                    if (e.target === waModalOverlay) {
+                        waModalOverlay.classList.remove('active');
+                    }
+                });
+            }
+
+            // 4. SUBMIT FORM WITH LOADING
+            const loginForm = document.getElementById('loginForm');
+            const btnSubmit = document.getElementById('btnSubmit');
+            const btnText = document.getElementById('btnText');
+            const btnIcon = document.getElementById('btnIcon');
+
+            if (loginForm) {
+                loginForm.addEventListener('submit', function (e) {
+                    e.preventDefault();
+
+                    btnSubmit.disabled = true;
+                    btnIcon.className = 'fa-solid fa-spinner spin-anim';
+                    btnText.textContent = 'Memproses Masuk...';
+
+                    setTimeout(function () {
+                        window.location.href = redirectTarget;
+                    }, 500);
+                });
+            }
+        });
+
+        // 5. DYNAMIC FAVICON CANVAS
+        window.addEventListener('DOMContentLoaded', function () {
+            const img = new Image();
+            img.src = 'assets/images/logo.svg';
+
+            img.onload = function () {
+                const canvas = document.createElement('canvas');
+                canvas.width = 64;
+                canvas.height = 64;
+                const ctx = canvas.getContext('2d');
+
+                const gradient = ctx.createLinearGradient(0, 0, 64, 64);
+                gradient.addColorStop(0, '#1b7a3e');
+                gradient.addColorStop(1, '#28a745');
+
+                ctx.fillStyle = gradient;
+                ctx.beginPath();
+                ctx.roundRect(0, 0, 64, 64, 16);
+                ctx.fill();
+
+                const padding = 12;
+                const logoSize = 64 - (padding * 2);
+                ctx.drawImage(img, padding, padding, logoSize, logoSize);
+
+                const favicon = document.getElementById('dynamicFavicon');
+                if (favicon) {
+                    favicon.href = canvas.toDataURL('image/png');
+                }
+            };
+        });
+    </script>
+    <style>
+        .spin-anim {
+            animation: spin 0.8s linear infinite;
+        }
+
+        @keyframes spin {
+            100% {
+                transform: rotate(360deg);
+            }
+        }
+    </style>
+</body>
+
+</html>

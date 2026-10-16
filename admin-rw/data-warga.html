@@ -1,0 +1,1470 @@
+<!DOCTYPE html>
+<html lang="id">
+
+<head>
+    <meta charset="utf-8" />
+    <title>SiSatu - Data Warga & Kependudukan RW 01</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta content="Sistem Informasi Kependudukan dan Data Warga RW 01" name="description" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+
+    <link rel="shortcut icon" href="assets/images/favicon.ico">
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap"
+        rel="stylesheet">
+    <link href="assets/css/icons.min.css" rel="stylesheet" type="text/css" />
+    <link href="assets/css/bootstrap.min.css" rel="stylesheet" type="text/css" />
+
+    <style>
+        :root {
+            --primary-green: #1b7a3e;
+            --primary-green-dark: #12582b;
+            --primary-green-light: #28a745;
+            --soft-green: #f0f8f3;
+            --border-green: #cde3d3;
+            --bg-shell: #f5f7f5;
+            --text-dark: #111418;
+            --text-muted: #64748b;
+        }
+
+        * {
+            box-sizing: border-box;
+        }
+
+        /* TYPOGRAPHY STANDARDS */
+        body {
+            font-family: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, sans-serif;
+            background-color: var(--bg-shell);
+            color: var(--text-dark);
+            margin: 0;
+            padding: 0;
+            min-height: 100vh;
+            font-size: 16px;
+            /* Primary Body Text */
+            line-height: 1.5;
+        }
+
+        h1 {
+            font-size: 1.75rem;
+            font-weight: 800;
+            margin: 0;
+            line-height: 1.2;
+            color: var(--text-dark);
+        }
+
+        h2 {
+            font-size: 1.5rem;
+            font-weight: 800;
+            margin: 0;
+        }
+
+        h3 {
+            font-size: 1.2rem;
+            font-weight: 700;
+            margin: 0;
+        }
+
+        h4 {
+            font-size: 1.1rem;
+            font-weight: 700;
+            margin: 0;
+        }
+
+        .text-secondary-desc {
+            font-size: 14px;
+            color: var(--text-muted);
+        }
+
+        .text-caption {
+            font-size: 13px;
+            color: var(--text-muted);
+        }
+
+        /* LAYOUT & DYNAMIC VERTICAL RHYTHM */
+        .dashboard-canvas {
+            width: 100%;
+            max-width: 1320px;
+            margin: 0 auto;
+            padding: 28px 24px 56px;
+        }
+
+        .dash-topbar-wrapper {
+            position: sticky;
+            top: 16px;
+            z-index: 1000;
+            width: 100%;
+            max-width: 1320px;
+            margin: 16px auto 0;
+            padding: 0 24px;
+        }
+
+        .dash-topbar {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 16px;
+            background: rgba(255, 255, 255, 0.96);
+            backdrop-filter: blur(16px);
+            border: 1px solid #e2e8e4;
+            border-radius: 20px;
+            padding: 8px 20px;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.04);
+        }
+
+        .dash-brand-wrap {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            text-decoration: none !important;
+        }
+
+        .brand-logo-icon {
+            width: 38px;
+            height: 38px;
+            border-radius: 10px;
+            background: linear-gradient(135deg, #1b7a3e 0%, #28a745 100%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #ffffff;
+            font-size: 18px;
+            font-weight: 800;
+        }
+
+        .brand-text h4 {
+            font-size: 1.05rem;
+        }
+
+        .brand-text p {
+            font-size: 11.5px;
+            color: var(--text-muted);
+            margin: 0;
+        }
+
+        .brand-counter-pill {
+            background: #f1f4f2;
+            color: #1b7a3e;
+            font-weight: 700;
+            font-size: 12.5px;
+            padding: 3px 10px;
+            border-radius: 16px;
+            border: 1px solid #d9e6dc;
+        }
+
+        /* Center Navigation Pill */
+        .center-pill-nav {
+            background: #111418;
+            border-radius: 30px;
+            padding: 4px 6px;
+            display: inline-flex;
+            align-items: center;
+            gap: 2px;
+        }
+
+        .center-pill-nav a {
+            color: #94a3b8;
+            font-size: 13.5px;
+            font-weight: 700;
+            text-decoration: none;
+            padding: 7px 15px;
+            border-radius: 20px;
+            transition: all 0.2s ease;
+        }
+
+        .center-pill-nav a:hover {
+            color: #ffffff;
+        }
+
+        .center-pill-nav a.active {
+            background: var(--primary-green) !important;
+            color: #ffffff !important;
+        }
+
+        .topbar-utilities {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .util-icon-btn {
+            width: 38px;
+            height: 38px;
+            border-radius: 10px;
+            background: #ffffff;
+            border: 1px solid #e2e8e4;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #475569;
+            font-size: 18px;
+            text-decoration: none !important;
+            transition: all 0.2s;
+        }
+
+        .util-icon-btn:hover {
+            background: var(--soft-green);
+            color: var(--primary-green);
+        }
+
+        .profile-avatar-btn {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            background: #ffffff;
+            border: 1px solid #e2e8e4;
+            border-radius: 24px;
+            padding: 3px 12px 3px 3px;
+            cursor: pointer;
+            text-decoration: none !important;
+        }
+
+        .user-topbar-avatar {
+            width: 32px;
+            height: 32px;
+            border-radius: 50%;
+            object-fit: cover;
+        }
+
+        .user-info-name {
+            font-size: 13px;
+            font-weight: 700;
+            color: #111418;
+        }
+
+        .user-info-role {
+            font-size: 11px;
+            color: var(--text-muted);
+        }
+
+        /* HEADER SECTION SPACING */
+        .dash-heading-row {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            margin-bottom: 32px;
+            flex-wrap: wrap;
+            gap: 16px;
+        }
+
+        /* BUTTONS & CONTROLS */
+        .btn-large-action {
+            background: var(--primary-green);
+            color: #ffffff !important;
+            font-weight: 700;
+            font-size: 14.5px;
+            padding: 10px 20px;
+            border-radius: 12px;
+            border: none;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            cursor: pointer;
+            box-shadow: 0 4px 12px rgba(27, 122, 62, 0.18);
+            transition: all 0.2s ease;
+            text-decoration: none !important;
+            white-space: nowrap;
+        }
+
+        .btn-large-action:hover {
+            background: var(--primary-green-dark);
+            transform: translateY(-1px);
+        }
+
+        .btn-secondary-action {
+            background: #ffffff;
+            color: #111418 !important;
+            border: 1px solid #cbd5e1;
+            font-weight: 700;
+            font-size: 14px;
+            padding: 10px 18px;
+            border-radius: 12px;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            cursor: pointer;
+            text-decoration: none !important;
+            transition: all 0.2s;
+            white-space: nowrap;
+        }
+
+        .btn-secondary-action:hover {
+            background: #f8fafc;
+            border-color: var(--primary-green);
+            color: var(--primary-green) !important;
+        }
+
+        .btn-large-action:active,
+        .btn-secondary-action:active,
+        .warga-tab-btn:active {
+            transform: scale(0.98) !important;
+        }
+
+        /* BENTO SUMMARY CARDS MODULE */
+        .summary-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 18px;
+            margin-bottom: 36px;
+        }
+
+        .summary-card {
+            background: #ffffff;
+            border: 1px solid #e2e8e4;
+            border-radius: 18px;
+            padding: 20px 22px;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.015);
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+        }
+
+        .summary-card-title {
+            font-size: 12.5px;
+            font-weight: 700;
+            color: var(--text-muted);
+            margin-bottom: 6px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            letter-spacing: 0.3px;
+        }
+
+        .summary-card-value {
+            font-size: 1.6rem;
+            font-weight: 800;
+            color: #111418;
+            margin-bottom: 4px;
+            line-height: 1.25;
+        }
+
+        .text-green {
+            color: #1b7a3e;
+        }
+
+        .text-blue {
+            color: #0284c7;
+        }
+
+        .text-purple {
+            color: #7c3aed;
+        }
+
+        .text-orange {
+            color: #d97706;
+        }
+
+        /* NAVIGATION TABS MODULE */
+        .warga-tabs-container {
+            background: #ffffff;
+            border-radius: 16px;
+            padding: 6px;
+            border: 1px solid #e2e8e4;
+            margin-bottom: 18px;
+            display: flex;
+            gap: 6px;
+            overflow-x: auto;
+        }
+
+        .warga-tab-btn {
+            flex: 1;
+            padding: 10px 16px;
+            border-radius: 12px;
+            border: none;
+            background: transparent;
+            font-size: 14px;
+            font-weight: 700;
+            color: var(--text-muted);
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+            white-space: nowrap;
+            transition: all 0.2s ease;
+        }
+
+        .warga-tab-btn:hover {
+            background: var(--soft-green);
+            color: var(--primary-green);
+        }
+
+        .warga-tab-btn.active {
+            background: var(--primary-green);
+            color: #ffffff !important;
+            box-shadow: 0 4px 12px rgba(27, 122, 62, 0.16);
+        }
+
+        /* MAIN SECTION CONTENT CARD */
+        .content-card-box {
+            background: #ffffff;
+            border: 1px solid #e2e8e4;
+            border-radius: 20px;
+            padding: 24px 28px;
+            box-shadow: 0 2px 12px rgba(0, 0, 0, 0.02);
+            margin-bottom: 32px;
+        }
+
+        .content-card-header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            margin-bottom: 16px;
+            flex-wrap: wrap;
+            gap: 14px;
+        }
+
+        .content-card-title {
+            font-size: 1.2rem;
+            font-weight: 700;
+            color: #111418;
+            margin: 0;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        /* FORM CONTROLS (≥ 16px FOR ACCESSIBILITY & iOS NO AUTO-ZOOM) */
+        .form-control,
+        .form-control-lg-custom,
+        select,
+        input,
+        textarea {
+            font-size: 16px !important;
+            padding: 10px 16px;
+            border-radius: 12px;
+            border: 1px solid #cbd5e1;
+            outline: none;
+            font-family: inherit;
+            font-weight: 500;
+            transition: all 0.2s;
+            box-sizing: border-box;
+        }
+
+        .form-control-lg-custom.has-icon {
+            padding-left: 42px;
+        }
+
+        .form-control-lg-custom:focus,
+        .form-control:focus {
+            border-color: var(--primary-green);
+            box-shadow: 0 0 0 3px rgba(27, 122, 62, 0.12);
+        }
+
+        /* ACCESSIBLE TABLES */
+        .table-accessible {
+            width: 100%;
+            border-collapse: separate;
+            border-spacing: 0 8px;
+        }
+
+        .table-accessible thead th {
+            background: #f1f5f2;
+            color: #334155;
+            font-size: 13px;
+            font-weight: 800;
+            padding: 12px 16px;
+            border: none;
+            text-align: left;
+        }
+
+        .table-accessible thead th:first-child {
+            border-radius: 10px 0 0 10px;
+        }
+
+        .table-accessible thead th:last-child {
+            border-radius: 0 10px 10px 0;
+        }
+
+        .table-accessible tbody tr {
+            background: #ffffff;
+            box-shadow: 0 1px 4px rgba(0, 0, 0, 0.015);
+            border: 1px solid #e2e8e4;
+            border-radius: 12px;
+            transition: all 0.2s;
+        }
+
+        .table-accessible tbody tr:hover {
+            background: #fbfdfc;
+            border-color: var(--border-green);
+        }
+
+        .table-accessible td {
+            padding: 14px 18px;
+            font-size: 14.5px;
+            font-weight: 600;
+            color: #111418;
+            vertical-align: middle;
+            border-top: 1px solid #f0f4f1;
+            border-bottom: 1px solid #f0f4f1;
+        }
+
+        .table-accessible td:first-child {
+            border-left: 1px solid #f0f4f1;
+            border-radius: 12px 0 0 12px;
+        }
+
+        .table-accessible td:last-child {
+            border-right: 1px solid #f0f4f1;
+            border-radius: 0 10px 10px 0;
+        }
+
+        .status-pill {
+            padding: 4px 12px;
+            border-radius: 20px;
+            font-size: 12px;
+            font-weight: 700;
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+        }
+
+        .status-pill-success {
+            background: #dcfce7;
+            color: #15803d;
+        }
+
+        .status-pill-info {
+            background: #e0f2fe;
+            color: #0369a1;
+        }
+
+        .status-pill-warning {
+            background: #fef3c7;
+            color: #b45309;
+        }
+
+        .status-pill-purple {
+            background: #f3e8ff;
+            color: #6b21a8;
+        }
+
+        /* SEARCH FILTER BOX & ICON WRAPPER */
+        .search-filter-box {
+            display: flex;
+            gap: 12px;
+            align-items: center;
+            flex-wrap: wrap;
+        }
+
+        .search-input-wrapper {
+            position: relative;
+            display: flex;
+            align-items: center;
+        }
+
+        .search-input-wrapper i {
+            position: absolute;
+            left: 14px;
+            font-size: 18px;
+            color: var(--text-muted);
+        }
+
+        /* WARGA AVATAR CELL */
+        .warga-avatar-cell {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .warga-avatar-img {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 2px solid var(--border-green);
+        }
+
+        .warga-title {
+            font-size: 14.5px;
+            font-weight: 700;
+            color: #111418;
+            margin: 0;
+            line-height: 1.25;
+        }
+
+        .warga-sub {
+            font-size: 12.5px;
+            color: var(--text-muted);
+            font-weight: 500;
+        }
+
+        /* RT REKAP GRID CARDS */
+        .rt-grid {
+            display: grid;
+            grid-template-columns: repeat(5, 1fr);
+            gap: 14px;
+        }
+
+        .rt-card {
+            border: 1px solid #e2e8e4;
+            border-radius: 16px;
+            padding: 16px;
+            background: #fafdfb;
+            text-align: center;
+            transition: all 0.2s;
+        }
+
+        .rt-card:hover {
+            border-color: var(--primary-green);
+            transform: translateY(-2px);
+            box-shadow: 0 6px 16px rgba(0, 0, 0, 0.03);
+        }
+
+        .rt-card h4 {
+            font-size: 1.1rem;
+            font-weight: 800;
+            color: var(--primary-green);
+            margin: 0 0 4px;
+        }
+
+        .rt-card-num {
+            font-size: 1.5rem;
+            font-weight: 800;
+            color: #111418;
+        }
+
+        /* EMPTY STATE BOX */
+        .empty-state-box {
+            text-align: center;
+            padding: 36px 16px;
+            display: none;
+        }
+
+        .empty-state-icon {
+            font-size: 44px;
+            color: #94a3b8;
+            margin-bottom: 6px;
+        }
+
+        /* MODAL OVERFLOW & CUT-OFF FIXES */
+        .modal-dialog {
+            max-width: 500px;
+            margin: 1.75rem auto;
+        }
+
+        .modal-content {
+            border-radius: 20px;
+            border: none;
+            padding: 6px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.12);
+        }
+
+        .modal-header {
+            padding: 16px 20px 8px;
+            border-bottom: none;
+            display: flex;
+            align-items: flex-start;
+            justify-content: space-between;
+        }
+
+        .modal-title {
+            font-size: 1.1rem;
+            font-weight: 800;
+            color: #111418;
+            line-height: 1.3;
+            word-break: break-word;
+            white-space: normal;
+        }
+
+        .modal-body {
+            padding: 8px 20px 20px;
+        }
+
+        .modal-body label {
+            font-size: 13.5px;
+            font-weight: 700;
+            color: #334155;
+            margin-bottom: 5px;
+            display: block;
+        }
+
+        /* RESPONSIVE BREAKPOINTS (PC, TABLET, MOBILE) */
+        @media (max-width: 1024px) {
+            .summary-grid {
+                grid-template-columns: repeat(2, 1fr);
+                gap: 14px;
+            }
+
+            .rt-grid {
+                grid-template-columns: repeat(3, 1fr);
+                gap: 12px;
+            }
+
+            .dashboard-canvas {
+                padding: 20px 16px 36px;
+            }
+
+            .dash-topbar-wrapper {
+                padding: 0 16px;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .summary-grid {
+                grid-template-columns: 1fr;
+                gap: 12px;
+            }
+
+            .rt-grid {
+                grid-template-columns: repeat(2, 1fr);
+                gap: 10px;
+            }
+
+            .dashboard-canvas {
+                padding: 16px 12px 32px;
+            }
+
+            .dash-topbar-wrapper {
+                padding: 0 12px;
+                top: 10px;
+            }
+
+            .dash-topbar {
+                flex-wrap: wrap;
+                padding: 10px 14px;
+            }
+
+            .center-pill-nav {
+                order: 3;
+                width: 100%;
+                overflow-x: auto;
+                justify-content: flex-start;
+                margin-top: 4px;
+            }
+
+            .dash-heading-row {
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 12px;
+                margin-bottom: 24px;
+            }
+
+            .dash-heading-row .d-flex {
+                width: 100%;
+                flex-direction: column;
+            }
+
+            .btn-large-action,
+            .btn-secondary-action {
+                width: 100%;
+                justify-content: center;
+            }
+
+            .warga-tabs-container {
+                flex-direction: column;
+                gap: 4px;
+            }
+
+            .content-card-box {
+                padding: 18px 14px;
+                border-radius: 16px;
+                margin-bottom: 32px;
+            }
+
+            .search-filter-box,
+            .search-input-wrapper {
+                width: 100%;
+            }
+
+            .search-filter-box .form-control-lg-custom {
+                width: 100%;
+            }
+
+            /* Mobile Stacked Responsive Table */
+            .table-accessible,
+            .table-accessible thead,
+            .table-accessible tbody,
+            .table-accessible th,
+            .table-accessible td,
+            .table-accessible tr {
+                display: block;
+            }
+
+            .table-accessible thead {
+                display: none;
+            }
+
+            .table-accessible tbody tr {
+                margin-bottom: 12px;
+                padding: 12px;
+                border-radius: 14px;
+            }
+
+            .table-accessible td {
+                padding: 6px 0;
+                border: none !important;
+                display: flex;
+                justify-content: space-between;
+                align-items: center;
+                font-size: 13.5px;
+            }
+
+            .table-accessible td:first-child,
+            .table-accessible td:last-child {
+                border-radius: 0;
+            }
+
+            .modal-dialog {
+                margin: 12px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- TOP NAVIGATION BAR -->
+    <div class="dash-topbar-wrapper">
+        <header class="dash-topbar">
+            <a href="dashboard.html" class="dash-brand-wrap">
+                <div class="brand-logo-icon">
+                    <i class="uil uil-layer-group"></i>
+                </div>
+                <div class="brand-text">
+                    <h4>SiSatu</h4>
+                    <p>Sistem Informasi RW 01</p>
+                </div>
+            </a>
+
+            <nav class="center-pill-nav">
+                <a href="dashboard.html">Dashboard</a>
+                <a href="keuangan.html">Keuangan</a>
+                <a href="data-warga.html" class="active">Warga</a>
+                <a href="bansos.html">Bansos</a>
+                <a href="umkm.html">UMKM</a>
+                <a href="berita.html">Berita</a>
+            </nav>
+
+            <div class="topbar-utilities">
+                <a href="#" class="util-icon-btn" title="Notifikasi Warga">
+                    <i class="uil uil-bell"></i>
+                </a>
+                <a href="#" class="util-icon-btn" title="Pengaturan Sistem">
+                    <i class="uil uil-cog"></i>
+                </a>
+
+                <div class="profile-avatar-btn">
+                    <img src="assets/images/users/wildan-pas-foto.png" alt="Mochamad Wildani Azizi"
+                        class="user-topbar-avatar">
+                    <div class="d-none d-md-block text-left">
+                        <div class="user-info-name">Mochamad Wildani Azizi</div>
+                        <div class="user-info-role">Ketua RW 01</div>
+                    </div>
+                </div>
+            </div>
+        </header>
+    </div>
+
+    <!-- MAIN CONTENT CANVAS -->
+    <div class="dashboard-canvas">
+
+        <!-- HEADER SECTION -->
+        <div class="dash-heading-row">
+            <div class="heading-text">
+                <h1>Data Warga & Kependudukan RW 01</h1>
+                <p class="text-secondary-desc mt-1">Pengelolaan data warga lengkap, Kartu Keluarga (KK), domisili warga
+                    tetap maupun kontrak, dan laporan mutasi.</p>
+            </div>
+
+            <div class="d-flex gap-2">
+                <button class="btn-secondary-action" style="margin-right: 12px;"
+                    onclick="alert('Export Data Warga ke File Excel (.xlsx)');">
+                    <i class="uil uil-file-download font-size-18"></i> Cetak / Export Excel
+                </button>
+                <button class="btn-large-action" data-toggle="modal" data-target="#modalTambahWarga">
+                    <i class="uil uil-user-plus font-size-18"></i> Tambah Warga Baru
+                </button>
+            </div>
+        </div>
+
+        <!-- BENTO SUMMARY CARDS MODULE -->
+        <div class="summary-grid">
+            <div class="summary-card">
+                <div class="summary-card-title">
+                    <span>TOTAL WARGA RW 01</span>
+                    <i class="uil uil-users-alt font-size-20 text-green"></i>
+                </div>
+                <div class="summary-card-value text-green">1.240 <span
+                        style="font-size: 1rem; font-weight: 600;">Jiwa</span></div>
+                <div class="text-caption text-green">
+                    <i class="uil uil-check-circle"></i> Terdaftar Resmi di RW 01
+                </div>
+            </div>
+
+            <div class="summary-card">
+                <div class="summary-card-title">
+                    <span>TOTAL KEPALA KELUARGA</span>
+                    <i class="uil uil-home font-size-20 text-blue"></i>
+                </div>
+                <div class="summary-card-value text-blue">348 <span style="font-size: 1rem; font-weight: 600;">KK</span>
+                </div>
+                <div class="text-caption">
+                    Terbagi dalam RT 01 – RT 10
+                </div>
+            </div>
+
+            <div class="summary-card">
+                <div class="summary-card-title">
+                    <span>STATUS DOMISILI</span>
+                    <i class="uil uil-estate font-size-20 text-purple"></i>
+                </div>
+                <div class="summary-card-value" style="font-size: 1.4rem;">295 <span
+                        style="font-size: 0.95rem; color: #64748b;">Tetap</span> / 53 <span
+                        style="font-size: 0.95rem; color: #64748b;">Kontrak</span></div>
+                <div class="text-caption text-purple">
+                    <i class="uil uil-check-circle"></i> Update Bulan Ini
+                </div>
+            </div>
+
+            <div class="summary-card">
+                <div class="summary-card-title">
+                    <span>WARGA LANSIA & BALITA</span>
+                    <i class="uil uil-heart font-size-20 text-orange"></i>
+                </div>
+                <div class="summary-card-value text-orange">80 <span
+                        style="font-size: 1rem; font-weight: 600;">Jiwa</span></div>
+                <div class="text-caption text-orange">
+                    42 Lansia &bull; 38 Balita
+                </div>
+            </div>
+        </div>
+
+        <!-- NAVIGATION TABS MODULE -->
+        <div class="warga-tabs-container">
+            <button class="warga-tab-btn active" data-tab="daftar-warga">
+                <i class="uil uil-user"></i> 1. Seluruh Data Warga
+            </button>
+            <button class="warga-tab-btn" data-tab="kartu-keluarga">
+                <i class="uil uil-home"></i> 2. Kartu Keluarga (KK)
+            </button>
+            <button class="warga-tab-btn" data-tab="mutasi-warga">
+                <i class="uil uil-exchange"></i> 3. Mutasi / Warga Baru
+            </button>
+            <button class="warga-tab-btn" data-tab="rekap-rt">
+                <i class="uil uil-chart-pie"></i> 4. Ringkasan Wilayah RT
+            </button>
+        </div>
+
+        <!-- ACTIVE PANEL: DAFTAR SELURUH WARGA -->
+        <div id="tab-daftar-warga" class="warga-section">
+            <div class="content-card-box" style="margin-bottom: 0;">
+                <div class="content-card-header">
+                    <h3 class="content-card-title">
+                        <i class="uil uil-users-alt text-green"></i> Daftar Induk Kependudukan RW 01
+                    </h3>
+
+                    <div class="search-filter-box">
+                        <div class="search-input-wrapper">
+                            <i class="uil uil-search"></i>
+                            <input type="text" id="searchWargaInput" class="form-control-lg-custom has-icon"
+                                placeholder="Cari NIK / Nama / No. Rumah...">
+                        </div>
+                        <select class="form-control-lg-custom" id="filterRtSelect">
+                            <option value="">Semua Wilayah RT</option>
+                            <option value="RT 01">RT 01</option>
+                            <option value="RT 02">RT 02</option>
+                            <option value="RT 03">RT 03</option>
+                            <option value="RT 04">RT 04</option>
+                            <option value="RT 05">RT 05</option>
+                        </select>
+                        <select class="form-control-lg-custom" id="filterDomisiliSelect">
+                            <option value="">Status Domisili</option>
+                            <option value="Tetap">Warga Tetap</option>
+                            <option value="Kontrak">Warga Kontrak</option>
+                        </select>
+                    </div>
+                </div>
+
+                <div class="table-responsive">
+                    <table class="table-accessible" id="tableWarga">
+                        <thead>
+                            <tr>
+                                <th>WARGA & NIK</th>
+                                <th>WILAYAH RT</th>
+                                <th>GENDER & UMUR</th>
+                                <th>PEKERJAAN</th>
+                                <th>STATUS DOMISILI</th>
+                                <th>AKSI</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>
+                                    <div class="warga-avatar-cell">
+                                        <img src="assets/images/users/avatar-3.jpg" alt="Ahmad Fauzi"
+                                            class="warga-avatar-img">
+                                        <div>
+                                            <div class="warga-title">Ahmad Fauzi</div>
+                                            <div class="warga-sub">NIK: 3507123456780001 &bull; Blok A-12</div>
+                                        </div>
+                                    </div>
+                                </td>
+                                <td><strong>RT 01 / RW 01</strong></td>
+                                <td>Laki-laki (39 Thn)</td>
+                                <td>Wiraswasta</td>
+                                <td><span class="status-pill status-pill-success"><i class="uil uil-check-circle"></i>
+                                        Warga Tetap</span></td>
+                                <td>
+                                    <button class="btn-secondary-action" style="padding: 5px 12px; font-size: 13px;"
+                                        data-toggle="modal" data-target="#modalDetailWarga">
+                                        <i class="uil uil-eye"></i> Detail
+                                    </button>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <div class="warga-avatar-cell">
+                                        <img src="assets/images/users/avatar-1.jpg" alt="Siti Aminah"
+                                            class="warga-avatar-img">
+                                        <div>
+                                            <div class="warga-title">Siti Aminah</div>
+                                            <div class="warga-sub">NIK: 3507123456780002 &bull; Blok C-03</div>
+                                        </div>
+                                    </div>
+                                </td>
+                                <td><strong>RT 03 / RW 01</strong></td>
+                                <td>Perempuan (35 Thn)</td>
+                                <td>Ibu Rumah Tangga</td>
+                                <td><span class="status-pill status-pill-success"><i class="uil uil-check-circle"></i>
+                                        Warga Tetap</span></td>
+                                <td>
+                                    <button class="btn-secondary-action" style="padding: 5px 12px; font-size: 13px;"
+                                        data-toggle="modal" data-target="#modalDetailWarga">
+                                        <i class="uil uil-eye"></i> Detail
+                                    </button>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <div class="warga-avatar-cell">
+                                        <img src="assets/images/users/avatar-2.jpg" alt="Budi Santoso"
+                                            class="warga-avatar-img">
+                                        <div>
+                                            <div class="warga-title">Budi Santoso</div>
+                                            <div class="warga-sub">NIK: 3507123456780003 &bull; Blok A-15</div>
+                                        </div>
+                                    </div>
+                                </td>
+                                <td><strong>RT 01 / RW 01</strong></td>
+                                <td>Laki-laki (32 Thn)</td>
+                                <td>Karyawan Swasta</td>
+                                <td><span class="status-pill status-pill-info"><i class="uil uil-info-circle"></i> Warga
+                                        Kontrak</span></td>
+                                <td>
+                                    <button class="btn-secondary-action" style="padding: 5px 12px; font-size: 13px;"
+                                        data-toggle="modal" data-target="#modalDetailWarga">
+                                        <i class="uil uil-eye"></i> Detail
+                                    </button>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <div class="warga-avatar-cell">
+                                        <img src="assets/images/users/avatar-4.jpg" alt="Dewi Lestari"
+                                            class="warga-avatar-img">
+                                        <div>
+                                            <div class="warga-title">Dewi Lestari</div>
+                                            <div class="warga-sub">NIK: 3507123456780004 &bull; Blok D-08</div>
+                                        </div>
+                                    </div>
+                                </td>
+                                <td><strong>RT 04 / RW 01</strong></td>
+                                <td>Perempuan (29 Thn)</td>
+                                <td>Guru Honorer</td>
+                                <td><span class="status-pill status-pill-success"><i class="uil uil-check-circle"></i>
+                                        Warga Tetap</span></td>
+                                <td>
+                                    <button class="btn-secondary-action" style="padding: 5px 12px; font-size: 13px;"
+                                        data-toggle="modal" data-target="#modalDetailWarga">
+                                        <i class="uil uil-eye"></i> Detail
+                                    </button>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <div class="warga-avatar-cell">
+                                        <img src="assets/images/users/avatar-5.jpg" alt="Hendra Wijaya"
+                                            class="warga-avatar-img">
+                                        <div>
+                                            <div class="warga-title">Hendra Wijaya</div>
+                                            <div class="warga-sub">NIK: 3507123456780005 &bull; Blok B-08</div>
+                                        </div>
+                                    </div>
+                                </td>
+                                <td><strong>RT 02 / RW 01</strong></td>
+                                <td>Laki-laki (44 Thn)</td>
+                                <td>PNS / ASN</td>
+                                <td><span class="status-pill status-pill-success"><i class="uil uil-check-circle"></i>
+                                        Warga Tetap</span></td>
+                                <td>
+                                    <button class="btn-secondary-action" style="padding: 5px 12px; font-size: 13px;"
+                                        data-toggle="modal" data-target="#modalDetailWarga">
+                                        <i class="uil uil-eye"></i> Detail
+                                    </button>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+
+                    <div class="empty-state-box" id="emptyStateWarga">
+                        <i class="uil uil-search-minus empty-state-icon"></i>
+                        <div class="text-secondary-desc font-weight-bold">Data warga tidak ditemukan. Coba kata kunci
+                            lain.</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- ACTIVE PANEL: DATA KARTU KELUARGA (KK) -->
+        <div id="tab-kartu-keluarga" class="warga-section" style="display: none;">
+            <div class="content-card-box" style="margin-bottom: 0;">
+                <div class="content-card-header">
+                    <h3 class="content-card-title">
+                        <i class="uil uil-home text-green"></i> Daftar Kartu Keluarga (KK) RW 01
+                    </h3>
+                    <div class="search-filter-box">
+                        <div class="search-input-wrapper">
+                            <i class="uil uil-search"></i>
+                            <input type="text" class="form-control-lg-custom has-icon"
+                                placeholder="Cari No. KK / Nama Kepala Keluarga...">
+                        </div>
+                    </div>
+                </div>
+
+                <div class="table-responsive">
+                    <table class="table-accessible">
+                        <thead>
+                            <tr>
+                                <th>NO. KARTU KELUARGA (KK)</th>
+                                <th>KEPALA KELUARGA</th>
+                                <th>ALAMAT RUMAH</th>
+                                <th>WILAYAH RT</th>
+                                <th>JUMLAH ANGGOTA</th>
+                                <th>AKSI</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td><strong style="color: #1b7a3e; font-size: 1rem;">3273012800192801</strong></td>
+                                <td><strong>Ahmad Fauzi</strong></td>
+                                <td>Jl. Melati No. 12 (Blok A-12)</td>
+                                <td>RT 01 / RW 01</td>
+                                <td><span class="status-pill status-pill-purple">4 Orang</span></td>
+                                <td>
+                                    <button class="btn-large-action" style="padding: 5px 12px; font-size: 13px;"
+                                        onclick="alert('Melihat Anggota Keluarga KK Ahmad Fauzi');">
+                                        <i class="uil uil-list-ul"></i> Lihat Anggota
+                                    </button>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td><strong style="color: #1b7a3e; font-size: 1rem;">3273011400293810</strong></td>
+                                <td><strong>Budi Santoso</strong></td>
+                                <td>Jl. Melati No. 15 (Blok A-15)</td>
+                                <td>RT 01 / RW 01</td>
+                                <td><span class="status-pill status-pill-purple">3 Orang</span></td>
+                                <td>
+                                    <button class="btn-large-action" style="padding: 5px 12px; font-size: 13px;"
+                                        onclick="alert('Melihat Anggota Keluarga KK Budi Santoso');">
+                                        <i class="uil uil-list-ul"></i> Lihat Anggota
+                                    </button>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td><strong style="color: #1b7a3e; font-size: 1rem;">3273014200839201</strong></td>
+                                <td><strong>Hendra Wijaya</strong></td>
+                                <td>Jl. Mawar No. 08 (Blok B-08)</td>
+                                <td>RT 02 / RW 01</td>
+                                <td><span class="status-pill status-pill-purple">5 Orang</span></td>
+                                <td>
+                                    <button class="btn-large-action" style="padding: 5px 12px; font-size: 13px;"
+                                        onclick="alert('Melihat Anggota Keluarga KK Hendra Wijaya');">
+                                        <i class="uil uil-list-ul"></i> Lihat Anggota
+                                    </button>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+
+        <!-- ACTIVE PANEL: MUTASI & WARGA BARU -->
+        <div id="tab-mutasi-warga" class="warga-section" style="display: none;">
+            <div class="content-card-box" style="margin-bottom: 0;">
+                <div class="content-card-header">
+                    <h3 class="content-card-title">
+                        <i class="uil uil-exchange text-green"></i> Laporan Warga Baru Masuk / Pindah
+                    </h3>
+                    <button class="btn-large-action" style="padding: 6px 14px; font-size: 13px;"
+                        onclick="alert('Formulir Lapor Mutasi Warga Baru / Pindah');">
+                        <i class="uil uil-plus"></i> Catat Mutasi Baru
+                    </button>
+                </div>
+
+                <div class="table-responsive">
+                    <table class="table-accessible">
+                        <thead>
+                            <tr>
+                                <th>TANGGAL LAPOR</th>
+                                <th>NAMA WARGA</th>
+                                <th>JENIS MUTASI</th>
+                                <th>ALAMAT / RT</th>
+                                <th>STATUS VERIFIKASI</th>
+                                <th>AKSI</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>01 Nov 2026</td>
+                                <td><strong>Yusuf Gunawan</strong></td>
+                                <td><span class="status-pill status-pill-success"><i class="uil uil-arrow-down"></i>
+                                        Pindah Masuk</span></td>
+                                <td>Blok C-15 (RT 03)</td>
+                                <td><span class="status-pill status-pill-success">Diverifikasi RT</span></td>
+                                <td>
+                                    <button class="btn-secondary-action" style="padding: 5px 12px; font-size: 13px;"
+                                        onclick="alert('Detail Surat Pengantar Pindah Yusuf Gunawan');">
+                                        <i class="uil uil-file-alt"></i> Surat Pengantar
+                                    </button>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>28 Okt 2026</td>
+                                <td><strong>Rina Astuti</strong></td>
+                                <td><span class="status-pill status-pill-warning"><i class="uil uil-arrow-up"></i>
+                                        Pindah Keluar</span></td>
+                                <td>Blok A-04 (RT 01)</td>
+                                <td><span class="status-pill status-pill-success">Diverifikasi RW</span></td>
+                                <td>
+                                    <button class="btn-secondary-action" style="padding: 5px 12px; font-size: 13px;"
+                                        onclick="alert('Detail Surat Pengantar Pindah Keluar Rina Astuti');">
+                                        <i class="uil uil-file-alt"></i> Surat Pengantar
+                                    </button>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+
+        <!-- ACTIVE PANEL: REKAPITULASI JUMLAH WARGA PER RT -->
+        <div id="tab-rekap-rt" class="warga-section" style="display: none;">
+            <div class="content-card-box" style="margin-bottom: 0;">
+                <div class="content-card-header">
+                    <h3 class="content-card-title">
+                        <i class="uil uil-chart-pie text-green"></i> Rincian Jumlah Warga per Wilayah RT
+                    </h3>
+                </div>
+
+                <div class="rt-grid">
+                    <div class="rt-card">
+                        <h4>RT 01</h4>
+                        <div class="rt-card-num">142</div>
+                        <span class="text-caption font-weight-bold">38 Kepala Keluarga</span>
+                    </div>
+
+                    <div class="rt-card">
+                        <h4>RT 02</h4>
+                        <div class="rt-card-num">128</div>
+                        <span class="text-caption font-weight-bold">35 Kepala Keluarga</span>
+                    </div>
+
+                    <div class="rt-card">
+                        <h4>RT 03</h4>
+                        <div class="rt-card-num">135</div>
+                        <span class="text-caption font-weight-bold">37 Kepala Keluarga</span>
+                    </div>
+
+                    <div class="rt-card">
+                        <h4>RT 04</h4>
+                        <div class="rt-card-num">118</div>
+                        <span class="text-caption font-weight-bold">32 Kepala Keluarga</span>
+                    </div>
+
+                    <div class="rt-card">
+                        <h4>RT 05</h4>
+                        <div class="rt-card-num">125</div>
+                        <span class="text-caption font-weight-bold">34 Kepala Keluarga</span>
+                    </div>
+
+                    <div class="rt-card">
+                        <h4>RT 06</h4>
+                        <div class="rt-card-num">110</div>
+                        <span class="text-caption font-weight-bold">30 Kepala Keluarga</span>
+                    </div>
+
+                    <div class="rt-card">
+                        <h4>RT 07</h4>
+                        <div class="rt-card-num">132</div>
+                        <span class="text-caption font-weight-bold">36 Kepala Keluarga</span>
+                    </div>
+
+                    <div class="rt-card">
+                        <h4>RT 08</h4>
+                        <div class="rt-card-num">120</div>
+                        <span class="text-caption font-weight-bold">33 Kepala Keluarga</span>
+                    </div>
+
+                    <div class="rt-card">
+                        <h4>RT 09</h4>
+                        <div class="rt-card-num">115</div>
+                        <span class="text-caption font-weight-bold">31 Kepala Keluarga</span>
+                    </div>
+
+                    <div class="rt-card">
+                        <h4>RT 10</h4>
+                        <div class="rt-card-num">115</div>
+                        <span class="text-caption font-weight-bold">32 Kepala Keluarga</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+    <!-- MODAL 1: TAMBAH DATA WARGA BARU -->
+    <div class="modal fade" id="modalTambahWarga" tabindex="-1" role="dialog" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h4 class="modal-title d-flex align-items-center">
+                        <i class="uil uil-user-plus text-green mr-2" style="font-size: 20px;"></i> Tambah Data Warga
+                        Baru
+                    </h4>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <form id="formTambahWarga">
+                        <div class="form-group mb-3">
+                            <label>Nomor Induk Kependudukan (NIK)</label>
+                            <input type="text" class="form-control w-100" placeholder="Contoh: 3507123456780001">
+                        </div>
+                        <div class="form-group mb-3">
+                            <label>Nama Lengkap Warga</label>
+                            <input type="text" class="form-control w-100" placeholder="Tuliskan nama lengkap...">
+                        </div>
+                        <div class="form-group mb-3">
+                            <label>Wilayah RT Tempat Tinggal</label>
+                            <select class="form-control w-100">
+                                <option>RT 01</option>
+                                <option>RT 02</option>
+                                <option>RT 03</option>
+                                <option>RT 04</option>
+                                <option>RT 05</option>
+                            </select>
+                        </div>
+                        <div class="form-group mb-3">
+                            <label>Status Domisili</label>
+                            <select class="form-control w-100">
+                                <option value="Tetap">Warga Tetap</option>
+                                <option value="Kontrak">Warga Kontrak / Kos</option>
+                            </select>
+                        </div>
+                        <div class="form-group mb-4">
+                            <label>Alamat Blok / Rumah</label>
+                            <input type="text" class="form-control w-100" placeholder="Contoh: Jl. Melati Blok A-12">
+                        </div>
+                        <button type="button" class="btn-large-action w-100 justify-content-center"
+                            onclick="alert('Data Warga Baru Berhasil Disimpan!'); $('#modalTambahWarga').modal('hide');">
+                            Simpan Data Warga
+                        </button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- MODAL 2: DETAIL WARGA -->
+    <div class="modal fade" id="modalDetailWarga" tabindex="-1" role="dialog" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered" role="document">
+            <div class="modal-content p-3">
+                <div class="modal-header">
+                    <h4 class="modal-title font-weight-bold">Detail Profil Warga RW 01</h4>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body text-left">
+                    <div class="d-flex align-items-center gap-3 mb-3">
+                        <img src="assets/images/users/avatar-3.jpg" class="rounded-circle"
+                            style="width: 54px; height: 54px; object-fit: cover;" alt="Ahmad Fauzi">
+                        <div>
+                            <h4 class="font-weight-bold mb-0">Ahmad Fauzi</h4>
+                            <span class="text-caption font-weight-bold text-green">NIK: 3507123456780001</span>
+                        </div>
+                    </div>
+                    <div class="table-responsive">
+                        <table class="table table-borderless font-size-14">
+                            <tr>
+                                <td><strong>Alamat:</strong></td>
+                                <td>Jl. Melati Blok A-12 (RT 01)</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Jenis Kelamin:</strong></td>
+                                <td>Laki-laki (39 Tahun)</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Pekerjaan:</strong></td>
+                                <td>Wiraswasta</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Status Domisili:</strong></td>
+                                <td><span class="status-pill status-pill-success">Warga Tetap</span></td>
+                            </tr>
+                        </table>
+                    </div>
+                    <button type="button" class="btn-secondary-action justify-content-center w-100 mt-2"
+                        data-dismiss="modal">Tutup</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- SCRIPTS HANDLER -->
+    <script src="assets/js/vendor.min.js"></script>
+    <script>
+        $(document).ready(function () {
+            // Tab Switcher
+            $('.warga-tab-btn').on('click', function () {
+                var targetTab = $(this).data('tab');
+                $('.warga-tab-btn').removeClass('active');
+                $(this).addClass('active');
+                $('.warga-section').hide();
+                $('#tab-' + targetTab).fadeIn(150);
+            });
+
+            // Live Search Filter Warga & Empty State
+            $('#searchWargaInput').on('keyup', function () {
+                var value = $(this).val().toLowerCase();
+                var visibleRows = 0;
+
+                $('#tableWarga tbody tr').filter(function () {
+                    var match = $(this).text().toLowerCase().indexOf(value) > -1;
+                    $(this).toggle(match);
+                    if (match) visibleRows++;
+                });
+
+                if (visibleRows === 0) {
+                    $('#emptyStateWarga').show();
+                    $('#tableWarga').hide();
+                } else {
+                    $('#emptyStateWarga').hide();
+                    $('#tableWarga').show();
+                }
+            });
+
+            // Filter RT Dropdown
+            $('#filterRtSelect').on('change', function () {
+                var value = $(this).val().toLowerCase();
+                $('#tableWarga tbody tr').filter(function () {
+                    $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1);
+                });
+            });
+        });
+    </script>
+</body>
+
+</html>

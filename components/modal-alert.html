@@ -1,0 +1,136 @@
+<!-- COMPONENT: GLOBAL ALERT & CONFIRMATION MODAL (components/modal-alert.html) -->
+<div class="modal fade" id="globalAlertModal" tabindex="-1" aria-hidden="true" role="dialog" data-backdrop="static">
+    <div class="modal-dialog modal-dialog-centered" style="max-width: 420px;">
+        <div class="modal-content"
+            style="border-radius: 24px; border: 1px solid #e2e8e4; padding: 6px; box-shadow: 0 20px 50px rgba(0, 0, 0, 0.18);">
+            <div class="modal-body text-center p-4">
+
+                <!-- DYNAMIC ICON CONTAINER -->
+                <div id="alertIconWrapper" class="mb-3"
+                    style="width: 68px; height: 68px; border-radius: 50%; display: flex; align-items: center; justify-content: center; margin: 0 auto; font-size: 32px; transition: all 0.25s ease;">
+                    <i id="alertIcon" class="fa-solid fa-circle-check"></i>
+                </div>
+
+                <!-- DYNAMIC TITLE & MESSAGE -->
+                <h4 id="alertTitle" class="font-weight-bold mb-2" style="color: #111418; font-size: 1.25rem;">Judul
+                    Modal</h4>
+                <p id="alertMessage" class="mb-4" style="font-size: 14px; line-height: 1.55; color: #64748b;">
+                    Pesan keterangan atau pertanyaan konfirmasi akan ditampilkan secara dinamis di sini.
+                </p>
+
+                <!-- DYNAMIC BUTTONS ROW -->
+                <div class="d-flex align-items-center justify-content-center gap-2" style="gap: 10px;"
+                    id="alertButtonsRow">
+                    <!-- Tombol Batal (Muncul Khusus Mode Konfirmasi/Peringatan) -->
+                    <button type="button" class="btn" id="alertCancelBtn" data-dismiss="modal"
+                        style="display: none; flex: 1; background: #ffffff; color: #475569; border: 1px solid #cbd5e1; font-weight: 700; font-size: 14px; padding: 10px 16px; border-radius: 12px; outline: none !important; transition: all 0.2s;">
+                        Batal
+                    </button>
+
+                    <!-- Tombol Utama / Konfirmasi -->
+                    <button type="button" class="btn" id="alertConfirmBtn"
+                        style="flex: 1; background: #1b7a3e; color: #ffffff; font-weight: 700; font-size: 14px; padding: 10px 16px; border-radius: 12px; border: none; outline: none !important; transition: all 0.2s; box-shadow: 0 4px 12px rgba(0,0,0,0.08);">
+                        Mengerti
+                    </button>
+                </div>
+
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- HELPER SCRIPT UNTUK MEMANGGIL MODAL DARI HALAMAN MANAPUN -->
+<script>
+    /**
+     * Fungsi Global Pemanggil Alert & Konfirmasi
+     * @param {Object|String} config - Parameter konfigurasi atau Judul
+     * @param {String} [message] - Pesan penjelasan
+     * @param {String} [type='success'] - Tipe: 'success' | 'danger' | 'warning' | 'info' | 'confirm'
+     * @param {Function} [onConfirm] - Callback saat tombol konfirmasi diklik
+     */
+    function showCustomAlert(config, message, type = 'success', onConfirm = null) {
+        let options = {
+            title: 'Pemberitahuan',
+            message: '',
+            type: 'success', // success, danger, warning, info, confirm
+            confirmText: 'Mengerti',
+            cancelText: 'Batal',
+            onConfirm: null,
+            onCancel: null
+        };
+
+        if (typeof config === 'object') {
+            options = { ...options, ...config };
+        } else {
+            options.title = config || options.title;
+            options.message = message || '';
+            options.type = type || 'success';
+            options.onConfirm = onConfirm;
+        }
+
+        const modalEl = $('#globalAlertModal');
+        const iconWrapper = $('#alertIconWrapper');
+        const icon = $('#alertIcon');
+        const confirmBtn = $('#alertConfirmBtn');
+        const cancelBtn = $('#alertCancelBtn');
+
+        // Reset Tampilan
+        $('#alertTitle').text(options.title);
+        $('#alertMessage').text(options.message);
+        cancelBtn.hide();
+        confirmBtn.off('click'); // Hapus listener sebelumnya
+
+        // Styling Berdasarkan Tipe
+        switch (options.type) {
+            case 'success':
+                iconWrapper.css({ 'background': '#dcfce7', 'color': '#15803d' });
+                icon.attr('class', 'fa-solid fa-circle-check');
+                confirmBtn.css({ 'background': '#1b7a3e', 'color': '#ffffff' }).text(options.confirmText || 'Mengerti');
+                break;
+
+            case 'danger':
+                iconWrapper.css({ 'background': '#fef2f2', 'color': '#dc2626' });
+                icon.attr('class', 'fa-solid fa-circle-xmark');
+                confirmBtn.css({ 'background': '#dc2626', 'color': '#ffffff' }).text(options.confirmText || 'Mengerti');
+                break;
+
+            case 'warning':
+                iconWrapper.css({ 'background': '#fef3c7', 'color': '#b45309' });
+                icon.attr('class', 'fa-solid fa-triangle-exclamation');
+                confirmBtn.css({ 'background': '#d97706', 'color': '#ffffff' }).text(options.confirmText || 'Lanjutkan');
+                cancelBtn.css('display', 'block').text(options.cancelText || 'Batal');
+                break;
+
+            case 'info':
+                iconWrapper.css({ 'background': '#e0f2fe', 'color': '#0369a1' });
+                icon.attr('class', 'fa-solid fa-circle-info');
+                confirmBtn.css({ 'background': '#0284c7', 'color': '#ffffff' }).text(options.confirmText || 'Mengerti');
+                break;
+
+            case 'confirm':
+                iconWrapper.css({ 'background': '#fee2e2', 'color': '#dc2626' });
+                icon.attr('class', 'fa-solid fa-trash-can');
+                confirmBtn.css({ 'background': '#dc2626', 'color': '#ffffff' }).text(options.confirmText || 'Ya, Hapus');
+                cancelBtn.css('display', 'block').text(options.cancelText || 'Batal');
+                break;
+        }
+
+        // Event Handling
+        confirmBtn.on('click', function () {
+            modalEl.modal('hide');
+            if (typeof options.onConfirm === 'function') {
+                options.onConfirm();
+            }
+        });
+
+        if (options.onCancel) {
+            cancelBtn.off('click').on('click', function () {
+                if (typeof options.onCancel === 'function') {
+                    options.onCancel();
+                }
+            });
+        }
+
+        modalEl.modal('show');
+    }
+</script>

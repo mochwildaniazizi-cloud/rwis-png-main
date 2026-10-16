@@ -1,0 +1,661 @@
+<!DOCTYPE html>
+<html lang="id">
+
+<head>
+    <meta charset="utf-8" />
+    <title>SiSatu - Dashboard Sistem Informasi RW 01</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta content="Dashboard Keuangan, Kas, dan Informasi Warga SiSatu RW 01" name="description" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+
+    <!-- Dynamic Favicon -->
+    <link rel="icon" type="image/png" id="dynamicFavicon" href="../assets/images/logo.svg">
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap"
+        rel="stylesheet">
+
+    <!-- STYLESHEET CDN & MASTER CSS -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://unicons.iconscout.com/release/v4.0.8/css/line.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <link rel="stylesheet" href="../assets/css/style.css">
+</head>
+
+<body>
+
+    <!-- 1. CONTAINER LOAD COMPONENT TOPBAR -->
+    <div id="topbar-component-container"></div>
+
+    <!-- Main Content Canvas -->
+    <div class="dashboard-canvas">
+
+        <!-- 2. HEADING & ACTION ROW -->
+        <div class="dash-heading-row">
+            <div class="heading-text">
+                <h1>Dashboard RW 01</h1>
+                <p class="text-secondary-desc mt-1">Ringkasan real-time kas, penerimaan iuran lingkungan RT 01 – RT 10,
+                    serta verifikasi tagihan warga.</p>
+            </div>
+
+            <div class="heading-right-actions">
+                <a href="iuran.html" class="btn-large-action">
+                    <i class="fa-solid fa-plus"></i> Catat Iuran Warga
+                </a>
+            </div>
+        </div>
+
+        <!-- 3. 4 BENTO METRIC STAT CARDS -->
+        <div class="metrics-grid">
+            <!-- Card 1: Tunggakan Iuran -->
+            <div class="metric-card">
+                <div>
+                    <div class="metric-card-header">
+                        <span class="metric-card-label">Tunggakan Iuran</span>
+                        <div class="metric-icon-badge badge-red" title="Perlu Ditindaklanjuti">
+                            <i class="fa-solid fa-circle-exclamation"></i>
+                        </div>
+                    </div>
+                    <div class="metric-card-value">Rp 24.850.000</div>
+                    <div class="metric-card-trend trend-up-red">
+                        <i class="fa-solid fa-arrow-down" style="color: #ef4444;"></i> 14 KK belum setor bulan ini
+                    </div>
+                </div>
+
+                <div class="metric-desk-preview">
+                    <svg class="desk-svg-illustration" viewBox="0 0 280 110" fill="none"
+                        xmlns="http://www.w3.org/2000/svg" style="width:100%; height:100%;">
+                        <rect width="280" height="110" fill="#f5faf7" />
+                        <rect x="0" y="86" width="280" height="24" fill="#e7efe9" />
+                        <line x1="0" y1="86" x2="280" y2="86" stroke="#cde0d2" stroke-width="2" />
+                        <ellipse cx="48" cy="85" rx="14" ry="4" fill="#cbd5e1" opacity="0.6" />
+                        <path d="M40 85 L44 68 L52 68 L56 85 Z" fill="#ffffff" stroke="#94a3b8" stroke-width="1.5" />
+                        <path d="M48 68 Q40 52 32 46 Q44 48 48 66 Z" fill="#28a745" />
+                        <path d="M48 68 Q52 48 62 42 Q54 48 48 66 Z" fill="#1b7a3e" />
+                        <rect x="110" y="52" width="60" height="34" rx="4" fill="#1e293b" />
+                        <rect x="114" y="56" width="52" height="26" rx="2" fill="#334155" />
+                        <rect x="116" y="58" width="48" height="22" rx="1" fill="#1b7a3e" opacity="0.4" />
+                    </svg>
+                </div>
+            </div>
+
+            <!-- Card 2: Target Kas Masuk -->
+            <div class="metric-card">
+                <div>
+                    <div class="metric-card-header">
+                        <span class="metric-card-label">Target Kas Masuk Bulan Ini</span>
+                        <div class="metric-icon-badge badge-green-soft">
+                            <i class="fa-regular fa-calendar-check"></i>
+                        </div>
+                    </div>
+                    <div class="metric-card-value">Rp 142.560.000</div>
+                    <div class="metric-card-trend trend-up-green">
+                        <i class="fa-solid fa-arrow-up"></i> 91.4% capaian target RT
+                    </div>
+                </div>
+
+                <div class="metric-bars-chart">
+                    <div class="bar-col">
+                        <div class="bar-pill" style="height: 48%; background: #cde8d5;"></div>
+                        <span class="bar-label">Jul</span>
+                    </div>
+                    <div class="bar-col">
+                        <div class="bar-pill" style="height: 60%; background: #9fd3ae;"></div>
+                        <span class="bar-label">Agu</span>
+                    </div>
+                    <div class="bar-col">
+                        <div class="bar-pill" style="height: 52%; background: #cde8d5;"></div>
+                        <span class="bar-label">Sep</span>
+                    </div>
+                    <div class="bar-col">
+                        <div class="bar-pill" style="height: 75%; background: #68d391;"></div>
+                        <span class="bar-label">Okt</span>
+                    </div>
+                    <div class="bar-col">
+                        <div class="bar-pill" style="height: 86%; background: var(--primary-green);"></div>
+                        <span class="bar-label">Nov</span>
+                    </div>
+                    <div class="bar-col">
+                        <div class="bar-pill" style="height: 94%; background: var(--primary-green-dark);"></div>
+                        <span class="bar-label">Des</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Card 3: Rata-rata Waktu Bayar -->
+            <div class="metric-card">
+                <div>
+                    <div class="metric-card-header">
+                        <span class="metric-card-label">Rata-rata Waktu Bayar</span>
+                        <div class="metric-icon-badge badge-cyan-soft">
+                            <i class="fa-regular fa-clock"></i>
+                        </div>
+                    </div>
+                    <div class="metric-card-value">16 <span style="font-size: 1.1rem; font-weight: 600;">Hari</span>
+                    </div>
+                    <div class="metric-card-trend trend-down-green">
+                        <i class="fa-solid fa-arrow-down"></i> 2 hari lebih cepat dari tempo
+                    </div>
+                </div>
+
+                <div class="metric-sparkline-wrap">
+                    <svg viewBox="0 0 240 80" fill="none" style="width: 100%; height: 75px;">
+                        <path d="M10 70 Q 50 65, 80 48 T 140 38 T 190 22 T 230 14" stroke="#1b7a3e" stroke-width="2.5"
+                            stroke-linecap="round" fill="none" />
+                        <circle cx="80" cy="48" r="3.5" fill="#ffffff" stroke="#1b7a3e" stroke-width="2" />
+                        <circle cx="140" cy="38" r="3.5" fill="#ffffff" stroke="#1b7a3e" stroke-width="2" />
+                        <circle cx="230" cy="14" r="3.5" fill="#28a745" stroke="#ffffff" stroke-width="2" />
+                    </svg>
+                </div>
+            </div>
+
+            <!-- Card 4: Saldo Kas RW -->
+            <div class="metric-card">
+                <div>
+                    <div class="metric-card-header">
+                        <span class="metric-card-label">Saldo Kas RW Tersedia</span>
+                        <div class="d-flex align-items-center gap-1">
+                            <div class="metric-icon-badge badge-green-soft"><i class="fa-solid fa-wallet"></i></div>
+                            <a href="iuran.html" class="metric-icon-badge text-muted" title="Kas & Iuran"><i
+                                    class="fa-solid fa-arrow-up-right-from-square"></i></a>
+                        </div>
+                    </div>
+                    <div class="d-flex align-items-baseline gap-2">
+                        <div class="metric-card-value">Rp 186.540.000</div>
+                        <span class="badge badge-light text-muted font-weight-bold px-2 py-1"
+                            style="font-size: 10.5px; border-radius: 6px;">Terverifikasi</span>
+                    </div>
+                </div>
+
+                <div class="mini-accounts-row">
+                    <div class="mini-account-card">
+                        <span class="acc-num">&bull;&bull;&bull;&bull; 4242</span>
+                        <span>BCA</span>
+                    </div>
+                    <div class="mini-account-card active">
+                        <span class="acc-num">&bull;&bull;&bull;&bull; 6789</span>
+                        <span>QRIS</span>
+                    </div>
+                    <div class="mini-account-card">
+                        <span class="acc-num">&bull;&bull;&bull;&bull; 1001</span>
+                        <span>Tunai</span>
+                    </div>
+                    <a href="javascript:void(0);"
+                        onclick="showCustomAlert('Penyaluran Kas', 'Formulir penyaluran kas RW siap diproses.', 'info');"
+                        class="btn-payout-now">Salurkan</a>
+                </div>
+            </div>
+        </div>
+
+        <!-- 4. ACTIVE FILTERS TOOLBAR -->
+        <div class="filters-toolbar">
+            <div class="filters-left-group">
+                <div class="filter-badge-active">
+                    Filter Aktif <span class="badge-count-circle">2</span>
+                </div>
+
+                <div class="filter-pill-select"
+                    onclick="showCustomAlert('Wilayah RT', 'Menampilkan seluruh RT 01 s.d RT 10.', 'info');">
+                    Semua Wilayah RT <i class="fa-solid fa-chevron-down"></i>
+                </div>
+
+                <div class="filter-pill-select"
+                    onclick="showCustomAlert('Status Filter', 'Menampilkan tagihan belum lunas.', 'info');">
+                    Status: Belum Lunas <i class="fa-solid fa-chevron-down"></i>
+                </div>
+
+                <div class="filter-pill-select">
+                    Periode: Bulan Ini <i class="fa-regular fa-calendar text-muted"></i>
+                </div>
+            </div>
+
+            <div class="search-pill-wrap">
+                <input type="text" id="invoiceSearchInput" class="search-pill-input"
+                    placeholder="Cari tagihan / KK / warga...">
+                <i class="fa-solid fa-magnifying-glass search-icon-pos"></i>
+            </div>
+        </div>
+
+        <!-- 5. BOTTOM MASTER-DETAIL WHITE CARD SECTION -->
+        <section class="bottom-white-section">
+            <div class="bottom-card-header">
+                <h5 class="section-card-title">Daftar Tagihan Iuran Warga</h5>
+
+                <div class="light-tabs-group" id="invoiceStatusTabs">
+                    <a class="light-tab-item active" data-filter="all">Semua Tagihan</a>
+                    <a class="light-tab-item" data-filter="verifikasi">Verifikasi <span
+                            class="light-tab-badge">2</span></a>
+                    <a class="light-tab-item" data-filter="unpaid">Belum Lunas <span
+                            class="light-tab-badge">3</span></a>
+                </div>
+
+                <div class="light-header-actions">
+                    <button class="light-action-btn" title="Tampilan Tabel"
+                        onclick="showCustomAlert('Tampilan', 'Mode tampilan daftar aktif.', 'info');">
+                        <i class="fa-solid fa-list-ul"></i>
+                    </button>
+                    <button class="light-action-btn" title="Opsi Ekspor Laporan"
+                        onclick="showCustomAlert('Ekspor', 'Laporan keuangan tagihan berhasil disiapkan.', 'success');">
+                        <i class="fa-solid fa-ellipsis-vertical"></i>
+                    </button>
+                </div>
+            </div>
+
+            <div class="bottom-split-grid">
+                <!-- Left Invoices List -->
+                <div class="invoices-list-column" id="invoicesListContainer">
+
+                    <div class="invoice-list-item" data-id="TAG-1001" data-amount="Rp 680.000" data-status="Belum Lunas"
+                        data-days="Tempo 2 hari" data-company="RT 01 / RW 01" data-client="Siti Aminah"
+                        data-role="Kepala Keluarga - No. KK: 32730109" data-sub1="Rp 250.000"
+                        data-label1="Iuran Ronda & Keamanan" data-sub2="Rp 280.000"
+                        data-label2="Kebersihan & Sampah Lingkungan" data-sub3="Rp 150.000"
+                        data-label3="Kas Sosial & Kematian">
+                        <div class="item-person-info">
+                            <img src="../assets/images/users/avatar-1.jpg" alt="Siti Aminah" class="item-avatar-img"
+                                onerror="this.src='https://ui-avatars.com/api/?name=Siti+Aminah&background=1b7a3e&color=fff'">
+                            <div class="item-text">
+                                <h6># TAG-1001</h6>
+                                <span>Tempo 2 hari &bull; Siti Aminah</span>
+                            </div>
+                        </div>
+                        <span class="item-status-pill">Belum Lunas</span>
+                        <div class="item-amount-val">Rp 680.000</div>
+                    </div>
+
+                    <div class="invoice-list-item" data-id="TAG-1002" data-amount="Rp 450.000" data-status="Verifikasi"
+                        data-days="Tempo 4 hari" data-company="RT 02 / RW 01" data-client="Budi Santoso"
+                        data-role="Kepala Keluarga - No. KK: 32730114" data-sub1="Rp 200.000"
+                        data-label1="Iuran Keamanan Warga" data-sub2="Rp 150.000"
+                        data-label2="Retribusi Kebersihan & TPS" data-sub3="Rp 100.000"
+                        data-label3="Kas Lingkungan RT 02">
+                        <div class="item-person-info">
+                            <img src="../assets/images/users/avatar-2.jpg" alt="Budi Santoso" class="item-avatar-img"
+                                onerror="this.src='https://ui-avatars.com/api/?name=Budi+Santoso&background=1b7a3e&color=fff'">
+                            <div class="item-text">
+                                <h6># TAG-1002</h6>
+                                <span>Tempo 4 hari &bull; Budi Santoso</span>
+                            </div>
+                        </div>
+                        <span class="item-status-pill" style="background: #fef3c7; color: #b45309;">Verifikasi</span>
+                        <div class="item-amount-val">Rp 450.000</div>
+                    </div>
+
+                    <div class="invoice-list-item active" data-id="TAG-1003" data-amount="Rp 780.000"
+                        data-status="Belum Lunas" data-days="Tempo 5 hari" data-company="RT 03 / RW 01"
+                        data-client="Ahmad Fauzi" data-role="Kepala Keluarga - No. KK: 32730128" data-sub1="Rp 250.000"
+                        data-label1="Iuran Ronda & Pos Kamling" data-sub2="Rp 300.000"
+                        data-label2="Kebersihan & Taman RT" data-sub3="Rp 230.000"
+                        data-label3="Kas Sosial RW & Posyandu">
+                        <div class="item-person-info">
+                            <img src="../assets/images/users/avatar-3.jpg" alt="Ahmad Fauzi" class="item-avatar-img"
+                                onerror="this.src='https://ui-avatars.com/api/?name=Ahmad+Fauzi&background=1b7a3e&color=fff'">
+                            <div class="item-text">
+                                <h6># TAG-1003</h6>
+                                <span>Tempo 5 hari &bull; Ahmad Fauzi</span>
+                            </div>
+                        </div>
+                        <span class="item-status-pill">Belum Lunas</span>
+                        <div class="item-amount-val">Rp 780.000</div>
+                    </div>
+
+                    <div class="invoice-list-item" data-id="TAG-1004" data-amount="Rp 550.000" data-status="Verifikasi"
+                        data-days="Tempo 16 hari" data-company="RT 04 / RW 01" data-client="Dewi Lestari"
+                        data-role="Kepala Keluarga - No. KK: 32730135" data-sub1="Rp 250.000"
+                        data-label1="Iuran Keamanan Lingkungan" data-sub2="Rp 200.000"
+                        data-label2="Pengangkutan Sampah RT" data-sub3="Rp 100.000"
+                        data-label3="Iuran Kegiatan Warga & PHBN">
+                        <div class="item-person-info">
+                            <img src="../assets/images/users/avatar-4.jpg" alt="Dewi Lestari" class="item-avatar-img"
+                                onerror="this.src='https://ui-avatars.com/api/?name=Dewi+Lestari&background=1b7a3e&color=fff'">
+                            <div class="item-text">
+                                <h6># TAG-1004</h6>
+                                <span>Tempo 16 hari &bull; Dewi Lestari</span>
+                            </div>
+                        </div>
+                        <span class="item-status-pill" style="background: #fef3c7; color: #b45309;">Verifikasi</span>
+                        <div class="item-amount-val">Rp 550.000</div>
+                    </div>
+
+                </div>
+
+                <!-- Right Detail Box White Mode -->
+                <div class="invoice-detail-card" id="invoiceDetailPanel">
+                    <div>
+                        <div class="detail-card-header">
+                            <div>
+                                <div class="detail-meta-label">Rincian Tagihan</div>
+                                <div class="detail-id-row">
+                                    <span class="detail-id-val" id="detailId"># TAG-1003</span>
+                                    <span class="badge-unsent-soft" id="detailStatus">Belum Lunas</span>
+                                </div>
+                            </div>
+
+                            <div>
+                                <div class="detail-meta-label">Wilayah RT</div>
+                                <div class="company-pill-val">
+                                    <span id="detailCompany">RT 03 / RW 01</span>
+                                    <i class="fa-solid fa-house text-green"></i>
+                                </div>
+                            </div>
+
+                            <div>
+                                <div class="detail-meta-label">Warga Pembayar</div>
+                                <div class="customer-pill-val">
+                                    <img src="../assets/images/users/avatar-3.jpg" id="detailCustomerAvatar"
+                                        alt="Avatar Warga" class="customer-avatar-detail"
+                                        onerror="this.src='https://ui-avatars.com/api/?name=Ahmad+Fauzi&background=1b7a3e&color=fff'">
+                                    <div class="customer-name-wrap">
+                                        <h6 id="detailCustomerName">Ahmad Fauzi</h6>
+                                        <span id="detailCustomerRole">Kepala Keluarga - No. KK: 32730128</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="detail-subcards-grid">
+                            <div class="detail-subcard">
+                                <div class="subcard-top">
+                                    <span class="subcard-amount" id="detailSub1">Rp 250.000</span>
+                                    <i class="fa-solid fa-arrow-up-right-from-square subcard-arrow"></i>
+                                </div>
+                                <div class="subcard-label" id="detailLabel1">Iuran Ronda & Pos Kamling</div>
+                            </div>
+
+                            <div class="detail-subcard">
+                                <div class="subcard-top">
+                                    <span class="subcard-amount" id="detailSub2">Rp 300.000</span>
+                                    <i class="fa-solid fa-arrow-up-right-from-square subcard-arrow"></i>
+                                </div>
+                                <div class="subcard-label" id="detailLabel2">Kebersihan & Taman RT</div>
+                            </div>
+
+                            <div class="detail-subcard">
+                                <div class="subcard-top">
+                                    <span class="subcard-amount" id="detailSub3">Rp 230.000</span>
+                                    <i class="fa-solid fa-arrow-up-right-from-square subcard-arrow"></i>
+                                </div>
+                                <div class="subcard-label" id="detailLabel3">Kas Sosial RW & Posyandu</div>
+                            </div>
+
+                            <div class="subcard-add-box" title="Tambah Komponen Iuran Warga"
+                                onclick="showCustomAlert('Komponen', 'Formulir tambah komponen iuran.', 'info');">
+                                <i class="fa-solid fa-plus"></i>
+                                <span>Tambah Komponen</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="detail-summary-bar">
+                        <div class="summary-totals-group">
+                            <div class="summary-stat-box">
+                                <span>Sub Total</span>
+                                <strong id="summarySubTotal">Rp 780.000</strong>
+                            </div>
+                            <div class="summary-stat-box">
+                                <span>Total Tagihan</span>
+                                <strong id="summaryTotal">Rp 780.000</strong>
+                            </div>
+                            <div class="summary-stat-box">
+                                <span>Sisa Tagihan</span>
+                                <strong id="summaryBalanceDue">Rp 780.000</strong>
+                            </div>
+                        </div>
+
+                        <div class="summary-actions-group">
+                            <button class="btn-circle-light" title="Kirim Pengingat WhatsApp"
+                                onclick="showCustomAlert('WhatsApp', 'Mengirim pesan pengingat tagihan ke warga via WhatsApp.', 'success');">
+                                <i class="fa-brands fa-whatsapp text-success"></i>
+                            </button>
+                            <button class="btn-circle-light" title="Jadwalkan Pengingat Tempo"
+                                onclick="showCustomAlert('Jadwal', 'Pengingat tempo berhasil dijadwalkan.', 'success');">
+                                <i class="fa-regular fa-calendar-check"></i>
+                            </button>
+                            <button class="btn-payout-green" title="Konfirmasi & Catat Pembayaran"
+                                onclick="handleConfirmPayment();">
+                                Konfirmasi Lunas
+                            </button>
+                        </div>
+                    </div>
+
+                </div>
+
+            </div>
+        </section>
+
+    </div>
+
+    <!-- 6. CONTAINER LOAD COMPONENT ALERT MODAL -->
+    <div id="modal-alert-component-container"></div>
+
+    <!-- SCRIPTS -->
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.bundle.min.js"></script>
+    <script>
+        // Didefinisikan secara global agar selalu siap dipanggil kapan saja
+        function showCustomAlert(config, message, type = 'success', onConfirm = null) {
+            let options = {
+                title: 'Pemberitahuan',
+                message: '',
+                type: 'success',
+                confirmText: 'Mengerti',
+                cancelText: 'Batal',
+                onConfirm: null,
+                onCancel: null
+            };
+
+            if (typeof config === 'object') {
+                options = { ...options, ...config };
+            } else {
+                options.title = config || options.title;
+                options.message = message || '';
+                options.type = type || 'success';
+                options.onConfirm = onConfirm;
+            }
+
+            const modalEl = $('#globalAlertModal');
+
+            // Fallback jika komponen modal belum termuat sempurna dari fetch
+            if (modalEl.length === 0) {
+                alert(`${options.title}: ${options.message}`);
+                if (typeof options.onConfirm === 'function') options.onConfirm();
+                return;
+            }
+
+            const iconWrapper = $('#alertIconWrapper');
+            const icon = $('#alertIcon');
+            const confirmBtn = $('#alertConfirmBtn');
+            const cancelBtn = $('#alertCancelBtn');
+
+            $('#alertTitle').text(options.title);
+            $('#alertMessage').text(options.message);
+            cancelBtn.hide();
+            confirmBtn.off('click');
+
+            switch (options.type) {
+                case 'success':
+                    iconWrapper.css({ 'background': '#dcfce7', 'color': '#15803d' });
+                    icon.attr('class', 'fa-solid fa-circle-check');
+                    confirmBtn.css({ 'background': '#1b7a3e', 'color': '#ffffff' }).text(options.confirmText || 'Mengerti');
+                    break;
+
+                case 'danger':
+                    iconWrapper.css({ 'background': '#fef2f2', 'color': '#dc2626' });
+                    icon.attr('class', 'fa-solid fa-circle-xmark');
+                    confirmBtn.css({ 'background': '#dc2626', 'color': '#ffffff' }).text(options.confirmText || 'Mengerti');
+                    break;
+
+                case 'warning':
+                    iconWrapper.css({ 'background': '#fef3c7', 'color': '#b45309' });
+                    icon.attr('class', 'fa-solid fa-triangle-exclamation');
+                    confirmBtn.css({ 'background': '#d97706', 'color': '#ffffff' }).text(options.confirmText || 'Lanjutkan');
+                    cancelBtn.css('display', 'block').text(options.cancelText || 'Batal');
+                    break;
+
+                case 'info':
+                    iconWrapper.css({ 'background': '#e0f2fe', 'color': '#0369a1' });
+                    icon.attr('class', 'fa-solid fa-circle-info');
+                    confirmBtn.css({ 'background': '#0284c7', 'color': '#ffffff' }).text(options.confirmText || 'Mengerti');
+                    break;
+
+                case 'confirm':
+                    iconWrapper.css({ 'background': '#fee2e2', 'color': '#dc2626' });
+                    icon.attr('class', 'fa-solid fa-trash-can');
+                    confirmBtn.css({ 'background': '#dc2626', 'color': '#ffffff' }).text(options.confirmText || 'Ya, Hapus');
+                    cancelBtn.css('display', 'block').text(options.cancelText || 'Batal');
+                    break;
+            }
+
+            confirmBtn.on('click', function () {
+                modalEl.modal('hide');
+                if (typeof options.onConfirm === 'function') {
+                    options.onConfirm();
+                }
+            });
+
+            if (options.onCancel) {
+                cancelBtn.off('click').on('click', function () {
+                    if (typeof options.onCancel === 'function') {
+                        options.onCancel();
+                    }
+                });
+            }
+
+            modalEl.modal('show');
+        }
+
+        // FUNGSI PENGATUR STATUS NAVIGASI AKTIF TOPBAR
+        function setActiveNav() {
+            const path = window.location.pathname;
+            const page = path.split("/").pop();
+
+            $('.center-pill-nav a').removeClass('active');
+
+            if (page === 'keuangan.html') {
+                $('#nav-keuangan').addClass('active');
+            } else if (page === 'data-warga.html') {
+                $('#nav-warga').addClass('active');
+            } else if (page === 'bansos.html') {
+                $('#nav-bansos').addClass('active');
+            } else if (page === 'umkm.html') {
+                $('#nav-umkm').addClass('active');
+            } else if (path.includes('berita')) {
+                $('#nav-berita').addClass('active');
+            } else {
+                $('#nav-dashboard').addClass('active');
+            }
+        }
+
+        // FUNGSI MEMUAT KOMPONEN EKSTERNAL
+        function loadComponents() {
+            fetch('../components/topbar.html')
+                .then(response => response.text())
+                .then(data => {
+                    document.getElementById('topbar-component-container').innerHTML = data;
+                    setActiveNav(); // Jalankan indikator aktif tepat setelah topbar terpasang
+                })
+                .catch(err => console.warn('Gagal memuat topbar.html:', err));
+
+            fetch('../components/modal-alert.html')
+                .then(response => response.text())
+                .then(data => {
+                    document.getElementById('modal-alert-component-container').innerHTML = data;
+                })
+                .catch(err => console.warn('Gagal memuat modal-alert.html:', err));
+        }
+
+        function handleConfirmPayment() {
+            const currentTagId = $('#detailId').text();
+            const currentClient = $('#detailCustomerName').text();
+
+            showCustomAlert({
+                title: 'Konfirmasi Pembayaran',
+                message: `Apakah Anda yakin ingin mengonfirmasi lunas tagihan ${currentTagId} atas nama ${currentClient}?`,
+                type: 'warning',
+                confirmText: 'Ya, Konfirmasi Lunas',
+                cancelText: 'Batal',
+                onConfirm: function () {
+                    setTimeout(() => {
+                        showCustomAlert('Berhasil!', `Pembayaran ${currentTagId} berhasil diverifikasi dan dicatat ke Kas RW.`, 'success');
+                        $('#detailStatus').text('Lunas').css({ 'background': '#dcfce7', 'color': '#15803d' });
+                    }, 300);
+                }
+            });
+        }
+
+        $(document).ready(function () {
+            loadComponents();
+
+            $('.invoice-list-item').on('click', function () {
+                $('.invoice-list-item').removeClass('active'); $(this).addClass('active');
+
+                var id = $(this).data('id');
+                var amount = $(this).data('amount');
+                var status = $(this).data('status');
+                var company = $(this).data('company');
+                var client = $(this).data('client');
+                var role = $(this).data('role');
+                var avatar = $(this).find('.item-avatar-img').attr('src');
+                var sub1 = $(this).data('sub1');
+                var label1 = $(this).data('label1');
+                var sub2 = $(this).data('sub2');
+                var label2 = $(this).data('label2');
+                var sub3 = $(this).data('sub3');
+                var label3 = $(this).data('label3');
+
+                $('#detailId').text('# ' + id);
+                $('#detailStatus').text(status);
+
+                if (status === 'Verifikasi') {
+                    $('#detailStatus').css({ 'background': '#fef3c7', 'color': '#b45309' });
+                } else if (status === 'Lunas') {
+                    $('#detailStatus').css({ 'background': '#dcfce7', 'color': '#15803d' });
+                } else {
+                    $('#detailStatus').css({ 'background': '#fee2e2', 'color': '#dc2626' });
+                }
+
+                $('#detailCompany').text(company);
+                $('#detailCustomerName').text(client);
+                $('#detailCustomerRole').text(role);
+                $('#detailCustomerAvatar').attr('src', avatar);
+
+                $('#detailSub1').text(sub1);
+                $('#detailLabel1').text(label1);
+                $('#detailSub2').text(sub2);
+                $('#detailLabel2').text(label2);
+                $('#detailSub3').text(sub3);
+                $('#detailLabel3').text(label3);
+
+                $('#summarySubTotal').text(amount);
+                $('#summaryTotal').text(amount);
+                $('#summaryBalanceDue').text(amount);
+            });
+
+            $('#invoiceStatusTabs a').on('click', function (e) {
+                e.preventDefault();
+                $('#invoiceStatusTabs a').removeClass('active');
+                $(this).addClass('active');
+
+                var filter = $(this).data('filter');
+                if (filter === 'all') {
+                    $('.invoice-list-item').fadeIn(200);
+                } else if (filter === 'verifikasi') {
+                    $('.invoice-list-item').hide(); $('.invoice-list-item[data-status="Verifikasi"]').fadeIn(200);
+                } else if (filter === 'unpaid') {
+                    $('.invoice-list-item').hide(); $('.invoice-list-item[data-status="Belum Lunas"]').fadeIn(200);
+                }
+            });
+
+            $('#invoiceSearchInput').on('keyup', function () {
+                var query = $(this).val().toLowerCase(); $('.invoice-list-item').each(function () {
+                    var text = $(this).text().toLowerCase();
+                    if (text.indexOf(query) > -1) {
+                        $(this).show();
+                    } else {
+                        $(this).hide();
+                    }
+                });
+            });
+        });
+    </script>
+</body>
+
+</html>
