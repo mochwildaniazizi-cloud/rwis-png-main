@@ -56,7 +56,7 @@
                     </div>
                     <div class="metric-card-value">Rp 24.850.000</div>
                     <div class="metric-card-trend trend-up-red">
-                        <i class="fa-solid fa-arrow-down" style="color: #ef4444;"></i> 14 KK belum setor bulan ini
+                        <i class="fa-solid fa-arrow-down text-danger"></i> 14 KK belum setor bulan ini
                     </div>
                 </div>
 
@@ -317,7 +317,7 @@
 
                 </div>
 
-                <!-- Right Detail Box White Mode -->
+                <!-- Right Detail Box -->
                 <div class="invoice-detail-card" id="invoiceDetailPanel">
                     <div>
                         <div class="detail-card-header">
@@ -430,7 +430,6 @@
     <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.bundle.min.js"></script>
     <script>
-        // Didefinisikan secara global agar selalu siap dipanggil kapan saja
         function showCustomAlert(config, message, type = 'success', onConfirm = null) {
             let options = {
                 title: 'Pemberitahuan',
@@ -453,7 +452,6 @@
 
             const modalEl = $('#globalAlertModal');
 
-            // Fallback jika komponen modal belum termuat sempurna dari fetch
             if (modalEl.length === 0) {
                 alert(`${options.title}: ${options.message}`);
                 if (typeof options.onConfirm === 'function') options.onConfirm();
@@ -522,7 +520,6 @@
             modalEl.modal('show');
         }
 
-        // FUNGSI PENGATUR STATUS NAVIGASI AKTIF TOPBAR
         function setActiveNav() {
             const path = window.location.pathname;
             const page = path.split("/").pop();
@@ -544,13 +541,12 @@
             }
         }
 
-        // FUNGSI MEMUAT KOMPONEN EKSTERNAL
         function loadComponents() {
             fetch('../components/topbar.html')
                 .then(response => response.text())
                 .then(data => {
                     document.getElementById('topbar-component-container').innerHTML = data;
-                    setActiveNav(); // Jalankan indikator aktif tepat setelah topbar terpasang
+                    setActiveNav();
                 })
                 .catch(err => console.warn('Gagal memuat topbar.html:', err));
 

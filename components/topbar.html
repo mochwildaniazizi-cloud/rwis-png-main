@@ -1,4 +1,4 @@
-<!-- STYLE KHUSUS FLOATING TOPBAR GLASSMORPHISM -->
+<!-- STYLE KHUSUS FLOATING TOPBAR GLASSMORPHISM & ANIMASI DROPDOWN HALUS -->
 <style>
     .dash-topbar-wrapper {
         position: fixed;
@@ -117,11 +117,28 @@
         font-size: 18px;
         text-decoration: none !important;
         transition: all 0.2s;
+        position: relative;
     }
 
     .util-icon-btn:hover {
         background: #f0f8f3;
         color: #1b7a3e;
+    }
+
+    .util-badge-dot {
+        position: absolute;
+        top: 8px;
+        right: 8px;
+        width: 8px;
+        height: 8px;
+        border-radius: 50%;
+        background: #ef4444;
+        border: 2px solid #ffffff;
+    }
+
+    /* Kustomisasi Dropdown Profile & Animasi Halus */
+    .profile-dropdown-wrap .dropdown-toggle::after {
+        display: none !important;
     }
 
     .profile-avatar-btn {
@@ -134,6 +151,13 @@
         padding: 3px 12px 3px 3px;
         cursor: pointer;
         text-decoration: none !important;
+        transition: all 0.2s ease;
+    }
+
+    .profile-avatar-btn:hover,
+    .profile-dropdown-wrap.show .profile-avatar-btn {
+        border-color: #1b7a3e;
+        box-shadow: 0 4px 12px rgba(27, 122, 62, 0.12);
     }
 
     .user-topbar-avatar {
@@ -154,10 +178,120 @@
         color: #64748b;
     }
 
+    .profile-chevron {
+        font-size: 16px;
+        color: #94a3b8;
+        transition: transform 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+
+    .profile-dropdown-wrap.show .profile-chevron {
+        transform: rotate(180deg);
+        color: #1b7a3e;
+    }
+
+    /* Override Animasi Dropdown Bootstrap agar Smooth */
+    .profile-dropdown-wrap .dropdown-menu {
+        display: block;
+        opacity: 0;
+        visibility: hidden;
+        transform: translateY(10px) scale(0.98);
+        transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+        pointer-events: none;
+    }
+
+    .profile-dropdown-wrap.show .dropdown-menu {
+        opacity: 1;
+        visibility: visible;
+        transform: translateY(0) scale(1);
+        pointer-events: auto;
+    }
+
+    .custom-profile-menu {
+        border-radius: 18px !important;
+        border: 1px solid #e2e8e4 !important;
+        padding: 10px !important;
+        min-width: 240px !important;
+        box-shadow: 0 16px 40px rgba(0, 0, 0, 0.12) !important;
+        margin-top: 10px !important;
+    }
+
+    .profile-menu-header {
+        padding: 8px 12px 12px;
+        border-bottom: 1px solid #f1f5f9;
+        margin-bottom: 6px;
+    }
+
+    .profile-menu-header h6 {
+        margin: 0;
+        font-size: 13.5px;
+        font-weight: 800;
+        color: #111418;
+    }
+
+    .profile-menu-header p {
+        margin: 2px 0 0;
+        font-size: 11px;
+        color: #64748b;
+    }
+
+    .custom-dropdown-item {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        padding: 9px 12px;
+        border-radius: 10px;
+        color: #334155;
+        font-size: 13px;
+        font-weight: 600;
+        text-decoration: none !important;
+        transition: all 0.15s ease;
+    }
+
+    .custom-dropdown-item i {
+        font-size: 16px;
+        color: #64748b;
+        transition: color 0.15s;
+    }
+
+    .custom-dropdown-item:hover {
+        background: #f0f8f3;
+        color: #1b7a3e;
+    }
+
+    .custom-dropdown-item:hover i {
+        color: #1b7a3e;
+    }
+
+    .custom-dropdown-item.danger-item {
+        color: #dc2626;
+    }
+
+    .custom-dropdown-item.danger-item i {
+        color: #dc2626;
+    }
+
+    .custom-dropdown-item.danger-item:hover {
+        background: #fef2f2;
+        color: #b91c1c;
+    }
+
+    .custom-dropdown-divider {
+        height: 1px;
+        background: #f1f5f9;
+        margin: 6px 0;
+    }
+
     @media (max-width: 768px) {
         .dash-topbar-wrapper {
-            padding: 0 12px;
-            top: 10px;
+            position: fixed;
+            top: 16px;
+            left: 0;
+            right: 0;
+            z-index: 1000;
+            width: 100%;
+            max-width: 1320px;
+            margin: 0 auto;
+            padding: 0 24px;
         }
 
         .dash-topbar {
@@ -198,21 +332,61 @@
         </nav>
 
         <div class="topbar-utilities">
-            <a href="#" class="util-icon-btn" title="Notifikasi Keuangan">
+            <a href="javascript:void(0);"
+                onclick="showCustomAlert('Notifikasi', 'Tidak ada notifikasi baru saat ini.', 'info');"
+                class="util-icon-btn" title="Notifikasi Sistem">
                 <i class="uil uil-bell"></i>
-            </a>
-            <a href="#" class="util-icon-btn" title="Pengaturan Sistem">
-                <i class="uil uil-cog"></i>
+                <span class="util-badge-dot"></span>
             </a>
 
-            <div class="profile-avatar-btn">
-                <img src="../assets/images/users/wildan.png" alt="Mochamad Wildani Azizi" class="user-topbar-avatar"
-                    onerror="this.src='../assets/images/users/wildan-pas-foto.png'">
-                <div class="d-none d-md-block text-left">
-                    <div class="user-info-name">Mochamad Wildani Azizi</div>
-                    <div class="user-info-role">Ketua RW 01</div>
+            <!-- DROPDOWN PROFILE -->
+            <div class="dropdown profile-dropdown-wrap">
+                <a href="#" class="profile-avatar-btn dropdown-toggle" id="dropdownProfileMenu" data-toggle="dropdown"
+                    aria-haspopup="true" aria-expanded="false">
+                    <img src="../assets/images/users/wildan.png" alt="Mochamad Wildani Azizi" class="user-topbar-avatar"
+                        onerror="this.src='../assets/images/users/wildan-pas-foto.png'">
+                    <div class="d-none d-md-block text-left">
+                        <div class="user-info-name">Mochamad Wildani Azizi</div>
+                        <div class="user-info-role">Ketua RW 01</div>
+                    </div>
+                    <i class="uil uil-angle-down profile-chevron ml-1"></i>
+                </a>
+
+                <div class="dropdown-menu dropdown-menu-right custom-profile-menu"
+                    aria-labelledby="dropdownProfileMenu">
+                    <div class="profile-menu-header">
+                        <h6>Mochamad Wildani Azizi</h6>
+                        <p>wildani.azizi@sisatu-rw01.id</p>
+                    </div>
+
+                    <a class="custom-dropdown-item" href="javascript:void(0);"
+                        onclick="showCustomAlert('Edit Profil', 'Formulir ubah profil pengurus siap diakses.', 'info');">
+                        <i class="uil uil-user"></i>
+                        <span>Edit Profil Saya</span>
+                    </a>
+
+                    <a class="custom-dropdown-item" href="javascript:void(0);"
+                        onclick="showCustomAlert('Pengaturan', 'Panel pengaturan sistem RW 01.', 'info');">
+                        <i class="uil uil-cog"></i>
+                        <span>Pengaturan Sistem</span>
+                    </a>
+
+                    <a class="custom-dropdown-item" href="javascript:void(0);"
+                        onclick="showCustomAlert('Bantuan & FAQ', 'Pusat bantuan penggunaan SiSatu.', 'info');">
+                        <i class="uil uil-question-circle"></i>
+                        <span>Pusat Bantuan</span>
+                    </a>
+
+                    <div class="custom-dropdown-divider"></div>
+
+                    <!-- TOMBOL LOGOUT -->
+                    <a class="custom-dropdown-item danger-item" href="../signin.html">
+                        <i class="uil uil-sign-out-alt"></i>
+                        <span>Keluar (Logout)</span>
+                    </a>
                 </div>
             </div>
+
         </div>
     </header>
 </div>

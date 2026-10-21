@@ -8,817 +8,21 @@
     <meta content="Sistem Pengelolaan Keuangan, Kas, dan Iuran Warga RW 01" name="description" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
 
-    <link rel="icon" type="image/png" id="dynamicFavicon" href="assets/images/logo.svg">
+    <link rel="icon" type="image/png" id="dynamicFavicon" href="../assets/images/logo.svg">
     <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap"
         rel="stylesheet">
-    <link href="assets/css/icons.min.css" rel="stylesheet" type="text/css" />
-    <link href="assets/css/bootstrap.min.css" rel="stylesheet" type="text/css" />
 
-    <style>
-        :root {
-            --primary-green: #1b7a3e;
-            --primary-green-dark: #12582b;
-            --primary-green-light: #28a745;
-            --soft-green: #f0f8f3;
-            --border-green: #cde3d3;
-            --bg-shell: #f5f7f5;
-            --text-dark: #111418;
-            --text-muted: #64748b;
-        }
-
-        * {
-            box-sizing: border-box;
-        }
-
-        /* TYPOGRAPHY STANDARDS */
-        body {
-            font-family: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, sans-serif;
-            background-color: var(--bg-shell);
-            color: var(--text-dark);
-            margin: 0;
-            padding: 0;
-            min-height: 100vh;
-            font-size: 16px;
-            /* Primary Body Text */
-            line-height: 1.5;
-        }
-
-        h1 {
-            font-size: 1.75rem;
-            font-weight: 800;
-            margin: 0;
-            line-height: 1.2;
-            color: var(--text-dark);
-        }
-
-        h2 {
-            font-size: 1.5rem;
-            font-weight: 800;
-            margin: 0;
-        }
-
-        h3 {
-            font-size: 1.2rem;
-            font-weight: 700;
-            margin: 0;
-        }
-
-        h4 {
-            font-size: 1.1rem;
-            font-weight: 700;
-            margin: 0;
-        }
-
-        .text-secondary-desc {
-            font-size: 14px;
-            color: var(--text-muted);
-        }
-
-        .text-caption {
-            font-size: 13px;
-            color: var(--text-muted);
-        }
-
-        /* LAYOUT & DYNAMIC VERTICAL RHYTHM */
-        .dashboard-canvas {
-            width: 100%;
-            max-width: 1320px;
-            margin: 0 auto;
-            padding: 28px 24px 56px;
-            /* Header top spacing */
-        }
-
-        .dash-topbar-wrapper {
-            position: sticky;
-            top: 16px;
-            z-index: 1000;
-            width: 100%;
-            max-width: 1320px;
-            margin: 16px auto 0;
-            padding: 0 24px;
-        }
-
-        .dash-topbar {
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            gap: 16px;
-            background: rgba(255, 255, 255, 0.96);
-            backdrop-filter: blur(16px);
-            border: 1px solid #e2e8e4;
-            border-radius: 20px;
-            padding: 8px 20px;
-            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.04);
-        }
-
-        .dash-brand-wrap {
-            display: flex;
-            align-items: center;
-            gap: 12px;
-            text-decoration: none !important;
-        }
-
-        .brand-logo-icon {
-            width: 38px;
-            height: 38px;
-            border-radius: 10px;
-            background: linear-gradient(135deg, #1b7a3e 0%, #28a745 100%);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: #ffffff;
-            font-size: 18px;
-            font-weight: 800;
-            padding: 6px;
-            /* Memberikan jarak/margin internal agar gambar logo tidak menempel ke tepi kotak */
-            overflow: hidden;
-            /* Mencegah gambar keluar dari batas radius kotak */
-        }
-
-        /* Gambar Logo di Dalam Kotak */
-        .brand-logo-img {
-            max-width: 100%;
-            max-height: 100%;
-            width: auto;
-            height: auto;
-            object-fit: contain;
-            /* Memastikan rasio/proporsi gambar logo tidak gepeng/terdistorsi */
-        }
-
-        .brand-text h4 {
-            font-size: 1.05rem;
-        }
-
-        .brand-text p {
-            font-size: 11.5px;
-            color: var(--text-muted);
-            margin: 0;
-        }
-
-        .brand-counter-pill {
-            background: #f1f4f2;
-            color: #1b7a3e;
-            font-weight: 700;
-            font-size: 12.5px;
-            padding: 3px 10px;
-            border-radius: 16px;
-            border: 1px solid #d9e6dc;
-        }
-
-        /* Center Navigation Pill */
-        .center-pill-nav {
-            background: #111418;
-            border-radius: 30px;
-            padding: 4px 6px;
-            display: inline-flex;
-            align-items: center;
-            gap: 2px;
-        }
-
-        .center-pill-nav a {
-            color: #94a3b8;
-            font-size: 13.5px;
-            font-weight: 700;
-            text-decoration: none;
-            padding: 7px 15px;
-            border-radius: 20px;
-            transition: all 0.2s ease;
-        }
-
-        .center-pill-nav a:hover {
-            color: #ffffff;
-        }
-
-        .center-pill-nav a.active {
-            background: var(--primary-green) !important;
-            color: #ffffff !important;
-        }
-
-        .topbar-utilities {
-            display: flex;
-            align-items: center;
-            gap: 10px;
-        }
-
-        .util-icon-btn {
-            width: 38px;
-            height: 38px;
-            border-radius: 10px;
-            background: #ffffff;
-            border: 1px solid #e2e8e4;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: #475569;
-            font-size: 18px;
-            text-decoration: none !important;
-            transition: all 0.2s;
-        }
-
-        .util-icon-btn:hover {
-            background: var(--soft-green);
-            color: var(--primary-green);
-        }
-
-        .profile-avatar-btn {
-            display: flex;
-            align-items: center;
-            gap: 10px;
-            background: #ffffff;
-            border: 1px solid #e2e8e4;
-            border-radius: 24px;
-            padding: 3px 12px 3px 3px;
-            cursor: pointer;
-            text-decoration: none !important;
-        }
-
-        .user-topbar-avatar {
-            width: 32px;
-            height: 32px;
-            border-radius: 50%;
-            object-fit: cover;
-        }
-
-        .user-info-name {
-            font-size: 13px;
-            font-weight: 700;
-            color: #111418;
-        }
-
-        .user-info-role {
-            font-size: 11px;
-            color: var(--text-muted);
-        }
-
-        /* HEADER SECTION SPACING */
-        .dash-heading-row {
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            margin-bottom: 32px;
-            /* Distinct break to summary modules */
-            flex-wrap: wrap;
-            gap: 16px;
-        }
-
-        /* BUTTONS & CONTROLS */
-        .btn-large-action {
-            background: var(--primary-green);
-            color: #ffffff !important;
-            font-weight: 700;
-            font-size: 14.5px;
-            padding: 10px 20px;
-            border-radius: 12px;
-            border: none;
-            display: inline-flex;
-            align-items: center;
-            gap: 8px;
-            cursor: pointer;
-            box-shadow: 0 4px 12px rgba(27, 122, 62, 0.18);
-            transition: all 0.2s ease;
-            text-decoration: none !important;
-            white-space: nowrap;
-        }
-
-        .btn-large-action:hover {
-            background: var(--primary-green-dark);
-            transform: translateY(-1px);
-        }
-
-        .btn-secondary-action {
-            background: #ffffff;
-            color: #111418 !important;
-            border: 1px solid #cbd5e1;
-            font-weight: 700;
-            font-size: 14px;
-            padding: 10px 18px;
-            border-radius: 12px;
-            display: inline-flex;
-            align-items: center;
-            gap: 8px;
-            cursor: pointer;
-            text-decoration: none !important;
-            transition: all 0.2s;
-            white-space: nowrap;
-        }
-
-        .btn-secondary-action:hover {
-            background: #f8fafc;
-            border-color: var(--primary-green);
-            color: var(--primary-green) !important;
-        }
-
-        .btn-large-action:active,
-        .btn-secondary-action:active,
-        .keuangan-tab-btn:active {
-            transform: scale(0.98) !important;
-        }
-
-        /* FINANCIAL STATUS MODULE (Bento + Multi-Pocket grouped tightly together) */
-        .summary-grid {
-            display: grid;
-            grid-template-columns: repeat(4, 1fr);
-            gap: 18px;
-            margin-bottom: 16px;
-            /* Tight relation to multi-pocket cash below */
-        }
-
-        .summary-card {
-            background: #ffffff;
-            border: 1px solid #e2e8e4;
-            border-radius: 18px;
-            padding: 20px 22px;
-            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.015);
-            display: flex;
-            flex-direction: column;
-            justify-content: space-between;
-        }
-
-        .summary-card-title {
-            font-size: 12.5px;
-            font-weight: 700;
-            color: var(--text-muted);
-            margin-bottom: 6px;
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            letter-spacing: 0.3px;
-        }
-
-        .summary-card-value {
-            font-size: 1.6rem;
-            font-weight: 800;
-            color: #111418;
-            margin-bottom: 4px;
-            line-height: 1.25;
-        }
-
-        .pocket-grid {
-            display: grid;
-            grid-template-columns: repeat(4, 1fr);
-            gap: 16px;
-            margin-bottom: 40px;
-            /* Major transition space to analytical chart */
-        }
-
-        .pocket-card {
-            background: #ffffff;
-            border: 1px solid #e2e8e4;
-            border-radius: 16px;
-            padding: 16px 18px;
-            transition: all 0.2s ease;
-        }
-
-        .pocket-card:hover {
-            border-color: var(--primary-green);
-            transform: translateY(-2px);
-            box-shadow: 0 6px 16px rgba(0, 0, 0, 0.03);
-        }
-
-        .text-green {
-            color: #1b7a3e;
-        }
-
-        .text-red {
-            color: #dc2626;
-        }
-
-        .text-orange {
-            color: #d97706;
-        }
-
-        .text-purple {
-            color: #7c3aed;
-        }
-
-        .text-blue {
-            color: #0284c7;
-        }
-
-        /* ANALYTICAL CHART SECTION SPACING */
-        .content-card-box {
-            background: #ffffff;
-            border: 1px solid #e2e8e4;
-            border-radius: 20px;
-            padding: 24px 28px;
-            box-shadow: 0 2px 12px rgba(0, 0, 0, 0.02);
-            margin-bottom: 44px;
-            /* Major transition space to interactive tabs */
-        }
-
-        .content-card-header {
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            margin-bottom: 16px;
-            /* Tight relation to chart canvas / table contents */
-            flex-wrap: wrap;
-            gap: 14px;
-        }
-
-        /* NAVIGATION TABS SECTION SPACING */
-        .keuangan-tabs-container {
-            background: #ffffff;
-            border-radius: 16px;
-            padding: 6px;
-            border: 1px solid #e2e8e4;
-            margin-bottom: 18px;
-            /* Tightly linked to active section content card */
-            display: flex;
-            gap: 6px;
-            overflow-x: auto;
-        }
-
-        .keuangan-tab-btn {
-            flex: 1;
-            padding: 10px 16px;
-            border-radius: 12px;
-            border: none;
-            background: transparent;
-            font-size: 14px;
-            font-weight: 700;
-            color: var(--text-muted);
-            cursor: pointer;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            gap: 8px;
-            white-space: nowrap;
-            transition: all 0.2s ease;
-        }
-
-        .keuangan-tab-btn:hover {
-            background: var(--soft-green);
-            color: var(--primary-green);
-        }
-
-        .keuangan-tab-btn.active {
-            background: var(--primary-green);
-            color: #ffffff !important;
-            box-shadow: 0 4px 12px rgba(27, 122, 62, 0.16);
-        }
-
-        /* FORM CONTROLS (≥ 16px ON MOBILE) */
-        .form-control,
-        .form-control-lg-custom,
-        select,
-        input,
-        textarea {
-            font-size: 16px !important;
-            padding: 10px 16px;
-            border-radius: 12px;
-            border: 1px solid #cbd5e1;
-            outline: none;
-            font-family: inherit;
-            font-weight: 500;
-            transition: all 0.2s;
-            box-sizing: border-box;
-        }
-
-        .form-control-lg-custom.has-icon {
-            padding-left: 42px;
-        }
-
-        .form-control-lg-custom:focus,
-        .form-control:focus {
-            border-color: var(--primary-green);
-            box-shadow: 0 0 0 3px rgba(27, 122, 62, 0.12);
-        }
-
-        /* ACCESSIBLE TABLES */
-        .table-accessible {
-            width: 100%;
-            border-collapse: separate;
-            border-spacing: 0 8px;
-        }
-
-        .table-accessible thead th {
-            background: #f1f5f2;
-            color: #334155;
-            font-size: 13px;
-            font-weight: 800;
-            padding: 12px 16px;
-            border: none;
-            text-align: left;
-        }
-
-        .table-accessible thead th:first-child {
-            border-radius: 10px 0 0 10px;
-        }
-
-        .table-accessible thead th:last-child {
-            border-radius: 0 10px 10px 0;
-        }
-
-        .table-accessible tbody tr {
-            background: #ffffff;
-            box-shadow: 0 1px 4px rgba(0, 0, 0, 0.015);
-            border: 1px solid #e2e8e4;
-            border-radius: 12px;
-            transition: all 0.2s;
-        }
-
-        .table-accessible tbody tr:hover {
-            background: #fbfdfc;
-            border-color: var(--border-green);
-        }
-
-        .table-accessible td {
-            padding: 14px 18px;
-            font-size: 14.5px;
-            font-weight: 600;
-            color: #111418;
-            vertical-align: middle;
-            border-top: 1px solid #f0f4f1;
-            border-bottom: 1px solid #f0f4f1;
-        }
-
-        .table-accessible td:first-child {
-            border-left: 1px solid #f0f4f1;
-            border-radius: 12px 0 0 12px;
-        }
-
-        .table-accessible td:last-child {
-            border-right: 1px solid #f0f4f1;
-            border-radius: 0 10px 10px 0;
-        }
-
-        .status-pill {
-            padding: 4px 12px;
-            border-radius: 20px;
-            font-size: 12px;
-            font-weight: 700;
-            display: inline-flex;
-            align-items: center;
-            gap: 6px;
-        }
-
-        .status-pill-success {
-            background: #dcfce7;
-            color: #15803d;
-        }
-
-        .status-pill-warning {
-            background: #fef3c7;
-            color: #b45309;
-        }
-
-        .status-pill-danger {
-            background: #fee2e2;
-            color: #b91c1c;
-        }
-
-        .status-pill-purple {
-            background: #f3e8ff;
-            color: #6b21a8;
-        }
-
-        /* Search Input Wrapper */
-        .search-filter-box {
-            display: flex;
-            gap: 12px;
-            align-items: center;
-            flex-wrap: wrap;
-        }
-
-        .search-input-wrapper {
-            position: relative;
-            display: flex;
-            align-items: center;
-        }
-
-        .search-input-wrapper i {
-            position: absolute;
-            left: 14px;
-            font-size: 18px;
-            color: var(--text-muted);
-        }
-
-        /* Empty State */
-        .empty-state-box {
-            text-align: center;
-            padding: 36px 16px;
-            display: none;
-        }
-
-        .empty-state-icon {
-            font-size: 44px;
-            color: #94a3b8;
-            margin-bottom: 6px;
-        }
-
-        /* MODAL OVERFLOW FIXES */
-        .modal-dialog {
-            max-width: 500px;
-            margin: 1.75rem auto;
-        }
-
-        .modal-content {
-            border-radius: 20px;
-            border: none;
-            padding: 6px;
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.12);
-        }
-
-        .modal-header {
-            padding: 16px 20px 8px;
-            border-bottom: none;
-            display: flex;
-            align-items: flex-start;
-            justify-content: space-between;
-        }
-
-        .modal-title {
-            font-size: 1.1rem;
-            font-weight: 800;
-            color: #111418;
-            line-height: 1.3;
-            word-break: break-word;
-            white-space: normal;
-        }
-
-        .modal-body {
-            padding: 8px 20px 20px;
-        }
-
-        .modal-body label {
-            font-size: 13.5px;
-            font-weight: 700;
-            color: #334155;
-            margin-bottom: 5px;
-            display: block;
-        }
-
-        /* RESPONSIVE BREAKPOINTS (PC, TABLET, MOBILE) */
-        @media (max-width: 1024px) {
-
-            .summary-grid,
-            .pocket-grid {
-                grid-template-columns: repeat(2, 1fr);
-                gap: 14px;
-            }
-
-            .dashboard-canvas {
-                padding: 20px 16px 36px;
-            }
-
-            .dash-topbar-wrapper {
-                padding: 0 16px;
-            }
-        }
-
-        @media (max-width: 768px) {
-
-            .summary-grid,
-            .pocket-grid {
-                grid-template-columns: 1fr;
-                gap: 12px;
-            }
-
-            .dashboard-canvas {
-                padding: 16px 12px 32px;
-            }
-
-            .dash-topbar-wrapper {
-                padding: 0 12px;
-                top: 10px;
-            }
-
-            .dash-topbar {
-                flex-wrap: wrap;
-                padding: 10px 14px;
-            }
-
-            .center-pill-nav {
-                order: 3;
-                width: 100%;
-                overflow-x: auto;
-                justify-content: flex-start;
-                margin-top: 4px;
-            }
-
-            .dash-heading-row {
-                flex-direction: column;
-                align-items: flex-start;
-                gap: 12px;
-                margin-bottom: 24px;
-            }
-
-            .dash-heading-row .d-flex {
-                width: 100%;
-                flex-direction: column;
-            }
-
-            .btn-large-action,
-            .btn-secondary-action {
-                width: 100%;
-                justify-content: center;
-            }
-
-            .keuangan-tabs-container {
-                flex-direction: column;
-                gap: 4px;
-            }
-
-            .content-card-box {
-                padding: 18px 14px;
-                border-radius: 16px;
-                margin-bottom: 32px;
-            }
-
-            .search-filter-box,
-            .search-input-wrapper {
-                width: 100%;
-            }
-
-            .search-filter-box .form-control-lg-custom {
-                width: 100%;
-            }
-
-            .table-accessible,
-            .table-accessible thead,
-            .table-accessible tbody,
-            .table-accessible th,
-            .table-accessible td,
-            .table-accessible tr {
-                display: block;
-            }
-
-            .table-accessible thead {
-                display: none;
-            }
-
-            .table-accessible tbody tr {
-                margin-bottom: 12px;
-                padding: 12px;
-                border-radius: 14px;
-            }
-
-            .table-accessible td {
-                padding: 6px 0;
-                border: none !important;
-                display: flex;
-                justify-content: space-between;
-                align-items: center;
-                font-size: 13.5px;
-            }
-
-            .table-accessible td:first-child,
-            .table-accessible td:last-child {
-                border-radius: 0;
-            }
-
-            .modal-dialog {
-                margin: 12px;
-            }
-        }
-    </style>
+    <!-- STYLESHEET CDN & MASTER CSS -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://unicons.iconscout.com/release/v4.0.8/css/line.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <link rel="stylesheet" href="../assets/css/style.css">
 </head>
 
 <body>
 
-    <!-- TOP NAVIGATION BAR -->
-    <div class="dash-topbar-wrapper">
-        <header class="dash-topbar">
-            <a href="dashboard.html" class="dash-brand-wrap">
-                <div class="brand-logo-icon">
-                    <img src="assets/images/logo.png" alt="Logo SiSatu" class="brand-logo-img">
-                </div>
-                <div class="brand-text">
-                    <h4>SiSatu</h4>
-                    <p>Sistem Informasi RW 01</p>
-                </div>
-
-            </a>
-
-            <nav class="center-pill-nav">
-                <a href="dashboard.html">Dashboard</a>
-                <a href="keuangan.html" class="active">Keuangan</a>
-                <a href="data-warga.html">Warga</a>
-                <a href="bansos.html">Bansos</a>
-                <a href="umkm.html">UMKM</a>
-                <a href="berita.html">Berita</a>
-            </nav>
-
-            <div class="topbar-utilities">
-                <a href="#" class="util-icon-btn" title="Notifikasi Keuangan">
-                    <i class="uil uil-bell"></i>
-                </a>
-                <a href="#" class="util-icon-btn" title="Pengaturan Sistem">
-                    <i class="uil uil-cog"></i>
-                </a>
-
-                <div class="profile-avatar-btn">
-                    <img src="assets/images/users/wildan-pas-foto.png" alt="Mochamad Wildani Azizi"
-                        class="user-topbar-avatar">
-                    <div class="d-none d-md-block text-left">
-                        <div class="user-info-name">Mochamad Wildani Azizi</div>
-                        <div class="user-info-role">Ketua RW 01</div>
-                    </div>
-                </div>
-            </div>
-        </header>
-    </div>
+    <!-- 1. CONTAINER LOAD COMPONENT TOPBAR -->
+    <div id="topbar-component-container"></div>
 
     <!-- MAIN CONTENT CANVAS -->
     <div class="dashboard-canvas">
@@ -827,8 +31,8 @@
         <div class="dash-heading-row">
             <div class="heading-text">
                 <h1>Keuangan & Kas RW 01</h1>
-                <p class="text-secondary-desc mt-1">Transparansi kas multi-pos, pelacakan tunggakan iuran warga, dan
-                    ekspor LPJ resmi.</p>
+                <p class="text-secondary-desc mt-1">Transparansi kas multi-pos, pelacakan tagihan warga, dan ekspor LPJ
+                    resmi.</p>
             </div>
 
             <div class="d-flex gap-2">
@@ -849,9 +53,7 @@
                     <i class="uil uil-wallet font-size-20 text-green"></i>
                 </div>
                 <div class="summary-card-value text-green">Rp 186.540.000</div>
-                <div class="text-caption text-green">
-                    <i class="uil uil-check-circle"></i> Terakumulasi 4 Pos Kas
-                </div>
+                <div class="text-caption text-green"><i class="uil uil-check-circle"></i> Terakumulasi 4 Pos Kas</div>
             </div>
 
             <div class="summary-card">
@@ -860,9 +62,7 @@
                     <i class="uil uil-arrow-circle-down font-size-20 text-green"></i>
                 </div>
                 <div class="summary-card-value">Rp 18.450.000</div>
-                <div class="text-caption text-green">
-                    <i class="uil uil-arrow-up"></i> 82% KK Sudah Bayar
-                </div>
+                <div class="text-caption text-green"><i class="uil uil-arrow-up"></i> 82% KK Sudah Bayar</div>
             </div>
 
             <div class="summary-card">
@@ -871,9 +71,7 @@
                     <i class="uil uil-arrow-circle-up font-size-20 text-red"></i>
                 </div>
                 <div class="summary-card-value text-red">Rp 4.200.000</div>
-                <div class="text-caption">
-                    Sampah, Ronda & Patroli
-                </div>
+                <div class="text-caption">Sampah, Ronda & Patroli</div>
             </div>
 
             <div class="summary-card">
@@ -882,8 +80,7 @@
                     <i class="uil uil-clock font-size-20 text-orange"></i>
                 </div>
                 <div class="summary-card-value text-orange">5 Struk</div>
-                <div class="text-caption text-orange">
-                    <i class="uil uil-exclamation-triangle"></i> Konfirmasi Bendahara
+                <div class="text-caption text-orange"><i class="uil uil-exclamation-triangle"></i> Konfirmasi Bendahara
                 </div>
             </div>
         </div>
@@ -946,7 +143,7 @@
                 <i class="uil uil-book-open"></i> 1. Buku Kas RW
             </button>
             <button class="keuangan-tab-btn" data-tab="tagihan-warga">
-                <i class="uil uil-receipt"></i> 2. Tagihan & Tunggakan Warga
+                <i class="uil uil-receipt"></i> 2. Daftar Tagihan Iuran Warga
             </button>
             <button class="keuangan-tab-btn" data-tab="bukti-bayar">
                 <i class="uil uil-check-square"></i> 3. Konfirmasi Struk (5)
@@ -959,31 +156,17 @@
             </button>
         </div>
 
-        <!-- ACTIVE PANEL: BUKU KAS -->
+        <!-- ACTIVE PANEL 1: BUKU KAS -->
         <div id="tab-buku-kas" class="keuangan-section">
             <div class="content-card-box" style="margin-bottom: 0;">
                 <div class="content-card-header">
                     <h3 class="content-card-title">
                         <i class="uil uil-list-ui-alt text-green"></i> Catatan Transaksi Kas RW 01
                     </h3>
-                    <div class="search-filter-box">
-                        <div class="search-input-wrapper">
-                            <i class="uil uil-search"></i>
-                            <input type="text" id="searchBukuKas" class="form-control-lg-custom has-icon"
-                                placeholder="Cari transaksi kas...">
-                        </div>
-                        <select class="form-control-lg-custom" id="filterPosKas">
-                            <option value="">Semua Pos Kas</option>
-                            <option value="Kebersihan">Pos Kebersihan</option>
-                            <option value="Keamanan">Pos Keamanan</option>
-                            <option value="Pembangunan">Pos Pembangunan</option>
-                            <option value="Sosial">Pos Sosial</option>
-                        </select>
-                    </div>
                 </div>
 
                 <div class="table-responsive">
-                    <table class="table-accessible" id="tableBukuKas">
+                    <table class="table-accessible">
                         <thead>
                             <tr>
                                 <th>TANGGAL</th>
@@ -994,7 +177,7 @@
                                 <th>BENDAHARA / OPERATOR</th>
                             </tr>
                         </thead>
-                        <tbody>
+                        <tbody id="bukuKasTableBody">
                             <tr>
                                 <td>02 Nov 2026</td>
                                 <td>Penerimaan Iuran Kebersihan RT 01 - RT 05</td>
@@ -1013,138 +196,238 @@
                                 <td class="font-weight-bold text-red">- Rp 2.800.000</td>
                                 <td>Ibu Endang (RW)</td>
                             </tr>
-                            <tr>
-                                <td>28 Okt 2026</td>
-                                <td>Sumbangan Pembangunan Pos Ronda RT 03</td>
-                                <td><span class="status-pill status-pill-warning">Pembangunan</span></td>
-                                <td><span class="status-pill status-pill-danger"><i class="uil uil-arrow-up"></i>
-                                        Keluar</span></td>
-                                <td class="font-weight-bold text-red">- Rp 1.400.000</td>
-                                <td>Pak Slamet (RT 03)</td>
-                            </tr>
-                            <tr>
-                                <td>25 Okt 2026</td>
-                                <td>Penerimaan Iuran Keamanan Malam RT 01 - RT 10</td>
-                                <td><span class="status-pill status-pill-purple">Keamanan</span></td>
-                                <td><span class="status-pill status-pill-success"><i class="uil uil-arrow-down"></i>
-                                        Masuk</span></td>
-                                <td class="font-weight-bold text-green">+ Rp 8.200.000</td>
-                                <td>Ibu Endang (RW)</td>
-                            </tr>
                         </tbody>
                     </table>
-
-                    <div class="empty-state-box" id="emptyStateBukuKas">
-                        <i class="uil uil-search-minus empty-state-icon"></i>
-                        <div class="text-secondary-desc mt-1">Transaksi tidak ditemukan. Coba kata kunci
-                            lain.</div>
-                    </div>
                 </div>
             </div>
         </div>
 
-        <!-- ACTIVE PANEL: TAGIHAN WARGA -->
+        <!-- ACTIVE PANEL 2: DAFTAR TAGIHAN IURAN WARGA (EXACT MATCH DASHBOARD STYLE) -->
         <div id="tab-tagihan-warga" class="keuangan-section" style="display: none;">
-            <div class="content-card-box" style="margin-bottom: 0;">
-                <div class="content-card-header">
-                    <h3 class="content-card-title">
-                        <i class="uil uil-users-alt text-green"></i> Status Tagihan & Akumulasi Tunggakan Warga
-                    </h3>
-                    <div class="search-filter-box">
-                        <div class="search-input-wrapper">
-                            <i class="uil uil-search"></i>
-                            <input type="text" class="form-control-lg-custom has-icon"
-                                placeholder="Cari Warga / Blok / RT...">
+            <section class="bottom-white-section">
+                <div class="bottom-card-header">
+                    <h5 class="section-card-title">Daftar Tagihan Iuran Warga</h5>
+
+                    <div class="light-tabs-group" id="invoiceStatusTabs">
+                        <a class="light-tab-item active" data-filter="all">Semua Tagihan</a>
+                        <a class="light-tab-item" data-filter="verifikasi">Verifikasi <span
+                                class="light-tab-badge">2</span></a>
+                        <a class="light-tab-item" data-filter="unpaid">Belum Lunas <span
+                                class="light-tab-badge">3</span></a>
+                    </div>
+
+                    <div class="light-header-actions">
+                        <div class="search-pill-wrap mr-2" style="width: 220px;">
+                            <input type="text" id="invoiceSearchInput" class="search-pill-input"
+                                placeholder="Cari tagihan / KK...">
+                            <i class="fa-solid fa-magnifying-glass search-icon-pos"></i>
                         </div>
-                        <select class="form-control-lg-custom">
-                            <option value="">Semua Status</option>
-                            <option value="Lunas">Lunas</option>
-                            <option value="Tunggakan">Nunggak (&gt; 1 Bulan)</option>
-                        </select>
+                        <button class="light-action-btn" title="Tampilan Tabel"
+                            onclick="showCustomAlert('Tampilan', 'Mode tampilan daftar tagihan aktif.', 'info');">
+                            <i class="fa-solid fa-list-ul"></i>
+                        </button>
                     </div>
                 </div>
 
-                <div class="table-responsive">
-                    <table class="table-accessible">
-                        <thead>
-                            <tr>
-                                <th>NO. RUMAH</th>
-                                <th>KEPALA KELUARGA</th>
-                                <th>WILAYAH RT</th>
-                                <th>TAGIHAN BULANAN</th>
-                                <th>AKUMULASI TUNGGAKAN</th>
-                                <th>STATUS</th>
-                                <th>AKSI</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <tr>
-                                <td>Blok A-12</td>
-                                <td><strong>Ahmad Fauzi</strong></td>
-                                <td>RT 01 / RW 01</td>
-                                <td>Rp 60.000</td>
-                                <td><span class="text-green font-weight-bold">Rp 0 (Lunas)</span></td>
-                                <td><span class="status-pill status-pill-success"><i class="uil uil-check-circle"></i>
-                                        LUNAS</span></td>
-                                <td>
-                                    <button class="btn-secondary-action" style="padding: 5px 12px; font-size: 13px;"
-                                        onclick="window.print();">
-                                        <i class="uil uil-print"></i> Cetak Struk
-                                    </button>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>Blok B-08</td>
-                                <td><strong>Hendra Wijaya</strong></td>
-                                <td>RT 02 / RW 01</td>
-                                <td>Rp 60.000</td>
-                                <td><strong class="text-red">Rp 180.000 (3 Bulan)</strong></td>
-                                <td><span class="status-pill status-pill-danger"><i class="uil uil-times-circle"></i>
-                                        NUNGGAK 3 BLN</span></td>
-                                <td>
-                                    <button class="btn-secondary-action" style="padding: 5px 12px; font-size: 13px;"
-                                        onclick="window.open('https://wa.me/6281234567890?text=Halo%20Pak%20Hendra,%20mengingatkan%20iuran%20RW%2001%20menunggak%203%20bulan.');">
-                                        <i class="uil uil-whatsapp text-green"></i> Tagih WA
-                                    </button>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>Blok C-15</td>
-                                <td><strong>Yusuf Gunawan</strong></td>
-                                <td>RT 03 / RW 01</td>
-                                <td>Rp 60.000</td>
-                                <td><strong class="text-orange">Rp 120.000 (2 Bulan)</strong></td>
-                                <td><span class="status-pill status-pill-warning"><i class="uil uil-clock"></i> NUNGGAK
-                                        2 BLN</span></td>
-                                <td>
-                                    <button class="btn-secondary-action" style="padding: 5px 12px; font-size: 13px;"
-                                        onclick="window.open('https://wa.me/6281234567890?text=Halo%20Pak%20Yusuf,%20mengingatkan%20iuran%20RW%2001%20menunggak%202%20bulan.');">
-                                        <i class="uil uil-whatsapp text-green"></i> Tagih WA
-                                    </button>
-                                </td>
-                            </tr>
-                        </tbody>
-                    </table>
+                <div class="bottom-split-grid">
+                    <!-- Left Invoices List -->
+                    <div class="invoices-list-column" id="invoicesListContainer">
+
+                        <div class="invoice-list-item" data-id="TAG-1001" data-amount="Rp 680.000"
+                            data-status="Belum Lunas" data-days="Tempo 2 hari" data-company="RT 01 / RW 01"
+                            data-client="Siti Aminah" data-role="Kepala Keluarga - No. KK: 32730109"
+                            data-sub1="Rp 250.000" data-label1="Iuran Ronda & Keamanan" data-sub2="Rp 280.000"
+                            data-label2="Kebersihan & Sampah Lingkungan" data-sub3="Rp 150.000"
+                            data-label3="Kas Sosial & Kematian">
+                            <div class="item-person-info">
+                                <img src="../assets/images/users/avatar-1.jpg" alt="Siti Aminah" class="item-avatar-img"
+                                    onerror="this.src='https://ui-avatars.com/api/?name=Siti+Aminah&background=1b7a3e&color=fff'">
+                                <div class="item-text">
+                                    <h6># TAG-1001</h6>
+                                    <span>Tempo 2 hari &bull; Siti Aminah</span>
+                                </div>
+                            </div>
+                            <span class="item-status-pill">Belum Lunas</span>
+                            <div class="item-amount-val">Rp 680.000</div>
+                        </div>
+
+                        <div class="invoice-list-item" data-id="TAG-1002" data-amount="Rp 450.000"
+                            data-status="Verifikasi" data-days="Tempo 4 hari" data-company="RT 02 / RW 01"
+                            data-client="Budi Santoso" data-role="Kepala Keluarga - No. KK: 32730114"
+                            data-sub1="Rp 200.000" data-label1="Iuran Keamanan Warga" data-sub2="Rp 150.000"
+                            data-label2="Retribusi Kebersihan & TPS" data-sub3="Rp 100.000"
+                            data-label3="Kas Lingkungan RT 02">
+                            <div class="item-person-info">
+                                <img src="../assets/images/users/avatar-2.jpg" alt="Budi Santoso"
+                                    class="item-avatar-img"
+                                    onerror="this.src='https://ui-avatars.com/api/?name=Budi+Santoso&background=1b7a3e&color=fff'">
+                                <div class="item-text">
+                                    <h6># TAG-1002</h6>
+                                    <span>Tempo 4 hari &bull; Budi Santoso</span>
+                                </div>
+                            </div>
+                            <span class="item-status-pill"
+                                style="background: #fef3c7; color: #b45309;">Verifikasi</span>
+                            <div class="item-amount-val">Rp 450.000</div>
+                        </div>
+
+                        <div class="invoice-list-item active" data-id="TAG-1003" data-amount="Rp 780.000"
+                            data-status="Belum Lunas" data-days="Tempo 5 hari" data-company="RT 03 / RW 01"
+                            data-client="Ahmad Fauzi" data-role="Kepala Keluarga - No. KK: 32730128"
+                            data-sub1="Rp 250.000" data-label1="Iuran Ronda & Pos Kamling" data-sub2="Rp 300.000"
+                            data-label2="Kebersihan & Taman RT" data-sub3="Rp 230.000"
+                            data-label3="Kas Sosial RW & Posyandu">
+                            <div class="item-person-info">
+                                <img src="../assets/images/users/avatar-3.jpg" alt="Ahmad Fauzi" class="item-avatar-img"
+                                    onerror="this.src='https://ui-avatars.com/api/?name=Ahmad+Fauzi&background=1b7a3e&color=fff'">
+                                <div class="item-text">
+                                    <h6># TAG-1003</h6>
+                                    <span>Tempo 5 hari &bull; Ahmad Fauzi</span>
+                                </div>
+                            </div>
+                            <span class="item-status-pill">Belum Lunas</span>
+                            <div class="item-amount-val">Rp 780.000</div>
+                        </div>
+
+                        <div class="invoice-list-item" data-id="TAG-1004" data-amount="Rp 550.000"
+                            data-status="Verifikasi" data-days="Tempo 16 hari" data-company="RT 04 / RW 01"
+                            data-client="Dewi Lestari" data-role="Kepala Keluarga - No. KK: 32730135"
+                            data-sub1="Rp 250.000" data-label1="Iuran Keamanan Lingkungan" data-sub2="Rp 200.000"
+                            data-label2="Pengangkutan Sampah RT" data-sub3="Rp 100.000"
+                            data-label3="Iuran Kegiatan Warga & PHBN">
+                            <div class="item-person-info">
+                                <img src="../assets/images/users/avatar-4.jpg" alt="Dewi Lestari"
+                                    class="item-avatar-img"
+                                    onerror="this.src='https://ui-avatars.com/api/?name=Dewi+Lestari&background=1b7a3e&color=fff'">
+                                <div class="item-text">
+                                    <h6># TAG-1004</h6>
+                                    <span>Tempo 16 hari &bull; Dewi Lestari</span>
+                                </div>
+                            </div>
+                            <span class="item-status-pill"
+                                style="background: #fef3c7; color: #b45309;">Verifikasi</span>
+                            <div class="item-amount-val">Rp 550.000</div>
+                        </div>
+
+                    </div>
+
+                    <!-- Right Detail Box -->
+                    <div class="invoice-detail-card" id="invoiceDetailPanel">
+                        <div>
+                            <div class="detail-card-header">
+                                <div>
+                                    <div class="detail-meta-label">Rincian Tagihan</div>
+                                    <div class="detail-id-row">
+                                        <span class="detail-id-val" id="detailId"># TAG-1003</span>
+                                        <span class="badge-unsent-soft" id="detailStatus">Belum Lunas</span>
+                                    </div>
+                                </div>
+
+                                <div>
+                                    <div class="detail-meta-label">Wilayah RT</div>
+                                    <div class="company-pill-val">
+                                        <span id="detailCompany">RT 03 / RW 01</span>
+                                        <i class="fa-solid fa-house text-green"></i>
+                                    </div>
+                                </div>
+
+                                <div>
+                                    <div class="detail-meta-label">Warga Pembayar</div>
+                                    <div class="customer-pill-val">
+                                        <img src="../assets/images/users/avatar-3.jpg" id="detailCustomerAvatar"
+                                            alt="Avatar Warga" class="customer-avatar-detail"
+                                            onerror="this.src='https://ui-avatars.com/api/?name=Ahmad+Fauzi&background=1b7a3e&color=fff'">
+                                        <div class="customer-name-wrap">
+                                            <h6 id="detailCustomerName">Ahmad Fauzi</h6>
+                                            <span id="detailCustomerRole">Kepala Keluarga - No. KK: 32730128</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="detail-subcards-grid">
+                                <div class="detail-subcard">
+                                    <div class="subcard-top">
+                                        <span class="subcard-amount" id="detailSub1">Rp 250.000</span>
+                                        <i class="fa-solid fa-arrow-up-right-from-square subcard-arrow"></i>
+                                    </div>
+                                    <div class="subcard-label" id="detailLabel1">Iuran Ronda & Pos Kamling</div>
+                                </div>
+
+                                <div class="detail-subcard">
+                                    <div class="subcard-top">
+                                        <span class="subcard-amount" id="detailSub2">Rp 300.000</span>
+                                        <i class="fa-solid fa-arrow-up-right-from-square subcard-arrow"></i>
+                                    </div>
+                                    <div class="subcard-label" id="detailLabel2">Kebersihan & Taman RT</div>
+                                </div>
+
+                                <div class="detail-subcard">
+                                    <div class="subcard-top">
+                                        <span class="subcard-amount" id="detailSub3">Rp 230.000</span>
+                                        <i class="fa-solid fa-arrow-up-right-from-square subcard-arrow"></i>
+                                    </div>
+                                    <div class="subcard-label" id="detailLabel3">Kas Sosial RW & Posyandu</div>
+                                </div>
+
+                                <div class="subcard-add-box" title="Tambah Komponen Iuran Warga"
+                                    onclick="showCustomAlert('Komponen', 'Formulir tambah komponen iuran siap disesuaikan.', 'info');">
+                                    <i class="fa-solid fa-plus"></i>
+                                    <span>Tambah Komponen</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="detail-summary-bar">
+                            <div class="summary-totals-group">
+                                <div class="summary-stat-box">
+                                    <span>Sub Total</span>
+                                    <strong id="summarySubTotal">Rp 780.000</strong>
+                                </div>
+                                <div class="summary-stat-box">
+                                    <span>Total Tagihan</span>
+                                    <strong id="summaryTotal">Rp 780.000</strong>
+                                </div>
+                                <div class="summary-stat-box">
+                                    <span>Sisa Tagihan</span>
+                                    <strong id="summaryBalanceDue">Rp 780.000</strong>
+                                </div>
+                            </div>
+
+                            <div class="summary-actions-group">
+                                <button class="btn-circle-light" title="Kirim Pengingat WhatsApp"
+                                    onclick="showCustomAlert('WhatsApp', 'Mengirim pesan pengingat tagihan ke warga via WhatsApp.', 'success');">
+                                    <i class="fa-brands fa-whatsapp text-success"></i>
+                                </button>
+                                <button class="btn-circle-light" title="Jadwalkan Pengingat Tempo"
+                                    onclick="showCustomAlert('Jadwal', 'Pengingat tempo berhasil dijadwalkan.', 'success');">
+                                    <i class="fa-regular fa-calendar-check"></i>
+                                </button>
+                                <button class="btn-payout-green" title="Konfirmasi & Catat Pembayaran"
+                                    onclick="handleConfirmPayment();">
+                                    Konfirmasi Lunas
+                                </button>
+                            </div>
+                        </div>
+
+                    </div>
                 </div>
-            </div>
+            </section>
         </div>
 
-        <!-- ACTIVE PANEL: KONFIRMASI STRUK -->
+        <!-- ACTIVE PANEL 3: KONFIRMASI STRUK -->
         <div id="tab-bukti-bayar" class="keuangan-section" style="display: none;">
             <div class="content-card-box" style="margin-bottom: 0;">
                 <div class="content-card-header">
-                    <h3 class="content-card-title">
-                        <i class="uil uil-file-check-alt text-green"></i> Verifikasi Struk Transfer Masuk
-                    </h3>
+                    <h3 class="content-card-title"><i class="uil uil-file-check-alt text-green"></i> Verifikasi Struk
+                        Transfer Masuk</h3>
                 </div>
-
                 <div class="table-responsive">
                     <table class="table-accessible">
                         <thead>
                             <tr>
                                 <th>TANGGAL UNGGAH</th>
                                 <th>NAMA WARGA</th>
-                                <th>WILAYAH RT</th>
                                 <th>NOMINAL</th>
                                 <th>STRUK</th>
                                 <th>TINDAKAN</th>
@@ -1152,21 +435,13 @@
                         </thead>
                         <tbody>
                             <tr>
-                                <td>02 Nov 2026 (10:15)</td>
+                                <td>02 Nov 2026</td>
                                 <td><strong>Budi Santoso</strong></td>
-                                <td>RT 01 / RW 01</td>
                                 <td class="font-weight-bold text-green">Rp 60.000</td>
-                                <td>
-                                    <button class="btn-secondary-action" style="padding: 5px 12px; font-size: 13px;"
-                                        data-toggle="modal" data-target="#modalDetailStruk">
-                                        <i class="uil uil-image"></i> Lihat Struk
-                                    </button>
-                                </td>
-                                <td>
-                                    <button class="btn-large-action" style="padding: 5px 12px; font-size: 13px;"
-                                        onclick="alert('Pembayaran Budi Santoso Berhasil Dikonfirmasi Lunas!');">
-                                        <i class="uil uil-check"></i> Konfirmasi Lunas
-                                    </button>
+                                <td><button class="btn-secondary-action" data-toggle="modal"
+                                        data-target="#modalDetailStruk">Lihat Struk</button></td>
+                                <td><button class="btn-large-action"
+                                        onclick="showCustomAlert('Berhasil', 'Pembayaran dikonfirmasi lunas!', 'success');">Konfirmasi</button>
                                 </td>
                             </tr>
                         </tbody>
@@ -1175,88 +450,55 @@
             </div>
         </div>
 
-        <!-- ACTIVE PANEL: REKENING & QRIS -->
+        <!-- ACTIVE PANEL 4: REKENING & QRIS -->
         <div id="tab-metode-bayar" class="keuangan-section" style="display: none;">
             <div class="content-card-box" style="margin-bottom: 0;">
                 <div class="content-card-header">
-                    <h3 class="content-card-title">
-                        <i class="uil uil-university text-green"></i> Rekening Resmi & Kode QRIS Kas RW
-                    </h3>
+                    <h3 class="content-card-title"><i class="uil uil-university text-green"></i> Rekening Resmi & QRIS
+                        Kas RW</h3>
                 </div>
-
                 <div class="row">
-                    <div class="col-md-4 mb-3">
+                    <div class="col-md-6 mb-3">
                         <div
                             style="border: 1px solid #e2e8e4; border-radius: 16px; padding: 18px; background: #fafdfb;">
-                            <span class="text-caption font-weight-bold">BANK RESMI RW</span>
-                            <h4 class="font-weight-bold my-1 text-green">Bank BCA</h4>
-                            <div class="font-weight-bold font-size-18 my-2 text-dark">8830-1928-44</div>
+                            <span class="text-caption font-weight-bold">BANK BCA</span>
+                            <h4 class="font-weight-bold my-1 text-green">8830-1928-44</h4>
                             <div class="text-caption">a.n. Kas Resmi RW 01</div>
                         </div>
                     </div>
-
-                    <div class="col-md-4 mb-3">
+                    <div class="col-md-6 mb-3">
                         <div
                             style="border: 1px solid #e2e8e4; border-radius: 16px; padding: 18px; background: #fafdfb;">
-                            <span class="text-caption font-weight-bold">PEMBAYARAN DIGITAL</span>
-                            <h4 class="font-weight-bold my-1 text-green">QRIS SiSatu RW 01</h4>
-                            <button class="btn-secondary-action my-2" style="padding: 5px 12px; font-size: 13px;"
-                                data-toggle="modal" data-target="#modalDetailStruk">
-                                <i class="uil uil-qrcode-scan"></i> Tampilkan QR Code
-                            </button>
-                            <div class="text-caption">BCA, Mandiri, GoPay, OVO, Dana</div>
-                        </div>
-                    </div>
-
-                    <div class="col-md-4 mb-3">
-                        <div
-                            style="border: 1px solid #e2e8e4; border-radius: 16px; padding: 18px; background: #fafdfb;">
-                            <span class="text-caption font-weight-bold">PEMBAYARAN LANGSUNG</span>
-                            <h4 class="font-weight-bold my-1 text-green">Tunai ke Bendahara</h4>
-                            <div class="font-size-15 font-weight-bold my-2 text-dark">Pos RW / Bendahara RT</div>
-                            <div class="text-caption">Layanan: 08:00 - 20:00 WIB</div>
+                            <span class="text-caption font-weight-bold">QRIS KAS RW</span>
+                            <h4 class="font-weight-bold my-1 text-green">SiSatu RW 01</h4>
+                            <button class="btn-secondary-action mt-2" data-toggle="modal"
+                                data-target="#modalDetailStruk">Tampilkan QR Code</button>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
 
-        <!-- ACTIVE PANEL: AUDIT LOG -->
+        <!-- ACTIVE PANEL 5: AUDIT LOG -->
         <div id="tab-audit-log" class="keuangan-section" style="display: none;">
             <div class="content-card-box" style="margin-bottom: 0;">
                 <div class="content-card-header">
-                    <h3 class="content-card-title">
-                        <i class="uil uil-history text-green"></i> Audit Log & Audit Trail Keuangan
-                    </h3>
+                    <h3 class="content-card-title"><i class="uil uil-history text-green"></i> Audit Trail Keuangan</h3>
                 </div>
-
                 <div class="table-responsive">
                     <table class="table-accessible">
                         <thead>
                             <tr>
-                                <th>WAKTU & TANGGAL</th>
-                                <th>NAMA OPERATOR</th>
-                                <th>PERAN</th>
-                                <th>AKSI TRANSAKSI</th>
-                                <th>ALAMAT IP / DEVICE</th>
+                                <th>WAKTU</th>
+                                <th>OPERATOR</th>
+                                <th>AKSI</th>
                             </tr>
                         </thead>
                         <tbody>
                             <tr>
-                                <td>02 Nov 2026 - 10:20 WIB</td>
+                                <td>02 Nov 2026 - 10:20</td>
                                 <td><strong>Ibu Endang</strong></td>
-                                <td>Bendahara RW</td>
-                                <td><span class="status-pill status-pill-success">Verifikasi Struk Budi Santoso (Rp
-                                        60.000)</span></td>
-                                <td>192.168.1.14 (Mobile App)</td>
-                            </tr>
-                            <tr>
-                                <td>01 Nov 2026 - 15:45 WIB</td>
-                                <td><strong>Mochamad Wildani Azizi</strong></td>
-                                <td>Ketua RW 01</td>
-                                <td><span class="status-pill status-pill-purple">Tambah Transaksi Keluar Honor
-                                        Sampah</span></td>
-                                <td>192.168.1.2 (Web Admin)</td>
+                                <td>Verifikasi Struk Budi Santoso</td>
                             </tr>
                         </tbody>
                     </table>
@@ -1266,104 +508,343 @@
 
     </div>
 
-    <!-- MODAL 1: CATAT TRANSAKSI KAS BARU -->
+    <!-- MODAL CATAT KEUANGAN BARU -->
     <div class="modal fade" id="modalTambahKas" tabindex="-1" role="dialog" aria-hidden="true">
-        <div class="modal-dialog modal-dialog-centered" role="document">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h4 class="modal-title d-flex align-items-center">
-                        <i class="uil uil-plus-circle text-green mr-2" style="font-size: 20px;"></i> Catat Transaksi Kas
-                        Baru
-                    </h4>
+        <div class="modal-dialog modal-dialog-centered modal-lg" role="document">
+            <div class="modal-content" style="border-radius: 20px; border: 1px solid #e2e8e4; padding: 24px;">
+                <div class="modal-header border-0 p-0 mb-3">
+                    <h4 class="font-weight-bold m-0" style="color: var(--text-dark);"><i
+                            class="uil uil-plus-circle text-green mr-2"></i>Catat Transaksi Kas Baru</h4>
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                         <span aria-hidden="true">&times;</span>
                     </button>
                 </div>
-                <div class="modal-body">
-                    <form id="formPencatatanKas">
-                        <div class="form-group mb-3">
-                            <label>Jenis Transaksi</label>
-                            <select class="form-control w-100">
-                                <option value="masuk">Pemasukan Kas (+)</option>
-                                <option value="keluar">Pengeluaran Kas (-)</option>
+                <p class="text-muted font-size-14 mb-4">Input data pemasukan atau pengeluaran kas RW 01 secara akurat
+                    untuk pencatatan LPJ resmi.</p>
+                <form id="formTambahKas" onsubmit="event.preventDefault(); handleSimpanKas();">
+                    <div class="row">
+                        <div class="col-md-6 mb-3">
+                            <label class="font-weight-bold text-dark font-size-13 mb-1">Jenis Transaksi <span
+                                    class="text-danger">*</span></label>
+                            <select class="form-control" id="kasJenis" required
+                                style="border-radius: 10px; height: 44px;">
+                                <option value="pemasukan">Pemasukan (+)</option>
+                                <option value="pengeluaran">Pengeluaran (-)</option>
                             </select>
                         </div>
-                        <div class="form-group mb-3">
-                            <label>Pos Kas Tujuan</label>
-                            <select class="form-control w-100">
-                                <option>Pos Kebersihan</option>
-                                <option>Pos Keamanan</option>
-                                <option>Pos Pembangunan</option>
-                                <option>Pos Sosial & Kematian</option>
+                        <div class="col-md-6 mb-3">
+                            <label class="font-weight-bold text-dark font-size-13 mb-1">Pos Kas Tujuan <span
+                                    class="text-danger">*</span></label>
+                            <select class="form-control" id="kasPos" required
+                                style="border-radius: 10px; height: 44px;">
+                                <option value="Kebersihan">Pos Kebersihan & Sampah</option>
+                                <option value="Keamanan">Pos Keamanan & Ronda</option>
+                                <option value="Pembangunan">Pos Pembangunan & Drainase</option>
+                                <option value="Sosial">Pos Sosial & Kematian</option>
                             </select>
                         </div>
-                        <div class="form-group mb-3">
-                            <label>Nominal Transaksi (Rp)</label>
-                            <input type="number" class="form-control w-100" placeholder="Contoh: 150000">
+                    </div>
+                    <div class="row">
+                        <div class="col-md-6 mb-3">
+                            <label class="font-weight-bold text-dark font-size-13 mb-1">Tanggal Transaksi <span
+                                    class="text-danger">*</span></label>
+                            <input type="date" class="form-control" id="kasTanggal" required
+                                style="border-radius: 10px; height: 44px;">
                         </div>
-                        <div class="form-group mb-4">
-                            <label>Keterangan Transaksi</label>
-                            <textarea class="form-control w-100" rows="3"
-                                placeholder="Tuliskan rincian transaksi kas..."></textarea>
+                        <div class="col-md-6 mb-3">
+                            <label class="font-weight-bold text-dark font-size-13 mb-1">Nominal (Rp) <span
+                                    class="text-danger">*</span></label>
+                            <input type="number" class="form-control" id="kasNominal" placeholder="Contoh: 250000"
+                                required style="border-radius: 10px; height: 44px;">
                         </div>
-                        <button type="button" class="btn-large-action w-100 justify-content-center"
-                            onclick="alert('Transaksi Kas Berhasil Dicatat!'); $('#modalTambahKas').modal('hide');">
-                            Simpan Transaksi
-                        </button>
-                    </form>
-                </div>
+                    </div>
+                    <div class="mb-3">
+                        <label class="font-weight-bold text-dark font-size-13 mb-1">Keterangan / Peruntukan Dana <span
+                                class="text-danger">*</span></label>
+                        <input type="text" class="form-control" id="kasKeterangan"
+                            placeholder="Contoh: Pembelian lampu penerangan pos ronda RT 03" required
+                            style="border-radius: 10px; height: 44px;">
+                    </div>
+                    <div class="row">
+                        <div class="col-md-6 mb-3">
+                            <label class="font-weight-bold text-dark font-size-13 mb-1">Nama Operator / Bendahara <span
+                                    class="text-danger">*</span></label>
+                            <input type="text" class="form-control" id="kasOperator" value="Ibu Endang (RW)" required
+                                style="border-radius: 10px; height: 44px;">
+                        </div>
+                        <div class="col-md-6 mb-3">
+                            <label class="font-weight-bold text-dark font-size-13 mb-1">Upload Bukti / Struk
+                                (Opsional)</label>
+                            <input type="file" class="form-control-file border rounded p-1"
+                                style="border-radius: 10px;">
+                        </div>
+                    </div>
+                    <div class="d-flex justify-content-end gap-2 mt-4">
+                        <button type="button" class="btn-secondary-action mr-2" data-dismiss="modal">Batal</button>
+                        <button type="submit" class="btn-large-action">Simpan Transaksi Kas</button>
+                    </div>
+                </form>
             </div>
         </div>
     </div>
 
-    <!-- MODAL 2: DETAIL STRUK / KODE QRIS -->
+    <!-- MODAL DETAIL STRUK -->
     <div class="modal fade" id="modalDetailStruk" tabindex="-1" role="dialog" aria-hidden="true">
         <div class="modal-dialog modal-dialog-centered" role="document">
             <div class="modal-content text-center p-3">
-                <h4 class="font-weight-bold mb-3">Bukti Transfer / Kode QRIS</h4>
-                <img src="assets/images/RWIS-PNG.png" class="img-fluid rounded mb-3"
-                    style="max-height: 220px; object-fit: contain;" alt="Struk Transfer">
+                <h4 class="font-weight-bold mb-3">Bukti Transfer / QRIS</h4>
+                <img src="../assets/images/RWIS-PNG.png" class="img-fluid rounded mb-3"
+                    style="max-height: 220px; object-fit: contain;" alt="Struk">
                 <button type="button" class="btn-secondary-action justify-content-center w-100"
                     data-dismiss="modal">Tutup</button>
             </div>
         </div>
     </div>
 
-    <!-- SCRIPTS HANDLER -->
-    <script src="assets/js/vendor.min.js"></script>
+    <!-- CONTAINER LOAD COMPONENT ALERT MODAL -->
+    <div id="modal-alert-component-container"></div>
+
+    <!-- SCRIPTS -->
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.bundle.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <script>
-        $(document).ready(function () {
-            // Tab Switcher
-            $('.keuangan-tab-btn').on('click', function () {
-                var targetTab = $(this).data('tab');
-                $('.keuangan-tab-btn').removeClass('active');
-                $(this).addClass('active');
-                $('.keuangan-section').hide();
-                $('#tab-' + targetTab).fadeIn(150);
-            });
+        function showCustomAlert(config, message, type = 'success', onConfirm = null) {
+            let options = {
+                title: 'Pemberitahuan',
+                message: '',
+                type: 'success',
+                confirmText: 'Mengerti',
+                cancelText: 'Batal',
+                onConfirm: null,
+                onCancel: null
+            };
 
-            // Live Search Buku Kas & Empty State
-            $('#searchBukuKas').on('keyup', function () {
-                var value = $(this).val().toLowerCase();
-                var visibleRows = 0;
+            if (typeof config === 'object') {
+                options = { ...options, ...config };
+            } else {
+                options.title = config || options.title;
+                options.message = message || '';
+                options.type = type || 'success';
+                options.onConfirm = onConfirm;
+            }
 
-                $('#tableBukuKas tbody tr').filter(function () {
-                    var match = $(this).text().toLowerCase().indexOf(value) > -1;
-                    $(this).toggle(match);
-                    if (match) visibleRows++;
-                });
+            const modalEl = $('#globalAlertModal');
 
-                if (visibleRows === 0) {
-                    $('#emptyStateBukuKas').show();
-                    $('#tableBukuKas').hide();
-                } else {
-                    $('#emptyStateBukuKas').hide();
-                    $('#tableBukuKas').show();
+            if (modalEl.length === 0) {
+                alert(`${options.title}: ${options.message}`);
+                if (typeof options.onConfirm === 'function') options.onConfirm();
+                return;
+            }
+
+            const iconWrapper = $('#alertIconWrapper');
+            const icon = $('#alertIcon');
+            const confirmBtn = $('#alertConfirmBtn');
+            const cancelBtn = $('#alertCancelBtn');
+
+            $('#alertTitle').text(options.title);
+            $('#alertMessage').text(options.message);
+            cancelBtn.hide();
+
+            confirmBtn.off('click');
+            cancelBtn.off('click');
+
+            switch (options.type) {
+                case 'success':
+                    iconWrapper.css({ 'background': '#dcfce7', 'color': '#15803d' });
+                    icon.attr('class', 'fa-solid fa-circle-check');
+                    confirmBtn.css({ 'background': '#1b7a3e', 'color': '#ffffff' }).text(options.confirmText || 'Mengerti');
+                    break;
+                case 'danger':
+                    iconWrapper.css({ 'background': '#fef2f2', 'color': '#dc2626' });
+                    icon.attr('class', 'fa-solid fa-circle-xmark');
+                    confirmBtn.css({ 'background': '#dc2626', 'color': '#ffffff' }).text(options.confirmText || 'Mengerti');
+                    break;
+                case 'warning':
+                    iconWrapper.css({ 'background': '#fef3c7', 'color': '#b45309' });
+                    icon.attr('class', 'fa-solid fa-triangle-exclamation');
+                    confirmBtn.css({ 'background': '#d97706', 'color': '#ffffff' }).text(options.confirmText || 'Lanjutkan');
+                    cancelBtn.css('display', 'block').text(options.cancelText || 'Batal');
+                    break;
+                case 'info':
+                    iconWrapper.css({ 'background': '#e0f2fe', 'color': '#0369a1' });
+                    icon.attr('class', 'fa-solid fa-circle-info');
+                    confirmBtn.css({ 'background': '#0284c7', 'color': '#ffffff' }).text(options.confirmText || 'Mengerti');
+                    break;
+                case 'confirm':
+                    iconWrapper.css({ 'background': '#fee2e2', 'color': '#dc2626' });
+                    icon.attr('class', 'fa-solid fa-trash-can');
+                    confirmBtn.css({ 'background': '#dc2626', 'color': '#ffffff' }).text(options.confirmText || 'Ya, Hapus');
+                    cancelBtn.css('display', 'block').text(options.cancelText || 'Batal');
+                    break;
+            }
+
+            confirmBtn.on('click', function () {
+                modalEl.modal('hide');
+                if (typeof options.onConfirm === 'function') {
+                    options.onConfirm();
                 }
             });
 
-            // Chart.js Arus Kas
+            cancelBtn.on('click', function () {
+                modalEl.modal('hide');
+                if (typeof options.onCancel === 'function') {
+                    options.onCancel();
+                }
+            });
+
+            modalEl.modal('show');
+        }
+
+        function setActiveNav() {
+            $('.center-pill-nav a').removeClass('active'); $('#nav-keuangan').addClass('active');
+        }
+
+        function loadComponents() {
+            fetch('../components/topbar.html')
+                .then(response => response.text())
+                .then(data => {
+                    document.getElementById('topbar-component-container').innerHTML = data;
+                    setActiveNav();
+                });
+
+            fetch('../components/modal-alert.html')
+                .then(response => response.text())
+                .then(data => {
+                    document.getElementById('modal-alert-component-container').innerHTML = data;
+                });
+        }
+
+        function handleConfirmPayment() {
+            const currentTagId = $('#detailId').text();
+            const currentClient = $('#detailCustomerName').text();
+            showCustomAlert({
+                title: 'Konfirmasi Pembayaran',
+                message: `Konfirmasi lunas tagihan ${currentTagId} atas nama ${currentClient}?`,
+                type: 'warning',
+                confirmText: 'Ya, Lunas',
+                onConfirm: function () {
+                    $('#detailStatus').text('Lunas').removeClass('badge-danger badge-warning').addClass('badge-success').css({ 'background': '#dcfce7', 'color': '#15803d' });
+                    showCustomAlert('Berhasil!', `Pembayaran ${currentTagId} berhasil diverifikasi.`, 'success');
+                }
+            });
+        }
+
+        function handleSimpanKas() {
+            const jenis = $('#kasJenis').val();
+            const pos = $('#kasPos').val();
+            const tanggal = $('#kasTanggal').val() || '02 Nov 2026';
+            const nominal = parseInt($('#kasNominal').val() || 0).toLocaleString('id-ID');
+            const ket = $('#kasKeterangan').val();
+            const operator = $('#kasOperator').val();
+
+            $('#modalTambahKas').modal('hide');
+
+            const isMasuk = jenis === 'pemasukan';
+            const badgeJenis = isMasuk ?
+                '<span class="status-pill status-pill-success"><i class="uil uil-arrow-down"></i> Masuk</span>' :
+                '<span class="status-pill status-pill-danger"><i class="uil uil-arrow-up"></i> Keluar</span>';
+            const nomText = isMasuk ? `+ Rp ${nominal}` : `- Rp ${nominal}`;
+            const nomClass = isMasuk ? 'text-green' : 'text-red';
+
+            const newRow = `
+                <tr>
+                    <td>${tanggal}</td>
+                    <td>${ket}</td>
+                    <td><span class="status-pill status-pill-success">${pos}</span></td>
+                    <td>${badgeJenis}</td>
+                    <td class="font-weight-bold ${nomClass}">${nomText}</td>
+                    <td>${operator}</td>
+                </tr>
+            `;
+
+            $('#bukuKasTableBody').prepend(newRow);
+            showCustomAlert('Sukses', `Transaksi Kas ${jenis.toUpperCase()} senilai Rp ${nominal} berhasil dicatat!`, 'success');
+        }
+
+        $(document).ready(function () {
+            loadComponents();
+
+            const today = new Date().toISOString().split('T')[0];
+            $('#kasTanggal').val(today);
+
+            $('.keuangan-tab-btn').on('click', function () {
+                var targetTab = $(this).data('tab');
+                $('.keuangan-tab-btn').removeClass('active'); $(this).addClass('active');
+                $('.keuangan-section').hide(); $('#tab-' + targetTab).fadeIn(150);
+            });
+
+            $('.invoice-list-item').on('click', function () {
+                $('.invoice-list-item').removeClass('active'); $(this).addClass('active');
+
+                var id = $(this).data('id');
+                var amount = $(this).data('amount');
+                var status = $(this).data('status');
+                var company = $(this).data('company');
+                var client = $(this).data('client');
+                var role = $(this).data('role');
+                var avatar = $(this).find('.item-avatar-img').attr('src');
+                var sub1 = $(this).data('sub1');
+                var label1 = $(this).data('label1');
+                var sub2 = $(this).data('sub2');
+                var label2 = $(this).data('label2');
+                var sub3 = $(this).data('sub3');
+                var label3 = $(this).data('label3');
+
+                $('#detailId').text('# ' + id);
+                $('#detailStatus').text(status);
+
+                if (status === 'Verifikasi') {
+                    $('#detailStatus').css({ 'background': '#fef3c7', 'color': '#b45309' });
+                } else if (status === 'Lunas') {
+                    $('#detailStatus').css({ 'background': '#dcfce7', 'color': '#15803d' });
+                } else {
+                    $('#detailStatus').css({ 'background': '#fee2e2', 'color': '#dc2626' });
+                }
+
+                $('#detailCompany').text(company);
+                $('#detailCustomerName').text(client);
+                $('#detailCustomerRole').text(role);
+                $('#detailCustomerAvatar').attr('src', avatar);
+
+                $('#detailSub1').text(sub1);
+                $('#detailLabel1').text(label1);
+                $('#detailSub2').text(sub2);
+                $('#detailLabel2').text(label2);
+                $('#detailSub3').text(sub3);
+                $('#detailLabel3').text(label3);
+
+                $('#summarySubTotal').text(amount);
+                $('#summaryTotal').text(amount);
+                $('#summaryBalanceDue').text(amount);
+            });
+
+            $('#invoiceStatusTabs a').on('click', function (e) {
+                e.preventDefault();
+                $('#invoiceStatusTabs a').removeClass('active');
+                $(this).addClass('active');
+
+                var filter = $(this).data('filter');
+                if (filter === 'all') {
+                    $('.invoice-list-item').fadeIn(200);
+                } else if (filter === 'verifikasi') {
+                    $('.invoice-list-item').hide(); $('.invoice-list-item[data-status="Verifikasi"]').fadeIn(200);
+                } else if (filter === 'unpaid') {
+                    $('.invoice-list-item').hide(); $('.invoice-list-item[data-status="Belum Lunas"]').fadeIn(200);
+                }
+            });
+
+            $('#invoiceSearchInput').on('keyup', function () {
+                var query = $(this).val().toLowerCase(); $('.invoice-list-item').each(function () {
+                    var text = $(this).text().toLowerCase();
+                    if (text.indexOf(query) > -1) {
+                        $(this).show();
+                    } else {
+                        $(this).hide();
+                    }
+                });
+            });
+
             var ctx = document.getElementById('cashflowChart').getContext('2d');
             new Chart(ctx, {
                 type: 'line',
@@ -1393,46 +874,9 @@
                 options: {
                     responsive: true,
                     maintainAspectRatio: false,
-                    plugins: {
-                        legend: { position: 'top' }
-                    }
+                    plugins: { legend: { position: 'top' } }
                 }
             });
-        });
-
-        window.addEventListener('DOMContentLoaded', function () {
-            const img = new Image();
-            img.src = 'assets/images/logo.svg';
-
-            img.onload = function () {
-                // 1. Buat Canvas untuk Favicon (Ukuran 64x64 px agar tajam)
-                const canvas = document.createElement('canvas');
-                canvas.width = 64;
-                canvas.height = 64;
-                const ctx = canvas.getContext('2d');
-
-                // 2. Buat Background Gradien (135 derajat / diagonal dari kiri atas ke kanan bawah)
-                const gradient = ctx.createLinearGradient(0, 0, 64, 64);
-                gradient.addColorStop(0, '#1b7a3e'); // Hijau Tua
-                gradient.addColorStop(1, '#28a745'); // Hijau Terang
-
-                // 3. Gambar Kotak Rounded dengan Gradien
-                ctx.fillStyle = gradient;
-                ctx.beginPath();
-                ctx.roundRect(0, 0, 64, 64, 16); // Corner radius 16px
-                ctx.fill();
-
-                // 4. Gambar Logo SVG di Tengah Kotak (dengan Margin/Padding 12px)
-                const padding = 12;
-                const logoSize = 64 - (padding * 2);
-                ctx.drawImage(img, padding, padding, logoSize, logoSize);
-
-                // 5. Timpa Favicon Browser dengan Hasil Render Canvas
-                const favicon = document.getElementById('dynamicFavicon');
-                if (favicon) {
-                    favicon.href = canvas.toDataURL('image/png');
-                }
-            };
         });
     </script>
 </body>
